@@ -2,65 +2,228 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Hellstrom POD Comparison</title>
+<title>Hellstrom Energy Comparsion</title>
 <meta name="author" content="raba"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+<link rel="stylesheet" href="/home/mi/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/serif.css" id="theme"/>
+<link rel="stylesheet" href="/home/mi/reveal.js/dist/theme/serif.css" id="theme"/>
 
 <link rel="stylesheet" href="./org-example.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/lib/css/zenburn.css"/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="/home/mi/reveal.js/lib/css/zenburn.css"/><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Hellstrom POD Comparison</h1><em>Swirl Numbers N=0.5,1,3</em><br><br>raba<br>October 24, 2022
+<section id="sec-title-slide"><h1 class="title">Hellstrom Energy Comparsion</h1><em>Swirl Numbers N=0.5,1,3</em><br><br>raba<br>October 24, 2022
 </section>
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="/home/mi/reveal.js/plugin/highlight/monokai.css">
+
 
 <section>
-<section id="slide-orgb315eaf">
-<h2 id="orgb315eaf">Goal</h2>
+<section id="slide-orgd828a04">
+<h2 id="orgd828a04">Energy Comparison</h2>
+<div class="column" style="float:left; width: 50%">
+<p>
+N=0 Energy
+</p>
+<p width="600px">
+<img src="file:///home/mi/org/figEgy/n0ScaledEgy.svg" alt="n0ScaledEgy.svg" class="org-svg" width="600px" />
+N=0.5 Energy
+</p>
+
+<div id="orgf7091df" class="figure">
+<p><img src="file:///home/mi/org/figEgy/n0d5ScaledEgy.svg" alt="n0d5ScaledEgy.svg" class="org-svg" width="600px" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+<p>
+N=3 Energy
+</p>
+
+<div id="orgdfc3fd9" class="figure">
+<p><img src="file:///home/mi/org/figEgy/n3ScaledEgy.svg" alt="n3ScaledEgy.svg" class="org-svg" width="600px" />
+</p>
+</div>
+</div>
+
+
+</section>
+<section id="slide-org721b029">
+<h3 id="org721b029">N=0.0 Energy</h3>
+
+<div id="orgedb1aa8" class="figure">
+<p><img src="file:///home/mi/org/figEgy/n0ScaledEgy.svg" alt="n0ScaledEgy.svg" class="org-svg" width="2600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0a855d0">
+<h3 id="org0a855d0">N=0.5 Energy</h3>
+
+<div id="org0491680" class="figure">
+<p><img src="file:///home/mi/org/figEgy/n0d5ScaledEgy.svg" alt="n0d5ScaledEgy.svg" class="org-svg" width="2600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb93d37c">
+<h3 id="orgb93d37c">N=3 Energy</h3>
+
+<div id="orgaceee0c" class="figure">
+<p><img src="file:///home/mi/org/figEgy/n3ScaledEgy.svg" alt="n3ScaledEgy.svg" class="org-svg" width="2600px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf316224">
+<h2 id="orgf316224">Energy Defintions</h2>
+<ul>
+<li>Relative azimuthal energy distribution \(\xi^{n} (m)\) defined as</li>
+
+</ul>
+
+<div>
+\begin{align}
+  \xi^{(n)}(m) \equiv \frac{\sum_f \lambda^{(n)}(f, m)}{\sum_n \sum_m \sum_f \lambda^{(n)}(f, m)} .
+\end{align}
+
+</div>
+
+</section>
+<section id="slide-org064e79c" data-auto-animate>
+<h3 id="org064e79c">Relative Energy Numerator</h3>
+<div class="org-src-container">
+
+<pre    data-id="foo"><code class="matlab" >% we define the numerator, integrated over all k;
+for e=1:eSize
+for m=rMin:rMax
+cSpre = zeros(ncs,1);
+for c=1:ncs %
+cSpre(c) = real(lam(c).m(m).dat(e,1));
+end % c
+cS(e).m(m).dat=dk*sum(cSpre(:)); % sum k. this eliminates c from struct.
+end % e
+end % m
+</code></pre>
+</div>
+
+
+</section>
+<section id="slide-orgad01d56" data-auto-animate>
+<h3 id="orgad01d56">Relative Energy Denominator</h3>
+<div class="org-src-container">
+
+<pre    data-id="foo"><code class="matlab" data-line-numbers='14-25'>eSize=5;
+dk =0.001;
+% we define the numerator, integrated over all k;
+for e=1:eSize
+for m=rMin:rMax
+cSpre = zeros(ncs,1);
+for c=1:ncs %
+cSpre(c) = real(lam(c).m(m).dat(e,1));
+end % c
+cS(e).m(m).dat=dk*sum(cSpre(:)); % sum k. this eliminates c from struct.
+end % e
+end % m
+
+% we define the denominator.
+sumTot = 0;
+for ee=1:eSize % eigs.
+eVec = zeros(18,1);  % 18 eigs.
+for mm=rMin:rMax
+eVec(mm) = real(cS(ee).m(mm).dat);
+end % mm
+zz=sum(eVec(:)) % sum m
+sumTot = sumTot + zz; % sum n.
+end % eig (n)
+zz=real(sumTot); % try this
+cuR=cuSumm(cS); % maybe sum n.
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd0073ec">
+<h2 id="orgd0073ec">Energy From Other Papers</h2>
+<ul>
+<li>Hellstrom 19k</li>
+
+</ul>
+
+
+<div id="orga4c402c" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_20-00-49_.png" alt="screenshot2023-01-04_20-00-49_.png" width="600px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org4b43608">
+<h3 id="org4b43608">Smits 2009 Developing 3k flow</h3>
+
+<div id="orgfbf4ae5" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_19-34-17_.png" alt="screenshot2023-01-04_19-34-17_.png" width="600px" />
+</p>
+</div>
+<ul>
+<li>note descending mode behavior</li>
+
+</ul>
+</section>
+<section id="slide-org1509218">
+<h3 id="org1509218">Colonius &amp; Freund</h3>
+
+<div id="orgccdc6cb" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_19-35-01_.png" alt="screenshot2023-01-04_19-35-01_.png" width="600px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga8f9261">
+<h2 id="orga8f9261">Page Intentionally Left Blank</h2>
+</section>
+</section>
+<section>
+<section id="slide-org00e6a0c">
+<h2 id="org00e6a0c">Goal</h2>
 <p>
 Replicate hellstrom2018 with DNS data
 </p>
 
 </section>
-<section id="slide-org9b8026f">
-<h3 id="org9b8026f">k-averaged POD Modes</h3>
+<section id="slide-org57edf91">
+<h3 id="org57edf91">k-averaged POD Modes</h3>
 
-<div id="org4dd7f22" class="figure">
+<div id="org3df76cd" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_12-34-35_.png" alt="screenshot2022-12-16_12-34-35_.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org3d75499">
-<h3 id="org3d75499">Zero Swirl POD</h3>
+<section id="slide-orga909d07">
+<h3 id="orga909d07">Zero Swirl POD</h3>
 
-<div id="orgbb13d08" class="figure">
+<div id="org96489cb" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_12-36-26_.png" alt="screenshot2022-12-16_12-36-26_.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgc08def9">
-<h3 id="orgc08def9">Differences</h3>
+<section id="slide-org0c4a669">
+<h3 id="org0c4a669">Differences</h3>
 <ul>
 <li>Hellstrom&rsquo;s data is higher resolved streamwise
 <ul>
@@ -72,8 +235,8 @@ Replicate hellstrom2018 with DNS data
 </ul>
 
 </section>
-<section id="slide-org17dbcd4">
-<h3 id="org17dbcd4">k-average for No Swirl</h3>
+<section id="slide-org85ac254">
+<h3 id="org85ac254">k-average for No Swirl</h3>
 <ul>
 <li>Hellstrom constructs POD modes, and averages \(\Phi_x^{(n)}\) modes in \(k\) direction, because he recognized they are invarient streamwise.
 <ul>
@@ -83,39 +246,39 @@ Replicate hellstrom2018 with DNS data
 
 </ul>
 </section>
-<section id="slide-orge50accb">
-<h3 id="orge50accb">k-invarient</h3>
+<section id="slide-org93a3c20">
+<h3 id="org93a3c20">k-invarient</h3>
 
-<div id="org981952b" class="figure">
+<div id="org34c5264" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_12-29-53_.png" alt="screenshot2022-12-16_12-29-53_.png" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgda8e0d7">
-<h2 id="orgda8e0d7">Apply to Swirl?</h2>
+<section id="slide-orgd54695f">
+<h2 id="orgd54695f">Apply to Swirl?</h2>
 <ul>
 <li>Not clear if we can do average for Swirl flows; \(\phi_k^{(2)}\) looks quite different</li>
 
 </ul>
 
 </section>
-<section id="slide-org4bbb372">
-<h3 id="org4bbb372">N=3</h3>
+<section id="slide-org3f007e3">
+<h3 id="org3f007e3">N=3</h3>
 <ul>
 <li>shows \(m=5,10,15,20,\ldots, 50\) for \(k=1,2,\ldots, K\)</li>
 
 </ul>
 
-<div id="org9290ef4" class="figure">
-<p><img src="images/reveal/n3.gif" alt="n3.gif" />
+<div id="orgb55f5e9" class="figure">
+<p><img src="file:///home/mi/anim/n3.gif" alt="n3.gif" />
 </p>
 </div>
 
 </section>
-<section id="slide-org36fec0a">
-<h3 id="org36fec0a">Qualitative different</h3>
+<section id="slide-orgc980103">
+<h3 id="orgc980103">Qualitative different</h3>
 <ul>
 <li>the modes \(m\) look different for each \(k\).
 <ul>
@@ -126,7 +289,7 @@ Replicate hellstrom2018 with DNS data
 </ul>
 <div class="column" style="float:left; width: 50%">
 
-<div id="org9e4e1a2" class="figure">
+<div id="orga5d1257" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_12-50-23_.png" alt="screenshot2022-12-16_12-50-23_.png" />
 </p>
 </div>
@@ -134,47 +297,48 @@ Replicate hellstrom2018 with DNS data
 
 <div class="column" style="float:right; width: 50%">
 
-<div id="org4799c36" class="figure">
+<div id="org4a163c6" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_12-50-47_.png" alt="screenshot2022-12-16_12-50-47_.png" width="400px" />
 </p>
 </div>
 </div>
 </section>
-<section id="slide-org35e72a6">
-<h3 id="org35e72a6">\(N=1\) Swirl</h3>
+<section id="slide-org3f28452">
+<h3 id="org3f28452">\(N=1\) Swirl</h3>
 <ul>
 <li>A naive averaging in \(k\), where it is clear averaging cant be done</li>
 
 </ul>
 
-<div id="org8421f5b" class="figure">
+<div id="org036c952" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-35-21_.png" alt="screenshot2022-12-16_13-35-21_.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org96b69d0">
-<h3 id="org96b69d0">\(N=0.5\)</h3>
+<section id="slide-org055e2d4">
+<h3 id="org055e2d4">\(N=0.5\)</h3>
 
-<div id="orgd54a01b" class="figure">
+<div id="orgb57711e" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-33-50_.png" alt="screenshot2022-12-16_13-33-50_.png" />
 </p>
 </div>
 </section>
-<section id="slide-orge32fcbc">
-<h3 id="orge32fcbc">\(N=3\)</h3>
+<section id="slide-orgf6034d6">
+<h3 id="orgf6034d6">\(N=3\)</h3>
 
-<div id="org517a557" class="figure">
-<p><img src="images/reveal/n3.png" alt="n3.png" />
+<div id="org32b5214" class="figure">
+<p><img src="file:///home/mi/anim/n3.png" alt="n3.png" />
 </p>
 </div>
+
 
 
 </section>
 </section>
 <section>
-<section id="slide-org9b199e3">
-<h2 id="org9b199e3">Larger goal:</h2>
+<section id="slide-orgaa49492">
+<h2 id="orgaa49492">Larger goal:</h2>
 <ul>
 <li>describe how the flow&rsquo;s POD modes evolves down stream.</li>
 <li>Achieve relaminarization</li>
@@ -187,8 +351,8 @@ Replicate hellstrom2018 with DNS data
 
 </ul>
 </section>
-<section id="slide-org9f327f3">
-<h3 id="org9f327f3">Different direction</h3>
+<section id="slide-org4e7aad3">
+<h3 id="org4e7aad3">Different direction</h3>
 <ul>
 <li>use other forms of analysis for Swirl cases
 <ul>
@@ -201,11 +365,11 @@ Replicate hellstrom2018 with DNS data
 </section>
 </section>
 <section>
-<section id="slide-org7980244">
-<h2 id="org7980244">Papers</h2>
+<section id="slide-orgb9c5b6b">
+<h2 id="orgb9c5b6b">Papers</h2>
 <div class="column" style="float:left; width: 50%">
 
-<div id="orgfce2df7" class="figure">
+<div id="orgf979487" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-12-19_.png" alt="screenshot2022-12-16_13-12-19_.png" width="400px" />
 </p>
 </div>
@@ -213,7 +377,7 @@ Replicate hellstrom2018 with DNS data
 
 <div class="column" style="float:right; width: 50%">
 
-<div id="orgd055e23" class="figure">
+<div id="orgc6c899d" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-17-35_.png" alt="screenshot2022-12-16_13-17-35_.png" width="400px" />
 </p>
 </div>
@@ -222,11 +386,11 @@ Replicate hellstrom2018 with DNS data
 </section>
 </section>
 <section>
-<section id="slide-org9f4dd5c">
-<h2 id="org9f4dd5c">Papers</h2>
+<section id="slide-org7409556">
+<h2 id="org7409556">Papers</h2>
 <div class="column" style="float:left; width: 50%">
 
-<div id="org936128a" class="figure">
+<div id="org0e6746c" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-15-14_.png" alt="screenshot2022-12-16_13-15-14_.png" width="400px" />
 </p>
 </div>
@@ -237,14 +401,14 @@ Replicate hellstrom2018 with DNS data
 
 <div class="column" style="float:right; width: 50%">
 
-<div id="org6a7925f" class="figure">
+<div id="orge8b5e6f" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-15-59_.png" alt="screenshot2022-12-16_13-15-59_.png" width="400px" />
 </p>
 </div>
 </div>
 </section>
-<section id="slide-orgedafe0a">
-<h3 id="orgedafe0a">Shows</h3>
+<section id="slide-orgec939e1">
+<h3 id="orgec939e1">Shows</h3>
 <ul>
 <li>precessing vortex core</li>
 <li>vortex breakdown</li>
@@ -252,7 +416,7 @@ Replicate hellstrom2018 with DNS data
 </ul>
 
 
-<div id="orgde5d702" class="figure">
+<div id="orgc5df52a" class="figure">
 <p><img src="images/reveal/screenshot2022-12-16_13-26-07_.png" alt="screenshot2022-12-16_13-26-07_.png" width="600px" />
 </p>
 </div>
@@ -260,18 +424,16 @@ Replicate hellstrom2018 with DNS data
 </section>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="/home/mi/reveal.js/dist/reveal.js"></script>
+<script src="/home/mi/reveal.js/plugin/highlight/highlight.js"></script>
+
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-slideNumber:"c/t", transition:"slide", transitionSpeed:"fast", controlsTutorial:false, minScale:1.0, maxScale:1.5,
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
-
+plugins: [RevealHighlight],
+slideNumber:"c/t", transition:"slide", transitionSpeed:"fast", controlsTutorial:false, minScale:1.0, maxScale:1.5
 });
 for(let e of document.getElementsByClassName("figure-number")){e.parentElement.classList.add("fig-caption");}
 </script>
