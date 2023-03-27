@@ -20,8 +20,9 @@ Skill 2 - Scientific Parallel Computing.
 ======
 
 * Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
-  * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
-  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
+  * Profile code and effectively combine OpenMP with MPI for <b>actually good performant code</b> using Totalview and GDB (including its Python interface)
+  * Version control (git, bitbucket)
+  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
 {% highlight c %}
 #include <mpi.h>
