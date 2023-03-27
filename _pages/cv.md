@@ -27,7 +27,7 @@ Work experience
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
   * Supervisor: Professor Christoph Brehm
 
- * Spring 2023: Teaching Assistant
+* Spring 2023: Teaching Assistant
   * University of Kentucky Department of Mechanical Engineering
   * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
  
