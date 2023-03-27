@@ -17,7 +17,7 @@ Skill 1 - The Most Important Skill of all, Problem-Solving.
   * Ability to <b>leverage all resources</b> to identify problems and come up with effective solutions. This includes reading papers, connecting dots, small test, profiling code, verification ... super-innovative and multi-diciplinary curious
 
 <div class="alert-box">
-  Skill 1 - The Most Important Skill of all, Problem-Solving.
+  Skill 1 - The Most Important Skill of all, Problem-Solving...
 </div>
 
 Skill 2 - Scientific Parallel Computing.
