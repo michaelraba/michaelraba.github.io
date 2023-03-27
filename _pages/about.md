@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Michael Raba"
+title: "Raba im Ueberblick"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
