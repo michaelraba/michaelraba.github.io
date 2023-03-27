@@ -16,6 +16,10 @@ Skill 1 - The Most Important Skill of all, Problem-Solving.
   * <u>Self-directed & Proactive</u>
   * Ability to <b>leverage all resources</b> to identify problems and come up with effective solutions. This includes reading papers, connecting dots, small test, profiling code, verification ...
 
+<div class="alert-box">
+  This is a decorative box
+</div>
+
 Skill 2 - Scientific Parallel Computing.
 ======
 
@@ -24,14 +28,6 @@ Skill 2 - Scientific Parallel Computing.
   * Version control (git, bitbucket)
   * Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
-{% highlight c %}
-#include <mpi.h>
-#include <stdio.h>
-#include <math.h>
-
-// The rest of the MPI code goes here...
-
-{% endhighlight %}
 
 
 Skill 3 - Hardcore Applied Mathematics
