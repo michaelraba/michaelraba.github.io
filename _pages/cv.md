@@ -13,8 +13,8 @@ redirect_from:
 Skill 1 - The Most Important Skill of all, Problem-Solving.
 ======
 
-  * <u>Self-directed</u>
-  * ability to leverage all resources to identify problems and come up with effective solutions
+  * <u>Self-directed & Proactive</u>
+  * Ability to <b>leverage all resources</b> to identify problems and come up with effective solutions. This includes reading papers, connecting dots, small test, profiling code, verification ...
 
 Skill 2 - Scientific Parallel Computing.
 ======
