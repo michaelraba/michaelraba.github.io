@@ -34,7 +34,7 @@ Work experience
 Skills
 ======
 
-* The Most Important Skill of all, Problem-Solving.
+* The Most Important Skill of all, Problem-Solving <i class="fas fa-thumbs-up"></i>
   * Ability to identify problems and come up with effective solutions
 
 * Technical Skills:
