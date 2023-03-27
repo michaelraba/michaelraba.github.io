@@ -16,16 +16,21 @@ Education
 
 Work experience
 ======
+
+* Fall 2020-present: Research Assistant
+  * National Science Foundation
+  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
+  * Supervisor: Professor Christoph Brehm
+
 * Summer 2018: Research Assistant
   * University of Kentucky Department of Aerospace Engineering
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
   * Supervisor: Professor Christoph Brehm
 
-* Fall 2020: Research Assistant
-  * National Science Foundation
-  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
-  * Supervisor: Professor Christoph Brehm
-  
+ * Spring 2023: Teaching Assistant
+  * University of Kentucky Department of Mechanical Engineering
+  * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
+ 
 Skills
 ======
 
