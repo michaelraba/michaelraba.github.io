@@ -1,5 +1,5 @@
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/ffi-1.15.5/ext/ffi_c
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-855392-6dhsqb.rb extconf.rb
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-2319695-b2eyhw.rb extconf.rb
 *** extconf.rb failed ***
 Could not create Makefile due to some reason, probably lack of necessary
 libraries and/or headers.  Check the mkmf.log file for more details.  You may
