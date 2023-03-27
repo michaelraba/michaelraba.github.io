@@ -9,9 +9,9 @@ redirect_from:
 ---
 
 I am a student in Mechanical Engineering with:
-* expertise in partial differential equations 
-* statistical approaches to fluid mechanics with an 
-* emphasis on scientific computing.
+* Expertise in partial differential equations 
+* Statistical approaches to fluid mechanics <i>with an</i>
+* Emphasis on scientific computing.
 
 Currently pursing a research grant-funded PhD position; See my MsC thesis <b>here</b>
 
