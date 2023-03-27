@@ -13,7 +13,7 @@ I am a student in Mechanical Engineering with:
 * statistical approaches to fluid mechanics with an 
 * emphasis on scientific computing.
 
-Currently pursing a position as a PhD student in a related area. See my MsC thesis here
+Currently pursing a research grant-funded PhD position; See my MsC thesis <b>here</b>
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
