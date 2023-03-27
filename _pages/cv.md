@@ -39,10 +39,12 @@ Skills
 
 * Technical Skills:
 * Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
-  * Ability to profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
-  * Ability to configure and optimize Linux systems (CentOS, Arch, Ubuntu)
-* Teamwork:
-
+  * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
+  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
+* Scientific Computing
+ * Finite Volume Methods & Computational gasdynamics
+ * Signal Processing (eg fourier analysis)
+ 
 {% comment %}
 Publications
 ======
