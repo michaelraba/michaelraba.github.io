@@ -1,0 +1,17 @@
+"pkg-config --exists libffi"
+| pkg-config --libs libffi
+=> "-lffi\n"
+"x86_64-linux-gnu-gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-3.0.0 -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -ffile-prefix-map=/build/ruby3.0-i0qRmP/ruby3.0-3.0.4=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby-3.0  -lm   -lc"
+x86_64-linux-gnu-gcc: internal compiler error: Segmentation fault signal terminated program as
+Please submit a full bug report, with preprocessed source (by using -freport-bug).
+See <file:///usr/share/doc/gcc-12/README.Bugs> for instructions.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
