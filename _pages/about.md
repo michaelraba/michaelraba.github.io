@@ -12,9 +12,7 @@ I am a student in Mechanical Engineering with expertise in partial differential 
 
 Currently pursing a position as a PhD student in a related area. See my MsC thesis here
 
-<img src="/images/m5.gif" alt="Alt text">
-
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
-  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode is shown.</figcaption>
+  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\Phi_x$ is shown.</figcaption>
 </figure>
