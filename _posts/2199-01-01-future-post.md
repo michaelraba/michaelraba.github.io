@@ -7,7 +7,7 @@ tags:
   - SRO (Satellites)
 ---
 
-This post will show up by default. To disable scheduling of future posts, edit `config.yml` and set `future: false`. 
+Summary: null
 
 <iframe src="https://raw.githubusercontent.com/michaelraba/michaelraba.github.io/main/_posts/1.pdf" width="100%" height="500px">
 </iframe>
