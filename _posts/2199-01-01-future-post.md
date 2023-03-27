@@ -10,5 +10,5 @@ tags:
 
 Summary: null
 
-<embed src="https://drive.google.com/file/d/1aFNErgPRiKwyr4636wW50cGt0_Xu_sw2/view?usp=sharing" type="application/pdf" />
+<embed src="" type="application/pdf" />
 
