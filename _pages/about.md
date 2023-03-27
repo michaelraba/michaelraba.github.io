@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "About Msc Thesis Student Michael Raba"
+title: "Michael Raba"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,4 +8,5 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to Michael Raba's fan website, the only website you find cool content about Michael
+I am a student in Mechanical Engineering with expertise in partial differential equations and statistical approaches to fluid mechanics.
+Currently pursing a position as a PhD student in a related area. See my MsC thesis here
