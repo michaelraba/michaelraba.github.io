@@ -10,3 +10,5 @@ redirect_from:
 
 I am a student in Mechanical Engineering with expertise in partial differential equations and statistical approaches to fluid mechanics.
 Currently pursing a position as a PhD student in a related area. See my MsC thesis here
+
+<img src="/images/m5.gif" alt="Alt text">
