@@ -9,6 +9,19 @@ redirect_from:
 
 {% include base_path %}
 
+ 
+Skills
+======
+
+* The Most Important Skill of all, Problem-Solving <i class="fas fa-thumbs-up"></i>
+  * Self-directed ability to leverage all resources to identify problems and come up with effective solutions
+* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
+  * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
+  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
+  * Finite Volume Methods & Computational gasdynamics
+  * Signal Processing (eg Fourier analysis)
+
+
 Education
 ======
 * B.A. in Applied Mathematics, University of Kentucky, 2019
@@ -30,18 +43,8 @@ Work experience
 * Spring 2023: Teaching Assistant
   * University of Kentucky Department of Mechanical Engineering
   * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
- 
-Skills
-======
 
-* The Most Important Skill of all, Problem-Solving <i class="fas fa-thumbs-up"></i>
-  * Self-directed ability to leverage all resources to identify problems and come up with effective solutions
-* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
-  * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
-  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
-  * Finite Volume Methods & Computational gasdynamics
-  * Signal Processing (eg Fourier analysis)
- 
+
 {% comment %}
 Publications
 ======
