@@ -21,10 +21,10 @@ Work experience
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
   * Supervisor: Professor Christoph Brehm
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Fall 2020: Research Assistant
+  * National Science Foundation
+  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
+  * Supervisor: Professor Christoph Brehm
   
 Skills
 ======
