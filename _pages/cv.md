@@ -9,7 +9,22 @@ redirect_from:
 
 {% include base_path %}
 
- 
+Work experience
+======
+
+* Fall 2020-present: Research Assistant
+  * National Science Foundation
+  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
+  * Supervisor: Professor Christoph Brehm
+
+* Summer 2018: Research Assistant
+  * University of Kentucky Department of Aerospace Engineering
+  * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
+  * Supervisor: Professor Christoph Brehm
+
+* Spring 2023: Teaching Assistant
+  * University of Kentucky Department of Mechanical Engineering
+  * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
 Skill 1 - The Most Important Skill of all, Problem-Solving.
 ======
 
@@ -42,22 +57,6 @@ Education
 * B.A. in Applied Mathematics, University of Kentucky, 2019
 * M.S. in Mechanical Engineering, University of Kentucky, forthcoming 2023
 
-Work experience
-======
-
-* Fall 2020-present: Research Assistant
-  * National Science Foundation
-  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
-  * Supervisor: Professor Christoph Brehm
-
-* Summer 2018: Research Assistant
-  * University of Kentucky Department of Aerospace Engineering
-  * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
-  * Supervisor: Professor Christoph Brehm
-
-* Spring 2023: Teaching Assistant
-  * University of Kentucky Department of Mechanical Engineering
-  * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
 
 
 {% comment %}
