@@ -19,9 +19,6 @@ Skill 1 - The Most Important Skill of all, Problem-Solving.
 <div class="alert-box">
   This is a decorative box
   
-  This is multi-line now
-  
-  * this is a skill now.
 </div>
 
 Skill 2 - Scientific Parallel Computing.
