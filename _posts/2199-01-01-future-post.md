@@ -1,6 +1,6 @@
 ---
 title: 'SRO Satellite and Machine Learning'
-date: 2199-01-01
+date: 2023-03
 permalink: /posts/2012/08/blog-post-4/
 tags:
   - University of Kentucky Seminars
