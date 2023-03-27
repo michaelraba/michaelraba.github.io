@@ -22,9 +22,23 @@ Skill 2 - Scientific Parallel Computing.
 * Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
   * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
   * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
+
+{% highlight c %}
+#include <mpi.h>
+#include <stdio.h>
+#include <math.h>
+
+// The rest of the MPI code goes here...
+
+{% endhighlight %}
+
+
+Skill 3 - Hardcore Applied Mathematics
+======
+
   * Finite Volume Methods & Computational gasdynamics
   * Signal Processing (eg Fourier analysis)
-
+  * Functional Analysis, Matrix Methods, and their interplay
 
 Education
 ======
