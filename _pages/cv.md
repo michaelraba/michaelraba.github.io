@@ -33,21 +33,10 @@ Skills
   * Ability to identify problems and come up with effective solutions
 
 * Technical Skills:
-  * Linux:
-  * Expertise in Linux operating system
+* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
+  * Ability to profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
   * Ability to configure and optimize Linux systems (CentOS, Arch, Ubuntu)
-* Languages: C++, Fortran, Julia, Matlab and Python 
-* Parallel Computing: MPI and OpenMP
-  * Ability to profile code and effectively combine OpenMP with MPI for actually good performant code 
-* Ability to optimize code for parallel execution
-* Debugging:Totalview and GDB (including its Python interface)
-* Ability to identify and fix complex bugs
 * Teamwork:
- * Ability to work collaboratively with team members
- * Able to address technical problems and solve them for others
-* Time Management:
- * Ability to prioritize tasks and manage time effectively
- * Ability to meet deadlines and deliver high-quality work
 
 {% comment %}
 Publications
