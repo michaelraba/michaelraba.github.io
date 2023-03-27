@@ -35,15 +35,12 @@ Skills
 ======
 
 * The Most Important Skill of all, Problem-Solving <i class="fas fa-thumbs-up"></i>
-  * Ability to identify problems and come up with effective solutions
-
-* Technical Skills:
+  * Self-directed ability to leverage all resources to identify problems and come up with effective solutions
 * Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
   * Profile code and effectively combine OpenMP with MPI for /actually good performant code/ using Totalview and GDB (including its Python interface); ability to help others' issues also.
   * Configure and optimize Linux systems (CentOS, Arch, Ubuntu)
-* Scientific Computing
- * Finite Volume Methods & Computational gasdynamics
- * Signal Processing (eg fourier analysis)
+  * Finite Volume Methods & Computational gasdynamics
+  * Signal Processing (eg Fourier analysis)
  
 {% comment %}
 Publications
