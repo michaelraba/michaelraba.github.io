@@ -1,5 +1,5 @@
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-855392-gxxk2w.rb extconf.rb
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-2319695-q35fnf.rb extconf.rb
 creating Makefile
 
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser

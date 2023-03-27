@@ -1,5 +1,5 @@
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/unf_ext-0.0.8.2/ext/unf_ext
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-855392-aoka3x.rb extconf.rb
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-2319695-8mljdy.rb extconf.rb
 checking for -lstdc++... *** extconf.rb failed ***
 Could not create Makefile due to some reason, probably lack of necessary
 libraries and/or headers.  Check the mkmf.log file for more details.  You may

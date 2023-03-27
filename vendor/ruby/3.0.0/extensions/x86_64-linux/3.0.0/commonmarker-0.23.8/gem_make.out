@@ -1,5 +1,5 @@
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/commonmarker-0.23.8/ext/commonmarker
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-855392-91ieud.rb extconf.rb
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-2319695-m5dbo3.rb extconf.rb
 creating Makefile
 
 current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/commonmarker-0.23.8/ext/commonmarker
