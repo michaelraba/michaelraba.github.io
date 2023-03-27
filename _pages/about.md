@@ -17,5 +17,7 @@ Currently pursing a research grant-funded PhD position; See my MsC thesis <b>her
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
-  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\langle\Phi^{(1)}_x(r;\theta;m=5)\rangle_x$ is shown. Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
+  <figcaption>Most Energetic part of a <b>homogeneous wall-bounded turbulent flow</b> in a pipe. The 5th Azimuthal mode, $\langle\Phi^{(n=1,N=0.0,Re=5,300)}_x(r;\theta;m=5)\rangle_x$ is shown, where $n$ is the POD mode, $N$ is the swirl number, and $Re=5,300$ is the reynolds number of a moderately turbulent flow. 
+  
+Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
