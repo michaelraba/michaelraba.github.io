@@ -17,5 +17,5 @@ Currently pursing a research grant-funded PhD position; See my MsC thesis <b>her
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
-  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\langle\Phi^{(1)}_x(r;\theta;m=5)\rangle_x$ is shown.</figcaption>
+  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\langle\Phi^{(1)}_x(r;\theta;m=5)\rangle_x$ is shown. Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
