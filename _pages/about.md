@@ -17,5 +17,5 @@ Currently pursing a research grant-funded PhD position; See my MsC thesis <b>her
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
-  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\Phi_x$ is shown.</figcaption>
+  <figcaption>Most Energetic part of flow of a pipe for Reynolds Number 5300. The 5th Azimuthal mode, $\Phi^{(1)}_x(r;\theta;m=5)$ is shown.</figcaption>
 </figure>
