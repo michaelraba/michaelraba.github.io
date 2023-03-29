@@ -25,12 +25,12 @@ Such POD decompositions form a 'cartoon' version of an otherwise complex turbule
 
 <figure>
   <img src="/images/place.png" alt="Alt text">
-  <figcaption> placeholder caption. this should show some streamwise construction which showcases the coherent structure.
+  <figcaption> Coherent structure with iso-surface $\text{isovalue} = \mu \pm \sigma = 0.1$
 </figcaption>
 </figure>
 
 <figure>
   <img src="/images/place2.png" alt="Alt text">
-  <figcaption> placeholder caption. This shows the effects of rotation
+  <figcaption> Showing the effects of rotation.
 </figcaption>
 </figure>
