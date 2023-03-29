@@ -21,3 +21,16 @@ Currently pursing a research grant-funded PhD position; See my MsC thesis <b>her
   
 Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
+
+
+<figure>
+  <img src="/images/place.png" alt="Alt text">
+  <figcaption> placeholder caption. this should show some streamwise construction which showcases the coherent structure.
+</figcaption>
+</figure>
+
+<figure>
+  <img src="/images/place2.png" alt="Alt text">
+  <figcaption> placeholder caption. This shows the effects of rotation
+</figcaption>
+</figure>
