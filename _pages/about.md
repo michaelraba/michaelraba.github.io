@@ -37,6 +37,10 @@ Such POD decompositions form a 'cartoon' version of an otherwise complex turbule
 
 <figure>
   <img src="/images/place3.png" alt="Alt text">
+</figure>
+
+<figure>
+  <img src="/images/place4.png" alt="Alt text">
   <figcaption> Showing two radial locations for each azimuthal mode where the POD modes 1 & 2 play a role in adding energy to $-\bar{uv}$
 </figcaption>
 </figure>
