@@ -13,7 +13,7 @@ I am a student in Mechanical Engineering with:
 * Statistical approaches to fluid mechanics <i>with an</i>
 * Emphasis on scientific, MPI- and OpenMP-based paralllel computing.
 
-Currently pursing a research grant-funded PhD position; See my MsC thesis <b>here</b>
+Currently seeking a research grant-funded PhD position; See my MsC thesis <b>here</b>
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
