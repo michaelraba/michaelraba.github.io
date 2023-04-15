@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>1/06/22 Updates</title>
+<meta name="author" content="Michael Raba, Msc Candidate"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/league.css" id="theme"/>
+
+<link rel="stylesheet" href="./extra.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<style>
+.glassy-box {
+background-color: rgba(255, 255, 255, 0.3);
+border-radius: 10px;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+padding: 20px;
+}
+</style>
+<style>
+.two-column-layout {
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.two-column-layout .column {
+width: 50%;
+padding: 20px;
+border-right: 1px dotted rgba(0,0,0,0.3);
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">1/06/22 Updates</h1><em>Swirl Numbers N=0.5,1,3</em><br><br>Michael Raba, Msc Candidate<br>
+</section>
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+
+
+<section>
+<section id="slide-orgc953e83">
+<h2 id="orgc953e83">Path</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="700px">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-53-28_.png" alt="screenshot2023-04-15_10-53-28_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-53-48_.png" alt="screenshot2023-04-15_10-53-48_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-02_.png" alt="screenshot2023-04-15_10-54-02_.png" /></td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-15_.png" alt="screenshot2023-04-15_10-54-15_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-25_.png" alt="screenshot2023-04-15_10-54-25_.png" /></td>
+<td class="org-left"><img src="images/zz.gif" alt="zz.gif" /></td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 60%;">
+<ul>
+  <li><span style="color: green;">&#43;</span> *Need data*</li>
+  <ul>
+    <li><span style="color: green;">&#43;</span> *full vars* for *larger Re*</li>
+  </ul>
+  <li><span style="color: green;">&#43;</span> *Need informed guidance*</li>
+  <li><span style="color: green;">&#43;</span> *Done 1:* Streamlined extract+interpolate
+    <ul>
+      <li><span style="color: green;">&#45;</span> Avoids intermediate write to file</li>
+      <li><span style="color: green;">&#45;</span> Write to hdf5</li>
+    </ul>
+  </li>
+  <li><span style="color: green;">&#43;</span> *Done 2:* Super good convergence, all data.</li>
+  <li><span style="color: green;">&#43;</span> *Done 3:* Start thesis</li>
+</ul>
+</div>
+</section>
+<section id="slide-orgf7feeb9">
+<h3 id="orgf7feeb9">Code For Extraction to Interpolate</h3>
+<ul>
+<li><b>Goal:</b> Grab data from Nek python memory,
+instead of unnecessary file copy.</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-c++"   ><code trim>    Py_Initialize<span style="color: #fe8019;">()</span>;
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">modulePath</span> = <span style="color: #b8bb26;">"/home/miraba2/.totalview/lib_cache/cascadeb002/codes/sutekina/"</span>; <span style="color: #928374;">// </span><span style="color: #928374;">/* hardcoded search path for module */</span>
+    <span style="color: #fabd2f;">PyObject</span>* <span style="color: #83a598;">sysPath</span> = PySys_GetObject<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"path"</span><span style="color: #fe8019;">)</span>;
+    assert<span style="color: #fe8019;">(</span>PyArray_API<span style="color: #fe8019;">)</span>;
+    cout &lt;&lt; <span style="color: #b8bb26;">"2a\n"</span>;  <span style="color: #fabd2f;">PyObject</span>* <span style="color: #83a598;">nekMod</span> = PyImport_ImportModule<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"d"</span><span style="color: #fe8019;">)</span>;
+    <span style="color: #fabd2f;">PyObject</span>* <span style="color: #83a598;">arg</span> = Py_BuildValue<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"(i)"</span>, snapshot<span style="color: #fe8019;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">this created tuple is used for the function ff, which takes an arg (time).</span>
+    <span style="color: #fabd2f;">PyObject</span>* <span style="color: #83a598;">nekFf</span> = PyObject_GetAttrString<span style="color: #fe8019;">(</span>nekMod, <span style="color: #b8bb26;">"ff"</span><span style="color: #fe8019;">)</span>;
+    <span style="color: #fabd2f;">PyObject</span>* <span style="color: #83a598;">resultFf</span> = PyObject_CallObject<span style="color: #fe8019;">(</span>nekFf, arg<span style="color: #fe8019;">)</span>;
+    cout&lt;&lt;<span style="color: #b8bb26;">"*mm1:\n"</span>;<span style="color: #fabd2f;">PyArrayObject</span>* <span style="color: #83a598;">arrZ</span> = <span style="color: #fb4934;">reinterpret_cast</span><span style="color: #fe8019;">&lt;</span><span style="color: #fabd2f;">PyArrayObject</span>*<span style="color: #fe8019;">&gt;(</span>resultFf<span style="color: #fe8019;">)</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">ndim</span> = arrZ-&gt;nd;
+    <span style="color: #fabd2f;">npy_intp</span>* <span style="color: #83a598;">shape</span> = arrZ-&gt;dimensions;
+    <span style="color: #fabd2f;">npy_intp</span>* <span style="color: #83a598;">shape2</span> = PyArray_DIMS<span style="color: #fe8019;">(</span>arrZ<span style="color: #fe8019;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">same thing as shape; both return correct vals.</span>
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #b8bb26;">"Dimensions: "</span>; <span style="color: #928374;">// </span><span style="color: #928374;">print out dimension with for-loop</span>
+    <span style="color: #fb4934;">for</span> <span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; ndim; i++<span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span><span style="color: #d3869b;">std</span>::cout &lt;&lt; shape<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> &lt;&lt; <span style="color: #b8bb26;">" "</span>; <span style="color: #d3869b;">std</span>::cout &lt;&lt; shape2<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> &lt;&lt; <span style="color: #b8bb26;">" "</span>;<span style="color: #fe8019;">}</span>
+    <span style="color: #fb4934;">const</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">ncs</span>=<span style="color: #d3869b; font-weight: bold;">150</span>;
+    <span style="color: #fb4934;">const</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">nPts</span>=<span style="color: #d3869b; font-weight: bold;">58032</span>;
+    <span style="color: #fb4934;">struct</span> <span style="color: #fabd2f;">varStr</span> <span style="color: #83a598;">fullVars</span>;
+    fullVars.U = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span>*<span style="color: #fe8019;">[</span><span style="color: #d3869b;">ncs</span><span style="color: #fe8019;">]</span>;
+    fullVars.V = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span>*<span style="color: #fe8019;">[</span><span style="color: #d3869b;">ncs</span><span style="color: #fe8019;">]</span>;
+    fullVars.W = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span>*<span style="color: #fe8019;">[</span><span style="color: #d3869b;">ncs</span><span style="color: #fe8019;">]</span>;
+    fullVars.P = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span>*<span style="color: #fe8019;">[</span><span style="color: #d3869b;">ncs</span><span style="color: #fe8019;">]</span>;
+    <span style="color: #fb4934;">for</span> <span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; ncs; i++<span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span> <span style="color: #928374;">// </span><span style="color: #928374;">i =cs</span>
+    fullVars.U<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span><span style="color: #cc241d;">[</span>nPts<span style="color: #cc241d;">]</span>;
+    fullVars.V<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span><span style="color: #cc241d;">[</span>nPts<span style="color: #cc241d;">]</span>;
+    fullVars.W<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span><span style="color: #cc241d;">[</span>nPts<span style="color: #cc241d;">]</span>;
+    fullVars.P<span style="color: #cc241d;">[</span>i<span style="color: #cc241d;">]</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">double</span><span style="color: #cc241d;">[</span>nPts<span style="color: #cc241d;">]</span>;
+<span style="color: #fe8019;">}</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgd081995">
+<h3 id="orgd081995">Fortran Side Code</h3>
+<ul>
+<li>Step2: Struct-of-structs (derivated types)
+<ul>
+<li><b>Pointers</b> are great here instead of making hard copies</li>
+<li>Copy to array for <b>Interpolation</b></li>
+
+</ul></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-fortran"   ><code trim>     <span style="color: #928374;">! </span><span style="color: #928374;">read c++-structures into array</span>
+     <span style="color: #928374;">! </span><span style="color: #928374;">for function 'interpolate-pipe'</span>
+     <span style="color: #b8bb26;">t</span>ype(varStr) :: fullVars
+     <span style="color: #b8bb26;">t</span>ype(c_ptr), pointer :: U_ptr, V_ptr, W_ptr, P_ptr
+     <span style="color: #fabd2f;">real</span>(<span style="color: #83a598;">c_double</span>), pointer :: U(:,:), V(:,:), W(:,:), P(:,:)
+     <span style="color: #fabd2f;">integer</span> :: start_time(<span style="color: #d3869b; font-weight: bold;">8</span>), end_time(<span style="color: #d3869b; font-weight: bold;">8</span>), elapsed_time, wait_time
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(fullVars%U, U_ptr) <span style="color: #928374;">! </span><span style="color: #928374;">nb all 8 calls are req'd vvvvvvvvvvvv</span>
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(fullVars%V, V_ptr)
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(fullVars%W, W_ptr)
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(fullVars%P, P_ptr)
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(U_ptr, U, [nPts,ncs])
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(V_ptr, V, [nPts,ncs])
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(W_ptr, W, [nPts,ncs])
+     <span style="color: #fb4934;">call</span> <span style="color: #b8bb26;">c_f_pointer</span>(P_ptr, P, [nPts,ncs]) <span style="color: #928374;">! </span><span style="color: #928374;">nb all 8 calls are req'd ^^^^^^^^^</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org9424916">
+<h2 id="org9424916">Converged Data</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="1200px">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-53-28_.png" alt="screenshot2023-04-15_10-53-28_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-53-48_.png" alt="screenshot2023-04-15_10-53-48_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-02_.png" alt="screenshot2023-04-15_10-54-02_.png" /></td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-15_.png" alt="screenshot2023-04-15_10-54-15_.png" /></td>
+<td class="org-left"><img src="images/baileyedit/screenshot2023-04-15_10-54-25_.png" alt="screenshot2023-04-15_10-54-25_.png" /></td>
+<td class="org-left"><img src="images/zz.gif" alt="zz.gif" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-org110937c">
+<h3 id="org110937c">11700, N=3, W var, POD mode  1, \(m=4\)</h3>
+
+<div id="org784c7b2" class="figure">
+<p><img src="images/baileyedit/screenshot2023-04-15_10-45-50_.png" alt="screenshot2023-04-15_10-45-50_.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgd086fc7">
+<h3 id="orgd086fc7">More Converged</h3>
+<ul>
+<li>11700, N=3, W var, POD mode  1, \(m=9\)</li>
+
+</ul>
+
+<div id="org358c061" class="figure">
+<p><img src="images/baileyedit/screenshot2023-04-15_10-47-35_.png" alt="screenshot2023-04-15_10-47-35_.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org61822f6">
+<h3 id="org61822f6">More Converged</h3>
+<ul>
+<li>11700, N=3, W var, POD mode  1</li>
+
+</ul>
+
+<div id="org9e23ad0" class="figure">
+<p><img src="images/baileyedit/screenshot2023-04-15_10-48-49_.png" alt="screenshot2023-04-15_10-48-49_.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgb70cd13">
+<h3 id="orgb70cd13">Variable \(V\) (\(=u_\theta\))</h3>
+
+<div id="orga50ce94" class="figure">
+<p><img src="images/baileyedit/screenshot2023-04-15_10-50-20_.png" alt="screenshot2023-04-15_10-50-20_.png" />
+</p>
+</div>
+<ul>
+<li>Idea: \(U,V,W\) are &rsquo;competing&rsquo; to shape the flow field</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge9c0f8b">
+<h2 id="orge9c0f8b">Blank Page</h2>
+</section>
+</section>
+<section>
+<section id="slide-org2f4ae1c">
+<h2 id="org2f4ae1c">Accomplishment</h2>
+<ul>
+<li>Accomplishments
+<ul>
+<li>good statistics graphs for \(N>0\)</li>
+<li>thesis outline, just fill in</li>
+
+</ul></li>
+<li>Challenges
+<ul>
+<li>work faster and thesis</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgef7a684">
+<h3 id="orgef7a684">N=0</h3>
+<ul>
+<li><p>
+Accomplishments
+</p>
+<ul>
+<li>good statistics graphs for \(N>0\)</li>
+
+</ul>
+
+<div id="orgead6a6d" class="figure">
+<p><img src="images/z0.png" alt="z0.png" />
+</p>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgbc4253b">
+<h3 id="orgbc4253b">N=1</h3>
+<ul>
+<li><b>New</b> flipping is done in way such that we do not need to know in advance what the graph looks like
+<img src="images/z1.png" alt="z1.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org471ccbf">
+<h3 id="org471ccbf">N=3</h3>
+
+<div id="org9939cee" class="figure">
+<p><img src="images/z3.png" alt="z3.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org717c132">
+<h2 id="org717c132">POD Projections graphs</h2>
+<ul>
+<li>graphs show \(alpha\) on \(u\) projection</li>
+
+</ul>
+
+</section>
+<section id="slide-org05881b9">
+<h3 id="org05881b9">N=3</h3>
+
+<div id="org5f267b0" class="figure">
+<p><img src="images/N3m8.jpg" alt="N3m8.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgbcc4d31">
+<h3 id="orgbcc4d31">N=3</h3>
+
+<div id="org80c4767" class="figure">
+<p><img src="images/N3m8.jpg" alt="N3m8.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orga1ca784">
+<h3 id="orga1ca784">N=3</h3>
+
+<div id="orgcd6d375" class="figure">
+<p><img src="images/N3m10.jpg" alt="N3m10.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-org56bc528">
+<h3 id="org56bc528">N=3</h3>
+
+<div id="orge21858d" class="figure">
+<p><img src="images/N3m2.jpg" alt="N3m2.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-org0fa10af">
+<h3 id="org0fa10af">N=3</h3>
+
+<div id="orgee93797" class="figure">
+<p><img src="images/N3m3.jpg" alt="N3m3.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-org6d848a6">
+<h3 id="org6d848a6">N=3</h3>
+
+<div id="org13df8b7" class="figure">
+<p><img src="images/N3m6.jpg" alt="N3m6.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-orgb70f2bf">
+<h3 id="orgb70f2bf">N=3</h3>
+
+<div id="org8c54e34" class="figure">
+<p><img src="images/N3m6.jpg" alt="N3m6.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-org5d1eb7d">
+<h3 id="org5d1eb7d">N=3</h3>
+
+<div id="org8b07e13" class="figure">
+<p><img src="images/N3m4.jpg" alt="N3m4.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgff20656">
+<h2 id="orgff20656">Systematic Flipping</h2>
+<ul>
+<li>can be used to get better projection etc.
+<ul>
+<li>Steps: sorting of the eigenvalues in descending order,
+<ul>
+<li>calculation of the reflection entries</li>
+<li>construction of the rotation matrices.</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org84c9c41">
+<h3 id="org84c9c41">Systematic Flipping</h3>
+<ul>
+<li>\(s_k=\operatorname{sign}\left(\left(\mathcal{R}_k^T v_k\right)^T \pi_k\right)\)</li>
+
+</ul>
+<p>
+where \(\mathcal{R}_k^T \equiv R_{k-1}^T \cdots R_2^T R_1^T\).
+</p>
+</section>
+<section id="slide-orgeb9f372">
+<h3 id="orgeb9f372">Systematic Flipping Cont.</h3>
+<ul>
+<li>Rotation acts s.t.</li>
+<li>\(R_1^T\left(V_{(n)} S_1\right)=\left(\begin{array}{ll}1 & \\ & \\ & V_{(n-1)}\end{array}\right)\)</li>
+<li>Next rotation acts s.t.
+\(R_2^T\left(R_1^T V_{(n)} S_1 S_2\right)=\left(\begin{array}{lll}1 & & \\ & 1 & \\ & & V_{(n-2)}\end{array}\right)\)</li>
+
+</ul>
+</section>
+<section id="slide-org5c9ab4f">
+<h3 id="org5c9ab4f">Then rotate</h3>
+<ul>
+<li>Using Givens rotations,
+\(\left(\begin{array}{c}c_2 c_3 c_4 \\ s_2 c_3 c_4 \\ s_3 c_4 \\ s_4\end{array}\right)=\left(\begin{array}{l}a_1 \\ a_2 \\ a_3 \\ a_4\end{array}\right)\)</li>
+<li>For each subspace \(k\) there are \(k-1\) angles to deal with</li>
+<li>Organize Givens angles into upper irght triangle matrix, eg.
+\(\boldsymbol{\theta} \longleftarrow\left(\begin{array}{ccc}0 \theta_{1,2} & \theta_{1,3} & \theta_{1,4} \\ 0 & \theta_{2,3} & \theta_{2,4} \\ & 0 & \theta_{3,4} \\ & & 0\end{array}\right)\).</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org74010ba">
+<h2 id="org74010ba">To do</h2>
+<ul>
+<li>Thesis literature review</li>
+<li>Conclusion - what pod \(N>0\) says about:
+<ul>
+<li>Relaminarization</li>
+<li>Distribution of mode energies</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org0a02e13">
+<h3 id="org0a02e13">Target: Masters Thesis</h3>
+<ul>
+<li>Acceptible to have around 50 pages</li>
+<li>Goal: internal document but use as generator for paper, PhD position at top 15 program</li>
+<li>Goal of PhD: develop cfd skills to work in aerospace industry</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org77f5492">
+<h2 id="org77f5492">Statistics Accomplished</h2>
+<ul>
+<li>Radial POD plots</li>
+<li>Energy</li>
+<li>Surface plots</li>
+
+</ul>
+</section>
+<section id="slide-orga982441">
+<h3 id="orga982441">Statistics Accomplished</h3>
+<ul>
+<li>Radial POD plots
+<img src="images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" /></li>
+<li>Energy</li>
+<li>Surface plots</li>
+
+</ul>
+</section>
+<section id="slide-org70416f5">
+<h3 id="org70416f5">Statistics Accomplished</h3>
+<ul>
+<li>Radial POD plots</li>
+
+</ul>
+<div class="column" style="float:left; width: 50%">
+
+<div id="orgb99fdec" class="figure">
+<p><img src="images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" width="1000px" />
+</p>
+</div>
+
+
+<div id="orgd8682fc" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_11-43-02_.png" alt="screenshot2023-01-06_11-43-02_.png" width="1000px" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+
+
+<div id="orgf5417f9" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_11-48-02_.png" alt="screenshot2023-01-06_11-48-02_.png" width="1000px" />
+</p>
+</div>
+</div>
+
+</section>
+<section id="slide-org90ef194">
+<h3 id="org90ef194">Statistics Accomplished</h3>
+<ul>
+<li>Radial POD plots</li>
+<li>Energy
+<img src="images/11kN0EgyV2.svg" alt="11kN0EgyV2.svg" class="org-svg" /></li>
+<li>Surface plots</li>
+
+</ul>
+</section>
+<section id="slide-org4a0050c">
+<h3 id="org4a0050c">Statistics Accomplished</h3>
+
+<div id="org2e895a8" class="figure">
+<p><img src="images/11kN0EgyV2.svg" alt="11kN0EgyV2.svg" class="org-svg" width="100px" />
+</p>
+</div>
+<ul>
+<li>verification:</li>
+
+</ul>
+
+<div id="orgaeec506" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_16-20-48_.png" alt="screenshot2023-02-07_16-20-48_.png" width="600px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgc0ad0d9">
+<h3 id="orgc0ad0d9">Statistics Accomplished</h3>
+<ul>
+<li>Surface plots \(n=1, m=4, 5 300\)</li>
+
+</ul>
+
+<div id="orgf9ae5c8" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_15-55-40_.png" alt="screenshot2023-02-07_15-55-40_.png" width="500px" />
+</p>
+</div>
+</section>
+<section id="slide-orgb6f2df7">
+<h3 id="orgb6f2df7">Statistics Accomplished</h3>
+<ul>
+<li>reconstruct of \(n=1, m=4\), 5 300,</li>
+
+</ul>
+
+<div id="org76276eb" class="figure">
+<p><img src="file:///home/mi/anim/n1m5Wow.gif" alt="n1m5Wow.gif" width="500px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4b3174f">
+<h2 id="org4b3174f">Challenges</h2>
+<ul>
+<li>Working essentially independantly</li>
+<li>Need larger Re data</li>
+<li>Unanswerable statistical question</li>
+
+</ul>
+
+
+</section>
+<section id="slide-orga001d9a">
+<h3 id="orga001d9a">Challenges</h3>
+<ul>
+<li>Working essentially independantly</li>
+<li><b>Want to accelerate progress</b> with experience-based advice in target area</li>
+<li>Reoccuring Challenge: More statistical way to &rsquo;flip&rsquo;?
+<ul>
+<li>arbitrary flipping based on eig&rsquo;s \(\pm\) sign - bad !</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgeaad90f">
+<h3 id="orgeaad90f">Challenges</h3>
+<ul>
+<li>Working essentially independantly
+<ul>
+<li>Reoccuring Challenge: More statistical way to &rsquo;flip&rsquo;?
+<ul>
+<li>arbitrary flipping based on eig&rsquo;s \(\pm\) sign - bad !</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgcdcf4bf">
+<h3 id="orgcdcf4bf">Challenges</h3>
+<ol>
+<li>Need data
+<ul>
+<li>Maybe have connection to other workers in the field with data?</li>
+<li>(Xiaohau Wu&rsquo;s possibly) \(\rightsquigarrow\) would help further validate results</li>
+<li>do not have large Re rotating data ( only 5,300, 11,700).</li>
+<li>would like to somehow generate large Re data where the \(m=3\) mode dominates</li>
+
+</ul></li>
+<li>Reoccuring Challenge: More statistical way to &rsquo;flip&rsquo;?
+<ul>
+<li>arbitrary flipping based on eig&rsquo;s \(\pm\) sign - bad !</li>
+
+</ul></li>
+
+</ol>
+
+</section>
+<section id="slide-orgeb47d6e">
+<h3 id="orgeb47d6e">Challenges</h3>
+<ol>
+<li>Reoccuring Challenge: More statistical way to &rsquo;flip&rsquo;?
+<ul>
+<li>arbitrary flipping based on eig&rsquo;s \(\pm\) sign - bad !</li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-org706fd2e">
+<h3 id="org706fd2e">Challenges (averaging)</h3>
+<ul>
+<li>pod mode reconstruct \(\pm\) sign in \(\alpha\) term
+<ul>
+<li>this term is averaged!</li>
+
+</ul></li>
+
+</ul>
+<div>
+\begin{align}
+  \Psi_{(m, n)}(x, r, \theta)=\left\langle u_i(x, r, \theta, t) \frac{\operatorname{Re}\left\{\alpha_n(m ; t)\right\}}{\left|\operatorname{Re}\left\{\alpha_n(m ; t)\right\}\right|}|| \operatorname{Re}\left\{\alpha_n(m ; t)\right\} \mid>\alpha_n^{r m s}(m)\right\rangle
+\end{align}
+
+</div>
+
+</section>
+<section id="slide-org469f8ba">
+<h3 id="org469f8ba">Challenges (averaging)</h3>
+<ul>
+<li>pod \(r\) -curve</li>
+
+</ul>
+
+<div>
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m)
+\end{align}
+
+</div>
+<p>
+where
+</p>
+
+<div>
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{R}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) \mathrm{d} t^{\prime}=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t)
+\end{align}
+
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgec781ef">
+<h2 id="orgec781ef">Beyond this</h2>
+<ul>
+<li>Nail down connection between dynamics and different plots</li>
+<li>More plots</li>
+<li>Thesis should demonstrate mastery of existing techniques as well as extend</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd4a56c7">
+<h2 id="orgd4a56c7">whoa</h2>
+<ul>
+<li>\(n=1, m=4, 5 300\)</li>
+
+</ul>
+
+<div id="org29279c7" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_15-55-40_.png" alt="screenshot2023-02-07_15-55-40_.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc97167f">
+<h3 id="orgc97167f">n1m4</h3>
+<ul>
+<li>reconstruct of \(n=1, m=4\), 5 300,</li>
+
+</ul>
+
+<div id="orgbc194e1" class="figure">
+<p><img src="file:///home/mi/anim/n1m5Wow.gif" alt="n1m5Wow.gif" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5106c0a">
+<h2 id="org5106c0a">todo</h2>
+<ul>
+<li>email</li>
+<li>Equations Pod (below)</li>
+<li>energy Re12,700</li>
+
+</ul>
+</section>
+<section id="slide-org873ed1d">
+<h3 id="org873ed1d">email</h3>
+<p>
+Yes.  The pipe is set up (for the most part, I think we might have borrowed a data acquisition system or something from it, but nothing too difficult to rebuild).
+Alyn was able to take friction factor data up to Reynolds number of 200,000 (Re=UD/nu).    So we have that data already available.
+As for taking new data: Currently we only have the ability to measure pressure drop across the fixed and rotating sections.  That’s what Alyn did already and I don’t have any students who would know how to quickly take new pressure drop data
+  PIV data was always the plan, but doing so is a significant effort, since there are technical challenges which need to be addressed with just getting the data (essentially it would be a full thesis just to take data)
+</p>
+
+</section>
+<section id="slide-orga3fbd96">
+<h3 id="orga3fbd96">pod reconstruction</h3>
+<ul>
+<li data-fragment-index="4" class="fragment grow">average only the &rsquo;correct&rsquo; snapshots (satisfying a condition)</li>
+<li data-fragment-index="3" class="fragment shrink">Condition is given by,</li>
+
+</ul>
+<div>
+\begin{align}
+  \Psi_{(m, n)}(x, r, \theta)=\left\langle u_i(x, r, \theta, t) \frac{\operatorname{Re}\left\{\alpha_n(m ; t)\right\}}{\left|\operatorname{Re}\left\{\alpha_n(m ; t)\right\}\right|}|| \operatorname{Re}\left\{\alpha_n(m ; t)\right\} \mid>\alpha_n^{r m s}(m)\right\rangle
+\end{align}
+
+</div>
+<ul>
+<li>Figure shows effect of condition</li>
+
+</ul>
+
+<div id="org0e422b6" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_13-28-53_.png" alt="screenshot2023-02-07_13-28-53_.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc9fd0ca">
+<h3 id="orgc9fd0ca">Reconstruction</h3>
+<ul>
+<li>Essentially this is projection of \(u\) onto POD</li>
+<li>Can be geometrically regular, but not nec so, eg see</li>
+
+</ul>
+
+<div id="orgcf9d702" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_13-50-44_.png" alt="screenshot2023-02-07_13-50-44_.png" />
+</p>
+</div>
+
+<ul>
+<li><p>
+the geometric pattern out to be evident in each cs, see eg
+</p>
+
+
+<div id="orgbfde781" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_13-55-03_.png" alt="screenshot2023-02-07_13-55-03_.png" />
+</p>
+</div></li>
+<li>careful choice of levels and their max influence shape</li>
+
+</ul>
+
+</section>
+<section id="slide-orgee8680c">
+<h3 id="orgee8680c">Reconstruction</h3>
+<ul>
+<li>Questions: not sure what to do with Im part.</li>
+<li>Ran cases (2/6):</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell"   ><code trim>podMode1mMode2.dat  podMode1mMode9.dat  podMode2mMode8.dat  podMode3mMode7.dat  podMode4mMode6.dat  podMode5mMode5.dat  podMode6mMode4.dat
+podMode1mMode3.dat  podMode2mMode2.dat  podMode2mMode9.dat  podMode3mMode8.dat  podMode4mMode7.dat  podMode5mMode6.dat  podMode6mMode5.dat
+podMode1mMode4.dat  podMode2mMode3.dat  podMode3mMode2.dat  podMode3mMode9.dat  podMode4mMode8.dat  podMode5mMode7.dat  podMode6mMode6.dat
+podMode1mMode5.dat  podMode2mMode4.dat  podMode3mMode3.dat  podMode4mMode2.dat  podMode4mMode9.dat  podMode5mMode8.dat
+podMode1mMode6.dat  podMode2mMode5.dat  podMode3mMode4.dat  podMode4mMode3.dat  podMode5mMode2.dat  podMode5mMode9.dat
+podMode1mMode7.dat  podMode2mMode6.dat  podMode3mMode5.dat  podMode4mMode4.dat  podMode5mMode3.dat  podMode6mMode2.dat
+podMode1mMode8.dat  podMode2mMode7.dat  podMode3mMode6.dat  podMode4mMode5.dat  podMode5mMode4.dat  podMode6mMode3.dat
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgd9c7541">
+<h3 id="orgd9c7541">Error in  reconstruct: flipping</h3>
+<ul>
+<li>since again nothing is uniquely det, but instead det up to \(\pm\) of normalized eigVec,
+follow procedure,</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-matlab"   ><code trim>% define a reference vector &lt;- alpha_0
+
+% take dp zw refVec and akktVek &lt;- alpha
+
+% if &lt; 0, flip akktVec
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org95ba31d">
+<h2 id="org95ba31d">Energy</h2>
+<ul>
+<li><p>
+vgl 12kRe, see,
+</p>
+
+
+<div id="orgb3a071a" class="figure">
+<p><img src="images/reveal/screenshot2023-02-07_16-20-48_.png" alt="screenshot2023-02-07_16-20-48_.png" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgddcb5bc">
+<h2 id="orgddcb5bc">Gets</h2>
+<ul>
+<li>Get \(Re_\tau\) -&gt; openFoam or Star?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga23f356">
+<h2 id="orga23f356">Older Pres</h2>
+</section>
+<section id="slide-orgf9b2b82">
+<h3 id="orgf9b2b82">Reconstruction</h3>
+
+<div id="org7eccb74" class="figure">
+<p><img src="images/reveal/screenshot2023-02-03_14-13-18_.png" alt="screenshot2023-02-03_14-13-18_.png" />
+</p>
+</div>
+
+<ul>
+<li>Note for \(m=9\) modes, there are 18 extrema (9 peaks and 9 troughs)</li>
+
+</ul>
+</section>
+<section id="slide-org91ffa58">
+<h3 id="org91ffa58">POD Reconstruction</h3>
+<ul>
+<li>\(m=10\)</li>
+
+</ul>
+
+<div id="org8b6ed77" class="figure">
+<p><img src="images/recon.gif" alt="recon.gif" />
+</p>
+</div>
+<ul>
+<li>\(m=10 \rightarrow\) 10 peaks/10 troughs</li>
+<li>error in signal processing analysis: amplitudes ought to be same for each peak/trough.</li>
+
+</ul>
+
+</section>
+<section id="slide-org5716d0d">
+<h3 id="org5716d0d">Reconstructed View of \(m=9\)</h3>
+<ul>
+<li>but 1 crosssection only in this animation.</li>
+<li>9 peaks, 9 vallies</li>
+
+</ul>
+
+<div id="org86d0b7f" class="figure">
+<p><img src="images/m9n1n0_nor.gif" alt="m9n1n0_nor.gif" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orga0aa33d">
+<h2 id="orga0aa33d">Another Energy Comparsion</h2>
+
+<div id="org53d700b" class="figure">
+<p><img src="images/reveal/screenshot2023-02-04_16-12-13_.png" alt="screenshot2023-02-04_16-12-13_.png" />
+</p>
+</div>
+
+<ul>
+<li><p>
+shows same as eg, my 11k energy:
+</p>
+<ul>
+<li>for higher \(k\), there was a `blowup&rsquo; in the mode;</li>
+
+</ul>
+<p>
+for smaller \(k\), small.
+</p>
+<ul>
+<li>monotonically decreasing for increasing \(m,n\) pairs.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org0294a58">
+<h3 id="org0294a58">Abb.</h3>
+<ul>
+<li>Rell.7k</li>
+
+</ul>
+
+<div id="org5ed7c52" class="figure">
+<p><img src="images/ani2.gif" alt="ani2.gif" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc817b45">
+<h2 id="orgc817b45">Interesting Data</h2>
+<ul>
+<li>Carpet plot
+<ul>
+<li><p>
+\(s\) arc length \(s=r\theta\)
+</p>
+
+<div id="org9dc2c05" class="figure">
+<p><img src="images/reveal/screenshot2023-02-04_16-17-01_.png" alt="screenshot2023-02-04_16-17-01_.png" />
+</p>
+</div></li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org28c7d94">
+<h3 id="org28c7d94">Modal Peak Locations</h3>
+<ul>
+<li><p>
+\(k\) is wavenumber, \(y_p^+\) peak location,
+</p>
+
+
+<div id="org6914c6d" class="figure">
+<p><img src="images/reveal/screenshot2023-02-04_16-17-55_.png" alt="screenshot2023-02-04_16-17-55_.png" />
+</p>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org466900d">
+<h3 id="org466900d">Iso-surfaces</h3>
+<ul>
+<li><p>
+two blobs depending on the cond number \(\eta\)
+</p>
+
+
+<div id="orgc25ea8c" class="figure">
+<p><img src="images/reveal/screenshot2023-02-04_16-18-57_.png" alt="screenshot2023-02-04_16-18-57_.png" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org70d2d6f">
+<h2 id="org70d2d6f">Programming Experience</h2>
+<style>
+.p_iframe iframe {
+width:90%;
+height:576px;
+}
+</style>
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="1.html"></iframe>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc5d6992">
+<h2 id="orgc5d6992">11k Energy Streamwise</h2>
+
+<div id="org236d6db" class="figure">
+<p><img src="images/11kN0EgyV2.svg" alt="11kN0EgyV2.svg" class="org-svg" width="100%" height="100%" />
+</p>
+</div>
+<ul>
+<li>this is a Pareto distribution!</li>
+
+</ul>
+</section>
+<section id="slide-orga444426" data-background="#2a2a49">
+<h3 id="orga444426">Distribution Shape</h3>
+<p>
+Pareto distributions.
+</p>
+<ul>
+<li>80/20
+<ul>
+<li>we have 60/20 in the previous 11k graph</li>
+<li>\(\because\) POD modes \(\geq\) 5 were not included. Then 80% would be reached.</li>
+
+</ul></li>
+<li>heavy-tailed distributions, means that they have a long tail of high-magnitude events.</li>
+
+</ul>
+<p>
+\(\rightsquigarrow\) which have a wide range of scales &amp; broad range of velocity fluctuations
+</p>
+</section>
+<section id="slide-org0a8f52b" data-background="#2a2a49">
+<h3 id="org0a8f52b">Azimuthal Modes</h3>
+<ul>
+<li>\(m=3\) (wavy) most energetic mode in turbulent pipe flow \(\rightsquigarrow\) most unstable mode \(\rightsquigarrow\) arises from centrifugal force \(\rightsquigarrow\) causes fl to oscillate between the center and the wall \(\rightsquigarrow\) leads to formation of large, regular waves (high velocities and high kinetic energy)</li>
+
+</ul>
+</section>
+<section id="slide-org972914e" data-background="#2a2a49">
+<h3 id="org972914e">Azimuthal Modes</h3>
+<ul>
+<li>\(m=1\) basic &ldquo;plug&rdquo; flow, \(\rightsquigarrow\) fl moves uniformly in the center of the pipe.</li>
+<li>\(m=2\) &ldquo;pinching&rdquo; flow, fl is pushed to the center and pulled to the wall, creating a pattern of high and low velocities.</li>
+
+</ul>
+</section>
+<section id="slide-org5825fdd">
+<h3 id="org5825fdd">Attempts to get 5300 to have \(m=3\) to have the largest peak</h3>
+
+<div id="org273c095" class="figure">
+<p><img src="images/reveal/screenshot2023-01-18_20-00-03_.png" alt="screenshot2023-01-18_20-00-03_.png" />
+</p>
+</div>
+<ul>
+<li>Taking out \(r-\) weight from correlation matrix and changing (bad) energy code</li>
+
+</ul>
+</section>
+<section id="slide-org108438f" data-background="#2a2a49">
+<h3 id="org108438f">5300 is transitional flow</h3>
+<ul>
+<li>Re=2300 is transitional pipe flow
+<ul>
+<li>Re=5300 is <span class="underline">still transitional</span>.</li>
+<li>Re=11k is definitely turbulent.</li>
+<li>Re=21k (Smits, really turbulent).</li>
+<li>Mozzerella paper is Re100k.</li>
+
+</ul></li>
+<li>Azimuthal \(m=3\) peak is more prominent and likely to occur the higher the Re.
+<ul>
+<li>work with at least Re11k.</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org496c91a">
+<h2 id="org496c91a">Directions</h2>
+<ul>
+<li>Start writing thesis</li>
+<li>Generate more data</li>
+<li>Analysis for Rotating Pipes</li>
+
+</ul>
+</section>
+<section id="slide-orgda44a88" data-background="#2a2a49">
+<h3 id="orgda44a88">Directions</h3>
+<ul>
+<li>Start writing thesis
+<ul>
+<li>part 1: nek5000 runs. Necessary to do set up and run. This will consitute a part of my thesis and is a core CFD skill.</li>
+<li>Generate more data: long pipe</li>
+
+</ul></li>
+<li>Analysis for Rotating Pipes
+<ul>
+<li>lambda-2 analysis,</li>
+<li>movies of mode reconstruction</li>
+
+</ul></li>
+<li>Sufficient time to tie everything together (write core thesis within 1 month ).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org133bde9">
+<h2 id="org133bde9">Korrektur</h2>
+<ul>
+<li>Better POD&rsquo;s
+<img src="images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org40be9b5">
+<h3 id="org40be9b5">Comparison</h3>
+<div class="column" style="float:left; width: 50%">
+
+<div id="org11fe82b" class="figure">
+<p><img src="images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" width="1000px" />
+</p>
+</div>
+
+
+<div id="orgea91d8b" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_11-43-02_.png" alt="screenshot2023-01-06_11-43-02_.png" width="1000px" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+
+
+<div id="org60f84e8" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_11-48-02_.png" alt="screenshot2023-01-06_11-48-02_.png" width="1000px" />
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7da6ff3">
+<h2 id="org7da6ff3">Pressure</h2>
+<p>
+N=0
+</p>
+
+
+<div id="org48089ad" class="figure">
+<p><img src="images/n0PODpressure.svg" alt="n0PODpressure.svg" class="org-svg" width="200%" height="200%" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd47960e">
+<h3 id="orgd47960e">Pressure Smits</h3>
+
+<div id="org629b18b" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_12-31-12_.png" alt="screenshot2023-01-06_12-31-12_.png" width="2000px" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd501adb" data-background="#2a2a49">
+<h2 id="orgd501adb">Conditional Mode (Reconstruction)</h2>
+<ul>
+<li>\(\Psi^{(n)}(m ; \xi, r):= \\ \lim _{\chi \rightarrow \infty} \frac{1}{\chi} \int_0^\chi \lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(m ; r, x+\xi, t) \alpha^{(n)}(m ; x, t) \mathrm{d} t \mathrm{~d} x\)</li>
+<li>use eg matlab meshgrid+function `isosurface`
+<ul>
+<li>\(s\) is scaled \(r\) ; \(\xi\) is condition.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgc8ddb16">
+<h3 id="orgc8ddb16">IsoSurface (Smits 2017)</h3>
+
+<div id="orgb9edb92" class="figure">
+<p><img src="images/reveal/screenshot2023-01-06_12-50-24_.png" alt="screenshot2023-01-06_12-50-24_.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd62b97b" data-background="#2a2a49">
+<h2 id="orgd62b97b">Timings</h2>
+<p>
+For 99 CS,
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Step</th>
+<th scope="col" class="org-left">Time [m]</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Extract</b></td>
+<td class="org-left">3 hours</td>
+<td class="org-left">be careful with memory</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Interpolation</b></td>
+<td class="org-left">40 min</td>
+<td class="org-left">dtn</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>double FFT</b></td>
+<td class="org-left">17 min</td>
+<td class="org-left">cascade 1 node / 48 cores</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>PODa -&gt; eigs</b></td>
+<td class="org-left">23 min</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>PODb -&gt; flip</b></td>
+<td class="org-left">10 min</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org6713f88">
+<h2 id="org6713f88">Energy Comparison</h2>
+<div class="column" style="float:left; width: 50%">
+<p>
+N=0 Energy
+</p>
+<p width="100%" height="100%">
+<img src="./images/n0ScaledEgy.svg" alt="n0ScaledEgy.svg" class="org-svg" width="100%" height="100%" />
+N=0.5 Energy
+</p>
+
+<div id="orgb1afceb" class="figure">
+<p><img src="./images/n0d5ScaledEgy.svg" alt="n0d5ScaledEgy.svg" class="org-svg" width="600px" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+<p>
+N=3 Energy
+</p>
+
+<div id="org828862a" class="figure">
+<p><img src="./images/n3ScaledEgy.svg" alt="n3ScaledEgy.svg" class="org-svg" width="600px" />
+</p>
+</div>
+</div>
+
+<ul>
+<li>from corrMatrix + eig \(\rightsquigarrow\)  cf low Re studies</li>
+
+</ul>
+
+</section>
+<section id="slide-org30ceddf">
+<h3 id="org30ceddf">N=0.0 Energy</h3>
+
+<div id="org5aac68f" class="figure">
+<p><img src="./images/n0ScaledEgy.svg" alt="n0ScaledEgy.svg" class="org-svg" width="2600px" />
+</p>
+</div>
+
+</section>
+<section id="slide-org7ada13e">
+<h3 id="org7ada13e">N=0.5 Energy</h3>
+
+<div id="org8976496" class="figure">
+<p><img src="./images/n0d5ScaledEgy.svg" alt="n0d5ScaledEgy.svg" class="org-svg" width="200%" height="200%" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb2189fa">
+<h3 id="orgb2189fa">N=3 Energy</h3>
+
+<div id="orgb0981c4" class="figure">
+<p><img src="./images/n3ScaledEgy.svg" alt="n3ScaledEgy.svg" class="org-svg" width="2600px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8980db3" data-background="#2a2a49">
+<h2 id="org8980db3">Energy Defintions</h2>
+<ul>
+<li>Relative azimuthal energy distribution \(\xi^{n} (m)\) defined as</li>
+
+</ul>
+
+<div>
+\begin{align}
+  \xi^{(n)}(m) \equiv \frac{\sum_f \lambda^{(n)}(f, m)}{\sum_n \sum_m \sum_f \lambda^{(n)}(f, m)} .
+\end{align}
+
+</div>
+
+</section>
+<section id="slide-orgc78b7ac" data-background="#2a2a49" data-auto-animate>
+<h3 id="orgc78b7ac">Relative Energy Numerator</h3>
+<div class="org-src-container">
+
+<pre  class="src src-matlab"   data-id="foo2" ><code trim>% gg
+% we define the numerator, integrated over all k;
+for e=1:eSize
+for m=rMin:rMax
+cSpre = zeros(ncs,1);
+for c=1:ncs %
+cSpre(c) = real(lam(c).m(m).dat(e,1));
+end % c
+cS(e).m(m).dat=dk*sum(cSpre(:)); % sum k. this eliminates c from struct.
+end % e
+end % m
+</code></pre>
+</div>
+
+
+</section>
+<section id="slide-org1d44132" data-background="#2a2a49" data-auto-animate>
+<h3 id="org1d44132">Relative Energy Denominator</h3>
+<div class="org-src-container">
+
+<pre  class="src src-matlab"   data-id="foo2" data-line-numbers='14-25'><code trim>dk =0.001;
+% we define the numerator, integrated over all k;
+for e=1:eSize
+for m=rMin:rMax
+cSpre = zeros(ncs,1);
+for c=1:ncs %
+cSpre(c) = real(lam(c).m(m).dat(e,1));
+end % c
+cS(e).m(m).dat=dk*sum(cSpre(:)); % sum k. this eliminates c from struct.
+end % e
+end % m
+
+% we define the denominator.
+sumTot = 0;
+for ee=1:eSize % eigs.
+eVec = zeros(18,1);  % 18 eigs.
+for mm=rMin:rMax
+eVec(mm) = real(cS(ee).m(mm).dat);
+end % mm
+zz=sum(eVec(:)) % sum m
+sumTot = sumTot + zz; % sum n.
+end % eig (n)
+zz=real(sumTot); % try this
+cuR=cuSumm(cS); % maybe sum n.
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdb58c62">
+<h2 id="orgdb58c62">Energy From Other Papers</h2>
+<ul>
+<li>Hellstrom 19k</li>
+
+</ul>
+
+
+<div id="org56a5933" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_20-00-49_.png" alt="screenshot2023-01-04_20-00-49_.png" width="600px" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org7c120a9">
+<h3 id="org7c120a9">Smits 2009 Developing 3k flow</h3>
+
+<div id="org25bae9a" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_19-34-17_.png" alt="screenshot2023-01-04_19-34-17_.png" width="600px" />
+</p>
+</div>
+<ul>
+<li>note descending mode behavior</li>
+
+</ul>
+</section>
+<section id="slide-orgfed9849">
+<h3 id="orgfed9849">Colonius &amp; Freund</h3>
+
+<div id="org7c00096" class="figure">
+<p><img src="images/reveal/screenshot2023-01-04_19-35-01_.png" alt="screenshot2023-01-04_19-35-01_.png" width="600px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc7b0a4b">
+<h2 id="orgc7b0a4b">Page Intentionally Left Blank</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgbd1f948">
+<h2 id="orgbd1f948">Goal</h2>
+<p>
+Replicate hellstrom2018 with DNS data
+</p>
+
+</section>
+<section id="slide-org3f515bd">
+<h3 id="org3f515bd">k-averaged POD Modes</h3>
+
+<div id="org7e12406" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_12-34-35_.png" alt="screenshot2022-12-16_12-34-35_.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org38fd55d">
+<h3 id="org38fd55d">Zero Swirl POD</h3>
+
+<div id="orge1fec46" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_12-36-26_.png" alt="screenshot2022-12-16_12-36-26_.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc823ce7">
+<h3 id="orgc823ce7">Differences</h3>
+<ul>
+<li>Hellstrom&rsquo;s data is higher resolved streamwise
+<ul>
+<li>we are using 99 streamwise crosssections, vs hellstrom&rsquo;s 2048.</li>
+<li>moving average? Or Hann window</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org7aba848">
+<h3 id="org7aba848">k-average for No Swirl</h3>
+<ul>
+<li>Hellstrom constructs POD modes, and averages \(\Phi_x^{(n)}\) modes in \(k\) direction, because he recognized they are invarient streamwise.
+<ul>
+<li>just look at each POD mode, unique up to \(\pm\) sign, and flip as needed.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgde25945">
+<h3 id="orgde25945">k-invarient</h3>
+
+<div id="orgb221f51" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_12-29-53_.png" alt="screenshot2022-12-16_12-29-53_.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org87ff43b">
+<h2 id="org87ff43b">Apply to Swirl?</h2>
+<ul>
+<li>Not clear if we can do average for Swirl flows; \(\phi_k^{(2)}\) looks quite different</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf1dd627">
+<h3 id="orgf1dd627">N=3</h3>
+<ul>
+<li>shows \(m=5,10,15,20,\ldots, 50\) for \(k=1,2,\ldots, K\)</li>
+
+</ul>
+
+<div id="orgaaae26e" class="figure">
+<p><img src="images/n3.gif" alt="n3.gif" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf46dda6">
+<h3 id="orgf46dda6">Qualitative different</h3>
+<ul>
+<li>the modes \(m\) look different for each \(k\).
+<ul>
+<li>Sometimes they have 3 peaks, sometimes 2.</li>
+
+</ul></li>
+
+</ul>
+<div class="column" style="float:left; width: 50%">
+
+<div id="orgf14daa6" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_12-50-23_.png" alt="screenshot2022-12-16_12-50-23_.png" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+
+<div id="org6b633de" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_12-50-47_.png" alt="screenshot2022-12-16_12-50-47_.png" width="400px" />
+</p>
+</div>
+</div>
+</section>
+<section id="slide-orgfe55e47">
+<h3 id="orgfe55e47">\(N=1\) Swirl</h3>
+<ul>
+<li>A naive averaging in \(k\), where it is clear averaging cant be done</li>
+
+</ul>
+
+<div id="orgd869f9e" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-35-21_.png" alt="screenshot2022-12-16_13-35-21_.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org43f59cd">
+<h3 id="org43f59cd">\(N=0.5\)</h3>
+
+<div id="orgcba4c72" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-33-50_.png" alt="screenshot2022-12-16_13-33-50_.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgb7ba9d6">
+<h3 id="orgb7ba9d6">\(N=3\)</h3>
+
+<div id="orge343ce9" class="figure">
+<p><img src="images/n3.png" alt="n3.png" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8f4e843">
+<h2 id="org8f4e843">Larger goal:</h2>
+<ul>
+<li>describe how the flow&rsquo;s POD modes evolves down stream.</li>
+<li>Achieve relaminarization</li>
+<li>identity LSM + VSLM,
+<ul>
+<li>which may be not be k-invarient.</li>
+
+</ul></li>
+<li>demonstrate Townsend&rsquo;s attached Eddy Hypothesis and find coherent Structures</li>
+
+</ul>
+</section>
+<section id="slide-org5c600fc">
+<h3 id="org5c600fc">Different direction</h3>
+<ul>
+<li>use other forms of analysis for Swirl cases
+<ul>
+<li>do not slavishly imitate 1 form of analysis.</li>
+
+</ul></li>
+<li>compare to data from hot wire probe</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga360aa6">
+<h2 id="orga360aa6">Papers</h2>
+<div class="column" style="float:left; width: 50%">
+
+<div id="org79957c4" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-12-19_.png" alt="screenshot2022-12-16_13-12-19_.png" width="400px" />
+</p>
+</div>
+</div>
+
+<div class="column" style="float:right; width: 50%">
+
+<div id="orge360169" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-17-35_.png" alt="screenshot2022-12-16_13-17-35_.png" width="400px" />
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgabd2e03">
+<h2 id="orgabd2e03">Papers</h2>
+<div class="column" style="float:left; width: 50%">
+
+<div id="org18cc650" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-15-14_.png" alt="screenshot2022-12-16_13-15-14_.png" width="400px" />
+</p>
+</div>
+
+
+
+</div>
+
+<div class="column" style="float:right; width: 50%">
+
+<div id="org1f8682d" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-15-59_.png" alt="screenshot2022-12-16_13-15-59_.png" width="400px" />
+</p>
+</div>
+</div>
+</section>
+<section id="slide-org3f40918">
+<h3 id="org3f40918">Shows</h3>
+<ul>
+<li>precessing vortex core</li>
+<li>vortex breakdown</li>
+
+</ul>
+
+
+<div id="orgae76ae0" class="figure">
+<p><img src="images/reveal/screenshot2022-12-16_13-26-07_.png" alt="screenshot2022-12-16_13-26-07_.png" width="600px" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber:"c/t", transition:"slide", transitionSpeed:"fast", controlsTutorial:false, minScale:1.0, maxScale:1.5,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+
+});
+for(let e of document.getElementsByClassName("figure-number")){e.parentElement.classList.add("fig-caption");}
+</script>
+</body>
+</html>
