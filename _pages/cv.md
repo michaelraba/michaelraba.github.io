@@ -36,8 +36,7 @@ Work experience
 Skill 1 - Scientific Parallel Computing.
 ======
 
-* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python )
-  * Profile code and effectively combine OpenMP with MPI for <b>actually good performant code</b> using Totalview and GDB (including its Python interface)
+* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ; appropriate datastructures and memory profiling (GDB,totalview);
   * Version control (git, bitbucket)
   * Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
