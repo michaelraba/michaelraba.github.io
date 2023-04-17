@@ -53,9 +53,9 @@ Skill 2 - Hardcore Applied Mathematics:
 Skill 3 - This is the most important Skill I have:
 ======
 
-  * <u>Self-directed & Proactive</u>
-  *  Ability to <b>leverage all resources</b> to identify problems and come up with effective solutions. This includes reading papers, connecting dots, small test, profiling code, verification ... super-innovative and multi-diciplinary curious
+  *  Ability to <b>leverage all resources to identify problems and come up with effective solutions.</b> This includes reading papers, connecting dots, small test, profiling code, <b> asking questions</b>, ...above all, cultivating a deliberate mindset of being super-innovative and multi-diciplinary curious.
 
+  * being <u>Self-directed & Proactive</u>
 
 Education
 ======
