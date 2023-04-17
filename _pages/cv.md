@@ -57,7 +57,8 @@ Skill 3 - This is the most important Skill I have:
   *  Ability to <b>leverage all resources to identify problems and come up with effective solutions.</b> This includes reading papers, connecting dots, small test, profiling code, <b> asking questions</b>, ...above all, cultivating a deliberate mindset of being super-innovative and multi-diciplinary curious.
 
   * being <u>Self-directed & Proactive</u>
-
+* Technical Documentation 
+* Techical Communication
 Education
 ======
 * B.A. in Applied Mathematics, University of Kentucky, 2019
