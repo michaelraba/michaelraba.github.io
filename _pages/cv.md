@@ -36,18 +36,18 @@ Work experience
 Skill 1 - Scientific Parallel Computing.
 ======
 
-* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ; appropriate datastructures and memory profiling (GDB,totalview);
-  * Version control (git, bitbucket)
+* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ; appropriate datastructures and memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
+  * Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
   * Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
 
 
-Skill 3 - Hardcore Applied Mathematics
+Skill 2 - Hardcore Applied Mathematics
 ======
 
   * Finite Volume Methods & Computational gasdynamics
   * Signal Processing (eg Fourier analysis)
-  * Functional Analysis, Matrix Methods, and their interplay
+  * Functional Analysis (2 semesters of graduate level PDE), Matrix Methods, and their interplay
 
 
 Skill 3 - The Most Important Skill of all, Problem-Solving.
