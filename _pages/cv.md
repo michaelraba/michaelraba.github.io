@@ -61,6 +61,7 @@ Skill 3 - This is the most important Skill I have:
 * Techical Communication
 * Risk Management 
 * SOLIDWORKS, StarCcm+
+
 Education
 ======
 * B.A. in Applied Mathematics, University of Kentucky, 2019
