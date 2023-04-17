@@ -20,7 +20,6 @@ Work experience
 * Summer 2018: Research Assistant
   * University of Kentucky Department of Aerospace Engineering
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
-  * Supervisor: Professor Christoph Brehm
 
 * Spring 2023: Teaching Assistant
   * University of Kentucky Department of Mechanical Engineering
@@ -36,9 +35,11 @@ Work experience
 Skill 1 - Scientific Parallel Computing:
 ======
 
-* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ; datastructures and memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
-  * Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
-  * Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
+* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;
+* Datastructures 
+* Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
+* Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
+* Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
 
 
