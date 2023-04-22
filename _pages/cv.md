@@ -32,15 +32,11 @@ Skill 1 - Scientific Parallel Computing:
 
 
 <div class="alert-box">
-- Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;
-
-- Datastructures 
-
-- Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
-
-- Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
-
-- Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
+- Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;<br>
+- Datastructures <br>
+- Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);<br>
+- Version control (git → branching & merging, CI/CD tools to automate test,build, & deployment)<br>
+- Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?<br>
 </div>
 
 
@@ -55,7 +51,6 @@ Skill 2 - Hardcore Applied Mathematics:
 Skill 3 - Ask the Right Questions
 ======
 
-<div class="alert-box">
 *  <b>Leverage all resources to identify problems to come up with effective solutions: </b> 
 * Quickly able to familarize new areas by: reading papers, connecting dots, small test, profiling code, <b> and yes, asking more questions</b>; 
 * Cultivate a deliberate mindset of being super-innovative and multi-diciplinary curious.
@@ -65,7 +60,6 @@ Skill 3 - Ask the Right Questions
 * Techical Communication
 * Risk Management 
 * SOLIDWORKS, StarCcm+
-</div>
 
 Education
 ======
