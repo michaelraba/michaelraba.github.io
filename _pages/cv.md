@@ -33,9 +33,13 @@ Skill 1 - Scientific Parallel Computing:
 
 <div class="alert-box">
 - Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;
+
 - Datastructures 
+
 - Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
+
 - Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
+
 - Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 </div>
 
