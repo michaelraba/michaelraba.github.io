@@ -51,13 +51,17 @@ Skill 2 - Hardcore Applied Mathematics:
 Skill 3 - Ask the Right Questions
 ======
 
-*  <b>Leverage all resources to identify problems and come up with effective solutions: </b> This includes reading papers, connecting dots, small test, profiling code, <b> asking more questions</b>; cultivating a deliberate mindset of being super-innovative and multi-diciplinary curious.
+<div class="alert-box">
+*  <b>Leverage all resources to identify problems to come up with effective solutions: </b> 
+* Quickly able to familarize new areas by: reading papers, connecting dots, small test, profiling code, <b> and yes, asking more questions</b>; 
+* Cultivate a deliberate mindset of being super-innovative and multi-diciplinary curious.
 
 * <u>Self-directed, Proactive</u>
 * Technical Documentation 
 * Techical Communication
 * Risk Management 
 * SOLIDWORKS, StarCcm+
+</div>
 
 Education
 ======
