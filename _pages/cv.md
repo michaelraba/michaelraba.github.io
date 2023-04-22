@@ -26,21 +26,18 @@ Work experience
   * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments), and effective writing.
 
 
-{% comment %}
-<div class="alert-box">
-  Skill 1 - The Most Important Skill of all, Problem-Solving...
-</div>
-{% endcomment %}
 
 Skill 1 - Scientific Parallel Computing:
 ======
 
-* Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;
-* Datastructures 
-* Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
-* Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
-* Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
 
+<div class="alert-box">
+- Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;
+- Datastructures 
+- Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);
+- Version control (git $\rightarrow$ branching & merging, CI/CD tools to automate test,build, & deployment)
+- Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?
+</div>
 
 
 Skill 2 - Hardcore Applied Mathematics:
@@ -48,15 +45,15 @@ Skill 2 - Hardcore Applied Mathematics:
 
   * Finite Volume Methods & Computational gasdynamics
   * Signal Processing (eg Fourier analysis)
-  * Functional Analysis (2 semesters of graduate level PDE), Matrix Methods, and their interplay
+  * Functional Analysis (2 semesters of graduate level PDE), graduate Matrix Methods, and their interplay
 
 
-Skill 3 - This is the most important Skill I have:
+Skill 3 - Ask the Right Questions
 ======
 
-  *  Ability to <b>leverage all resources to identify problems and come up with effective solutions.</b> This includes reading papers, connecting dots, small test, profiling code, <b> asking questions</b>, ...above all, cultivating a deliberate mindset of being super-innovative and multi-diciplinary curious.
+*  <b>Leverage all resources to identify problems and come up with effective solutions: </b> This includes reading papers, connecting dots, small test, profiling code, <b> asking more questions</b>; cultivating a deliberate mindset of being super-innovative and multi-diciplinary curious.
 
-  * being <u>Self-directed & Proactive</u>
+* <u>Self-directed, Proactive</u>
 * Technical Documentation 
 * Techical Communication
 * Risk Management 
