@@ -14,7 +14,7 @@ Work experience
 
 * Fall 2020-present: Research Assistant
   * National Science Foundation
-  * Topic: Proper Orthogonal Decompositon of Rotating Pipe
+  * Topic: Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe
   * Supervisor: Professor Christoph Brehm
 
 * Summer 2018: Research Assistant
