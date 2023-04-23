@@ -22,7 +22,7 @@ Work experience
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain
 
 * Spring 2023: Teaching Assistant
-  * Instruct students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed airfoil design, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
+  * Instruct students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed NACA airfoil design that students extrude and print with routed pitot tubes, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
 
 
 
