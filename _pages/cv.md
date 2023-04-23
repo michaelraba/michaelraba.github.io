@@ -23,7 +23,7 @@ Work experience
 
 * Spring 2023: Teaching Assistant
   * University of Kentucky Department of Mechanical Engineering
-  * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments); instructing students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed airfoil design, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, effective report writing.
+  * Duties included: Direct 4th year Undergraduate Lab (Supervise TAs and Students), statistical methods (ANOVA and $2^k$ factorial and Design of Experiments); instructing students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed airfoil design, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, and effective report writing.
 
 
 
