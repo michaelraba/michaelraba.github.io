@@ -33,7 +33,7 @@ Skill 1 - Scientific Parallel Computing:
 - Parallel Computing: MPI and OpenMP (C++, Fortran, Julia, Matlab and Python ) ;<br>
 - ISO Standard cpp: Datastructures, resource mangement, classes and class hierarchies, interfaces, concurrency, error handling, effective STL; libraries Eigen and Boost  <br>
 - Interoperability $\langle$ python,c++,fortran,julia$\rangle$
-- Memory profiling (GDB,totalview); large data (hdf5 & szip/lzf);<br>
+- Memory profiling (Vtune profiler,Valgrind,gpdrftools,GDB,totalview); large data (hdf5 & szip/lzf);<br>
 - Version control (git → branching & merging, CI/CD tools to automate test,build, & deployment)<br>
 - Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?<br>
 
