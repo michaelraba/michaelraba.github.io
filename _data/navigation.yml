@@ -3,8 +3,8 @@ main:
   - title: "Thesis and Research"
     url: /talks/    
 
-  - title: "Youtube"
-    url: /teaching/    
+  #- title: "Youtube"
+  #  url: /teaching/
     
     
   - title: "CV"
