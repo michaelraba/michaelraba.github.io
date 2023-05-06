@@ -19,7 +19,7 @@ Work experience
 
 * Spring 2023: Teaching Assistant
    * Instruct students: operation and calibration of UK's student windtunnel, NACA airfoil/panel method, potential flow theory, parallel/counter heat exchanger measurement and use; strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
-* Fall 2023: Teaching Assistant for Thermodynamics II
+* Fall 2020: Teaching Assistant for Thermodynamics II
 * Spring 2018: Undergraduate Teaching Assistant for Fluid Mechanics I
 * Summer 2018: Research Assistant
   * University of Kentucky Department of Aerospace Engineering
