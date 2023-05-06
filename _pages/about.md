@@ -69,6 +69,6 @@ Applications and Extension
 * This Analysis finds use in flow control, such as rotating machinary
 * Data was generated for Reynolds number $Re = \{5,300 , 11,700 \}$ for Rotation numbers $N = 0, 0.5, 1.0 , 2.0 , 3.0$
  * Work can be further extended by higher Reynolds numbers (eg $Re=50,000$), and using ML to interpolate (eg $Re=25,000$)
-* Knowledge Domain : Signal proocessing, Integral equations, Parallel Algorithm Design, Wall-bounded Turbulent Flows
+* Knowledge Domain :  Wall-bounded Turbulent Flows, Signal proocessing, Integral equations, Parallel Algorithm Design
 
 
