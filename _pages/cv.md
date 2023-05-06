@@ -30,7 +30,8 @@ Work experience
 * Instruct students: operation and calibration of UK's student windtunnel, NACA airfoil/panel method, potential flow theory, parallel/counter heat exchanger measurement and use; strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
 * Spring 2023: Teaching Assistant
   * Instruct students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed NACA airfoil design that students extrude and print with routed pitot tubes, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
-
+* Fall 2023: Teaching Assistant for Thermodynamics II
+* Spring 2018: Undergraduate Teaching Assistant for Fluid Mechanics I
 
 
 Skill 1 - Scientific Parallel Computing:
