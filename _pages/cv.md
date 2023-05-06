@@ -15,7 +15,7 @@ Work experience
 * Fall 2020-present: Research Assistant
   * National Science Foundation
   * Topic: Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe
-  * Supervisor: Professor Christoph Brehm
+  * Supervisor: Professor Christoph Brehm (University of Maryland, College Park)
 
 * Summer 2018: Research Assistant
   * University of Kentucky Department of Aerospace Engineering
