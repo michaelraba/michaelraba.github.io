@@ -18,7 +18,7 @@ Currently seeking a research grant-funded PhD position; See my MsC thesis <b>her
 *Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 
 <figure>
-  <img src="/images/pipeT.png" alt="Alt text">
+  <img src="/images/pipeT2.png" alt="Alt text">
   <figcaption>
 cross section view of a single time instace of a flow of reynolds number $Re=11,700$
 </figcaption>
