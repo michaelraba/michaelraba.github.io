@@ -21,7 +21,7 @@ Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent fl
 <figure>
   <img src="/images/pipeT2.png" alt="Alt text">
   <figcaption>
-cross section view of a single time instace of a flow of reynolds number $Re=11,700$
+cross section view of a single time instance of a flow of reynolds number $Re=11,700$
 </figcaption>
 </figure>
 
