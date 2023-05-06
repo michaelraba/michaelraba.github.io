@@ -15,7 +15,7 @@ I am a student in Mechanical Engineering with:
 
 Currently seeking a research grant-funded PhD position; See my MsC thesis <b>here (coming soon)</b>
 
-* Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
+*Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 
 <figure>
   <img src="/images/pipeT.png" alt="Alt text">
@@ -41,6 +41,8 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
   <figcaption> Coherent structure with iso-surface $\text{isovalue} = \mu \pm \sigma = 0.1$
 </figcaption>
 </figure>
+
+3. The most energetic content forms coherent structures, as above. They are hairpin-like structures even in rotation.
 
 <figure>
   <img src="/images/place2.png" alt="Alt text">
