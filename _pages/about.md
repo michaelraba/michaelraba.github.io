@@ -15,10 +15,27 @@ I am a student in Mechanical Engineering with:
 
 Currently seeking a research grant-funded PhD position; See my MsC thesis <b>here (coming soon)</b>
 
+* Msc Research 
+
+To understand the effect of rotation on a pipe's moderately turbulent flow
+
+<figure>
+  <img src="/images/pipeT.png" alt="Alt text">
+  <figcaption>
+cross section view of a single time instace of a flow of reynolds number $Re=11,700$
+</figcaption>
+</figure>
+
+Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
+
+This decompositon is useful to tease out the periodic nature of turulence: despite the quasi-random nature of turublence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
+
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
-  <figcaption>Most Energetic part of a <b>homogeneous wall-bounded turbulent flow</b> in a pipe. The 5th Azimuthal mode, $\langle\Phi^{(n=1,N=3.0,Re=5,300)}_x(r;\theta;m=5)\rangle_x$ is shown, where $n$ is the POD mode, $N=3.0$ is the swirl number, and $Re=5,300$ is the Reynolds number of a moderately turbulent flow. 
-  
+  <figcaption> *Structure in Randomness:* Most Energetic part of a <b>homogeneous wall-bounded turbulent flow</b> in a pipe. The 5th Azimuthal mode, $\langle\Phi^{(n=1,N=3.0,Re=5,300)}_x(r;\theta;m=5)\rangle_x$ is shown, where $n$ is the POD mode, $N=3.0$ is the swirl number, and $Re=5,300$ is the Reynolds number of a moderately turbulent flow. 
+ 
+ 
+ 
 Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
 
