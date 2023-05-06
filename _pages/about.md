@@ -62,3 +62,11 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figure>
 
 * We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant. The TKE is less and the resulting reynolds number $Re_\tau$ has been reduced. <b>Hence the flow is relaminarized</b>
+
+
+Applications 
+======
+* This Analysis finds use in flow control, such as rotating machinary
+* Data was generated for Reynolds number $Re = \{5,300 , 11,700 \}$ for Rotation numbers $N = 0, 0.5, 1.0 , 2.0 , 3.0$
+* Knowledge Domain : Signal proocessing, Integral equations, Parallel Algorithm Design, Wall-bounded Turbulent Flows
+
