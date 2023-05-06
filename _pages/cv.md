@@ -38,12 +38,15 @@ Skill 1 - Scientific Parallel Computing:
 - Configure and optimize Linux systems (CentOS, Arch, Ubuntu) and do amazing things everyone asks me, how can I do that?<br>
 
 
-Skill 2 - Applied Mathematics:
+Skill 2 - Applied Mathematics, Aerodynamics, and Turbulence Theory:
 ======
 
   * Finite Volume Methods & Computational gasdynamics
   * Signal Processing (Fourier analysis)
+   * coherence/correlation, FFT 
+  * Turbulence theory
   * Functional Analysis (2 semesters of graduate level PDE)
+   * Riesz Representation theorem, Fredhom alternative, Sobolev space theory in $\mathbb{R}^n$
   * Graduate-level Matrix Methods, and their interplay
   * Reduced Order Modeling Techniques
 
