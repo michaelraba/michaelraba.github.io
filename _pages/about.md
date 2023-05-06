@@ -61,4 +61,4 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figcaption>
 </figure>
 
-* We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant.
+* We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant. The TKE is less and the resulting reynolds number $Re_\tau$ has been reduced. <b>Hence the flow is relaminarized</b>
