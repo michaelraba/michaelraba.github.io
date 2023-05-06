@@ -24,7 +24,7 @@ cross section view of a single time instace of a flow of reynolds number $Re=11,
 </figcaption>
 </figure>
 
-1. Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
+* Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
 
 This decompositon is useful to tease out the periodic nature of turulence: despite the quasi-random nature of turublence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
 
@@ -32,7 +32,7 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
   <img src="/images/m5.gif" alt="Alt text">
   <figcaption> *Structure in Randomness:* Most Energetic part of a <b>homogeneous wall-bounded turbulent flow</b> in a pipe. The 5th Azimuthal mode, $\langle\Phi^{(n=1,N=3.0,Re=5,300)}_x(r;\theta;m=5)\rangle_x$ is shown, where $n$ is the POD mode, $N=3.0$ is the swirl number, and $Re=5,300$ is the Reynolds number of a moderately turbulent flow. 
  
-2. Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
+* Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
 
 
@@ -42,7 +42,7 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figcaption>
 </figure>
 
-3. The most energetic content forms coherent structures, as above. They are hairpin-like structures even in rotation.
+* The most energetic content forms coherent structures, as above. They are hairpin-like structures even in rotation.
 
 <figure>
   <img src="/images/place2.png" alt="Alt text">
@@ -60,4 +60,4 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figcaption>
 </figure>
 
-3. We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant.
+* We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant.
