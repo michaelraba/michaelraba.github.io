@@ -17,21 +17,14 @@ Work experience
   * Topic: Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe
   * Supervisor: Professor Christoph Brehm (University of Maryland, College Park)
 
+* Spring 2023: Teaching Assistant
+   * Instruct students: operation and calibration of UK's student windtunnel, NACA airfoil/panel method, potential flow theory, parallel/counter heat exchanger measurement and use; strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
+* Fall 2023: Teaching Assistant for Thermodynamics II
+* Spring 2018: Undergraduate Teaching Assistant for Fluid Mechanics I
 * Summer 2018: Research Assistant
   * University of Kentucky Department of Aerospace Engineering
   * Duties included: Optimize HEGA filter design using commercial CFD tools and linux workchain; performed advanced meshing operations using STAR-CCM+, including mesh refinement, geometry cleanup, and shape extrusion for improved simulation accuracy and efficiency.
 
-* Spring 2023: Teaching Assistant
-
-{% comment %}
- * Instruct students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed NACA airfoil design that students extrude and print with routed pitot tubes, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
-{% endcomment %}
-
-* Instruct students: operation and calibration of UK's student windtunnel, NACA airfoil/panel method, potential flow theory, parallel/counter heat exchanger measurement and use; strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
-* Spring 2023: Teaching Assistant
-  * Instruct students: operation and calibration of UK's student windtunnel, implementing panel method in matlab of a 3d-printed NACA airfoil design that students extrude and print with routed pitot tubes, laminar flow over a cylinder using potential flow theory, parallel/counter heat exchanger measurement and use; Further instruction on: strain gage, beam deflection, Labview data aquistion, ANOVA, and effective report writing.
-* Fall 2023: Teaching Assistant for Thermodynamics II
-* Spring 2018: Undergraduate Teaching Assistant for Fluid Mechanics I
 
 
 Skill 1 - Scientific Parallel Computing:
