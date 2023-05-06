@@ -15,9 +15,7 @@ I am a student in Mechanical Engineering with:
 
 Currently seeking a research grant-funded PhD position; See my MsC thesis <b>here (coming soon)</b>
 
-* Msc Research 
-
-To understand the effect of rotation on a pipe's moderately turbulent flow
+* Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 
 <figure>
   <img src="/images/pipeT.png" alt="Alt text">
@@ -26,7 +24,7 @@ cross section view of a single time instace of a flow of reynolds number $Re=11,
 </figcaption>
 </figure>
 
-Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
+1. Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
 
 This decompositon is useful to tease out the periodic nature of turulence: despite the quasi-random nature of turublence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
 
@@ -34,9 +32,7 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
   <img src="/images/m5.gif" alt="Alt text">
   <figcaption> *Structure in Randomness:* Most Energetic part of a <b>homogeneous wall-bounded turbulent flow</b> in a pipe. The 5th Azimuthal mode, $\langle\Phi^{(n=1,N=3.0,Re=5,300)}_x(r;\theta;m=5)\rangle_x$ is shown, where $n$ is the POD mode, $N=3.0$ is the swirl number, and $Re=5,300$ is the Reynolds number of a moderately turbulent flow. 
  
- 
- 
-Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
+2. Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>
 </figure>
 
 
@@ -61,3 +57,5 @@ Such POD decompositions form a 'cartoon' version of an otherwise complex turbule
   <figcaption> Showing two radial locations for each azimuthal mode where the POD modes 1 & 2 play a role in adding energy to $-\bar{uv}$
 </figcaption>
 </figure>
+
+3. We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant.
