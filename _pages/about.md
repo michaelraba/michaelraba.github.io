@@ -37,6 +37,16 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figure>
 
 
+
+<figure>
+  <img src="/images/rotateN3.gif" alt="Alt text">
+  <figcaption>
+  A single crosssection of the rotating pipe for rotation number $N=3.0$
+</figcaption>
+</figure>
+
+
+
 <figure>
   <img src="/images/place.png" alt="Alt text">
   <figcaption> Coherent structure with iso-surface $\text{isovalue} = \mu \pm \sigma = 0.1$
