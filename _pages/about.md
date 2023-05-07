@@ -41,7 +41,7 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 <figure>
   <img src="/images/rotateN3.gif" alt="Alt text">
   <figcaption>
-  A single crosssection of the rotating pipe for rotation number $N=3.0$
+  A single crosssection of a moderately turbulent flow $Re=11,700$ of the rotating pipe for rotation number $N=3.0$. The shear stress of the pipe's wall induces <i>relaminarization</i> which can be useful for flow control in turbomachinary
 </figcaption>
 </figure>
 
