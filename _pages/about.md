@@ -9,11 +9,11 @@ redirect_from:
 ---
 
 I am a student in Mechanical Engineering with:
-* Expertise in partial differential equations in both numerics and fuctional analytic viewpoints,
+* Expertise in partial differential equations in both numerics and functional analytic viewpoints,
 * Statistical approaches to fluid mechanics <i>with an</i>
-* Emphasis on scientific, MPI- and OpenMP-based paralllel computing.
+* Emphasis on scientific, MPI- and OpenMP-based parallel computing.
 
-Currently seeking a research grant-funded PhD position; See my MsC thesis <b>here (coming soon)</b>
+Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b>
 
 Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 ======
@@ -27,7 +27,7 @@ cross section view of a single time instance of a flow of reynolds number $Re=11
 
 * Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
 
-This decompositon is useful to tease out the periodic nature of turulence: despite the quasi-random nature of turublence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
+This decomposition is useful to tease out the periodic nature of turbulence: despite the quasi-random nature of turbulence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
@@ -41,7 +41,7 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 <figure>
   <img src="/images/rotateN3.gif" alt="Alt text">
   <figcaption>
-  A single crosssection of a moderately turbulent flow $Re=11,700$ of the rotating pipe for rotation number $N=3.0$. The shear stress of the pipe's wall induces <i>relaminarization</i> which can be useful for flow control in turbomachinary
+  A single cross section of a moderately turbulent flow $Re=11,700$ of the rotating pipe for rotation number $N=3.0$. The shear stress of the pipe's wall induces <i>relaminarization</i> which can be useful for flow control in turbomachinary
 </figcaption>
 </figure>
 
@@ -71,14 +71,14 @@ This decompositon is useful to tease out the periodic nature of turulence: despi
 </figcaption>
 </figure>
 
-* We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant. The TKE is less and the resulting reynolds number $Re_\tau$ has been reduced. <b>Hence the flow is relaminarized</b>
+* We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant. The TKE is less and the resulting Reynolds number $Re_\tau$ has been reduced. <b>Hence the flow is relaminarized</b>
 
 
 Applications and Extension
 ======
-* This Analysis finds use in flow control, such as rotating machinary
+* This Analysis finds use in flow control, such as rotating machinery
 * Data was generated for Reynolds number $Re = \{5,300 , 11,700 \}$ for Rotation numbers $N = 0, 0.5, 1.0 , 2.0 , 3.0$
  * Work can be further extended by higher Reynolds numbers (eg $Re=50,000$), and using ML to interpolate (eg $Re=25,000$)
-* Knowledge Domain :  Wall-bounded Turbulent Flows, Signal proocessing, Integral equations, Parallel Algorithm Design
+* Knowledge Domain :  Wall-bounded Turbulent Flows, Signal processing, Integral equations, Parallel Algorithm Design
 
 
