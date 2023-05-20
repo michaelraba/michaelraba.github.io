@@ -48,7 +48,7 @@ This decomposition is useful to tease out the periodic nature of turbulence: des
 
 
 <figure>
-  <img src="/images/place.png" alt="Alt text">
+  <img src="/images/eeset-1:1.gif" alt="Alt text">
   <figcaption> Coherent structure with iso-surface $\text{isovalue} = \mu \pm \sigma = 0.1$
 </figcaption>
 </figure>
@@ -81,4 +81,10 @@ Applications and Extension
  * Work can be further extended by higher Reynolds numbers (eg $Re=50,000$), and using ML to interpolate (eg $Re=25,000$)
 * Knowledge Domain :  Wall-bounded Turbulent Flows, Signal processing, Integral equations, Parallel Algorithm Design
 
-
+Citations 
+======
+ 1. Hellström LHO, Smits AJ.
+2017 Structure identification in pipe flow using
+proper orthogonal decomposition. Phil. Trans.
+R. Soc. A 375: 20160086
+2. 
