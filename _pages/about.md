@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Raba im  Überblick - About Me - 初看之下"
+title: " About Me"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -198,6 +198,8 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 12. Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.
 
 13. We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. 
+
+
 
 
 Citations 
