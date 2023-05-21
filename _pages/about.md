@@ -178,15 +178,21 @@ In passing data from C-to-fortran, one must take caution that the memory is alig
 consistently. Otherwise, the data would be misaligned and and it will not be represented 
 on the fortran-2018 side correctly.
 
-When passing C objects to Fortran, issues with memory alignment can arise due to differences in the memory layout and alignment requirements between the two languages. Memory alignment refers to the placement of data in memory at specific boundaries, often dictated by the size and type of the data.
-
-C and Fortran have different default memory alignment rules, and these differences can lead to misalignment when passing C objects to Fortran. Here are a few reasons why memory alignment issues may occur:
+When passing C objects to Fortran, issues with memory alignment can arise due to differences in the memory layout and alignment requirements between the two languages. Memory alignment refers to the placement of data in memory at specific boundaries, often dictated by the size and type of the data, for example because of all of the below reasons:
 
     Data Type Size: Fortran typically has stricter alignment requirements compared to C. For example, in Fortran, 8-byte (64-bit) data types like real(c_double) often need to be aligned on an 8-byte boundary. If a C object contains such data types and the memory layout does not meet the alignment requirements of Fortran, misalignment issues can occur.
 
     Compiler and Platform Differences: Different compilers and platforms may have varying alignment requirements and memory layouts. If the C and Fortran code is compiled using different compilers or on different platforms, it can lead to inconsistencies in memory alignment.
 
     Structure Padding: C compilers may insert padding bytes between structure members for efficiency or alignment purposes. However, Fortran may not handle this padding correctly when accessing the structure, resulting in misalignment issues.
+
+Memory alignment issues can occur when passing C objects to various other languages, not just specific ones. Here are a few examples of potential misalignment problems:
+
+    C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.
+
+    C to Rust: When passing C objects to Rust, memory alignment issues can arise. Rust has its own memory management and alignment rules, and it may require specific annotations or attributes to ensure proper alignment when interacting with C code.
+
+    C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.
 
 
 {% highlight fortran %}
