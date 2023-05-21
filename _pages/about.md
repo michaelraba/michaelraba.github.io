@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: " About Me"
+title: "About Michael Raba, MSc Candidate in Mechanical Engineering, University of Kentucky Pigman College of Engineering"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -194,6 +194,7 @@ call c_f_pointer(V_ptr, V, [nPts,ncs])
 call c_f_pointer(W_ptr, W, [nPts,ncs])
 call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 {% endhighlight %}
+
 <ol start="12">
 <li> Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.</li>
 
