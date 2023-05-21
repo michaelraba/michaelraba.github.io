@@ -170,9 +170,10 @@ for (int i = 0; i < ncs; i++) { // i =cs
 }
 {% endhighlight %}
 
+<ol start="10">
 
-11 . We pass this data to legacy Fortran code, which is fortran 2018 standard.
-The analoge for C-structs in fortran are called 'derived types'.
+<li> We pass this data to legacy Fortran code, which is fortran 2018 standard.
+The analoge for C-structs in fortran are called 'derived types'. </li>
 
 In passing data from C-to-fortran, one must take caution that the memory is aligned
 consistently. Otherwise, the data would be misaligned and and it will not be represented 
@@ -212,10 +213,10 @@ call c_f_pointer(W_ptr, W, [nPts,ncs])
 call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 {% endhighlight %}
 
-<ol start="12">
+<ol start="11">
 <li> Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.</li>
 
-<li>13.  We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
+<li>  We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
 
 
 Citations 
