@@ -10,7 +10,7 @@ redirect_from:
 
 I am a student in Mechanical Engineering with:
 * Expertise in partial differential equations in both numerics and functional analytic viewpoints,
-* Statistical approaches to fluid mechanics <i>with an</i>
+* Statistical approaches to fluid mechanics and large datasets <i>with an</i>
 * Emphasis on scientific, MPI- and OpenMP-based parallel computing.
 
  <!-- Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b> -->
