@@ -139,7 +139,7 @@ An inefficient way to store this data is in a multi-dimensional array. Since the
 
 {% highlight cpp %}
 Py_Initialize();
-auto modulePath = "/home/miraba2/.totalview/lib_cache/cascadeb002/codes/sutekina/"; // /* hardcoded search path for module */
+auto modulePath = "/path/to/python/code"; // /* hardcoded search path for module */
 PyObject* sysPath = PySys_GetObject("path");
 assert(PyArray_API);
 cout << "2a\n";  PyObject* nekMod = PyImport_ImportModule("d");
