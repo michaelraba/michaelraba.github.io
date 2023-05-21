@@ -13,7 +13,7 @@ I am a student in Mechanical Engineering with:
 * Statistical approaches to fluid mechanics <i>with an</i>
 * Emphasis on scientific, MPI- and OpenMP-based parallel computing.
 
-Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b>
+ <!-- Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b> -->
 
 Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 ======
