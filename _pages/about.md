@@ -81,6 +81,108 @@ Applications and Extension
  * Work can be further extended by higher Reynolds numbers (eg $Re=50,000$), and using ML to interpolate (eg $Re=25,000$)
 * Knowledge Domain :  Wall-bounded Turbulent Flows, Signal processing, Integral equations, Parallel Algorithm Design
 
+Procedure
+======
+
+
+1. take $f f t$ in streamwise $x$ direction $\leadsto$ wavenumber $k$
+2. form complex-conjugate multiplication
+3. form fft with azimuthal separation $\leadsto$ wavenumber $m$
+
+\begin{align}
+S_{i, j}\left(r, r^{\prime} ; m ; f\right)=\frac{1}{2 \pi} \sum_{\mathrm{m}=0}^N \tilde{S}_{i, j}\left(r, r^r ; \Delta \theta ; f\right) e^{-i m \Delta \theta} \mathrm{d}(\Delta \theta) 
+\end{align} 
+
+where
+
+\begin{align}
+\tilde{S}_{i, j}(r, r ; \Delta \theta ; f)=\frac{\left\langle\hat{u}_i(r, \theta, f) \hat{u}_j^*\left(r^{\prime}, \theta+\Delta \theta, f\right)\right\rangle}{T}
+\end{align} 
+
+which is more easily expressed as,
+
+\begin{align}
+\mathrm{S}\left(k ; m ; r, r^r\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{u}(k ; m ; r, t) \mathrm{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t
+\end{align} 
+
+using symmetry to elimate imaginary components of the complex signal via 
+
+\begin{align}
+\Phi_x^{(n)}(k ; m ; r)=\Phi_x^{(n)}(k ;-m ; r)=\Phi_x^{(n)^*}(-k ; m ; r)
+\end{align} 
+
+and normalizing via the inner product,
+
+\begin{align}
+\begin{aligned}
+\left\langle\phi_j, \phi_k\right\rangle & =\int_A \phi_j \cdot \phi_k d A=\int_{[0,2 \pi]} \int_{[0, R]} \phi\left(r_j\right) \cdot \phi\left(r_k\right)^{\dagger} r_i d r d \theta \\
+& =2 \pi \sum_{[0, R]} \phi\left(r_j\right) \cdot \phi\left(r_k\right)^{\dagger} r_i\left(\frac{r_i-r_{i-1}}{n}\right)
+\end{aligned}
+\end{align} 
+
+we can recover the images presented on this page.
+
+Requirements and Data Structures
+======
+
+1. Requirement: Model a turbulent flow through a pipe using high-fidelity DNS simulation. 
+2. Large Data and its organization: 40 TB of data in .hdf5 format using compression filter (lzf)  
+3. The turbulent data must be decompressed from a propriatary format and kept organized 
+4. Once decompressed, the data must be interpolated along different spatial extents.
+5. Steps 2-4 is carried out with a python library, followed by c++, and IO must be avoided; 
+
+{% highlight cpp %}
+Py_Initialize();
+auto modulePath = "/home/miraba2/.totalview/lib_cache/cascadeb002/codes/sutekina/"; // /* hardcoded search path for module */
+PyObject* sysPath = PySys_GetObject("path");
+assert(PyArray_API);
+cout << "2a\n";  PyObject* nekMod = PyImport_ImportModule("d");
+PyObject* arg = Py_BuildValue("(i)", snapshot); // this created tuple is used for the function ff, which takes an arg (time).
+PyObject* nekFf = PyObject_GetAttrString(nekMod, "ff");
+PyObject* resultFf = PyObject_CallObject(nekFf, arg);
+cout<<"*mm1:\n";PyArrayObject* arrZ = reinterpret_cast<PyArrayObject*>(resultFf);
+int ndim = arrZ->nd;
+npy_intp* shape = arrZ->dimensions;
+npy_intp* shape2 = PyArray_DIMS(arrZ); // same thing as shape; both return correct vals.
+std::cout << "Dimensions: "; // print out dimension with for-loop
+for (int i = 0; i < ndim; i++) {
+  std::cout << shape[i] << " ";
+  std::cout << shape2[i] << " ";
+}
+const int ncs=150;
+const int nPts=58032;
+struct varStr fullVars;
+fullVars.U = new double*[ncs];
+fullVars.V = new double*[ncs];
+fullVars.W = new double*[ncs];
+fullVars.P = new double*[ncs];
+for (int i = 0; i < ncs; i++) { // i =cs
+  fullVars.U[i] = new double[nPts];
+  fullVars.V[i] = new double[nPts];
+  fullVars.W[i] = new double[nPts];
+  fullVars.P[i] = new double[nPts];
+}
+{% endhighlight %}
+
+{% highlight fortran %}
+! read c++-structures into array
+! for function 'interpolate-pipe'
+type(varStr) :: fullVars
+type(c_ptr), pointer :: U_ptr, V_ptr, W_ptr, P_ptr
+real(c_double), pointer :: U(:,:), V(:,:), W(:,:), P(:,:)
+integer :: start_time(8), end_time(8), elapsed_time, wait_time
+call c_f_pointer(fullVars%U, U_ptr) ! nb all 8 calls are req'd vvvvvvvvvvvv
+call c_f_pointer(fullVars%V, V_ptr)
+call c_f_pointer(fullVars%W, W_ptr)
+call c_f_pointer(fullVars%P, P_ptr)
+call c_f_pointer(U_ptr, U, [nPts,ncs])
+call c_f_pointer(V_ptr, V, [nPts,ncs])
+call c_f_pointer(W_ptr, W, [nPts,ncs])
+call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
+{% endhighlight %}
+
+
+
 Citations 
 ======
  1. Hellström LHO, Smits AJ.
