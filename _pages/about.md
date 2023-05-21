@@ -130,6 +130,12 @@ Requirements and Data Structures
 3. The turbulent data must be decompressed from a propriatary format and kept organized 
 4. Once decompressed, the data must be interpolated along different spatial extents.
 5. Steps 2-4 is carried out with a python library, followed by c++, and IO must be avoided; 
+6. This data represents vector components $(u_r,u_\theta,u_z,p)$ expressed in  
+the pipe's cylindrical coordinates, along with pressure $p$. 
+
+We would like to order all this data the most representative way possible, 
+which is a C-struct:
+
 
 {% highlight cpp %}
 Py_Initialize();
@@ -164,6 +170,14 @@ for (int i = 0; i < ncs; i++) { // i =cs
 }
 {% endhighlight %}
 
+
+and pass this data to legacy code, which is written to fortran. 
+The analoge for C-structs in fortran are called 'derived types'.
+
+In passing data from C-to-fortran, one must take caution that the memory is aligned
+consistently. Otherwise, the data would be misaligned and and it will not be reprsented 
+on the fortran-2018 side correctly.
+
 {% highlight fortran %}
 ! read c++-structures into array
 ! for function 'interpolate-pipe'
@@ -181,6 +195,9 @@ call c_f_pointer(W_ptr, W, [nPts,ncs])
 call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 {% endhighlight %}
 
+6. Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.
+
+We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. 
 
 
 Citations 
