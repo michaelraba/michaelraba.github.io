@@ -183,13 +183,13 @@ When passing C objects to Fortran, issues with memory alignment can arise due to
 
 * Structure Padding: C compilers may insert padding bytes between structure members for efficiency or alignment purposes. However, Fortran may not handle this padding correctly when accessing the structure, resulting in misalignment issues.
 
-Memory alignment issues can occur when passing C objects to various other languages, not just specific ones. Here are a few examples of potential misalignment problems:
+* Memory alignment issues can occur when passing C objects to various other languages, not just specific ones. Here are a few examples of potential misalignment problems:
 
-    C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.
+* C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.
 
-    C to Rust: When passing C objects to Rust, memory alignment issues can arise. Rust has its own memory management and alignment rules, and it may require specific annotations or attributes to ensure proper alignment when interacting with C code.
+* C to Rust: When passing C objects to Rust, memory alignment issues can arise. Rust has its own memory management and alignment rules, and it may require specific annotations or attributes to ensure proper alignment when interacting with C code.
 
-    C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.
+* C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.
 
 
 {% highlight fortran %}
