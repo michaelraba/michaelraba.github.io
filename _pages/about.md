@@ -172,8 +172,6 @@ for (int i = 0; i < ncs; i++) { // i =cs
 
 <div class="fancy-box">
   <p>Note, this portfolio has been constructed specially for Space Tango in pdf form. Please see my website at <a href="https://michaelraba.github.io">michaelraba.github.io</a> to experience the animated data sets.</p>
-  <ul>
-
 <ol start="10">
 
 <li> We pass this data to legacy Fortran code, which is fortran 2018 standard.
@@ -194,9 +192,10 @@ The analoge for C-structs in fortran are called 'derived types'. </li>
 <li> C to Rust: When passing C objects to Rust, memory alignment issues can arise. Rust has its own memory management and alignment rules, and it may require specific annotations or attributes to ensure proper alignment when interacting with C code.</li>
 
 <li> C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.</li>
-
+  <ul>
   </ul>
 </div>
+
 {% highlight fortran %}
 ! read c++-structures into array
 ! for function 'interpolate-pipe'
