@@ -178,11 +178,11 @@ The analoge for C-structs in fortran are called 'derived types'. </li>
 
 <p>When passing C objects to Fortran, issues with memory alignment can arise due to differences in the memory layout and alignment requirements between the two languages. Memory alignment refers to the placement of data in memory at specific boundaries, often dictated by the size and type of the data, for example because of all of the below reasons:</p>
 
-<li> Data Type Size: Fortran typically has stricter alignment requirements compared to C. For example, in Fortran, 8-byte (64-bit) data types like real(c_double) often need to be aligned on an 8-byte boundary. If a C object contains such data types and the memory layout does not meet the alignment requirements of Fortran, misalignment issues can occur.
+<li> Data Type Size: Fortran typically has stricter alignment requirements compared to C. For example, in Fortran, 8-byte (64-bit) data types like real(c_double) often need to be aligned on an 8-byte boundary. If a C object contains such data types and the memory layout does not meet the alignment requirements of Fortran, misalignment issues can occur. </li>
 
-<li> Compiler and Platform Differences: Different compilers and platforms may have varying alignment requirements and memory layouts. If the C and Fortran code is compiled using different compilers or on different platforms, it can lead to inconsistencies in memory alignment.
+<li> Compiler and Platform Differences: Different compilers and platforms may have varying alignment requirements and memory layouts. If the C and Fortran code is compiled using different compilers or on different platforms, it can lead to inconsistencies in memory alignment.</li>
 
-<li> Structure Padding: C compilers may insert padding bytes between structure members for efficiency or alignment purposes. However, Fortran may not handle this padding correctly when accessing the structure, resulting in misalignment issues.
+<li> Structure Padding: C compilers may insert padding bytes between structure members for efficiency or alignment purposes. However, Fortran may not handle this padding correctly when accessing the structure, resulting in misalignment issues.</li>
 
 <li> Memory alignment issues can occur when passing C objects to various other languages, not just specific ones. Here are a few examples of potential misalignment problems:</li>
 
@@ -220,7 +220,7 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 
 
-<li>  We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
+<li>  We want to take fourier transforms of $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
 
 
 Citations 
