@@ -217,8 +217,8 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 
 <figure>
-  <img src="/home/mi/External/web/images/dataTree.png" alt="Alt text">
-  <figcaption> Organization of structs of structs forms a data tree
+  <img src="/images/dataTree.png" alt="Alt text">
+  <figcaption> Organization of structs of structs forms a data tree 
 </figcaption>
 </figure>
 
