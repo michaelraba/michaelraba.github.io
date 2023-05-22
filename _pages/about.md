@@ -172,6 +172,10 @@ for (int i = 0; i < ncs; i++) { // i =cs
 
 <div class="fancy-box">
   <p>Note, this portfolio has been constructed specially for Space Tango in pdf form. Please see my website at <a href="https://michaelraba.github.io">michaelraba.github.io</a> to experience the animated data sets.</p>
+<ul>
+</ul>
+</div>
+
 <ol start="10">
 
 <li> We pass this data to legacy Fortran code, which is fortran 2018 standard.
@@ -190,9 +194,6 @@ The analoge for C-structs in fortran are called 'derived types'. </li>
 <li> C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.</li>
 
 <li> C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.</li>
-  <ul>
-  </ul>
-</div>
 
 {% highlight fortran %}
 ! read c++-structures into array
