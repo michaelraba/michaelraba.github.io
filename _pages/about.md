@@ -223,8 +223,11 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 <li>  We want to take fourier transforms of $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
 
 
-Citations 
+
+References
 ======
+
+
 
  1. Hellström LHO, Smits AJ. 2017 Structure identification in pipe flow using proper orthogonal decomposition. Phil. Trans. R. Soc. A 375: 20160086
 
