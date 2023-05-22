@@ -170,11 +170,6 @@ for (int i = 0; i < ncs; i++) { // i =cs
 }
 {% endhighlight %}
 
-<div class="fancy-box">
-  <p>Note, this portfolio has been constructed specially for Space Tango in pdf form. Please see my website at <a href="https://michaelraba.github.io">michaelraba.github.io</a> to experience the animated data sets.</p>
-<ul>
-</ul>
-</div>
 
 <ol start="10">
 
@@ -232,3 +227,4 @@ Citations
 ======
 
  1. Hellström LHO, Smits AJ. 2017 Structure identification in pipe flow using proper orthogonal decomposition. Phil. Trans. R. Soc. A 375: 20160086
+
