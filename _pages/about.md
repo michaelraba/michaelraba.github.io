@@ -189,8 +189,6 @@ The analoge for C-structs in fortran are called 'derived types'. </li>
 
 <li> C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.</li>
 
-<li> C to Rust: When passing C objects to Rust, memory alignment issues can arise. Rust has its own memory management and alignment rules, and it may require specific annotations or attributes to ensure proper alignment when interacting with C code.</li>
-
 <li> C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.</li>
   <ul>
   </ul>
@@ -215,6 +213,16 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 <ol start="11">
 <li> Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.</li>
+
+
+
+<figure>
+  <img src="/home/mi/External/web/images/dataTree.png" alt="Alt text">
+  <figcaption> Organization of structs of structs forms a data tree
+</figcaption>
+</figure>
+
+
 
 <li>  We want to take fourier transforms of $theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
 
