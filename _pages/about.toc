@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Expertise in partial differential equations in both numerics and functional analytic viewpoints,}{1}{section.1}%
+\contentsline {section}{\numberline {2}Statistical approaches to fluid mechanics and large datasets <i>with an</i>}{1}{section.2}%
+\contentsline {section}{\numberline {3}Emphasis on scientific, MPI- and OpenMP-based parallel computing.}{1}{section.3}%
+\contentsline {section}{\numberline {4}Examine the flow's most energetic content \textbf {using Fourier-PCA analysis}, average in time, the azimuthal (\(\theta \)) direction \(\in \) spectral domain.}{1}{section.4}%
+\contentsline {section}{\numberline {5}Such POD decompositions form a 'cartoon' version of an otherwise complex turbulent flow, which we can engineer and also better control.</figcaption>}{2}{section.5}%
+\contentsline {section}{\numberline {6}The most energetic content forms coherent structures, as above. They are hairpin-like structures even in rotation.}{2}{section.6}%
+\contentsline {section}{\numberline {7}We can reduce the magnitude of the Pipe's TKE (Turbulent Kinetic Energy) via rotation,and the extent away from the Wall the energy is most dominant. The TKE is less and the resulting Reynolds number \(Re_\tau \) has been reduced. <b>Hence the flow is relaminarized</b>}{3}{section.7}%
+\contentsline {section}{\numberline {8}This Analysis finds use in flow control, such as rotating machinery}{3}{section.8}%
+\contentsline {section}{\numberline {9}Data was generated for Reynolds number \(Re = \{5,300 , 11,700 \}\) for Rotation numbers \(N = 0, 0.5, 1.0 , 2.0 , 3.0\)}{3}{section.9}%
+\contentsline {section}{\numberline {10}Knowledge Domain : Wall-bounded Turbulent Flows, Signal processing, Integral equations, Parallel Algorithm Design}{3}{section.10}%

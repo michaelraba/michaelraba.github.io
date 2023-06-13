@@ -245,6 +245,43 @@ Two-dimensional Eigenmode Projections
   <p>It appears you don't have a PDF plugin for this browser. No worries, you can <a href="/assets/2dmodes.pdf">click here to download the PDF file</a>.</p>
 </object> </p>
 
+Meshing and Interpolation 
+======
+
+<figure>
+  <img src="/images/meshPre.png" alt="Alt text">
+  <img src="/images/meshPre2.png" alt="Alt text">
+  <img src="/images/meshPost.png" alt="Alt text">
+  <figcaption>
+(a) Pre-interpolated nonuniform mesh (GLL Elements) with higher resolution near the pipe wall of the DNS model
+(b) Closeup of the 6 Gauss-Legendre-Lebesgue Elements 
+(c) Uniform Interpolated Mesh consisting of lines radiading outward of distance $r_i$ at angle $\theta_j$
+</figcaption>
+</figure>
+
+Eigenproblem Setup
+======
+
+POD Method of Snapshots: form symmetric eigenvalue problem $\in \mathbb{C}$ 
+
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{R}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) d t^{\prime}=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t) .
+\end{align} 
+
+Using Hilbert-Schmidt theory, can expand in terms of eigenfunctions, and the integral kernel is symmetric Hermitian. This is just 
+
+\begin{align}
+\int K(x, y) \varphi(y) d y=\lambda \varphi(x) \quad \Leftrightarrow  \sum_j M_{i, j} v_j=\lambda v_i
+\end{align} 
+
+where $\mathbf{M}=\left[M_{i, j}\right]$ is a matrix, $\mathbf{v}$ is one of its eigenvectors, and $\lambda$ is the associated eigenvalue. Taking the continuum limit, i.e., replacing the discrete indices $i$ and $j$ with continuous variables $X$ and $y$, and gives a linear homogeneous Fredholm equation of the second type equation.
+
+Solve for $\Phi$
+
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) .
+\end{align} 
+
 
 References
 ======
