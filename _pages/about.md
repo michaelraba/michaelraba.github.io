@@ -209,7 +209,7 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 {% endhighlight %}
 
 <ol start="11">
-<li> Next, the FFT-POD data is passed to matlab from memory. I omit showing this step for now. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.</li>
+<li> Next, the FFT-POD data is passed to matlab from memory. We can use either 1) matlab code which reads the above data via IO 2) converted matlab to C++ code.</li>
 
 
 
@@ -221,7 +221,9 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 
 
-<li>  We fourier transform in $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and radial locations $r$. The proper data structure for this are nested structs. This procedure is embarassingly parallelizable </li>
+<li>  We fourier transform in $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and radial locations $r$. The DNS data is sufficiently resolved near the wall and after interpolating from a nonuniform grid, is also sufficient resolution in radial and streamwise direction, such that the 2d eigenmodes form clear patterns after averaging over 1000 timesteps and 100 streamwise locations. 
+
+The proper data structure for this are nested structs. This procedure is embarassingly parallelizable, such that this procedure can be performed with 48 cores in around 30 minutes.</li>
 </ol>
  
 Two-dimensional Eigenmode Projections
