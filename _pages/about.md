@@ -291,7 +291,7 @@ Solve for $\Phi$
 
 \begin{align}
 \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{T}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t)\, dt \\
-= \Phi_{\mathbf{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m).
+= \Phi_{\mathbf{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m)
 \end{align} 
 
 Classical Approach
