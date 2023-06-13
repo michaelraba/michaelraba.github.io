@@ -265,6 +265,8 @@ Meshing and Interpolation
   </div>
 </figure>
 
+ In the realm of spectral element solvers, GLL mesh is the "tipping point" in algorithmic efficiency. Three stand-out benefits are its spectral accuracy, efficient computation of differential operators, and its knack for capturing localized phenomena. Due to the nature of fluid dynamics, elements of turbulence near the pipe wall require finer meshes, akin to watching a basketball game courtside - a more intimate and detailed view.
+
 
 Eigenproblem Setup
 ======
@@ -288,6 +290,24 @@ Solve for $\Phi$
 \begin{align}
 \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m).
 \end{align} 
+
+Classical Approach
+======
+
+Snapshot POD infamously has 'mode-mixing', that is, the savings of temporal cross-correlating comes at the cost of
+slightly incorrect results. The classical approach, while slower, is more accurate, but has more computations. Further, in order to
+not break Hilbert-Schmidt theory --- we are, after all, solving a discretized integral equation, which has a solution only under certain conditions --- we 
+must decompose the $r$ weight as
+
+
+\begin{align}
+\begin{aligned}
+\overline{\boldsymbol{S}}\left(m ; r, r^{\prime}\right) & =\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau (r^{\prime})^{1/2} \boldsymbol{u}(m ; r, t) \boldsymbol{u}^*\left(m ; r^{\prime}, t\right) r^{1 / 2} \mathrm{~d} t \\
+& =\frac{1}{M} \sum_{j=1}^M r_i^{1 / 2} \boldsymbol{u}\left(m ; r_i, t\right) \boldsymbol{u}^*\left(m ; r_j, t\right) r_j \mathrm{~d} t
+\end{aligned}
+\end{align} 
+
+
 
 
 References
