@@ -215,7 +215,7 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 <figure>
   <img src="/images/dataTree.png" alt="Alt text">
-  <figcaption> Organization of structs of structs forms a data tree 
+  <figcaption> Organization of structs of structs of structs forms a data tree. For example, dataStructTimeData($t$).azimuthDir($m$).radialDir($r$).zeeDir($z$) is organized to Fourier-transform streamwise since the child nodes are in $z$. The procedure can less optimally be organized as eg, a 4-dimensional array.
 </figcaption>
 </figure>
 
