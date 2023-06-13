@@ -248,16 +248,23 @@ Two-dimensional Eigenmode Projections
 Meshing and Interpolation 
 ======
 
-<figure>
-  <img src="/images/meshPre.png" alt="Alt text">
-  <img src="/images/meshPre2.png" alt="Alt text">
-  <img src="/images/meshPost.png" alt="Alt text">
-  <figcaption>
-(a) Pre-interpolated nonuniform mesh (GLL Elements) with higher resolution near the pipe wall of the DNS model
-(b) Closeup of the 6 Gauss-Legendre-Lebesgue Elements 
-(c) Uniform Interpolated Mesh consisting of lines radiading outward of distance $r_i$ at angle $\theta_j$
-</figcaption>
+
+<figure style="display: flex; justify-content: space-between;">
+  <div style="width: 33%;">
+    <img src="/images/meshPre.png" alt="Alt text" style="width: 40%;">
+    <figcaption>(a) Pre-interpolated nonuniform mesh (GLL Elements) with higher resolution near the pipe wall of the DNS model</figcaption>
+  </div>
+  <div style="width: 33%;">
+    <img src="/images/meshPre2.png" alt="Alt text" style="width: 40%;">
+    <figcaption>(b) Closeup of the 6 Gauss-Legendre-Lebesgue Elements</figcaption>
+  </div>
+  <div style="width: 33%;">
+    <img src="/images/meshPost.png" alt="Alt text" style="width: 40%;">
+    <figcaption>(c) Uniform Interpolated Mesh consisting of lines radiading outward of distance $r_i$ at angle $\theta_j$</figcaption>
+  </div>
 </figure>
+
+
 
 Eigenproblem Setup
 ======
