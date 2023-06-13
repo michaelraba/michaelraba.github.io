@@ -15,7 +15,7 @@ I am a student in Mechanical Engineering with:
 
  <!-- Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b> -->
 
-Overview of Msc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
+Overview of MSc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
 ======
 
 <figure>
