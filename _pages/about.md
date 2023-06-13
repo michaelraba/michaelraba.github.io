@@ -189,6 +189,7 @@ The analoge for C-structs in fortran are called 'derived types'. </li>
 <li> C to C++: Although C++ is largely compatible with C, misalignment can still happen when passing C objects to C++ code due to differences in name mangling, inheritance, or virtual function tables. Additionally, C++ may introduce additional padding or alignment requirements, especially when dealing with classes, inheritance, or virtual functions.</li>
 
 <li> C to Python: Python, being a dynamically-typed language, often relies on C extensions for performance-critical operations. When passing C objects to Python, one need to ensure proper alignment to avoid memory access errors or data corruption.</li>
+</ol>
 
 {% highlight fortran %}
 ! read c++-structures into array
@@ -229,7 +230,6 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 
 
-</ol>
 
 
 References
