@@ -223,7 +223,11 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 
 <li>  We fourier transform in $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and radial locations $r$. The proper data structure for this are nested structs. This procedure is embarassingly parallelizable </li>
 </ol>
-  
+ 
+Two-dimensional Eigenmode Projections
+======
+
+ 
 <p>
 <object data="/assets/2dmodes.pdf" type="application/pdf" width="100%" height="600px">
   <p>It appears you don't have a PDF plugin for this browser. No worries, you can <a href="/assets/2dmodes.pdf">click here to download the PDF file</a>.</p>
