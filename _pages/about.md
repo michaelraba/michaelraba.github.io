@@ -274,13 +274,15 @@ Eigenproblem Setup
 POD Method of Snapshots: form symmetric eigenvalue problem $\in \mathbb{C}$ 
 
 \begin{align}
-\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{R}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) d t^{\prime}=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t) .
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{S}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) d t^{\prime} \\
+=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t) .
 \end{align} 
 
 Using Hilbert-Schmidt theory, can expand in terms of eigenfunctions, and the integral kernel is symmetric Hermitian. This is just 
 
 \begin{align}
-\int K(x, y) \varphi(y) d y=\lambda \varphi(x) \quad \Leftrightarrow  \sum_j M_{i, j} v_j=\lambda v_i
+\int K(x, y) \varphi(y) d y=
+\lambda \varphi(x) \quad \Leftrightarrow  \sum_j M_{i, j} v_j=\lambda v_i
 \end{align} 
 
 where $\mathbf{M}=\left[M_{i, j}\right]$ is a matrix, $\mathbf{v}$ is one of its eigenvectors, and $\lambda$ is the associated eigenvalue. Taking the continuum limit, i.e., replacing the discrete indices $i$ and $j$ with continuous variables $X$ and $y$, and gives a linear homogeneous Fredholm equation of the second type equation. Note that the kernel being Hermitian symmetric is what guarantees a unique solution to the integral equation.
@@ -288,7 +290,8 @@ where $\mathbf{M}=\left[M_{i, j}\right]$ is a matrix, $\mathbf{v}$ is one of its
 Solve for $\Phi$
 
 \begin{align}
-\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t) \mathrm{d} t=\Phi_{\mathbf{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m).
+\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t) \mathrm{d} t \\
+= \Phi_{\mathbf{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m).
 \end{align} 
 
 Classical Approach
