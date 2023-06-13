@@ -90,19 +90,19 @@ Procedure
 3. form fft with azimuthal separation $\leadsto$ wavenumber $m$
 
 \begin{align}
-S_{i, j}\left(r, r^{\prime} ; m ; f\right)=\frac{1}{2 \pi} \sum_{\mathrm{m}=0}^N \tilde{S}_{i, j}\left(r, r^r ; \Delta \theta ; f\right) e^{-i m \Delta \theta} \mathrm{d}(\Delta \theta) 
+S_{i, j}\left(r, r^{\prime} ; m ; k\right)=\frac{1}{2 \pi} \sum_{\mathrm{m}=0}^N \tilde{S}_{i, j}\left(r, r^{\prime}; \Delta \theta ; k\right) e^{-i m \Delta \theta} \mathrm{d}(\Delta \theta) 
 \end{align} 
 
 where
 
 \begin{align}
-\tilde{S}_{i, j}(r, r ; \Delta \theta ; f)=\frac{\left\langle\hat{u}_i(r, \theta, f) \hat{u}_j^*\left(r^{\prime}, \theta+\Delta \theta, f\right)\right\rangle}{T}
+\tilde{S}_{i, j}(r, r ; \Delta \theta ; k)=\frac{\left\langle\hat{u}_i(r, \theta, k) \hat{u}_j^*\left(r^{\prime}, \theta+\Delta \theta, k\right)\right\rangle}{x}
 \end{align} 
 
 which is more easily expressed as,
 
 \begin{align}
-\mathrm{S}\left(k ; m ; r, r^r\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{u}(k ; m ; r, t) \mathrm{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t
+\mathrm{S}\left(k ; m ; r, r^{\prime}\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathrm{u}(k ; m ; r, t) \mathrm{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t
 \end{align} 
 
 using symmetry to elimate imaginary components of the complex signal via 
