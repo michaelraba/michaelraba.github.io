@@ -230,7 +230,16 @@ The proper data structure for this are nested structs. This procedure is embaras
 Two-dimensional Eigenmode Projections
 ======
 
- 
+<figure>
+  <img src="/images/w3.jpg" alt="Alt text">
+  <img src="/images/w4.jpg" alt="Alt text">
+  <figcaption>
+2rd order POD mode for rotation number $N=1$ and azimuthal mode $m=11$
+</figcaption>
+</figure>
+
+
+
 <p>
 <object data="/assets/2dmodes.pdf" type="application/pdf" width="100%" height="600px">
   <p>It appears you don't have a PDF plugin for this browser. No worries, you can <a href="/assets/2dmodes.pdf">click here to download the PDF file</a>.</p>
