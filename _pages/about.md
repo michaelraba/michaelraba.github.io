@@ -223,6 +223,12 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 <li>  We want to take fourier transforms of $\theta$ and streamwise direction $z$ (along the pipe), for all time $t$, and cross sections $x$. The proper data structure for this are nested structs. This data should be processed in parallel using OpenMP. </li>
 </ol>
 
+<object data="/assets/2dmodes.pdf" type="application/pdf" width="100%" height="600px">
+  <p>It appears you don't have a PDF plugin for this browser. No worries, you can <a href="/assets/2dmodes.pdf">click here to download the PDF file</a>.</p>
+</object>
+
+
+
 
 References
 ======
