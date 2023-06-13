@@ -56,8 +56,7 @@ Skill 3 - Ask the Right Questions
 *  <b>Leverage all resources to identify problems to come up with effective solutions: </b> 
 * Quickly able to familarize new areas by: reading papers, connecting dots, small test, profiling code, <b> and yes, asking more questions</b>; 
 * Cultivate a deliberate mindset of being super-innovative and multi-diciplinary curious.
-
-* <u>Self-directed, Proactive</u>
+* Self-directed, Proactive
 * Technical Documentation 
 * Techical Communication
 * Risk Management 
