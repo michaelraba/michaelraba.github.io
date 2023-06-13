@@ -233,5 +233,4 @@ call c_f_pointer(P_ptr, P, [nPts,ncs]) ! nb all 8 calls are req'd ^^^^^^^^^
 References
 ======
 
-Hellström LHO, Smits AJ. 2017 Structure identification in pipe flow using proper orthogonal decomposition. Phil. Trans. R. Soc. A 375: 20160086
-
+Hellström LHO, Smits AJ. 2017. <i>Structure identification in pipe flow using proper orthogonal decomposition.</i> Phil. Trans. R. Soc. A 375: 20160086.
