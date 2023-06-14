@@ -290,7 +290,7 @@ where $\mathbf{M}=\left[M_{i, j}\right]$ is a matrix, $\mathbf{v}$ is one of its
 Solve for $\Phi$
 
 \begin{align}
-\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) dt=\Phi_T^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m)
+\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t) dt=\Phi_T^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m)
 \end{align} 
 
 Classical Approach
@@ -303,8 +303,8 @@ must decompose the $r$ weight as
 
 
 \begin{align}
-\overline{\boldsymbol{S}}\left(m ; r, r^{\prime}\right) & =\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau (r^{\prime})^{1/2} \boldsymbol{u}(m ; r, t) \boldsymbol{u}^*\left(m ; r^{\prime}, t\right) r^{1 / 2}\, dt \\
-&=\frac{1}{M} \sum_{j=1}^M r_i^{1 / 2} \boldsymbol{u}\left(m ; r_i, t\right) \boldsymbol{u}^*\left(m ; r_j, t\right) r_j \, dt
+\overline{\boldsymbol{S}}\left(m ; r, r^{\prime}\right) & =\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau (r^{\prime})^{1/2} \boldsymbol{u}(m ; r, t) \boldsymbol{u}^*\left(m ; r^{\prime}, t\right) r^{1 / 2}\, dt 
+=
 \end{align} 
 
 
