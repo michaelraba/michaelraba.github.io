@@ -290,7 +290,7 @@ where $\mathbf{M}=\left[M_{i, j}\right]$ is a matrix, $\mathbf{v}$ is one of its
 Solve for $\Phi$
 
 \begin{align}
-\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^{\dagger}}(k ; m ; t) dt = \Phi \cdot
+\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) dt=\Phi_T}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m)
 \end{align} 
 
 Classical Approach
