@@ -292,7 +292,7 @@ Solve for $\Phi$
 \begin{align}
 \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) dt
 =
-\Phi_{\mathrm{T}}
+\Phi_{\mathrm{T}} \cdot
 \end{align} 
 
 Classical Approach
