@@ -303,7 +303,7 @@ must decompose the $r$ weight as
 
 
 \begin{align}
-\overline{\boldsymbol{S}}\left(m ; r, r^{\prime}\right) & =\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau (r^{\prime})^{1/2} \boldsymbol{u}(m ; r, t) \boldsymbol{u}^*\left(m ; r^{\prime}, t\right) r^{1 / 2}\, dt =\frac{1}{M} \sum_{j=1}^M r_i^{1/2} \boldsymbol{u}\left(m ; r_i, t\right) \boldsymbol{u}^{\dagger}\left(m ; r_j, t\right) r_j dt
+\overline{\boldsymbol{S}}\left(m ; r, r^{\prime}\right) & =\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau (r^{\prime})^{1/2} \boldsymbol{u}(m ; r, t) \boldsymbol{u}^*\left(m ; r^{\prime}, t\right) r^{1 / 2}\, dt 
 \end{align} 
 
 
