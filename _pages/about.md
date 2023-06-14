@@ -312,4 +312,4 @@ must decompose the $r$ weight as
 References
 ======
 
-Hellström LHO, Smits AJ. 2017. <i>Structure identification in pipe flow using proper orthogonal decomposition.</i> Phil. Trans. R. Soc. A 375: 20160086.
+Raba, M. (2023). <i>Structure identification in Rotating Pipe Flow</i>. (master's thesis). University of Kentucky.
