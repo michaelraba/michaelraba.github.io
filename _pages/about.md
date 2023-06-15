@@ -96,7 +96,7 @@ Simulation Type: Spectral Element Method
 
 Using spectral element solver NEK5000, the <i>direct numerical simulation</i> data is obtained using millions of compute hours. It must be also verified. Is the simuation converged, are boundary conditions correctly implemented and describe our goal? Is the mesh fine enough to capture the essential flow features, especially near the boundary. If these boundary conditions are not specified correctly, it can lead to physically unrealistic results. For example, an incorrectly specified outflow condition might lead to backflow at the outlet, which can cause numerical instabilities. By using benchmark studies, such as are known for a non-rotating pipe, we can become confident our simulation is correct -- gradually introducing the new rotation feature, examining the flow statistics under rotation.
 
-Procedure
+Double Fourier-PCA Procedure
 ======
 
 
