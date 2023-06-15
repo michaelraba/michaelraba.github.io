@@ -31,7 +31,6 @@ Examine the flow's most energetic content *using Fourier-PCA analysis*: we can s
 
 A first hurdle to overcome is algorithm design, how can we engineer an effective implementation using parallel MPI, OpenMP, and vectorization, and data structures -- we need to thoughtfully lay out how to analyse large sets of data. 50 TB of direct numerical simulation data, which is multidimensional, and will be decomposed further in multiple Fourier directions, then PCA-decomposed, then averaged in different directions, involves good memory managmenent, careful parallelization, cacheing, and good algorithm design.
 
-Another thing is, the <i>direct numerical simulation</i> data must be verified. Is the simuation converged, are boundary conditions correctly implemented and describe our goal? Is the mesh fine enough to capture the essential flow features, especially near the boundary. If these boundary conditions are not specified correctly, it can lead to physically unrealistic results. For example, an incorrectly specified outflow condition might lead to backflow at the outlet, which can cause numerical instabilities. By using benchmark studies, such as are known for a non-rotating pipe, we can become confident our simulation is correct -- gradually introducing the new rotation feature, examining the flow statistics under rotation.
 
 Next, we want to answer an engineering design question for our stakeholders: <i>could doing something as simple as rotating the pipe at a slow rate of rotation achieve our relaminarization goal?</i> When we rotate, do there emerge any coherent structures in the flow? How does the PCA modes of vectorial component related? If this question is answered, this can change how aerospace firms deal with say engine design such as rotating detonation engine. Maybe, using this rotation, it is possible to shorten a jet engine geometry, which is weight- and space saving. So it's an important question.
 
@@ -90,6 +89,12 @@ Applications and Extension
 * Data was generated for Reynolds number $Re = \{5,300 , 11,700 \}$ for Rotation numbers $N = 0, 0.5, 1.0 , 2.0 , 3.0$
  * Work can be further extended by higher Reynolds numbers (eg $Re=50,000$), and using ML to interpolate (eg $Re=25,000$)
 * Knowledge Domain :  Wall-bounded Turbulent Flows, Signal processing, Integral equations, Parallel Algorithm Design
+
+
+Simulation Type: Spectral Element Method
+======
+
+Another thing is, the <i>direct numerical simulation</i> data must be verified. Is the simuation converged, are boundary conditions correctly implemented and describe our goal? Is the mesh fine enough to capture the essential flow features, especially near the boundary. If these boundary conditions are not specified correctly, it can lead to physically unrealistic results. For example, an incorrectly specified outflow condition might lead to backflow at the outlet, which can cause numerical instabilities. By using benchmark studies, such as are known for a non-rotating pipe, we can become confident our simulation is correct -- gradually introducing the new rotation feature, examining the flow statistics under rotation.
 
 Procedure
 ======
