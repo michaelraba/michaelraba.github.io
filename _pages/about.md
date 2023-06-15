@@ -29,6 +29,9 @@ cross section view of a single time instance of a flow of reynolds number $Re=11
 
 Examine the flow's most energetic content *using Fourier-PCA analysis*: we can see there is an underlying regularity, so this chaos is really quasi-determinanistic! By working in the spectral domain, and looking at the first few PCA modes, we can represent most salient in a simplified way over time. This is almost magic.
 
+A first hurdle to overcome is algorithm design, how can we engineer an effective implementation using parallel MPI, OpenMP, and vectorization, and data structures -- we need to thoughtfully lay out how to analyse large sets of data. 50 TB of direct numerical simulation data is not trivial!
+
+Next, we want to answer an engineering design question for our stakeholders: <i>could doing something as simple as rotating the pipe at a slow rate of rotation achieve our relaminarization goal?</i> When we rotate, do there emerge any coherent structures in the flow? How does the PCA modes of vectorial component related? If this question is answered, this can change how aerospace firms deal with say engine design such as rotating detonation engine. Maybe, using this rotation, it is possible to shorten the engine, which is weight- and space saving. So it's an important question.
 
 
 
