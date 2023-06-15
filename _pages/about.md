@@ -63,6 +63,8 @@ Next, we want to answer an engineering design question for our stakeholders: <i>
 
 * The most energetic content forms coherent structures, as above. They are hairpin-like structures even in rotation.
 
+This research considers moderate turbulent numbers (5,300 and 11,700) using DNS. This method provides a highly accurate and detailed description of the fluid flow, including all scales of motion, from the smallest (Kolmogorov scale) to the largest (integral scale). However, DNS requires a significant computational cost, as the number of grid points needed scales with the Reynolds number to the power of 9/4, according to Kolmogorov's theory of turbulence. For a flow with a Reynolds number on the order of millions or tens of millions, like the one inside an engine nacelle, performing DNS would indeed be incredibly computationally intensive, so this study is more fundamental.
+
 <figure>
   <img src="/images/place2.png" alt="Alt text">
   <figcaption> Showing the effects of rotation.
