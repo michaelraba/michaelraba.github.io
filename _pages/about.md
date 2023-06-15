@@ -25,9 +25,12 @@ cross section view of a single time instance of a flow of reynolds number $Re=11
 </figcaption>
 </figure>
 
-* Examine the flow's most energetic content *using Fourier-PCA analysis*, average in time, the azimuthal ($\theta$) direction $\in$ spectral domain.
+* We would like to uncover a turbulent flow in a wall-bounded geometry (a pipe). Turbulent flows are highly stochastic, seemingly random. An engineering design goal could be flow relaminarization: it should be less chaotic. What is one way to achieve this?
 
-This decomposition is useful to tease out the periodic nature of turbulence: despite the quasi-random nature of turbulence, after the above procedure, and averaging along the cross-section direction, we see there is a surprising structure to this chaos:
+Examine the flow's most energetic content *using Fourier-PCA analysis*: we can see there is an underlying regularity, so this chaos is really quasi-determinanistic! By working in the spectral domain, and looking at the first few PCA modes, we can represent most salient in a simplified way over time. This is almost magic.
+
+
+
 
 <figure>
   <img src="/images/m5.gif" alt="Alt text">
