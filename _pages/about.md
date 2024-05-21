@@ -15,13 +15,13 @@ I am a student in Mechanical Engineering with:
 
  <!-- Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b> -->
 
-Overview of MSc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling
+Overview of MSc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling (ROM)
 ======
 
 <figure>
   <img src="/images/pipeT2.png" alt="Alt text">
   <figcaption>
-cross section view of a single time instance of a flow of reynolds number $Re=11,700$
+Cross section view of a single time instance of a flow of reynolds number $Re=11,700$
 </figcaption>
 </figure>
 
