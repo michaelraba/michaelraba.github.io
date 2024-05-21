@@ -15,6 +15,7 @@ I am a student in Mechanical Engineering with:
 
  <!-- Currently seeking a research grant-funded PhD position; See my Msc thesis <b>here (coming soon)</b> -->
 
+ <!-- 
 Overview of MSc Research: Effect of Rotation on a pipe's moderately turbulent flow using Reduced Order Modeling (ROM)
 ======
 
@@ -327,4 +328,6 @@ must decompose the $r$ weight as
 References
 ======
 
-Raba, M. (2023). <i>Structure identification in Rotating Pipe Flow</i>. (master's thesis). University of Kentucky.
+Raba, M. (2023). <i>Structure identification in Rotating Pipe Flow</i>. (master's thesis). University of Kentucky. -->
+
+-->
