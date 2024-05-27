@@ -11,6 +11,17 @@ author_profile: true
 
 <iframe src="{{ site.baseurl }}/assets/mikePres/mikePres.html" width="60%" height="60%"></iframe>
 
+<style>
+    .responsive-iframe {
+        width: 80%;
+        height: calc(80% * 1600 / 1560); /* Adjust the height based on the aspect ratio */
+    }
+</style>
+
+<iframe class="responsive-iframe" src="{{ site.baseurl }}/assets/mikePres/mikePres.html"></iframe>
+
+
+
 {% comment %}
 {% if site.talkmap_link == true %}
 
