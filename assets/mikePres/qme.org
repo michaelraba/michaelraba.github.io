@@ -65,4 +65,4 @@
 
 
 * Update For 28 May 2024
-+ \textbf{Summary of Updates}: Fixed Snapshot POD so that it is parallized and runs on LCC.
++ \textbf{Summary of Updates}: Thesis Update
