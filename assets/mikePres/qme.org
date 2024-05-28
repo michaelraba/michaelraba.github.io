@@ -71,6 +71,7 @@
 # [[file:iD/classic-pod-radial.png]]
 
 [[file:./iD/classic-pod-radial.png]]
+[[file:iD/classic-pod-radial.png]]
 
 ** Snapshot-Classic Comparison
 [[file:iD/classic-snapshot-compare-radial.png]]
