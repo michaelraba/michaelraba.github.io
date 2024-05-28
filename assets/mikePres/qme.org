@@ -94,7 +94,7 @@
 
 * Thesis
  + Thesis File
-   # #+BEGIN_EXPORT html
-   # <iframe src="/scratch/miraba2/michaelraba.github.io/assets/m.pdf"
-   # </iframe>
-   # #+END_EXPORT
+#+BEGIN_EXPORT html
+<iframe src="m.pdf"
+</iframe>
+#+END_EXPORT
