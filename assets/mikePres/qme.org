@@ -65,7 +65,7 @@
 
 * Update For 28 May 2024
 + Summary of Updates: Thesis Update
-$\frac{1}{2} = e^{\pi}$
+
 ** Radial Classic
 #+ATTR_HTML: :style width:900px; height:auto;
 [[file:/scratch/miraba2/d/images/classic-pod-radial.png]]
@@ -83,6 +83,8 @@ $\frac{1}{2} = e^{\pi}$
 [[file:/scratch/miraba2/d/images/k.n0.egy.png]]
 ** n=3 Classic
 [[file:/scratch/miraba2/d/images/k.n3.egy.png]]
+** Analysis
+
 
 
 * Reconstruction
