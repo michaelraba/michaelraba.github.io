@@ -78,10 +78,12 @@ $\frac{1}{2} = e^{\pi}$
 ** Klassik POD S=3.0
 [[file:/scratch/miraba2/d/images/pod.k3.0.png]]
 
-* Energy
-[[file:/scratch/miraba2/d/images/screenshot-01.png]]
+* Energy n=0 Classic
 
-[[file:/scratch/miraba2/d/images/screenshot-01.png]]
+[[file:/scratch/miraba2/d/images/k.n0.egy.png]]
+** n=3 Classic
+[[file:/scratch/miraba2/d/images/k.n3.egy.png]]
+
 
 * Reconstruction
 ** Reconstruction
