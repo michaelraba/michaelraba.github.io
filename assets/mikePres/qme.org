@@ -1,5 +1,5 @@
 #+TITLE: Update Slide for Jul 18
-#+AUTHOR: \textbf{M. Raba}
+#+AUTHOR: M. Raba
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
 #+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=1400pt}
