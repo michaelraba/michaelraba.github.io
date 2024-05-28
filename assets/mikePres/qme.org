@@ -66,9 +66,30 @@
 * Update For 28 May 2024
 + Summary of Updates: Thesis Update
 $\frac{1}{2} = e^{\pi}$
-+
-** Energy
+** Radial Classic
+#+ATTR_HTML: :style width:900px; height:auto;
+[[file:/scratch/miraba2/d/images/classic-pod-radial.png]]
+
+** Snapshot-Classic Comparison
+[[file:/scratch/miraba2/d/images/classic-snapshot-compare-radial.png]]
+
+** Klassik POD S=0.0
+[[file:/scratch/miraba2/d/images/pod.k0.0.png]]
+** Klassik POD S=3.0
+[[file:/scratch/miraba2/d/images/pod.k3.0.png]]
+
+* Energy
 [[file:/scratch/miraba2/d/images/screenshot-01.png]]
+
+[[file:/scratch/miraba2/d/images/screenshot-01.png]]
+
+* Reconstruction
 ** Reconstruction
-[[file:/scratch/miraba2/d/images/screenshot-01.png]]
-** Classic POD vs Snapshot POD
+[[file:/scratch/miraba2/d/images/reconstruct-400-50.png]]
+
+* Thesis
+ + Thesis File
+   # #+BEGIN_EXPORT html
+   # <iframe src="/scratch/miraba2/michaelraba.github.io/assets/m.pdf"
+   # </iframe>
+   # #+END_EXPORT
