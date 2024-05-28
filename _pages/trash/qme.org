@@ -1,0 +1,68 @@
+#+TITLE: Update Slide for Jul 18
+#+AUTHOR: \textbf{M. Raba}
+#+LATEX_COMPILER: xelatex
+# this is the size i usually use:
+#+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=1400pt}
+#+latex_header: \mode<beamer>{\usetheme{metropolis}}
+#+LATEX_HEADER:\setcounter{MaxMatrixCols}{20}
+# #+latex_header:\usepackage{xeCJK}
+#+latex_header:\usepackage{fontspec}
+#+latex_header:\setmonofont{DejaVu Sans Mono}
+# #+latex_header:\setmainfont{Avenir LT Std}
+# #+latex_header:\setsansfont{Avenir LT Std}
+# #+latex_header:\setsansfont{SF UI Text}
+# #+latex_header: \setbeamerfont{section}{size=\scriptsize,series=\bfseries,parent=structure}
+# #+latex_header: \setbeamerfont{section}{font=EB Garamond}
+
+#+latex_header: \usepackage{setspace}
+#+latex_header: \onehalfspacing
+#+OPTIONS: toc:nil
+# #+OPTIONS: toc:t
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER:  \usepackage[table]{xcolor}
+#+LATEX_HEADER: \usepackage{colortbl}
+#+LATEX_HEADER:  \usepackage{sectsty}
+#+LATEX_HEADER:  \usepackage{soul}
+#+LATEX_HEADER: \allsectionsfont{\normalfont\sffamily\bfseries}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER:\usepackage{siunitx}
+#+LATEX_HEADER:\usepackage{physics}
+# #+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage[tikz]{bclogo}
+# #+latex_header:\usepackage[citestyle=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+#+latex_header:\usepackage[style=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+# #+latex_header:\addbibresource{bib.bib}
+#+latex_header:\bibliography{bib.bib}
+# #+latex_header:\addbibresource{bib}
+# #+latex_header:\setmainfont[Variant = 1, Ligatures = {Common,Rare}]{Zapfino}%
+# #+latex_header: ​\setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
+# #+latex_header:\usepackage[cache=false]{minted}
+#+latex_header:\usepackage{minted,xcolor}
+# #+latex_header:\usemintedstyle{monokai}
+#+latex_header:\usemintedstyle{manni}
+# #+latex_header:\usemintedstyle{perldoc}
+# #+latex_header:\definecolor{bg}{HTML}{282828}
+# #+latex_header:\definecolor{bg}{HTML}{4d1933} # dark purple color
+# #+latex_header:\definecolor{bg}{HTML}{fdffcf} # yellow
+#+latex_header:\definecolor{bg}{HTML}{ffffe6}
+#+latex_header:\setminted{bgcolor=bg}
+#+latex_header:\setminted{linenos}
+# #+latex_header:\setminted{fontsize=\large}
+# #+latex_header:\setminted{framesep=2mm}
+# #+latex_header:\setminted{escapeinsid=e||,mathescape}
+#+latex_header:\definecolor{Green}{HTML}{4e8566}
+#+latex_header:\definecolor{Purple}{HTML}{820057}
+#+latex_header:\definecolor{tyrianPurple}{HTML}{66023c}
+#+latex_header:\definecolor{Orange}{HTML}{CF4A30}
+#+latex_header:\definecolor{Orange2}{HTML}{ff5500}
+#+latex_header:\definecolor{Tiffany}{HTML}{00ffdd}
+
+#+latex_header:\setbeamercolor{alerted text}{fg=Orange}
+
+#+latex_header:\setbeamercolor{frametitle}{bg=tyrianPurple}
+#+latex_header: \usepackage{tikz}
+#+latex_header: \metroset{block=fill}
+
+
+* Update For 28 May 2024
++ \textbf{Summary of Updates}: Fixed Snapshot POD so that it is parallized and runs on LCC.
