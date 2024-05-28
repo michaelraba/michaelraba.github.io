@@ -68,9 +68,7 @@
 
 ** Radial Classic
 #+ATTR_HTML: :style width:900px; height:auto;
-# [[file:iD/classic-pod-radial.png]]
 
-[[file:./iD/classic-pod-radial.png]]
 [[file:iD/classic-pod-radial.png]]
 
 ** Snapshot-Classic Comparison
