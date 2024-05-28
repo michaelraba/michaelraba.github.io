@@ -68,29 +68,30 @@
 
 ** Radial Classic
 #+ATTR_HTML: :style width:900px; height:auto;
+# [[file:iD/classic-pod-radial.png]]
 
-[[file:images/classic-pod-radial.png]]
+[[file:iD/classic-pod-radial.png]]
 
 ** Snapshot-Classic Comparison
-[[file:/scratch/miraba2/d/images/classic-snapshot-compare-radial.png]]
+[[file:iD/classic-snapshot-compare-radial.png]]
 
 ** Klassik POD S=0.0
-[[file:/scratch/miraba2/d/images/pod.k0.0.png]]
+[[file:iD/pod.k0.0.png]]
 ** Klassik POD S=3.0
-[[file:/scratch/miraba2/d/images/pod.k3.0.png]]
+[[file:iD/pod.k3.0.png]]
 
 * Energy n=0 Classic
 
-[[file:/scratch/miraba2/d/images/k.n0.egy.png]]
+[[file:iD/k.n0.egy.png]]
 ** n=3 Classic
-[[file:/scratch/miraba2/d/images/k.n3.egy.png]]
+[[file:iD/k.n3.egy.png]]
 ** Analysis
 
 
 
 * Reconstruction
 ** Reconstruction
-[[file:/scratch/miraba2/d/images/reconstruct-400-50.png]]
+[[file:iD/reconstruct-400-50.png]]
 
 * Thesis
  + Thesis File
