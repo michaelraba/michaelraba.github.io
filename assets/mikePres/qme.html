@@ -25,6 +25,7 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 <link rel="stylesheet" href="./extra.css"/>
 </head>
@@ -32,48 +33,193 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Update Slide for Jul 18</h1><p class="subtitle"></p>
-<h2 class="author">M. Raba</h2><p class="date">Created: 2024-05-29 Wed 12:35</p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2024-06-10 Mon 12:41</p>
 </section>
 
 <section>
-<section id="slide-orgd7543c9">
-<h2 id="orgd7543c9"><span class="section-number-2">1.</span> Update For 28 May 2024</h2>
+<section id="slide-orgbd55b67">
+<h2 id="orgbd55b67"><span class="section-number-2">1.</span> Update For 7 June 2024</h2>
 <ul>
 <li>Summary of Updates: Thesis Update</li>
 
 </ul>
+<p>
+Following results use 1 cross section
+</p>
+</section>
+<section id="slide-org5a7b1b6">
+<h3 id="org5a7b1b6"><span class="section-number-3">1.1.</span> Classic POD Equations</h3>
+<div>
+\begin{align}
+\label{eq:einstein}
+&\int_{r^{\prime}} \mathbf{S}\left(k ; m ; r, r^{\prime}\right) \Phi^{(n)}\left(k ; m ; r^{\prime}\right) r^{\prime} \mathrm{d} r^{\prime}=\lambda^{(n)}(k ; m) \Phi^{(n)}(k ; m ; r) \\
+&\mathbf{S}\left(k ; m ; r, r^{\prime}\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t \\
+&\alpha^{(n)}(k ; m ; t)=\int_r \mathbf{u}(k ; m ; r, t) \Phi^{(n)^*}(k ; m ; r) r \mathrm{~d} r
+\end{align}
+
+</div>
+</section>
+<section id="slide-org6d67b3a">
+<h3 id="org6d67b3a"><span class="section-number-3">1.2.</span> Classic POD Equations (Fixed)</h3>
+<div>
+\begin{align}
+& \int_{r^{\prime}} \underbrace{r^{1 / 2} S_{i, j}\left(r, r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{W_{i, j}\left(r, r^{\prime} ; m ; f\right)} \underbrace{\phi_j^{*(n)}\left(r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{\hat{\phi}_j^{\psi(i)}\left(r^{\prime} ; m ; f\right)} \mathrm{d} r^{\prime} \\
+& =\underbrace{\lambda^{(n)}(m, f)}_{\hat{\lambda}^{(n)}(m ; f)} \underbrace{r^{1 / 2} \phi_i^{(n)}(r ; m ; f)}_{\hat{\phi}_i^{(n)}(r, m ; f)} \\
+%& \Rightarrow\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau\left(r^{1 / 2} \mathbf{u}(m ; r, t), r^{1 / 2} \\
+%\times \mathbf{u}\left(m ; r, t^{\prime}\right)\right) \alpha_n(m ; t) d t^{\prime} \\
+%&=\lambda_n(m) \alpha_n(m ; t),
+&\alpha_n(m ; t)=\int_r \mathbf{u}(m ; r, t) r^{1 / 2} \Phi_n^*(m ; r) d r
+\end{align}
+
+</div>
 
 </section>
-<section id="slide-orgc4a15da">
-<h3 id="orgc4a15da"><span class="section-number-3">1.1.</span> Radial Classic</h3>
+<section id="slide-org8b28834">
+<h3 id="org8b28834"><span class="section-number-3">1.3.</span> Snapshot POD Equations</h3>
+<div>
+\begin{align}
+&\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t \\
+&=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) \\
+&\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r \\
+&\lim_{\tau \to \infty} \frac{1}{\tau} \int_{0}^{\tau} \mathbf{u}_{\mathbf{T}}(k; m; r, t) \alpha^{(n)*}(k; m; t) \, \mathrm{d}t \\
+&= \Phi_{\mathbf{T}}^{(n)}(k; m; r) \lambda^{(n)}(k; m).
+\end{align}
 
-<div id="org5ddc310" class="figure">
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org70fdc05">
+<h2 id="org70fdc05"><span class="section-number-2">2.</span> Derivation</h2>
+<p>
+To derive the questioned equation, consider the integral:
+</p>
+
+<div>
+\begin{align}
+\frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+
+</div>
+
+<p>
+Substitute \(\mathbf{u}_{\mathrm{T}}\) with its expansion:
+</p>
+
+<div>
+\begin{align}
+\frac{1}{\tau} \int_0^\tau\left(\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r) \alpha^{(l)}(k ; m ; t)\right) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgaa1186c">
+<h3 id="orgaa1186c"><span class="section-number-3">2.1.</span> 4 Derivation</h3>
+<p>
+Exchange the order of summation and integration, and apply orthogonality,
+</p>
+
+<div>
+\begin{align}
+\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(l)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+</div>
+
+<p>
+Due to the orthogonality, all terms where \(l \neq n\) will vanish, and there remains only the \(l=n\) term,
+</p>
+
+<div>
+\begin{align}
+\Phi_{\mathrm{T}}^{(n)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(n)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+</div>
+</section>
+<section id="slide-org1cdcf36">
+<h3 id="org1cdcf36"><span class="section-number-3">2.2.</span> 5 Derivation</h3>
+<p>
+Assuming \(\alpha^{(n)}(k ; m ; t)\) are normalized or that the integration yields a factor that can be absorbed into \(\Phi_{\mathrm{T}}^{(n)}\), this simplifies to,
+</p>
+
+<div>
+\begin{align}
+\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m),
+\end{align}
+
+</div>
+
+<p>
+where the factor \(\lambda^{(n)}(k ; m)\) represents the eigenvalue associated with the \(\alpha^{(n)}\) mode, reflecting its contribution or scaling in the system dynamics.
+</p>
+
+<p>
+This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( \(\Phi_{\mathrm{T}}^{(n)}\) ) of each mode scaled by its eirnificance \(\left(\lambda^{(n)}\right)\).
+</p>
+</section>
+<section id="slide-orga49e26a">
+<h3 id="orga49e26a"><span class="section-number-3">2.3.</span> 6 Derivation</h3>
+<p>
+The eigenvalue problem can now be rewritten to identify the POD coefficients \(\alpha^{(n)}\),
+</p>
+
+<div>
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{R}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) \mathrm{d} t^{\prime}=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t)
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgb6514d2">
+<h3 id="orgb6514d2"><span class="section-number-3">2.4.</span> 7 Derivation</h3>
+<p>
+The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r\). This tensor is now transformed from \(\left[3 r \times 3 r^{\prime}\right]\) to a \(\left[t \times t^{\prime}\right]\) tensor. The \(n\) POD modes are then constructed as,
+</p>
+
+<div>
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) .
+\end{align}
+
+</div>
+
+
+
+</section>
+<section id="slide-orgc38f3b6">
+<h3 id="orgc38f3b6"><span class="section-number-3">2.5.</span> Radial Classic</h3>
+
+<div id="org227a593" class="figure">
 <p><img src="iD/classic-pod-radial.png" alt="classic-pod-radial.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org743b977">
-<h3 id="org743b977"><span class="section-number-3">1.2.</span> Snapshot-Classic Comparison</h3>
+<section id="slide-org8f04236">
+<h3 id="org8f04236"><span class="section-number-3">2.6.</span> Snapshot-Classic Comparison</h3>
 
-<div id="orgde6bb80" class="figure">
+<div id="org3d7a40c" class="figure">
 <p><img src="iD/classic-snapshot-compare-radial.png" alt="classic-snapshot-compare-radial.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org1504930">
-<h3 id="org1504930"><span class="section-number-3">1.3.</span> Klassik POD S=0.0</h3>
+<section id="slide-org8641b3a">
+<h3 id="org8641b3a"><span class="section-number-3">2.7.</span> Klassik POD S=0.0</h3>
 
-<div id="orgcdb6269" class="figure">
+<div id="orge04200c" class="figure">
 <p><img src="iD/pod.k0.0.png" alt="pod.k0.0.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgabe7899">
-<h3 id="orgabe7899"><span class="section-number-3">1.4.</span> Klassik POD S=3.0</h3>
+<section id="slide-orgd04e832">
+<h3 id="orgd04e832"><span class="section-number-3">2.8.</span> Klassik POD S=3.0</h3>
 
-<div id="org9e3b540" class="figure">
+<div id="org6c9047f" class="figure">
 <p><img src="iD/pod.k3.0.png" alt="pod.k3.0.png" />
 </p>
 </div>
@@ -81,39 +227,39 @@
 </section>
 </section>
 <section>
-<section id="slide-org2472c12">
-<h2 id="org2472c12"><span class="section-number-2">2.</span> Energy n=0 Classic</h2>
+<section id="slide-org2c05a1e">
+<h2 id="org2c05a1e"><span class="section-number-2">3.</span> Energy n=0 Classic</h2>
 
-<div id="org3c60cbb" class="figure">
+<div id="orgcc3f612" class="figure">
 <p><img src="iD/k.n0.egy.png" alt="k.n0.egy.png" />
 </p>
 </div>
 </section>
-<section id="slide-org9ce3e59">
-<h3 id="org9ce3e59"><span class="section-number-3">2.1.</span> n=3 Classic</h3>
+<section id="slide-orga4bf782">
+<h3 id="orga4bf782"><span class="section-number-3">3.1.</span> n=3 Classic</h3>
 
-<div id="org2a7d951" class="figure">
+<div id="org53d661d" class="figure">
 <p><img src="iD/k.n3.egy.png" alt="k.n3.egy.png" />
 </p>
 </div>
 </section>
-<section id="slide-org51df30b">
-<h3 id="org51df30b"><span class="section-number-3">2.2.</span> Analysis</h3>
+<section id="slide-org040a8cc">
+<h3 id="org040a8cc"><span class="section-number-3">3.2.</span> Analysis</h3>
 
 
 
 </section>
 </section>
 <section>
-<section id="slide-orge3cc22d">
-<h2 id="orge3cc22d"><span class="section-number-2">3.</span> Reconstruction</h2>
-<div class="outline-text-2" id="text-3">
+<section id="slide-orgb283893">
+<h2 id="orgb283893"><span class="section-number-2">4.</span> Reconstruction</h2>
+<div class="outline-text-2" id="text-4">
 </div>
 </section>
-<section id="slide-orgff8eab1">
-<h3 id="orgff8eab1"><span class="section-number-3">3.1.</span> Reconstruction</h3>
+<section id="slide-org4c0814b">
+<h3 id="org4c0814b"><span class="section-number-3">4.1.</span> Reconstruction</h3>
 
-<div id="org77fda77" class="figure">
+<div id="orgc495d49" class="figure">
 <p><img src="iD/reconstruct-400-50.png" alt="reconstruct-400-50.png" />
 </p>
 </div>
@@ -121,8 +267,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org3a12429">
-<h2 id="org3a12429"><span class="section-number-2">4.</span> Thesis</h2>
+<section id="slide-org2997694">
+<h2 id="org2997694"><span class="section-number-2">5.</span> Thesis</h2>
 <ul>
 <li>Thesis File</li>
 
