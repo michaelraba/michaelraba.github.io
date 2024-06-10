@@ -144,7 +144,7 @@ The cross-correlation tensor $\mathbf{R}$ is defined as $\mathbf{R}\left(k ; m ;
 \end{align}
 
 
-
+* Result Comparison Classic/Snapshot
 ** Radial Classic
 #+ATTR_HTML: :style width:900px; height:auto;
 
