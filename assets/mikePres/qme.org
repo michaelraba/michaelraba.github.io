@@ -92,7 +92,7 @@
    - performs 2d reconstruction + plotSkmr (generates 1d radial graph)
 ** Important Switches
 pipe = Pipe(); creates a Pipe Class. It's properties are stored in
-a struct called caseId(). As the as the functions (above) are called, data is stored
+a struct called caseId(). As the functions (above) are called, data is stored
 in sub-structs:
 1. obj.CaseId - stores properties like Re, rotation number $S$, experimental flags such as quadrature (simpson/trapezoidal), number of gridpoints, frequently called vectors (rMat $r=1,\ldots , 0.5$)
 2. pod - eigen data, used for calculating POD
@@ -128,8 +128,22 @@ in sub-structs:
 &= \Phi_{\mathbf{T}}^{(n)}(k; m; r) \lambda^{(n)}(k; m).
 \end{align}
 
+** Reconstruction
+The reconstruction is given by,
+\begin{align}
+q(\xi,t) - \bar{q}(\xi) &\approx \sum_{j=1}^{r} a_j(t) \varphi_j(\xi) \Rightarrow  \\
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)} (r;m;x)
+\end{align}
+Since the snapshot pod implementation is non error, free, the reconstruction can only be recovered by writing
 
-
+\begin{align}
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \text{(factor)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
+\end{align}
+where $\text{factor} \gg 0$.
 * Derivation
 To derive the questioned equation, consider the integral:
 
@@ -176,7 +190,6 @@ The cross-correlation tensor $\mathbf{R}$ is defined as $\mathbf{R}\left(k ; m ;
 \begin{align}
 \lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) .
 \end{align}
-
 
 * Result Comparison Classic/Snapshot
 ** Radial Classic
