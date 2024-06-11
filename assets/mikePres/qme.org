@@ -143,7 +143,8 @@ q(r,\theta,t;x)
 &=
 \bar{q}(r,\theta,t;x) + \text{(factor)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
 \end{align}
-
+** Reconstruction
+In order to reconstruct in code, src_matlab{caseId.fluctuation = 'off'}
 * Derivation
 To derive the questioned equation, consider the integral:
 
