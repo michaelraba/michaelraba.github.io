@@ -163,7 +163,13 @@ Exchange the order of summation and integration, and apply orthogonality,
 \sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(l)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
 \end{align}
 
-Due to the orthogonality, all terms where $l \neq n$ will vanish, and there remains only the $l=n$ term,
+Due to the orthogonality, namely that $\alpha^{(n)}$ and $\alpha^{(p)}$ are uncorrelated
+
+\begin{align}
+\langle a^{(n)} \alpha^{(p)} \rangle = \lambda^{(n)} \delta_{np}
+\end{align}
+
+all terms where $l \neq n$ will vanish, and there remains only the $l=n$ term,
 
 \begin{align}
 \Phi_{\mathrm{T}}^{(n)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(n)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
