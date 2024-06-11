@@ -140,10 +140,11 @@ for $\text{factor} \gg 0$.
 \begin{align}
 q(r,\theta,t;x)
 &=
-\bar{q}(r,\theta,t;x) + \text{(factor)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
+\bar{q}(r,\theta,t;x) + \text{(factor $\gamma$)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
 \end{align}
 ** Reconstruction
 In order to reconstruct in code, caseId.fluctuation = 'off'. This is incorrect.
+The necessary use of (factor $\gamma$) is incorrect
 * Derivation
 To derive the questioned equation, consider the integral:
 
