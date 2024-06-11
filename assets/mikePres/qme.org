@@ -91,11 +91,10 @@
 5. $\hookrightarrow$  timeReconstructFlow.m
    - performs 2d reconstruction + plotSkmr (generates 1d radial graph)
 ** Important Switches
-pipe = Pipe(); creates a Pipe Class. It's properties are stored in
-a struct called caseId(). As the functions (above) are called, data is stored
+pipe = Pipe(); creates a Pipe Class. As the functions (above) are called, data is stored
 in sub-structs:
 1. obj.CaseId - stores properties like Re, rotation number $S$, experimental flags such as quadrature (simpson/trapezoidal), number of gridpoints, frequently called vectors (rMat $r=1,\ldots , 0.5$)
-2. pod - eigen data, used for calculating POD
+2. obj.pod - eigen data, used for calculating POD
 3. obj.solution - computed POD modes
 4. obj.plt - plot configuration
 
