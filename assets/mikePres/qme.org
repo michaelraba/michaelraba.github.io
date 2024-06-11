@@ -136,7 +136,7 @@ q(r,\theta,t;x)
 &=
 \bar{q}(r,\theta,t;x) + \sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)} (r;m;x)
 \end{align}
-Since the snapshot pod implementation is non error, free, the reconstruction can only be recovered by writing
+Since the snapshot pod implementation is not error-free, the reconstruction can only be recovered by writing
 
 \begin{align}
 q(r,\theta,t;x)
