@@ -2,7 +2,7 @@
 #+AUTHOR: M. Raba
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
-#+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=1400pt}
+#+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
 
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 #+HTML_HEAD: <link rel="stylesheet" href="./extra.css"/>
@@ -11,7 +11,20 @@
 
 # #+latex_header: \mode<beamer>{\usetheme{metropolis}}
 #+reveal_theme: serif
-#+reveal_extra_css: ./org-example.css
+# #+reveal_extra_css: ./custom.css
+#+REVEAL_EXTRA_CSS: custom.css
+
+
+#+HTML_HEAD: <style>
+#+HTML_HEAD: .reveal .MathJax_Display {
+#+HTML_HEAD:     font-size: 75%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: .reveal .MathJax_SVG {
+#+HTML_HEAD:     font-size: 75%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: </style>
+
+
 #+LATEX_HEADER:\setcounter{MaxMatrixCols}{20}
 # #+latex_header: \mode<beamer>{\usetheme{league}}
 # #+latex_header:\usepackage{xeCJK}
