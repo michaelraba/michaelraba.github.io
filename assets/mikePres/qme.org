@@ -137,13 +137,13 @@ q(r,\theta,t;x)
 \bar{q}(r,\theta,t;x) + \sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)} (r;m;x)
 \end{align}
 Since the snapshot pod implementation is not error-free, the reconstruction can only be recovered by writing
-
+for $\text{factor} \gg 0$.
 \begin{align}
 q(r,\theta,t;x)
 &=
 \bar{q}(r,\theta,t;x) + \text{(factor)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
 \end{align}
-where $\text{factor} \gg 0$.
+
 * Derivation
 To derive the questioned equation, consider the integral:
 
