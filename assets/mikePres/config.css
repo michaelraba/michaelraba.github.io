@@ -1,0 +1,22 @@
+/* custom.css */
+
+/* Adjust the size of block (display) equations */
+.reveal .reveal .MathJax_Display {
+    font-size: 75%; /* Adjust this value as needed */
+}
+
+/* Adjust the size of inline equations if needed */
+.reveal .reveal .MathJax_SVG {
+    font-size: 75%; /* Adjust this value as needed */
+}
+
+
+/* For block equations */
+.reveal .slides .MathJax_Display {
+    font-size: 75%;
+}
+
+/* For inline equations */
+.reveal .slides .MathJax_SVG {
+    font-size: 75%;
+}
