@@ -17,10 +17,10 @@
 
 #+HTML_HEAD: <style>
 #+HTML_HEAD: .reveal .MathJax_Display {
-#+HTML_HEAD:     font-size: 75%; /* Adjust this value as needed */
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
 #+HTML_HEAD: }
 #+HTML_HEAD: .reveal .MathJax_SVG {
-#+HTML_HEAD:     font-size: 75%; /* Adjust this value as needed */
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
 #+HTML_HEAD: }
 #+HTML_HEAD: </style>
 
