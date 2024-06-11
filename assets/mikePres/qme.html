@@ -45,13 +45,13 @@ font-size: 75%; /* Adjust this value as needed */
 </section>
 
 <section>
-<section id="slide-org593a52c">
-<h2 id="org593a52c"><span class="section-number-2">1.</span> Code Execution and Layout</h2>
+<section id="slide-org90eff01">
+<h2 id="org90eff01"><span class="section-number-2">1.</span> Code Execution and Layout</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
-<section id="slide-org268333b">
-<h3 id="org268333b"><span class="section-number-3">1.1.</span> Layout</h3>
+<section id="slide-org4f02de3">
+<h3 id="org4f02de3"><span class="section-number-3">1.1.</span> Layout</h3>
 <ol>
 <li>b7.m</li>
 <li>initSpectral.m
@@ -67,8 +67,8 @@ font-size: 75%; /* Adjust this value as needed */
 
 </ol>
 </section>
-<section id="slide-org721575d">
-<h3 id="org721575d"><span class="section-number-3">1.2.</span> Layout 2</h3>
+<section id="slide-org80d06f8">
+<h3 id="org80d06f8"><span class="section-number-3">1.2.</span> Layout 2</h3>
 <ol>
 <li>\(\hookrightarrow\) initPod.m
 <ul>
@@ -83,8 +83,8 @@ font-size: 75%; /* Adjust this value as needed */
 
 </ol>
 </section>
-<section id="slide-org619c43d">
-<h3 id="org619c43d"><span class="section-number-3">1.3.</span> Important Switches</h3>
+<section id="slide-org384f12f">
+<h3 id="org384f12f"><span class="section-number-3">1.3.</span> Important Switches</h3>
 <p>
 pipe = Pipe(); creates a Pipe Class. It&rsquo;s properties are stored in
 a struct called caseId(). As the functions (above) are called, data is stored
@@ -101,13 +101,13 @@ in sub-structs:
 </section>
 </section>
 <section>
-<section id="slide-org930c753">
-<h2 id="org930c753"><span class="section-number-2">2.</span> Equations Used in Code Procedure</h2>
+<section id="slide-org7b5e036">
+<h2 id="org7b5e036"><span class="section-number-2">2.</span> Equations Used in Code Procedure</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
-<section id="slide-org1026091">
-<h3 id="org1026091"><span class="section-number-3">2.1.</span> Classic POD Equations</h3>
+<section id="slide-org3fb715f">
+<h3 id="org3fb715f"><span class="section-number-3">2.1.</span> Classic POD Equations</h3>
 <ul>
 <li>The following equations are used in the above code.</li>
 
@@ -123,8 +123,8 @@ in sub-structs:
 
 </div>
 </section>
-<section id="slide-orgcf2daa2">
-<h3 id="orgcf2daa2"><span class="section-number-3">2.2.</span> Classic POD Equations (Fixed)</h3>
+<section id="slide-orgab68a11">
+<h3 id="orgab68a11"><span class="section-number-3">2.2.</span> Classic POD Equations (Fixed)</h3>
 <div>
 \begin{align}
 & \int_{r^{\prime}} \underbrace{r^{1 / 2} S_{i, j}\left(r, r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{W_{i, j}\left(r, r^{\prime} ; m ; f\right)} \underbrace{\phi_j^{*(n)}\left(r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{\hat{\phi}_j^{\psi(i)}\left(r^{\prime} ; m ; f\right)} \mathrm{d} r^{\prime} \\
@@ -138,8 +138,8 @@ in sub-structs:
 </div>
 
 </section>
-<section id="slide-org3b7749b">
-<h3 id="org3b7749b"><span class="section-number-3">2.3.</span> Snapshot POD Equations</h3>
+<section id="slide-org703c7d7">
+<h3 id="org703c7d7"><span class="section-number-3">2.3.</span> Snapshot POD Equations</h3>
 <div>
 \begin{align}
 &\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t \\
@@ -152,8 +152,8 @@ in sub-structs:
 </div>
 
 </section>
-<section id="slide-org171276c">
-<h3 id="org171276c"><span class="section-number-3">2.4.</span> Reconstruction</h3>
+<section id="slide-org84c1b47">
+<h3 id="org84c1b47"><span class="section-number-3">2.4.</span> Reconstruction</h3>
 <p>
 The reconstruction is given by,
 </p>
@@ -168,8 +168,8 @@ q(r,\theta,t;x)
 </div>
 <p>
 Since the snapshot pod implementation is not error-free, the reconstruction can only be recovered by writing
+for \(\text{factor} \gg 0\).
 </p>
-
 <div>
 \begin{align}
 q(r,\theta,t;x)
@@ -178,14 +178,12 @@ q(r,\theta,t;x)
 \end{align}
 
 </div>
-<p>
-where \(\text{factor} \gg 0\).
-</p>
+
 </section>
 </section>
 <section>
-<section id="slide-org3ee3ac9">
-<h2 id="org3ee3ac9"><span class="section-number-2">3.</span> Derivation</h2>
+<section id="slide-org85a1e1b">
+<h2 id="org85a1e1b"><span class="section-number-2">3.</span> Derivation</h2>
 <p>
 To derive the questioned equation, consider the integral:
 </p>
@@ -208,8 +206,8 @@ Substitute \(\mathbf{u}_{\mathrm{T}}\) with its expansion:
 
 </div>
 </section>
-<section id="slide-orgb3c33c0">
-<h3 id="orgb3c33c0"><span class="section-number-3">3.1.</span> 4 Derivation</h3>
+<section id="slide-org39575db">
+<h3 id="org39575db"><span class="section-number-3">3.1.</span> 4 Derivation</h3>
 <p>
 Exchange the order of summation and integration, and apply orthogonality,
 </p>
@@ -232,8 +230,8 @@ Due to the orthogonality, all terms where \(l \neq n\) will vanish, and there re
 
 </div>
 </section>
-<section id="slide-org23b8366">
-<h3 id="org23b8366"><span class="section-number-3">3.2.</span> 5 Derivation</h3>
+<section id="slide-orgc40740c">
+<h3 id="orgc40740c"><span class="section-number-3">3.2.</span> 5 Derivation</h3>
 <p>
 Assuming \(\alpha^{(n)}(k ; m ; t)\) are normalized or that the integration yields a factor that can be absorbed into \(\Phi_{\mathrm{T}}^{(n)}\), this simplifies to,
 </p>
@@ -253,8 +251,8 @@ where the factor \(\lambda^{(n)}(k ; m)\) represents the eigenvalue associated w
 This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( \(\Phi_{\mathrm{T}}^{(n)}\) ) of each mode scaled by its eirnificance \(\left(\lambda^{(n)}\right)\).
 </p>
 </section>
-<section id="slide-org2699391">
-<h3 id="org2699391"><span class="section-number-3">3.3.</span> 6 Derivation</h3>
+<section id="slide-org52f7154">
+<h3 id="org52f7154"><span class="section-number-3">3.3.</span> 6 Derivation</h3>
 <p>
 The eigenvalue problem can now be rewritten to identify the POD coefficients \(\alpha^{(n)}\),
 </p>
@@ -266,8 +264,8 @@ The eigenvalue problem can now be rewritten to identify the POD coefficients \(\
 
 </div>
 </section>
-<section id="slide-org866bb22">
-<h3 id="org866bb22"><span class="section-number-3">3.4.</span> 7 Derivation</h3>
+<section id="slide-orga1c2add">
+<h3 id="orga1c2add"><span class="section-number-3">3.4.</span> 7 Derivation</h3>
 <p>
 The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r\). This tensor is now transformed from \(\left[3 r \times 3 r^{\prime}\right]\) to a \(\left[t \times t^{\prime}\right]\) tensor. The \(n\) POD modes are then constructed as,
 </p>
@@ -282,41 +280,41 @@ The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; 
 </section>
 </section>
 <section>
-<section id="slide-org9ef1d7a">
-<h2 id="org9ef1d7a"><span class="section-number-2">4.</span> Result Comparison Classic/Snapshot</h2>
+<section id="slide-org6ad5d39">
+<h2 id="org6ad5d39"><span class="section-number-2">4.</span> Result Comparison Classic/Snapshot</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 </section>
-<section id="slide-org6021044">
-<h3 id="org6021044"><span class="section-number-3">4.1.</span> Radial Classic</h3>
+<section id="slide-org8fdcb95">
+<h3 id="org8fdcb95"><span class="section-number-3">4.1.</span> Radial Classic</h3>
 
-<div id="org73090ea" class="figure">
+<div id="orge8ac27c" class="figure">
 <p><img src="iD/classic-pod-radial.png" alt="classic-pod-radial.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orga934702">
-<h3 id="orga934702"><span class="section-number-3">4.2.</span> Snapshot-Classic Comparison</h3>
+<section id="slide-orgab337cc">
+<h3 id="orgab337cc"><span class="section-number-3">4.2.</span> Snapshot-Classic Comparison</h3>
 
-<div id="org3a8d291" class="figure">
+<div id="orgf089aca" class="figure">
 <p><img src="iD/classic-snapshot-compare-radial.png" alt="classic-snapshot-compare-radial.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org83a6d44">
-<h3 id="org83a6d44"><span class="section-number-3">4.3.</span> Klassik POD S=0.0</h3>
+<section id="slide-org6547b43">
+<h3 id="org6547b43"><span class="section-number-3">4.3.</span> Klassik POD S=0.0</h3>
 
-<div id="org25e6a38" class="figure">
+<div id="orgb14c00b" class="figure">
 <p><img src="iD/pod.k0.0.png" alt="pod.k0.0.png" />
 </p>
 </div>
 </section>
-<section id="slide-org9379330">
-<h3 id="org9379330"><span class="section-number-3">4.4.</span> Klassik POD S=3.0</h3>
+<section id="slide-org9e6b38b">
+<h3 id="org9e6b38b"><span class="section-number-3">4.4.</span> Klassik POD S=3.0</h3>
 
-<div id="orgdbeee6e" class="figure">
+<div id="org92113af" class="figure">
 <p><img src="iD/pod.k3.0.png" alt="pod.k3.0.png" />
 </p>
 </div>
@@ -324,39 +322,39 @@ The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; 
 </section>
 </section>
 <section>
-<section id="slide-org6fa76db">
-<h2 id="org6fa76db"><span class="section-number-2">5.</span> Energy n=0 Classic</h2>
+<section id="slide-org9b1400a">
+<h2 id="org9b1400a"><span class="section-number-2">5.</span> Energy n=0 Classic</h2>
 
-<div id="orgaeb8030" class="figure">
+<div id="orgb85e5e9" class="figure">
 <p><img src="iD/k.n0.egy.png" alt="k.n0.egy.png" />
 </p>
 </div>
 </section>
-<section id="slide-org7345b6c">
-<h3 id="org7345b6c"><span class="section-number-3">5.1.</span> n=3 Classic</h3>
+<section id="slide-orgcf12525">
+<h3 id="orgcf12525"><span class="section-number-3">5.1.</span> n=3 Classic</h3>
 
-<div id="orgda78bd5" class="figure">
+<div id="org98e79e3" class="figure">
 <p><img src="iD/k.n3.egy.png" alt="k.n3.egy.png" />
 </p>
 </div>
 </section>
-<section id="slide-org78e4ae5">
-<h3 id="org78e4ae5"><span class="section-number-3">5.2.</span> Analysis</h3>
+<section id="slide-org482b717">
+<h3 id="org482b717"><span class="section-number-3">5.2.</span> Analysis</h3>
 
 
 
 </section>
 </section>
 <section>
-<section id="slide-org9e01da0">
-<h2 id="org9e01da0"><span class="section-number-2">6.</span> Reconstruction</h2>
+<section id="slide-orgbd094cc">
+<h2 id="orgbd094cc"><span class="section-number-2">6.</span> Reconstruction</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </section>
-<section id="slide-orge37ccd7">
-<h3 id="orge37ccd7"><span class="section-number-3">6.1.</span> Reconstruction</h3>
+<section id="slide-orgbdec117">
+<h3 id="orgbdec117"><span class="section-number-3">6.1.</span> Reconstruction</h3>
 
-<div id="orga47e40e" class="figure">
+<div id="orgc0f02f1" class="figure">
 <p><img src="iD/reconstruct-400-50.png" alt="reconstruct-400-50.png" />
 </p>
 </div>
@@ -364,8 +362,8 @@ The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; 
 </section>
 </section>
 <section>
-<section id="slide-org13f43db">
-<h2 id="org13f43db"><span class="section-number-2">7.</span> Thesis</h2>
+<section id="slide-org421da2b">
+<h2 id="org421da2b"><span class="section-number-2">7.</span> Thesis</h2>
 <ul>
 <li>Thesis File</li>
 
