@@ -1,4 +1,4 @@
-#+TITLE: Update Slide for Jul 18
+#+TITLE: Update Slide for June 11
 #+AUTHOR: M. Raba
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
@@ -6,6 +6,8 @@
 
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 #+HTML_HEAD: <link rel="stylesheet" href="./extra.css"/>
+#+REVEAL_HTML_HEAD_EXTRA: <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+#+REVEAL_HTML_HEAD_EXTRA: <script>mermaid.initialize({ startOnLoad: true });</script>
 
 # #+latex_header: \mode<beamer>{\usetheme{metropolis}}
 #+reveal_theme: serif
@@ -63,11 +65,30 @@
 #+latex_header: \usepackage{tikz}
 #+latex_header: \metroset{block=fill}
 
-* Update For 7 June 2024
-+ Summary of Updates: Thesis Update
-Following results use 1 cross section
-** Classic POD Equations
+* Code Execution and Layout
+** Layout
+1. b7.m
+2. initSpectral.m
+   - reads in binary files, takes eg m-fft
+3. $\hookrightarrow$ initEigs.m
+   - forms corrMat, finds eigenvalues
+**  Layout 2
+4. $\hookrightarrow$ initPod.m
+   - carries out POD calculations (quadrature, multiplication ggf betwen  $\alpha \Phi$) according to Papers (Citriniti George 2000 for Classic POD, Hellstrom Smits 2017 for Snapshot POD)
+5. $\hookrightarrow$  timeReconstructFlow.m
+   - performs 2d reconstruction + plotSkmr (generates 1d radial graph)
+** Important Switches
+pipe = Pipe(); creates a Pipe Class. It's properties are stored in
+a struct called caseId(). As the as the functions (above) are called, data is stored
+in sub-structs:
+1. obj.CaseId - stores properties like Re, rotation number $S$, experimental flags such as quadrature (simpson/trapezoidal), number of gridpoints, frequently called vectors (rMat $r=1,\ldots , 0.5$)
+2. pod - eigen data, used for calculating POD
+3. obj.solution - computed POD modes
+4. obj.plt - plot configuration
 
+* Equations Used in Code Procedure
+** Classic POD Equations
++ The following equations are used in the above code.
 
 \begin{align}
 \label{eq:einstein}
