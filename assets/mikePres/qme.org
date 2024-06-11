@@ -175,23 +175,9 @@ all terms where $l \neq n$ will vanish, and there remains only the $l=n$ term,
 \begin{align}
 \Phi_{\mathrm{T}}^{(n)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(n)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
 \end{align}
-** 5 Derivation
-Assuming $\alpha^{(n)}(k ; m ; t)$ are normalized or that the integration yields a factor that can be absorbed into $\Phi_{\mathrm{T}}^{(n)}$, this simplifies to,
 
-\begin{align}
-\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m),
-\end{align}
-
-where the factor $\lambda^{(n)}(k ; m)$ represents the eigenvalue associated with the $\alpha^{(n)}$ mode, reflecting its contribution or scaling in the system dynamics.
-
-This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( $\Phi_{\mathrm{T}}^{(n)}$ ) of each mode scaled by its eirnificance $\left(\lambda^{(n)}\right)$.
+This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( $\Phi_{\mathrm{T}}^{(n)}$ ) of each mode scaled by its significance $\left(\lambda^{(n)}\right)$.
 ** 6 Derivation
-The eigenvalue problem can now be rewritten to identify the POD coefficients $\alpha^{(n)}$,
-
-\begin{align}
-\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{R}\left(k ; m ; t, t^{\prime}\right) \alpha^{(n)}\left(k ; m ; t^{\prime}\right) \mathrm{d} t^{\prime}=\lambda^{(n)}(k ; m) \alpha^{(n)}(k ; m ; t)
-\end{align}
-** 7 Derivation
 The cross-correlation tensor $\mathbf{R}$ is defined as $\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r$. This tensor is now transformed from $\left[3 r \times 3 r^{\prime}\right]$ to a $\left[t \times t^{\prime}\right]$ tensor. The $n$ POD modes are then constructed as,
 
 \begin{align}
