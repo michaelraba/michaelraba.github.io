@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
 <head>
 <meta charset="utf-8"/>
 <title>Anand Model: Theoretical Forumation and Application to Solder Joints</title>
@@ -29,16 +25,18 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Theoretical Forumation and Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-20 Sun 22:16</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-26 Sat 13:36</p>
 </section>
+
 <section>
-<section id="slide-orgb468722">
-<h2 id="orgb468722">Source Paper</h2>
+<section id="slide-org8ac6138">
+<h2 id="org8ac6138">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -65,8 +63,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org33965ff">
-<h2 id="org33965ff">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
+<section id="slide-orgadc4415">
+<h2 id="orgadc4415">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -88,12 +86,11 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org237f8d5">
-<h2 id="org237f8d5">Breakthrough Features of Anand’s Viscoplastic Model</h2>
+<section id="slide-org3a932e7">
+<h2 id="org3a932e7">Breakthrough Features of Anand’s Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-size: 1.03em; font-family: 'Segoe UI', sans-serif;">
 
 <div style="flex: 1; border-left: 6px solid #a5a5a5; background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); border-radius: 8px; padding: 1.2em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1);">
@@ -146,8 +143,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-org8f040ee">
-<h3 id="org8f040ee">Formulation pipeline for Anand’s viscoplastic model</h3>
+<section id="slide-orge5c87cc">
+<h3 id="orge5c87cc">Formulation pipeline for Anand’s viscoplastic model</h3>
 <div style="border-left: 6px solid #2e86de; background: rgba(46, 134, 222, 0.05); padding: 1.2em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <b style="color: #2e86de;">Visual Roadmap of Anand’s Model</b><br/><br/>
 
@@ -159,8 +156,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-orgb93e6df">
-<h3 id="orgb93e6df">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h3>
+<section id="slide-org786da54">
+<h3 id="org786da54">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
 
 <div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
@@ -223,8 +220,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-orgda4cc31">
-<h3 id="orgda4cc31">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
+<section id="slide-orgb7d4cc8">
+<h3 id="orgb7d4cc8">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.07); padding: 1em 1.5em; border-radius: 8px;">
@@ -251,11 +248,77 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 
 </div>
 
+
+
+
 </section>
 </section>
 <section>
-<section id="slide-org1becfe0">
-<h2 id="org1becfe0">Material Parameters in Anand’s Viscoplastic Model</h2>
+<section id="slide-org7d187d3">
+<h2 id="org7d187d3">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<!-- Left column -->
+<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #1f77b4; margin-bottom: 0.5em;">Flow Rule (Plastic Strain Rate)</div>
+  <ul>
+    <li>\[
+    \dot{\varepsilon}^p = A \exp\left( -\frac{Q}{RT} \right)
+    \left[ \sinh\left( \frac{j \sigma}{s} \right) \right]^{1/m}
+    \]</li>
+    <li>Plastic strain rate increases with stress and temperature.</li>
+    <li>No explicit yield surface; flow occurs at all nonzero stresses.</li>
+  </ul>
+
+  <div style="font-weight: bold; color: #1f77b4; margin: 1em 0 0.5em;">Deformation Resistance Saturation \( s^* \)</div>
+  <ul>
+    <li>\[
+    s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{RT} \right) \right)^n
+    \]</li>
+    <li>Defines the steady-state value that \( s \) evolves toward.</li>
+    <li>Depends on strain rate and temperature.</li>
+  </ul>
+</div>
+
+<!-- Right column -->
+<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #ff7f0e; margin-bottom: 0.5em;">Evolution of Deformation Resistance \( s \)</div>
+  <ul>
+    <li>\[
+    \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a
+    \, \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p
+    \]</li>
+    <li>Describes dynamic hardening and softening of the material.</li>
+    <li>\( s \) evolves depending on proximity to \( s^* \) and flow activity.</li>
+  </ul>
+
+  <div style="font-size: 0.9em; color: #666; margin-top: 1em;">
+    Note: Constants \( A, Q, m, j, h_0, \hat{s}, n, a \) are material-specific and fitted to experimental creep/strain rate data.
+  </div>
+</div>
+
+</div>
+
+
+</section>
+<section id="slide-orge263393">
+<h3 id="orge263393">Parameter m</h3>
+<ul>
+<li>As \( m \to 0 \), the material behaves almost like rate-independent plasticity: very sharp yielding.</li>
+<li>As \( m \to 1 \), the material flows smoothly with almost no sharp yield point (strong rate sensitivity).</li>
+
+</ul>
+
+<video controls>
+  <source src="manimAnim/media/videos/m16/1080p60/AnandFlowAndAccumulatedStrain.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</section>
+</section>
+<section>
+<section id="slide-org1020750">
+<h2 id="org1020750">Material Parameters in Anand’s Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -306,8 +369,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 
 
 </section>
-<section id="slide-orgae1dbd0">
-<h3 id="orgae1dbd0">How Anand’s Model Unifies Creep and Plasticity</h3>
+<section id="slide-orge710249">
+<h3 id="orge710249">How Anand’s Model Unifies Creep and Plasticity</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
 
 <div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
@@ -369,8 +432,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 
 
 </section>
-<section id="slide-org2f8457f">
-<h3 id="org2f8457f">Interpretation of Intermediate Terms (S3 &amp; S4)</h3>
+<section id="slide-orge6c05ba">
+<h3 id="orge6c05ba">Interpretation of Intermediate Terms (S3 &amp; S4)</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #17becf; background: rgba(23, 190, 207, 0.07); padding: 1em 1.5em; border-radius: 8px;">
@@ -401,8 +464,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 
 
 </section>
-<section id="slide-org911e23f">
-<h3 id="org911e23f">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
+<section id="slide-orgbf6b4b6">
+<h3 id="orgbf6b4b6">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.07); padding: 1em 1.5em; border-radius: 8px;">
@@ -431,8 +494,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-orgdb51876">
-<h2 id="orgdb51876">How Anand’s Model Unifies Creep and Plasticity</h2>
+<section id="slide-org137a789">
+<h2 id="org137a789">How Anand’s Model Unifies Creep and Plasticity</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
 
 <div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
@@ -495,8 +558,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-orgfde6f20">
-<h2 id="orgfde6f20">Case Study: Wang (2001)</h2>
+<section id="slide-org5ac672f">
+<h2 id="org5ac672f">Case Study: Wang (2001)</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1;">
@@ -519,8 +582,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-orga70a4fb">
-<h3 id="orga70a4fb">Comparing Anand Model Predictions at Two Strain Rates</h3>
+<section id="slide-orga093524">
+<h3 id="orga093524">Comparing Anand Model Predictions at Two Strain Rates</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -554,8 +617,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-org9da75fa">
-<h3 id="org9da75fa">Anand Approximation</h3>
+<section id="slide-org097e9b6">
+<h3 id="org097e9b6">Anand Approximation</h3>
 <div style="display: flex; flex-direction: column; gap: 1.5em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Section: Title and Image -->
@@ -585,8 +648,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-orgdf16459">
-<h3 id="orgdf16459">What If the Material Were Not Viscoplastic?</h3>
+<section id="slide-org5cd7d29">
+<h3 id="org5cd7d29">What If the Material Were Not Viscoplastic?</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -615,8 +678,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-orgb9b59f9">
-<h2 id="orgb9b59f9">Summary of Anand’s Model</h2>
+<section id="slide-org9e20e96">
+<h2 id="org9e20e96">Summary of Anand’s Model</h2>
 <style>
 .ribbon-box {
   padding: 1em;
