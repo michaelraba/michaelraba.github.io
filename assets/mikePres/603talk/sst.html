@@ -31,12 +31,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Theoretical Forumation and Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-26 Sat 15:03</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-26 Sat 15:29</p>
 </section>
 
 <section>
-<section id="slide-org26bdfa9">
-<h2 id="org26bdfa9">Source Paper</h2>
+<section id="slide-org1fdbebd">
+<h2 id="org1fdbebd">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -63,8 +63,34 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orgdf8ff09">
-<h2 id="orgdf8ff09">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
+<section id="slide-org17f277c">
+<h2 id="org17f277c">Case Study: Wang (2001)</h2>
+<div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
+
+  <div style="flex: 1;">
+    <img src="wangPaper.png" alt="Wang Paper" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2); margin-bottom: 1em;" />
+    <div style="font-size: 0.9em; color: #666;">
+      Source: Wang, C. H. (2001). “A Unified Creep–Plasticity Model for Solder Alloys.” <br/>
+      <b>DOI:</b> <a href="https://doi.org/10.1115/1.1371781" target="_blank">10.1115/1.1371781</a>
+    </div>
+  </div>
+
+  <div style="flex: 2; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1.2em 1.5em; border-radius: 8px;">
+    <div style="font-weight: bold; color: #1f77b4; font-size: 1.2em; margin-bottom: 0.5em;">Why Wang's Paper Matters</div>
+    <ul style="line-height: 1.6;">
+      <li>Applies Anand’s unified viscoplastic framework to model solder behavior.</li>
+      <li>Focuses on thermal cycling fatigue and rate-dependent deformation.</li>
+      <li>Demonstrates how Anand's model can be reduced and fitted from experiments.</li>
+      <li>Helps transition the theory into engineering-scale implementation.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org62847e4">
+<h2 id="org62847e4">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -87,52 +113,10 @@ These are speaker notes visible only in presenter mode.
 
 </div>
 </section>
-<section id="slide-org1a776c2">
-<h3 id="org1a776c2">Mapping Anand’s Section 3 to Wang’s Model</h3>
-<div style="border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<table style="width:100%; border-collapse: collapse; font-size: 0.95em;">
-<thead>
-<tr>
-<th style="border-bottom: 2px solid #ccc; text-align: left;">Anand (1985)</th>
-<th style="border-bottom: 2px solid #ccc; text-align: left;">Role</th>
-<th style="border-bottom: 2px solid #ccc; text-align: left;">Wang (2001)</th>
-<th style="border-bottom: 2px solid #ccc; text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td style="padding: 0.5em;">(77) \( \dot{T} = \mathbb{L} [D - D^p] - \eta \mathbb{I} \)</td>
-<td style="padding: 0.5em;">Elastic stress–strain–temperature relation</td>
-<td style="padding: 0.5em;">Not included explicitly</td>
-<td style="padding: 0.5em;">Elasticity assumed handled separately in FEM.</td>
-</tr>
-
-<tr>
-<td style="padding: 0.5em;">(78)-(80) \( D^p = \dot{\gamma}^p \frac{T'}{2\tau} \)</td>
-<td style="padding: 0.5em;">Plastic flow rule based on deviatoric stress</td>
-<td style="padding: 0.5em;">\( \dot{\varepsilon}^p = A \exp\left( -\frac{Q}{RT} \right) \left[ \sinh\left( \frac{j\sigma}{s} \right) \right]^{1/m} \)</td>
-<td style="padding: 0.5em;">Flow scalarized: stress–strain relation based on effective stress \( \sigma \).</td>
-</tr>
-
-<tr>
-<td style="padding: 0.5em;">(81)-(86) \( \dot{s} = h(\sigma, s, \theta) \dot{\varepsilon}^p - r(s, \theta) \)</td>
-<td style="padding: 0.5em;">Evolution of deformation resistance \( s \)</td>
-<td style="padding: 0.5em;">\( \dot{s} = h_0 \left( 1 - \frac{s}{s^*} \right)^a \dot{\varepsilon}^p \)</td>
-<td style="padding: 0.5em;">Hardening toward \( s^* \); no explicit static recovery \( r \) included.</td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-</section>
 </section>
 <section>
-<section id="slide-org3e06c15">
-<h2 id="org3e06c15">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-org537f795">
+<h2 id="org537f795">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -176,13 +160,14 @@ These are speaker notes visible only in presenter mode.
 
 </div>
 
-
 </section>
-<section id="slide-org8cbd627">
-<h3 id="org8cbd627">Parameter m for Sixty tin  forty lead solder</h3>
+</section>
+<section>
+<section id="slide-org033ee4f">
+<h2 id="org033ee4f">Strain rate sensativity of stress m</h2>
 <ul>
-<li>As \( m \to 0 \), the material behaves almost like rate-independent plasticity: very sharp yielding.</li>
-<li>As \( m \to 1 \), the material flows smoothly with almost no sharp yield point (strong rate sensitivity).</li>
+<li>As \( m \to 0 \), rate insensative (yield)</li>
+<li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
 
 </ul>
 
@@ -191,43 +176,11 @@ These are speaker notes visible only in presenter mode.
   Your browser does not support the video tag.
 </video>
 
-
 </section>
-<section id="slide-org3b4d028">
-<h3 id="org3b4d028">Understanding When \( s^* \) is Fixed in Anand&rsquo;s Model</h3>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<!-- Left column -->
-<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #1f77b4; margin-bottom: 0.5em;">Condition for \( s^* \) Being Fixed</div>
-  <ul>
-    <li><b>Constant</b> \( \dot{\varepsilon}^p \) <b>and</b> \( T \):</li>
-    <ul>
-      <li>\( s^* \) can be treated as <b>approximately fixed</b></li>
-    </ul>
-    <li><b>Varying</b> \( \dot{\varepsilon}^p \) <b>or</b> \( T \):</li>
-    <ul>
-      <li>\( s^* \) <b>evolves</b> and must be updated dynamically</li>
-    </ul>
-  </ul>
-</div>
-
-<!-- Right column -->
-<div style="flex: 1; border-left: 6px solid #d62728; background: rgba(214, 39, 40, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #d62728; margin-bottom: 0.5em;">Expression for \( s^* \)</div>
-  <p>In Wang's paper and Anand's original model, \( s^* \) is given by:</p>
-  <p style="text-align: center; margin: 1em 0; font-size: 1.2em;">
-    \[ s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} e^{Q/RT} \right)^n \]
-  </p>
-  <p>\( s^* \) explicitly <b>depends on strain rate</b> ( \( \dot{\varepsilon}^p \) ) and <b>temperature</b> ( \( T \) ).</p>
-</div>
-
-</div>
-
-
 </section>
-<section id="slide-orgaaa73bd">
-<h3 id="orgaaa73bd">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section>
+<section id="slide-org70442e5">
+<h2 id="org70442e5">Anand Viscoplasticity Constants for 60Sn40Pb</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -266,10 +219,11 @@ These are speaker notes visible only in presenter mode.
 
 </div>
 
-
 </section>
-<section id="slide-org0f89e7f">
-<h3 id="org0f89e7f">Internal Variable \( s \) in Anand and Wang Models</h3>
+</section>
+<section>
+<section id="slide-org2516a63">
+<h2 id="org2516a63">Internal Variable \( s \) in Anand and Wang Models</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -313,36 +267,11 @@ These are speaker notes visible only in presenter mode.
 
 </div>
 
-
 </section>
 </section>
 <section>
-<section id="slide-org860a1f4">
-<h2 id="org860a1f4">Case Study: Wang (2001)</h2>
-<div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
-
-  <div style="flex: 1;">
-    <img src="wangPaper.png" alt="Wang Paper" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2); margin-bottom: 1em;" />
-    <div style="font-size: 0.9em; color: #666;">
-      Source: Wang, C. H. (2001). “A Unified Creep–Plasticity Model for Solder Alloys.” <br/>
-      <b>DOI:</b> <a href="https://doi.org/10.1115/1.1371781" target="_blank">10.1115/1.1371781</a>
-    </div>
-  </div>
-
-  <div style="flex: 2; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1.2em 1.5em; border-radius: 8px;">
-    <div style="font-weight: bold; color: #1f77b4; font-size: 1.2em; margin-bottom: 0.5em;">Why Wang's Paper Matters</div>
-    <ul style="line-height: 1.6;">
-      <li>Applies Anand’s unified viscoplastic framework to model solder behavior.</li>
-      <li>Focuses on thermal cycling fatigue and rate-dependent deformation.</li>
-      <li>Demonstrates how Anand's model can be reduced and fitted from experiments.</li>
-      <li>Helps transition the theory into engineering-scale implementation.</li>
-    </ul>
-  </div>
-</div>
-
-</section>
-<section id="slide-orga0024b9">
-<h3 id="orga0024b9">Comparing Anand Model Predictions at Two Strain Rates</h3>
+<section id="slide-orga83d09b">
+<h2 id="orga83d09b">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -376,39 +305,10 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
-<section id="slide-org73082c9">
-<h3 id="org73082c9">Anand Approximation</h3>
-<div style="display: flex; flex-direction: column; gap: 1.5em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<!-- Section: Title and Image -->
-<div style="display: flex; flex-direction: row; gap: 2em;">
-  <div style="flex: 1;">
-    <img src="wangHa.png" alt="Wang Figure Comparison" style="width: 100%; border: 1px solid #ccc; border-radius: 8px;">
-  </div>
-  <div style="flex: 1; border-left: 6px solid #2e86c1; background: rgba(46, 134, 193, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-weight: bold; color: #2e86c1; margin-bottom: 0.5em;">Anand Approximation</div>
-    <ul>
-      <li><b>FEA Ready:</b> Smooth equations, Jaumann derivatives, and rate-dependence make it suitable for cyclic thermal loads.</li>
-     <li><b>Path Dependence & Hysteresis:</b> Anand’s model shows how evolving internal variables (like \( s \), \( \bar{\mathbf{B}} \)) naturally reproduce load history and hysteresis effects — a cornerstone of modern inelasticity.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Section: Graduate Plasticity Link -->
-<div style="border-left: 6px solid #28b463; background: rgba(40, 180, 99, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #28b463; margin-bottom: 0.5em;">Relation to Graduate Plasticity Course</div>
-  <ul>
-    <li><b>Path Dependence:</b> Internal variables like \( s \), \( \bar{\mathbf{B}} \) evolve, showing hysteresis and memory effects — core ideas in inelasticity.</li>
-    <li><b>Rate Sensitivity:</b> The Anand model embodies a regularized flow rule, helping avoid ill-posedness</li>
-    <li><b>Thermomechanical Coupling:</b> Graduate models often simplify heat effects; Anand incorporates temperature-dependent recovery and strain rates realistically.</li>
-  </ul>
-</div>
-
-</div>
-
 </section>
-<section id="slide-orgfac562b">
-<h3 id="orgfac562b">What If the Material Were Not Viscoplastic?</h3>
+<section>
+<section id="slide-orgf3ca839">
+<h2 id="orgf3ca839">What If the Material Were Not Viscoplastic?</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -435,54 +335,55 @@ These are speaker notes visible only in presenter mode.
 
 
 
+</section>
+</section>
+<section>
+<section id="slide-orgf13edf3">
+<h2 id="orgf13edf3">Mapping Anand’s Section 3 to Wang’s Model</h2>
+<div style="border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<table style="width:100%; border-collapse: collapse; font-size: 0.95em;">
+<thead>
+<tr>
+<th style="border-bottom: 2px solid #ccc; text-align: left;">Anand (1985)</th>
+<th style="border-bottom: 2px solid #ccc; text-align: left;">Role</th>
+<th style="border-bottom: 2px solid #ccc; text-align: left;">Wang (2001)</th>
+<th style="border-bottom: 2px solid #ccc; text-align: left;">Comment</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td style="padding: 0.5em;">(77) \( \dot{T} = \mathbb{L} [D - D^p] - \eta \mathbb{I} \)</td>
+<td style="padding: 0.5em;">Elastic stress–strain–temperature relation</td>
+<td style="padding: 0.5em;">Not included explicitly</td>
+<td style="padding: 0.5em;">Elasticity assumed handled separately in FEM.</td>
+</tr>
+
+<tr>
+<td style="padding: 0.5em;">(78)-(80) \( D^p = \dot{\gamma}^p \frac{T'}{2\tau} \)</td>
+<td style="padding: 0.5em;">Plastic flow rule based on deviatoric stress</td>
+<td style="padding: 0.5em;">\( \dot{\varepsilon}^p = A \exp\left( -\frac{Q}{RT} \right) \left[ \sinh\left( \frac{j\sigma}{s} \right) \right]^{1/m} \)</td>
+<td style="padding: 0.5em;">Flow scalarized: stress–strain relation based on effective stress \( \sigma \).</td>
+</tr>
+
+<tr>
+<td style="padding: 0.5em;">(81)-(86) \( \dot{s} = h(\sigma, s, \theta) \dot{\varepsilon}^p - r(s, \theta) \)</td>
+<td style="padding: 0.5em;">Evolution of deformation resistance \( s \)</td>
+<td style="padding: 0.5em;">\( \dot{s} = h_0 \left( 1 - \frac{s}{s^*} \right)^a \dot{\varepsilon}^p \)</td>
+<td style="padding: 0.5em;">Hardening toward \( s^* \); no explicit static recovery \( r \) included.</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
 
 </section>
 </section>
 <section>
-<section id="slide-org6b6e82f">
-<h2 id="org6b6e82f">How Wang Simplifies Anand’s Thermodynamic Model</h2>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<!-- Left column -->
-<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #2ca02c; margin-bottom: 0.5em;">Anand (1985): Full Thermodynamic Structure</div>
-  <ul>
-    <li>Defines a free energy <span>\( \psi \)</span> based on elastic strain and internal variables.</li>
-    <li>Tracks entropy production <span>\( \mathcal{D} \)</span> to guarantee positive dissipation.</li>
-    <li>Uses dissipation potential to derive flow rule and internal variable evolution.</li>
-    <li>Explicit hardening and softening terms driven by thermodynamic forces.</li>
-  </ul>
-</div>
-
-<!-- Middle column -->
-<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #1f77b4; margin-bottom: 0.5em;">Wang (2001): Practical Simplification</div>
-  <ul>
-    <li>Introduces a saturation stress <span>\( s^* \)</span> that depends on <span>\( \dot{\varepsilon}^p \)</span> and <span>\( T \)</span>.</li>
-    <li>Directly evolves <span>\( s \to s^* \)</span> without explicitly tracking entropy or free energy.</li>
-    <li>Positive dissipation guaranteed by construction (no free energy increase).</li>
-    <li>Simplifies parameter extraction and implementation for FEA models.</li>
-  </ul>
-</div>
-
-<!-- Right column -->
-<div style="flex: 1; border-left: 6px solid #d62728; background: rgba(214, 39, 40, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-  <div style="font-weight: bold; color: #d62728; margin-bottom: 0.5em;">Direct Comparison</div>
-  <ul>
-    <li><b>Anand:</b> Thermodynamic forces drive <span>\( \dot{s} \)</span>; complex but fundamental.</li>
-    <li><b>Wang:</b> <span>\( s \)</span> moves toward <span>\( s^* \)</span> with flow rate; simpler, but still thermodynamically consistent.</li>
-    <li><b>Result:</b> Wang’s model is easier to code and fit to data without losing physical realism.</li>
-  </ul>
-</div>
-
-</div>
-
-
-</section>
-</section>
-<section>
-<section id="slide-orgd7bce41">
-<h2 id="orgd7bce41">Breakthrough Features of Anand’s Viscoplastic Model</h2>
+<section id="slide-orgad93578">
+<h2 id="orgad93578">Breakthrough Features of Anand’s Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-size: 1.03em; font-family: 'Segoe UI', sans-serif;">
 
 <div style="flex: 1; border-left: 6px solid #a5a5a5; background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); border-radius: 8px; padding: 1.2em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1);">
@@ -535,8 +436,10 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-org5151455">
-<h3 id="org5151455">Formulation pipeline for Anand’s viscoplastic model</h3>
+</section>
+<section>
+<section id="slide-orgf2ffe07">
+<h2 id="orgf2ffe07">Formulation pipeline for Anand’s viscoplastic model</h2>
 <div style="border-left: 6px solid #2e86de; background: rgba(46, 134, 222, 0.05); padding: 1.2em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <b style="color: #2e86de;">Visual Roadmap of Anand’s Model</b><br/><br/>
 
@@ -548,8 +451,10 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-orgb911abf">
-<h3 id="orgb911abf">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h3>
+</section>
+<section>
+<section id="slide-orgb80038f">
+<h2 id="orgb80038f">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
 
 <div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
@@ -612,8 +517,10 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </div>
 
 </section>
-<section id="slide-org3992f82">
-<h3 id="org3992f82">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
+</section>
+<section>
+<section id="slide-org85ca612">
+<h2 id="org85ca612">Thermodynamic Foundations of Anand&rsquo;s Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.07); padding: 1em 1.5em; border-radius: 8px;">
@@ -689,281 +596,6 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
   </div>
 </div>
 
-</div>
-
-
-</section>
-<section id="slide-org0327b06">
-<h3 id="org0327b06">How Anand’s Model Unifies Creep and Plasticity</h3>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
-
-<div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
-  <h3 style="margin-top: 0;"> Creep-Driven Terms</h3>
-
-  <p><b>Eq. (84):</b><br/>
-  \[
-  \dot{\bar{\varepsilon}}^p = g(\bar{\sigma}, s, \theta)
-  \]<br/>
-  Steady-state creep rate governed by stress and temperature.
-  </p>
-
-  <p><b>Eq. (86):</b><br/>
-  \[
-  \dot{s} = h(\bar{\sigma}, s, \theta)\dot{\bar{\varepsilon}}^p - r(s, \theta)
-  \]<br/>
-  Captures transient creep via thermal recovery.
-  </p>
-
-  <p><b>Hyperbolic Sine Flow Law:</b><br/>
-  \[
-  \dot{\bar{\varepsilon}}^p \propto \sinh\left(\frac{\xi \sigma}{s}\right)^{1/m}
-  \]<br/>
-  Models thermally activated dislocation motion.
-  </p>
-
-  <p><b>Smooth rate-dependence:</b><br/>
-  Enables creep-like flow even at low stress without a sharp yield point.
-  </p>
-</div>
-
-<div style="flex: 1; background: rgba(200, 235, 255, 0.15); padding: 1em; border-left: 4px solid #3399ff;">
-  <h3 style="margin-top: 0;"> Plasticity-Driven Terms</h3>
-
-  <p><b>Internal variable \( s \):</b><br/>
-  Represents isotropic resistance; evolves with plastic strain.
-  </p>
-
-  <p><b>Eq. (83):</b><br/>
-  \[
-  \mathbf{D}^p = \dot{\bar{\varepsilon}}^p \left\{ \bar{\sigma}^{-1} \mathbf{T}^r \right\}
-  \]<br/>
-  Plastic flow direction set by stress deviator.
-  </p>
-
-  <p><b>Eq. (85):</b><br/>
-  \[
-  \dot{s} = \tilde{g}(\bar{\sigma}, s, \theta)
-  \]<br/>
-  Tracks hardening-like resistance from internal variable.
-  </p>
-
-  <p><b>No explicit yield surface:</b><br/>
-  Still captures hardening and saturation as in classical models.
-  </p>
-</div>
-
-</div>
-
-
-</section>
-<section id="slide-orgb071340">
-<h3 id="orgb071340">Interpretation of Intermediate Terms (S3 &amp; S4)</h3>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<div style="flex: 1; border-left: 6px solid #17becf; background: rgba(23, 190, 207, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight: bold; color: #17becf; margin-bottom: 0.5em;">Terms from Simplified Model</div>
-<ul>
-  <li><b>\(\mathbf{L}^p = x_1 \tilde{\mathbf{T}}' + \eta_1(\tilde{\mathbf{T}}' \mathbf{B} - \mathbf{B} \tilde{\mathbf{T}}')\)</b></li>
-  <li>Represents <i>viscoplastic flow direction</i> and includes <i>kinematic backstress effect</i>.</li>
-
-  <li><b>\(\dot{\mathbf{B}} = \xi_1 \tilde{\mathbf{T}}' + \xi_2 \mathbf{B}\)</b></li>
-  <li>Linear evolution of internal backstress — similar to Armstrong–Frederick type models.</li>
-
-  <li><b>\(\dot{s} = h_0 \left|1 - \frac{s}{s^*} \right|^a \cdot \text{sign}\left(1 - \frac{s}{s^*} \right) \dot{\varepsilon}^p\)</b></li>
-  <li>Captures isotropic hardening/softening and saturates toward \( s^* \).</li>
-</ul>
-</div>
-
-<div style="flex: 1; border-left: 6px solid #bcbd22; background: rgba(188, 189, 34, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight: bold; color: #bcbd22; margin-bottom: 0.5em;">Why It Matters</div>
-<ul>
-  <li>Gives physical intuition: backstress = directional memory, \(s\) = isotropic “strength”.</li>
-  <li>Helps map terms to graduate plasticity topics (e.g., hardening laws, associative flow).</li>
-  <li>Facilitates debugging in FEA — parameters must align with observed behavior.</li>
-  <li>Clarifies why Anand’s model is more than just a curve-fit: it encodes mechanics.</li>
-</ul>
-</div>
-
-</div>
-
-
-</section>
-<section id="slide-org4148519">
-<h3 id="org4148519">Thermodynamic Foundations of Anand&rsquo;s Model</h3>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
-
-<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight: bold; color: #ff7f0e; margin-bottom: 0.5em;">Key Constraints from Dissipation</div>
-<ul>
-  <li>\(\dot{\psi} = \frac{\partial \psi}{\partial \mathbf{E}^e} : \dot{\mathbf{E}}^e + \frac{\partial \psi}{\partial s} \dot{s}\)</li>
-  <li>\(\eta_r = -\frac{\partial \psi}{\partial \theta}\)</li>
-  <li>\(\Rightarrow \dot{\psi} - \mathbf{T}:\dot{\mathbf{E}}^e - \eta_r\dot{\theta} \leq 0\)</li>
-  <li>Result: All response functions must respect the second law of thermodynamics.</li>
-</ul>
-</div>
-
-<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.07); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight: bold; color: #2ca02c; margin-bottom: 0.5em;">Simplifying Assumptions (a1)–(a6)</div>
-<ul>
-  <li>(a1) Objective stress measures (e.g., Jaumann rate)</li>
-  <li>(a2) Isotropy in material response</li>
-  <li>(a3) Incompressibility of plastic flow</li>
-  <li>(a4) Free energy function is additively decomposed</li>
-  <li>(a5) Temperature dependence enters through specific variables</li>
-  <li>(a6) Separation of mechanical and thermal effects is approximated</li>
-</ul>
-</div>
-
-</div>
-</section>
-</section>
-<section>
-<section id="slide-org879e2f9">
-<h2 id="org879e2f9">How Anand’s Model Unifies Creep and Plasticity</h2>
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
-
-<div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
-  <h3 style="margin-top: 0;"> Creep-Driven Terms</h3>
-
-  <p><b>Eq. (84):</b><br/>
-  \[
-  \dot{\bar{\varepsilon}}^p = g(\bar{\sigma}, s, \theta)
-  \]<br/>
-  Steady-state creep rate governed by stress and temperature.
-  </p>
-
-  <p><b>Eq. (86):</b><br/>
-  \[
-  \dot{s} = h(\bar{\sigma}, s, \theta)\dot{\bar{\varepsilon}}^p - r(s, \theta)
-  \]<br/>
-  Captures transient creep via thermal recovery.
-  </p>
-
-  <p><b>Hyperbolic Sine Flow Law:</b><br/>
-  \[
-  \dot{\bar{\varepsilon}}^p \propto \sinh\left(\frac{\xi \sigma}{s}\right)^{1/m}
-  \]<br/>
-  Models thermally activated dislocation motion.
-  </p>
-
-  <p><b>Smooth rate-dependence:</b><br/>
-  Enables creep-like flow even at low stress without a sharp yield point.
-  </p>
-</div>
-
-<div style="flex: 1; background: rgba(200, 235, 255, 0.15); padding: 1em; border-left: 4px solid #3399ff;">
-  <h3 style="margin-top: 0;"> Plasticity-Driven Terms</h3>
-
-  <p><b>Internal variable \( s \):</b><br/>
-  Represents isotropic resistance; evolves with plastic strain.
-  </p>
-
-  <p><b>Eq. (83):</b><br/>
-  \[
-  \mathbf{D}^p = \dot{\bar{\varepsilon}}^p \left\{ \bar{\sigma}^{-1} \mathbf{T}^r \right\}
-  \]<br/>
-  Plastic flow direction set by stress deviator.
-  </p>
-
-  <p><b>Eq. (85):</b><br/>
-  \[
-  \dot{s} = \tilde{g}(\bar{\sigma}, s, \theta)
-  \]<br/>
-  Tracks hardening-like resistance from internal variable.
-  </p>
-
-  <p><b>No explicit yield surface:</b><br/>
-  Still captures hardening and saturation as in classical models.
-  </p>
-</div>
-
-</div>
-
-
-</section>
-</section>
-<section>
-<section id="slide-orgbe79851">
-<h2 id="orgbe79851">Summary of Anand’s Model</h2>
-<style>
-.ribbon-box {
-  padding: 1em;
-  border-left: 6px solid;
-  margin-bottom: 1em;
-  border-radius: 8px;
-  backdrop-filter: blur(2px);
-}
-
-.ribbon-blue {
-  border-left-color: #3C9DD0;
-  background-color: rgba(60, 157, 208, 0.07);
-}
-.ribbon-red {
-  border-left-color: #D95F5F;
-  background-color: rgba(217, 95, 95, 0.07);
-}
-.ribbon-green {
-  border-left-color: #5FA469;
-  background-color: rgba(95, 164, 105, 0.07);
-}
-.ribbon-orange {
-  border-left-color: #E2A844;
-  background-color: rgba(226, 168, 68, 0.07);
-}
-.ribbon-purple {
-  border-left-color: #A379C9;
-  background-color: rgba(163, 121, 201, 0.07);
-}
-</style>
-
-<div style="display: flex; gap: 2em; align-items: flex-start;">
-
-<div style="flex: 1;">
-
-<div class="ribbon-box ribbon-blue">
-<b>Unification of Creep and Plasticity</b><br/>
-The model treats <i>rate-dependent creep</i> and <i>rate-independent plasticity</i> as a single, smooth phenomenon.<br/>
-Avoids arbitrary separation of strain types.<br/>
-Ideal for solder and hot-working cases.
-</div>
-
-<div class="ribbon-box ribbon-red">
-<b>Single Internal Variable \( s \)</b><br/>
-Represents average isotropic resistance to plastic flow.<br/>
-Evolves with stress and temperature.<br/>
-Eliminates need for complex multi-surface rules.
-</div>
-
-<div class="ribbon-box ribbon-green">
-<b>Hyperbolic Sine Flow Form</b><br/>
-Captures power-law breakdown and nonlinear rate sensitivity.<br/>
-Handles thermal-cycling hysteresis where traditional plasticity fails.
-</div>
-
-</div>
-
-<div style="flex: 1;">
-
-<div class="ribbon-box ribbon-orange">
-<b>Direct Parameter Fitting</b><br/>
-No need to distinguish creep from plastic experimentally.<br/>
-Parameters fit to total viscoplastic strain data.<br/>
-Simplifies experimental workflow.
-</div>
-
-<div class="ribbon-box ribbon-purple">
-<b>Numerical Efficiency</b><br/>
-Uses stable backward Euler integration.<br/>
-No strict stability limit.<br/>
-Highly effective for long-term simulations in FEA.
-</div>
-
-<div class="ribbon-box ribbon-blue">
-<b>Key Insight from Wang</b><br/>
-<q>The Anand model unifies both creep and plasticity into one smooth viscoplastic framework, enabling predictive modeling of time-dependent deformation with thermodynamic consistency and computational efficiency.</q>
-</div>
-
-</div>
 </div>
 </section>
 </section>
