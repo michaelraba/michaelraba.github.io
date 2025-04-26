@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m25/1080p60/partial_movie_files/AnandSigmaVsEpsDot/3529212410_1308747855_223132457.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m25/1080p60/partial_movie_files/AnandSigmaVsEpsDot/3040924799_3096621690_2298878695.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m25/1080p60/partial_movie_files/AnandSigmaVsEpsDot/3040924799_1733944848_2105987342.mp4'
