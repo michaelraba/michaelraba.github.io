@@ -1,0 +1,6 @@
+#+title: Anim
+
+#+begin_src python :results output
+#+end_src
+
+#+RESULTS:

@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m19/1080p60/partial_movie_files/AnandSideBySideGraphs/3529212410_711258481_223132457.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m19/1080p60/partial_movie_files/AnandSideBySideGraphs/3040924799_1619510182_2245046002.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m19/1080p60/partial_movie_files/AnandSideBySideGraphs/3040924799_2112786906_3330181863.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m19/1080p60/partial_movie_files/AnandSideBySideGraphs/3040924799_571001254_3471953746.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m19/1080p60/partial_movie_files/AnandSideBySideGraphs/3040924799_1733944848_3241825155.mp4'
