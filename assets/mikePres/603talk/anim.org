@@ -1,0 +1,10 @@
+#+title: Anim
+
+#+begin_src python :python /home/mi/miniconda3/envs/manim/bin/python
+from manim import Scene, Circle, Create
+
+class HelloCircle(Scene):
+    def construct(self):
+        circle = Circle()
+        self.play(Create(circle))
+#+end_src
