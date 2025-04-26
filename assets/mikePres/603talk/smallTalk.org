@@ -9,6 +9,7 @@
 
 
 # The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.
+
 * Source Paper
 
 #+BEGIN_EXPORT html
@@ -247,6 +248,70 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 # Here’s the 1D form of the model. Flow is governed by a hyperbolic sine law, and s evolves based on how far it is from its saturation value. This is what allows the model to represent both creep and plasticity within a single framework.
 
 # Anand’s model includes nine material parameters, most of which are temperature-dependent. These are the knobs we can tune experimentally to match solder data.
+
+
+
+
+* Main Equations of Wang's Anand-Type Viscoplastic Model
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<!-- Left column -->
+<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #1f77b4; margin-bottom: 0.5em;">Flow Rule (Plastic Strain Rate)</div>
+  <ul>
+    <li>\[
+    \dot{\varepsilon}^p = A \exp\left( -\frac{Q}{RT} \right)
+    \left[ \sinh\left( \frac{j \sigma}{s} \right) \right]^{1/m}
+    \]</li>
+    <li>Plastic strain rate increases with stress and temperature.</li>
+    <li>No explicit yield surface; flow occurs at all nonzero stresses.</li>
+  </ul>
+
+  <div style="font-weight: bold; color: #1f77b4; margin: 1em 0 0.5em;">Deformation Resistance Saturation \( s^* \)</div>
+  <ul>
+    <li>\[
+    s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{RT} \right) \right)^n
+    \]</li>
+    <li>Defines the steady-state value that \( s \) evolves toward.</li>
+    <li>Depends on strain rate and temperature.</li>
+  </ul>
+</div>
+
+<!-- Right column -->
+<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #ff7f0e; margin-bottom: 0.5em;">Evolution of Deformation Resistance \( s \)</div>
+  <ul>
+    <li>\[
+    \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a
+    \, \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p
+    \]</li>
+    <li>Describes dynamic hardening and softening of the material.</li>
+    <li>\( s \) evolves depending on proximity to \( s^* \) and flow activity.</li>
+  </ul>
+
+  <div style="font-size: 0.9em; color: #666; margin-top: 1em;">
+    Note: Constants \( A, Q, m, j, h_0, \hat{s}, n, a \) are material-specific and fitted to experimental creep/strain rate data.
+  </div>
+</div>
+
+</div>
+#+END_EXPORT
+
+
+** Parameter m
+
+- As \( m \to 0 \), the material behaves almost like rate-independent plasticity: very sharp yielding.
+- As \( m \to 1 \), the material flows smoothly with almost no sharp yield point (strong rate sensitivity).
+
+#+ATTR_HTML: :width 80% :style border-radius:8px
+#+BEGIN_EXPORT html
+<video controls>
+  <source src="manimAnim/media/videos/m16/1080p60/AnandFlowAndAccumulatedStrain.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+#+END_EXPORT
 
 * Material Parameters in Anand’s Viscoplastic Model
 
