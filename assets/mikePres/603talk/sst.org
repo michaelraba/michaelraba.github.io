@@ -145,18 +145,20 @@ These are speaker notes visible only in presenter mode.
 </div>
 #+END_EXPORT
 
-* Strain rate sensativity of stress m
 
-- As \( m \to 0 \), rate insensative (yield)
+* Strain rate sensitivity of stress m
+
+- As \( m \to 0 \), rate insensitive (yield)
 - As \( m \to 1 \), small stress change causes big change in strain rate
 
 #+ATTR_HTML: :width 80% :style border-radius:8px
 #+BEGIN_EXPORT html
-<video controls>
+<video autoplay loop muted playsinline>
   <source src="manimAnim/media/videos/m14/1080p60/AnandFlowLaw.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 #+END_EXPORT
+
 
 * Anand Viscoplasticity Constants for 60Sn40Pb
 
