@@ -286,7 +286,63 @@ These are speaker notes visible only in presenter mode.
 
 
 
-# Because s evolve continuously, the model captures path dependence and hysteresis naturally—unlike simpler rate-independent models from plasticity theory.
+* Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)
+
+#+BEGIN_EXPORT html
+<div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
+
+<!-- First Row: Pseudocode -->
+<div style="display: flex; gap: 2em; align-items: flex-start;">
+
+<!-- Left Column: Inputs & Initialization -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #e0eafc, #cfdef3); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #003366;">Initialization</h3>
+<ul>
+<li>Material constants: \( A, Q/R, j, m, h_0, \hat{s}, n, a, E \)</li>
+<li>Strain rate: \( \dot{\varepsilon} \)</li>
+<li>Temperature set: \( \{ T_i \} \)</li>
+<li>Set: \( \varepsilon^p(0) = 0, \quad s(0) = \hat{s} \)</li>
+</ul>
+
+<h3 style="margin-top: 1em; color: #003366;">Time Evolution Loop</h3>
+<ol>
+<li>\( \varepsilon_{\text{total}}(t) = \dot{\varepsilon} t \)</li>
+<li>\( \sigma_{\text{trial}} = E (\varepsilon_{\text{total}} - \varepsilon^p) \)</li>
+<li>Compute \( x = \frac{j \sigma}{s} \)</li>
+<li>Approximate \( \sinh(x) \) (linearize if \( |x| \ll 1 \))</li>
+<li>\( \dot{\varepsilon}^p = A e^{-Q/RT} (\sinh(x))^{1/m} \)</li>
+</ol>
+</div>
+
+<!-- Right Column: Evolution & Update -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #fde2e2, #f9d0d0); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #660000;">Plastic Flow & Resistance Evolution</h3>
+<ol start="6">
+<li>\( s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} e^{Q/RT} \right)^n \)</li>
+<li>\( \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p \)</li>
+<li>Update: \( \varepsilon^p(t+\Delta t) = \varepsilon^p(t) + \dot{\varepsilon}^p \Delta t \)</li>
+<li>Update: \( s(t+\Delta t) = s(t) + \dot{s} \Delta t \)</li>
+<li>Record \( (\varepsilon_{\text{total}}, \sigma_{\text{trial}}) \)</li>
+</ol>
+
+<h3 style="margin-top: 1em; color: #660000;">Termination</h3>
+<ul>
+<li>Stop when \( \varepsilon_{\text{total}} \geq \varepsilon_{\text{max}} \)</li>
+<li>Plot \( \sigma \) vs \( \varepsilon \) for all \( T_i \)</li>
+</ul>
+
+<img src="stress_vs_strain_62Sn36Pb2Ag.png" alt="Static Stress vs Strain Plot" style="width: 95%; border: 1px solid #ccc; border-radius: 10px;">
+
+</div>
+
+</div>
+
+
+</div>
+#+END_EXPORT
+
 
 * What If the Material Were Not Viscoplastic?
 
