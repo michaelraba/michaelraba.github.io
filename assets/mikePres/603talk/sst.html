@@ -31,12 +31,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Theoretical Forumation and Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-26 Sat 15:29</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-26 Sat 22:18</p>
 </section>
 
 <section>
-<section id="slide-org1fdbebd">
-<h2 id="org1fdbebd">Source Paper</h2>
+<section id="slide-org38b1636">
+<h2 id="org38b1636">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -63,8 +63,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org17f277c">
-<h2 id="org17f277c">Case Study: Wang (2001)</h2>
+<section id="slide-org91a135f">
+<h2 id="org91a135f">Case Study: Wang (2001)</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1;">
@@ -89,8 +89,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org62847e4">
-<h2 id="org62847e4">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
+<section id="slide-org97e9a96">
+<h2 id="org97e9a96">Introduction to Anand’s Unified Viscoplasticity Model (1985)</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -115,8 +115,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org537f795">
-<h2 id="org537f795">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-org489778e">
+<h2 id="org489778e">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -163,8 +163,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org033ee4f">
-<h2 id="org033ee4f">Strain rate sensativity of stress m</h2>
+<section id="slide-org97da7de">
+<h2 id="org97da7de">Strain rate sensativity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensative (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -179,8 +179,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org70442e5">
-<h2 id="org70442e5">Anand Viscoplasticity Constants for 60Sn40Pb</h2>
+<section id="slide-orge9f5206">
+<h2 id="orge9f5206">Anand Viscoplasticity Constants for 60Sn40Pb</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -222,8 +222,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org2516a63">
-<h2 id="org2516a63">Internal Variable \( s \) in Anand and Wang Models</h2>
+<section id="slide-org535e016">
+<h2 id="org535e016">Internal Variable \( s \) in Anand and Wang Models</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -270,8 +270,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orga83d09b">
-<h2 id="orga83d09b">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-org0fb004d">
+<h2 id="org0fb004d">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -304,11 +304,73 @@ These are speaker notes visible only in presenter mode.
   <img src="wMPb.png" style="width: 40%;">
 </div>
 
+
+
+
 </section>
 </section>
 <section>
-<section id="slide-orgf3ca839">
-<h2 id="orgf3ca839">What If the Material Were Not Viscoplastic?</h2>
+<section id="slide-orgbf9bb39">
+<h2 id="orgbf9bb39">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
+<div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
+
+<!-- First Row: Pseudocode -->
+<div style="display: flex; gap: 2em; align-items: flex-start;">
+
+<!-- Left Column: Inputs & Initialization -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #e0eafc, #cfdef3); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #003366;">Initialization</h3>
+<ul>
+<li>Material constants: \( A, Q/R, j, m, h_0, \hat{s}, n, a, E \)</li>
+<li>Strain rate: \( \dot{\varepsilon} \)</li>
+<li>Temperature set: \( \{ T_i \} \)</li>
+<li>Set: \( \varepsilon^p(0) = 0, \quad s(0) = \hat{s} \)</li>
+</ul>
+
+<h3 style="margin-top: 1em; color: #003366;">Time Evolution Loop</h3>
+<ol>
+<li>\( \varepsilon_{\text{total}}(t) = \dot{\varepsilon} t \)</li>
+<li>\( \sigma_{\text{trial}} = E (\varepsilon_{\text{total}} - \varepsilon^p) \)</li>
+<li>Compute \( x = \frac{j \sigma}{s} \)</li>
+<li>Approximate \( \sinh(x) \) (linearize if \( |x| \ll 1 \))</li>
+<li>\( \dot{\varepsilon}^p = A e^{-Q/RT} (\sinh(x))^{1/m} \)</li>
+</ol>
+</div>
+
+<!-- Right Column: Evolution & Update -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #fde2e2, #f9d0d0); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #660000;">Plastic Flow & Resistance Evolution</h3>
+<ol start="6">
+<li>\( s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} e^{Q/RT} \right)^n \)</li>
+<li>\( \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p \)</li>
+<li>Update: \( \varepsilon^p(t+\Delta t) = \varepsilon^p(t) + \dot{\varepsilon}^p \Delta t \)</li>
+<li>Update: \( s(t+\Delta t) = s(t) + \dot{s} \Delta t \)</li>
+<li>Record \( (\varepsilon_{\text{total}}, \sigma_{\text{trial}}) \)</li>
+</ol>
+
+<h3 style="margin-top: 1em; color: #660000;">Termination</h3>
+<ul>
+<li>Stop when \( \varepsilon_{\text{total}} \geq \varepsilon_{\text{max}} \)</li>
+<li>Plot \( \sigma \) vs \( \varepsilon \) for all \( T_i \)</li>
+</ul>
+
+<img src="stress_vs_strain_62Sn36Pb2Ag.png" alt="Static Stress vs Strain Plot" style="width: 95%; border: 1px solid #ccc; border-radius: 10px;">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgecc74f2">
+<h2 id="orgecc74f2">What If the Material Were Not Viscoplastic?</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -338,8 +400,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orgf13edf3">
-<h2 id="orgf13edf3">Mapping Anand’s Section 3 to Wang’s Model</h2>
+<section id="slide-org0e03ab7">
+<h2 id="org0e03ab7">Mapping Anand’s Section 3 to Wang’s Model</h2>
 <div style="border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <table style="width:100%; border-collapse: collapse; font-size: 0.95em;">
@@ -382,8 +444,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orgad93578">
-<h2 id="orgad93578">Breakthrough Features of Anand’s Viscoplastic Model</h2>
+<section id="slide-org23a6505">
+<h2 id="org23a6505">Breakthrough Features of Anand’s Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-size: 1.03em; font-family: 'Segoe UI', sans-serif;">
 
 <div style="flex: 1; border-left: 6px solid #a5a5a5; background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); border-radius: 8px; padding: 1.2em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1);">
@@ -438,8 +500,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-orgf2ffe07">
-<h2 id="orgf2ffe07">Formulation pipeline for Anand’s viscoplastic model</h2>
+<section id="slide-orgb352f2f">
+<h2 id="orgb352f2f">Formulation pipeline for Anand’s viscoplastic model</h2>
 <div style="border-left: 6px solid #2e86de; background: rgba(46, 134, 222, 0.05); padding: 1.2em 1.5em; border-radius: 8px; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <b style="color: #2e86de;">Visual Roadmap of Anand’s Model</b><br/><br/>
 
@@ -453,8 +515,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-orgb80038f">
-<h2 id="orgb80038f">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h2>
+<section id="slide-org8a5b70e">
+<h2 id="org8a5b70e">Broad Strokes of Anand’s Unified Viscoplastic Model (1985)</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: sans-serif;">
 
 <div style="flex: 1; background: rgba(255, 235, 180, 0.15); padding: 1em; border-left: 4px solid #ffbb33;">
@@ -519,8 +581,8 @@ Anand's model unifies physical laws, experiment, and computation in one robust v
 </section>
 </section>
 <section>
-<section id="slide-org85ca612">
-<h2 id="org85ca612">Thermodynamic Foundations of Anand&rsquo;s Model</h2>
+<section id="slide-orgecf0c31">
+<h2 id="orgecf0c31">Thermodynamic Foundations of Anand&rsquo;s Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.07); padding: 1em 1.5em; border-radius: 8px;">
