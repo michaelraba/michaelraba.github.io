@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Anand Model: Theoretical Forumation and Application to Solder Joints</title>
+<title>Anand Model: Viscoelastoplasticity and its Application to Solder Joints</title>
 <meta name="author" content="Michael Raba, MSc Candidate at University of Kentucky"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -30,13 +30,13 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Anand Model: Theoretical Forumation and Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 00:30</p>
+<section id="sec-title-slide"><h1 class="title">Anand Model: Viscoelastoplasticity and its Application to Solder Joints</h1><p class="subtitle"></p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 00:41</p>
 </section>
 
 <section>
-<section id="slide-orgcfa964d">
-<h2 id="orgcfa964d">Source Paper</h2>
+<section id="slide-orgd2bc7d1">
+<h2 id="orgd2bc7d1">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -63,8 +63,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org3f032c8">
-<h2 id="org3f032c8">Case Study: Wang (2001) Apply to Solder</h2>
+<section id="slide-org66a977c">
+<h2 id="org66a977c">Case Study: Wang (2001) Apply to Solder</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -95,8 +95,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org8608a30">
-<h2 id="org8608a30">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-orgdb879e2">
+<h2 id="orgdb879e2">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -134,8 +134,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orgdf36f16">
-<h2 id="orgdf36f16">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-org1c15a76">
+<h2 id="org1c15a76">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -180,8 +180,8 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
-<section id="slide-org6e001c8">
-<h3 id="org6e001c8">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section id="slide-orga13df72">
+<h3 id="orga13df72">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -223,8 +223,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org078c0a9">
-<h2 id="org078c0a9">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
+<section id="slide-org450bebc">
+<h2 id="org450bebc">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -279,8 +279,8 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
-<section id="slide-orged40061">
-<h3 id="orged40061">Code for Wang</h3>
+<section id="slide-org49fe057">
+<h3 id="org49fe057">Code for Wang</h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"   ><code trim><span style="color: #fb4934;">import</span> numpy <span style="color: #fb4934;">as</span> np
@@ -358,8 +358,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-orgd1308cc">
-<h2 id="orgd1308cc">Strain rate sensitivity of stress m</h2>
+<section id="slide-org8e4da76">
+<h2 id="org8e4da76">Strain rate sensitivity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensitive (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -375,8 +375,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-orgadac5a2">
-<h2 id="orgadac5a2">Flow rule</h2>
+<section id="slide-org5f3b9a7">
+<h2 id="org5f3b9a7">Flow rule</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -441,8 +441,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org26e63cb">
-<h2 id="org26e63cb">Evolution Equation for the Stress</h2>
+<section id="slide-org31fdea0">
+<h2 id="org31fdea0">Evolution Equation for the Stress</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -496,8 +496,8 @@ plt.show()
 </div>
 
 </section>
-<section id="slide-org48bfafd">
-<h3 id="org48bfafd">Stress Evolution and Thermal Effects</h3>
+<section id="slide-orgd9f0a16">
+<h3 id="orgd9f0a16">Stress Evolution and Thermal Effects</h3>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -551,8 +551,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </section>
 </section>
 <section>
-<section id="slide-org57f75ac">
-<h2 id="org57f75ac">Thermodynamics</h2>
+<section id="slide-orgbda659a">
+<h2 id="orgbda659a">Thermodynamics</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -648,8 +648,8 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 </section>
 </section>
 <section>
-<section id="slide-org7b810db">
-<h2 id="org7b810db">Relaxed (Intermediate) Configuration</h2>
+<section id="slide-orgedecc1d">
+<h2 id="orgedecc1d">Relaxed (Intermediate) Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -699,8 +699,8 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 
 
 </section>
-<section id="slide-org9b926ae">
-<h3 id="org9b926ae">Relaxed Configuration Constituative Laws</h3>
+<section id="slide-org6f49947">
+<h3 id="org6f49947">Relaxed Configuration Constituative Laws</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -786,8 +786,8 @@ E^e = \frac{1}{2} (C^e - I)
 </section>
 </section>
 <section>
-<section id="slide-org331b07f">
-<h2 id="org331b07f">Reference Configuration</h2>
+<section id="slide-org0302719">
+<h2 id="org0302719">Reference Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">

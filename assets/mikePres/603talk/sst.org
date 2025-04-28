@@ -1,4 +1,4 @@
-#+TITLE: Anand Model: Theoretical Forumation and Application to Solder Joints
+#+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
 #+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
 # #+REVEAL_THEME: black
 #+REVEAL_THEME: serif
