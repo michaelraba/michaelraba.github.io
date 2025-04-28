@@ -31,12 +31,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Theoretical Forumation and Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 00:22</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 00:30</p>
 </section>
 
 <section>
-<section id="slide-orgfe61c53">
-<h2 id="orgfe61c53">Source Paper</h2>
+<section id="slide-orgcfa964d">
+<h2 id="orgcfa964d">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
@@ -63,8 +63,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org10dcea5">
-<h2 id="org10dcea5">Case Study: Wang (2001) Apply to Solder</h2>
+<section id="slide-org3f032c8">
+<h2 id="org3f032c8">Case Study: Wang (2001) Apply to Solder</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -95,8 +95,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org36ddee1">
-<h2 id="org36ddee1">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-org8608a30">
+<h2 id="org8608a30">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -134,8 +134,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org8914346">
-<h2 id="org8914346">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-orgdf36f16">
+<h2 id="orgdf36f16">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -180,8 +180,8 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
-<section id="slide-orgb9de692">
-<h3 id="orgb9de692">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section id="slide-org6e001c8">
+<h3 id="org6e001c8">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -223,8 +223,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-orgc3ab229">
-<h2 id="orgc3ab229">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
+<section id="slide-org078c0a9">
+<h2 id="org078c0a9">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -279,10 +279,87 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
+<section id="slide-orged40061">
+<h3 id="orged40061">Code for Wang</h3>
+<div class="org-src-container">
+
+<pre  class="src src-python"   ><code trim><span style="color: #fb4934;">import</span> numpy <span style="color: #fb4934;">as</span> np
+<span style="color: #fb4934;">import</span> matplotlib.pyplot <span style="color: #fb4934;">as</span> plt
+<span style="color: #fb4934;">from</span> scipy.integrate <span style="color: #fb4934;">import</span> solve_ivp
+
+<span style="color: #928374;"># </span><span style="color: #928374;">Material constants for 62Sn36Pb2Ag solder alloy</span>
+<span style="color: #83a598;">A</span> = <span style="color: #d3869b; font-weight: bold;">2</span>.24e8       <span style="color: #928374;"># </span><span style="color: #928374;">1/s</span>
+<span style="color: #83a598;">Q_R</span> = <span style="color: #d3869b; font-weight: bold;">11200</span>      <span style="color: #928374;"># </span><span style="color: #928374;">K</span>
+<span style="color: #83a598;">j</span> = <span style="color: #d3869b; font-weight: bold;">13</span>           <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
+<span style="color: #83a598;">m</span> = <span style="color: #d3869b; font-weight: bold;">0.21</span>         <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
+<span style="color: #83a598;">h0</span> = <span style="color: #d3869b; font-weight: bold;">1</span>.62e10     <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
+<span style="color: #83a598;">s0</span> = <span style="color: #d3869b; font-weight: bold;">8</span>.47e7      <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
+<span style="color: #83a598;">s_hat</span> = <span style="color: #d3869b; font-weight: bold;">8</span>.47e7   <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
+<span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0.0277</span>       <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
+<span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">1.7</span>          <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
+<span style="color: #83a598;">E</span> = <span style="color: #d3869b; font-weight: bold;">5</span>.2e10       <span style="color: #928374;"># </span><span style="color: #928374;">Pa (Elastic modulus)</span>
+
+<span style="color: #928374;"># </span><span style="color: #928374;">Temperatures in Kelvin</span>
+<span style="color: #83a598;">T_C</span> = [-<span style="color: #d3869b; font-weight: bold;">55</span>, -<span style="color: #d3869b; font-weight: bold;">25</span>, <span style="color: #d3869b; font-weight: bold;">25</span>, <span style="color: #d3869b; font-weight: bold;">75</span>, <span style="color: #d3869b; font-weight: bold;">125</span>]
+<span style="color: #83a598;">T_list</span> = [T + <span style="color: #d3869b; font-weight: bold;">273.15</span> <span style="color: #fb4934;">for</span> T <span style="color: #fb4934;">in</span> T_C]
+
+<span style="color: #928374;"># </span><span style="color: #928374;">Simulation parameters</span>
+<span style="color: #83a598;">strain_rate</span> = 1e-<span style="color: #d3869b; font-weight: bold;">5</span>  <span style="color: #928374;"># </span><span style="color: #928374;">1/s</span>
+<span style="color: #83a598;">eps_total_max</span> = <span style="color: #d3869b; font-weight: bold;">0.6</span>
+<span style="color: #83a598;">t_max</span> = eps_total_max / strain_rate
+<span style="color: #83a598;">time_steps</span> = <span style="color: #d3869b; font-weight: bold;">10000</span>
+<span style="color: #83a598;">t_eval</span> = np.linspace(<span style="color: #d3869b; font-weight: bold;">0</span>, t_max, time_steps)
+
+<span style="color: #928374;"># </span><span style="color: #928374;">Define the ODE system</span>
+<span style="color: #fb4934;">def</span> <span style="color: #b8bb26;">system</span>(t, y, T):
+    <span style="color: #83a598;">ep_p</span>, <span style="color: #83a598;">s</span> = y
+    <span style="color: #83a598;">eps_total</span> = strain_rate * t
+    <span style="color: #83a598;">sigma_trial</span> = E * (eps_total - ep_p)
+    <span style="color: #83a598;">x</span> = j * sigma_trial / s
+
+    <span style="color: #fb4934;">if</span> np.<span style="color: #fe8019;">abs</span>(x) &lt; <span style="color: #d3869b; font-weight: bold;">0.01</span>:
+        <span style="color: #83a598;">sinh_x</span> = x
+    <span style="color: #fb4934;">else</span>:
+        sinh_x = np.sinh(np.clip(x, -<span style="color: #d3869b; font-weight: bold;">30</span>, <span style="color: #d3869b; font-weight: bold;">30</span>))
+
+    <span style="color: #83a598;">sinh_x</span> = np.maximum(sinh_x, 1e-<span style="color: #d3869b; font-weight: bold;">12</span>)
+    <span style="color: #83a598;">dep_p</span> = A * np.exp(-Q_R / T) * sinh_x**(<span style="color: #d3869b; font-weight: bold;">1</span>/m)
+
+    <span style="color: #83a598;">s_star</span> = s_hat * (dep_p / A * np.exp(Q_R / T))**n
+    <span style="color: #83a598;">ds</span> = h0 * np.<span style="color: #fe8019;">abs</span>(<span style="color: #d3869b; font-weight: bold;">1</span> - s/s_star)**a * np.sign(<span style="color: #d3869b; font-weight: bold;">1</span> - s/s_star) * dep_p
+
+    <span style="color: #fb4934;">return</span> [dep_p, ds]
+
+<span style="color: #928374;"># </span><span style="color: #928374;">Plotting</span>
+plt.figure(figsize=(<span style="color: #d3869b; font-weight: bold;">9</span>,<span style="color: #d3869b; font-weight: bold;">6</span>))
+
+<span style="color: #fb4934;">for</span> T <span style="color: #fb4934;">in</span> <span style="color: #83a598;">T_list</span>:
+    sol = solve_ivp(system, [<span style="color: #d3869b; font-weight: bold;">0</span>, t_max], [<span style="color: #d3869b; font-weight: bold;">0</span>, s0], args=(T,), t_eval=t_eval, method=<span style="color: #b8bb26;">'Radau'</span>, rtol=1e-<span style="color: #d3869b; font-weight: bold;">6</span>, atol=1e-<span style="color: #d3869b; font-weight: bold;">9</span>)
+    <span style="color: #83a598;">eps_total</span> = strain_rate * sol.t
+    <span style="color: #83a598;">sigma</span> = E * (eps_total - sol.y[<span style="color: #d3869b; font-weight: bold;">0</span>])
+
+    <span style="color: #83a598;">label</span> = f<span style="color: #b8bb26;">"</span>{<span style="color: #fe8019;">int</span>(T-273.15)}<span style="color: #b8bb26;">&#176;C"</span>
+    plt.plot(eps_total, sigma/1e6, label=label)
+
+plt.xlabel(<span style="color: #b8bb26;">"Inelastic Strain &#949; (dimensionless)"</span>)
+plt.ylabel(<span style="color: #b8bb26;">"Stress &#963; (MPa)"</span>)
+plt.title(<span style="color: #b8bb26;">"Stress vs Inelastic Strain - 62Sn36Pb2Ag Alloy (Low Strain Rate 1e-5 1/s)"</span>)
+plt.grid(<span style="color: #d3869b;">True</span>)
+plt.legend(title=<span style="color: #b8bb26;">"Temperature"</span>)
+plt.xlim([<span style="color: #d3869b; font-weight: bold;">0</span>, <span style="color: #d3869b; font-weight: bold;">0.6</span>])
+plt.ylim([<span style="color: #d3869b; font-weight: bold;">0</span>, <span style="color: #d3869b; font-weight: bold;">65</span>])
+plt.tight_layout()
+plt.show()
+</code></pre>
+</div>
+
+
+
+</section>
 </section>
 <section>
-<section id="slide-org3f3dc91">
-<h2 id="org3f3dc91">Strain rate sensitivity of stress m</h2>
+<section id="slide-orgd1308cc">
+<h2 id="orgd1308cc">Strain rate sensitivity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensitive (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -298,8 +375,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org230efcc">
-<h2 id="org230efcc">Flow rule</h2>
+<section id="slide-orgadac5a2">
+<h2 id="orgadac5a2">Flow rule</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -364,8 +441,8 @@ These are speaker notes visible only in presenter mode.
 </section>
 </section>
 <section>
-<section id="slide-org261b6b0">
-<h2 id="org261b6b0">Evolution Equation for the Stress</h2>
+<section id="slide-org26e63cb">
+<h2 id="org26e63cb">Evolution Equation for the Stress</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -419,8 +496,8 @@ These are speaker notes visible only in presenter mode.
 </div>
 
 </section>
-<section id="slide-org7e21b15">
-<h3 id="org7e21b15">Stress Evolution and Thermal Effects</h3>
+<section id="slide-org48bfafd">
+<h3 id="org48bfafd">Stress Evolution and Thermal Effects</h3>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -474,8 +551,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </section>
 </section>
 <section>
-<section id="slide-org610843a">
-<h2 id="org610843a">Thermodynamics</h2>
+<section id="slide-org57f75ac">
+<h2 id="org57f75ac">Thermodynamics</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -571,8 +648,8 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3e067a7">
-<h2 id="org3e067a7">Relaxed (Intermediate) Configuration</h2>
+<section id="slide-org7b810db">
+<h2 id="org7b810db">Relaxed (Intermediate) Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -622,8 +699,8 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 
 
 </section>
-<section id="slide-orgb0a5915">
-<h3 id="orgb0a5915">Relaxed Configuration Constituative Laws</h3>
+<section id="slide-org9b926ae">
+<h3 id="org9b926ae">Relaxed Configuration Constituative Laws</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -709,8 +786,8 @@ E^e = \frac{1}{2} (C^e - I)
 </section>
 </section>
 <section>
-<section id="slide-orgc72493f">
-<h2 id="orgc72493f">Reference Configuration</h2>
+<section id="slide-org331b07f">
+<h2 id="org331b07f">Reference Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">

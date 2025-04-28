@@ -255,6 +255,80 @@ These are speaker notes visible only in presenter mode.
 </div>
 #+END_EXPORT
 
+** Code for Wang
+
+#+BEGIN_SRC python :results none :exports code
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Material constants for 62Sn36Pb2Ag solder alloy
+A = 2.24e8       # 1/s
+Q_R = 11200      # K
+j = 13           # dimensionless
+m = 0.21         # dimensionless
+h0 = 1.62e10     # Pa
+s0 = 8.47e7      # Pa
+s_hat = 8.47e7   # Pa
+n = 0.0277       # dimensionless
+a = 1.7          # dimensionless
+E = 5.2e10       # Pa (Elastic modulus)
+
+# Temperatures in Kelvin
+T_C = [-55, -25, 25, 75, 125]
+T_list = [T + 273.15 for T in T_C]
+
+# Simulation parameters
+strain_rate = 1e-5  # 1/s
+eps_total_max = 0.6
+t_max = eps_total_max / strain_rate
+time_steps = 10000
+t_eval = np.linspace(0, t_max, time_steps)
+
+# Define the ODE system
+def system(t, y, T):
+    ep_p, s = y
+    eps_total = strain_rate * t
+    sigma_trial = E * (eps_total - ep_p)
+    x = j * sigma_trial / s
+
+    if np.abs(x) < 0.01:
+        sinh_x = x
+    else:
+        sinh_x = np.sinh(np.clip(x, -30, 30))
+
+    sinh_x = np.maximum(sinh_x, 1e-12)
+    dep_p = A * np.exp(-Q_R / T) * sinh_x**(1/m)
+
+    s_star = s_hat * (dep_p / A * np.exp(Q_R / T))**n
+    ds = h0 * np.abs(1 - s/s_star)**a * np.sign(1 - s/s_star) * dep_p
+
+    return [dep_p, ds]
+
+# Plotting
+plt.figure(figsize=(9,6))
+
+for T in T_list:
+    sol = solve_ivp(system, [0, t_max], [0, s0], args=(T,), t_eval=t_eval, method='Radau', rtol=1e-6, atol=1e-9)
+    eps_total = strain_rate * sol.t
+    sigma = E * (eps_total - sol.y[0])
+
+    label = f"{int(T-273.15)}°C"
+    plt.plot(eps_total, sigma/1e6, label=label)
+
+plt.xlabel("Inelastic Strain ε (dimensionless)")
+plt.ylabel("Stress σ (MPa)")
+plt.title("Stress vs Inelastic Strain - 62Sn36Pb2Ag Alloy (Low Strain Rate 1e-5 1/s)")
+plt.grid(True)
+plt.legend(title="Temperature")
+plt.xlim([0, 0.6])
+plt.ylim([0, 65])
+plt.tight_layout()
+plt.show()
+#+END_SRC
+
+
+
 * Strain rate sensitivity of stress m
 
 - As \( m \to 0 \), rate insensitive (yield)
