@@ -31,13 +31,13 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Viscoelastoplasticity and its Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 10:01</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 10:04</p>
 </section>
 
 
 <section>
-<section id="slide-org4ca5e0b">
-<h2 id="org4ca5e0b">Source Paper</h2>
+<section id="slide-org7fd2677">
+<h2 id="org7fd2677">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 <!-- LEFT column: Text + Image -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
@@ -60,8 +60,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org7c50618">
-<h2 id="org7c50618">Case Study: Wang (2001) Apply to Solder</h2>
+<section id="slide-orgc078299">
+<h2 id="orgc078299">Case Study: Wang (2001) Apply to Solder</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -93,8 +93,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org7b56b58">
-<h2 id="org7b56b58">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-orgb30f1a6">
+<h2 id="orgb30f1a6">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -132,8 +132,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org9de5a31">
-<h2 id="org9de5a31">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-orge737816">
+<h2 id="orge737816">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -178,8 +178,8 @@
 </div>
 
 </section>
-<section id="slide-orgaeb031a">
-<h3 id="orgaeb031a">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section id="slide-orgb2d6f16">
+<h3 id="orgb2d6f16">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -221,8 +221,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org5bfdc64">
-<h2 id="org5bfdc64">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
+<section id="slide-org81a9eb9">
+<h2 id="org81a9eb9">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -277,8 +277,8 @@
 </div>
 
 </section>
-<section id="slide-org1bfa54f">
-<h3 id="org1bfa54f">Code for Wang</h3>
+<section id="slide-orgfb4bef8">
+<h3 id="orgfb4bef8">Code for Wang</h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"   ><code trim><span style="color: #fb4934;">import</span> numpy <span style="color: #fb4934;">as</span> np
@@ -356,8 +356,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-orgbc55910">
-<h2 id="orgbc55910">Strain rate sensitivity of stress m</h2>
+<section id="slide-org9db2cac">
+<h2 id="org9db2cac">Strain rate sensitivity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensitive (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -373,8 +373,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-orgb6a47ca">
-<h2 id="orgb6a47ca">Flow rule</h2>
+<section id="slide-orgec3030f">
+<h2 id="orgec3030f">Flow rule</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -439,8 +439,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-orga6f97b1">
-<h2 id="orga6f97b1">Evolution Equation for the Stress</h2>
+<section id="slide-orgcf3c0c4">
+<h2 id="orgcf3c0c4">Evolution Equation for the Stress</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -494,8 +494,8 @@ plt.show()
 </div>
 
 </section>
-<section id="slide-org573b2e4">
-<h3 id="org573b2e4">Stress Evolution and Thermal Effects</h3>
+<section id="slide-org5138ced">
+<h3 id="org5138ced">Stress Evolution and Thermal Effects</h3>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -550,8 +550,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </section>
 </section>
 <section>
-<section id="slide-org588451d">
-<h2 id="org588451d">Relaxed (Intermediate) Configuration</h2>
+<section id="slide-orgbd7e576">
+<h2 id="orgbd7e576">Relaxed (Intermediate) Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -601,8 +601,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 
 
 </section>
-<section id="slide-orgb4b08b2">
-<h3 id="orgb4b08b2">Relaxed Configuration Constituative Laws</h3>
+<section id="slide-org0637b41">
+<h3 id="org0637b41">Relaxed Configuration Constituative Laws</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -688,8 +688,8 @@ E^e = \frac{1}{2} (C^e - I)
 </section>
 </section>
 <section>
-<section id="slide-orgb88120a">
-<h2 id="orgb88120a">Reference Configuration</h2>
+<section id="slide-org2175b46">
+<h2 id="org2175b46">Reference Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -749,6 +749,98 @@ E^e = \frac{1}{2} (C^e - I)
 <b>Summary:</b>
 <ul style="margin-top: 0.5em;">
 <li>In the reference configuration, all energy storage, stress updates, and internal variable evolution are formulated with reference-frame quantities for consistency and objectivity.</li>
+</ul>
+
+</div>
+
+
+</section>
+<section id="slide-orgb3aa993">
+<h3 id="orgb3aa993">Thermodynamics</h3>
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Thermodynamic Quantities</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Free energy density:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \psi = \epsilon - \theta \eta }
+\]
+</div>
+</li>
+
+<li>Reduced dissipation inequality:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\psi} + \eta \dot{\theta} - \rho^{-1} \mathbf{T} : \mathbf{L} + (\rho \theta)^{-1} \mathbf{q} \cdot \mathbf{g} \leq 0 }
+\]
+</div>
+</li>
+
+<li>State variables:
+\[
+\{ E^e, \theta, \bar{g}, \mathbf{\bar{B}}, s \}
+\]
+with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
+
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Power and Kirchhoff Stress</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Stress power per relaxed volume:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} : \mathbf{L} }
+\]
+</div>
+</li>
+
+<li>Weighted Cauchy (Kirchhoff) stress:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \mathbf{\widetilde{T}} = (\det F) \mathbf{T} }
+\quad \text{or} \quad
+\boxed{ \mathbf{\widetilde{T}} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} }
+\]
+</div>
+</li>
+
+<li>Decomposition of stress power:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \dot{\omega}^e + \dot{\omega}^p }
+\]
+\[
+\dot{\omega}^e = \mathbf{\widetilde{T}} : \dot{E}^e, \quad \dot{\omega}^p = (C^e \mathbf{\widetilde{T}}) : \mathbf{L}^p
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>Free energy and dissipation govern thermodynamic consistency.</li>
+<li>Stress power naturally splits into elastic and plastic parts.</li>
+<li>Kirchhoff stress simplifies stress evolution accounting for volume changes.</li>
 </ul>
 
 </div>
