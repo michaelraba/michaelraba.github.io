@@ -10,33 +10,28 @@
 
 # The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.
 
-* Source Paper
 
+* Source Paper
 #+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
-
-  <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-size: 1.2em; font-weight: bold; color: #2ca02c; margin-bottom: 0.5em;">
-      <i>Constitutive Equations for Hot-Working of Metals</i>
-    </div>
-    <div><b>Author:</b> Lallit Anand (1985)</div>
-    <div><b>DOI:</b> <a href="https://doi.org/10.1016/0749-6419(85)90004-X">10.1016/0749-6419(85)90004-X</a></div>
-    <div style="margin-top: 1em; font-size: 0.95em;">
-      <i>One of the foundational papers in thermodynamically consistent viscoplasticity modeling—especially significant in the context of metals subjected to large strains and high temperatures.</i>
-    </div>
-  </div>
-
-  <div style="flex: 1;">
-    <img src="./anandPaper.png" alt="Anand 1985 Paper" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
-  </div>
-
+<!-- LEFT column: Text + Image -->
+<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+<div style="font-size: 1.2em; font-weight: bold; color: #2ca02c;">
+<i>Constitutive Equations for Hot-Working of Metals</i>
+</div>
+<div><b>Author:</b> Lallit Anand (1985)</div>
+<div><b>DOI:</b> <a href="https://doi.org/10.1016/0749-6419(85)90004-X" target="_blank">10.1016/0749-6419(85)90004-X</a></div>
+<div style="margin-top: 1em; font-size: 0.95em;">
+<i>One of the foundational papers in thermodynamically consistent viscoplasticity modeling—especially significant in the context of metals subjected to large strains and high temperatures.</i>
+</div>
+<img src="./state.png" alt="State Change under Hot Working" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-top: 1em;" />
+</div>
+<!-- RIGHT column: Only Paper Image -->
+<div style="flex: 1;">
+<img src="./anandPaper.png" alt="Anand 1985 Paper" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+</div>
 </div>
 #+END_EXPORT
-
-#+REVEAL_NOTES:
-These are speaker notes visible only in presenter mode.
-
-
 
 # Anand’s model is motivated by the limitations of classical plasticity: namely, its dependence on yield surfaces and loading-unloading rules. Instead, Anand proposes a unified approach to both plasticity and creep—essential for materials like solder where both effects occur simultaneously.
 
@@ -49,7 +44,6 @@ These are speaker notes visible only in presenter mode.
 
     <img src="wangPaper.png" alt="Wang Paper" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
 
-    <img src="chip.png" alt="Chip and Solder Structure" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
 
     <div style="font-size: 0.9em; color: #666;">
       Source: Wang, C. H. (2001). “A Unified Creep–Plasticity Model for Solder Alloys.”<br/>
@@ -66,6 +60,8 @@ These are speaker notes visible only in presenter mode.
       <li>transition the theory into engineering-scale implementation.</li>
       <li>Targets solder joints in microelectronic packages (chip on PCB, soldered connections).</li>
     </ul>
+
+    <img src="chip.png" alt="Chip and Solder Structure" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
   </div>
 
 </div>
