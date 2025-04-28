@@ -591,6 +591,92 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 #+END_EXPORT
 
 
+** Relaxed Configuration Constituative Laws
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Kinematics in the Relaxed Configuration</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Elastic deformation gradient:
+<div style="text-align: center; margin: 0.5em;">
+\[
+F = F^e F^p
+\quad \Rightarrow \quad
+F^e = F F^{p-1}
+\]
+</div>
+</li>
+
+<li>Elastic right Cauchy-Green tensor:
+<div style="text-align: center; margin: 0.5em;">
+\[
+C^e = F^{eT} F^e
+\]
+</div>
+</li>
+
+<li>Elastic Green–Lagrange strain tensor:
+<div style="text-align: center; margin: 0.5em;">
+\[
+E^e = \frac{1}{2} (C^e - I)
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress and Power Quantities</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Kirchhoff stress (weighted Cauchy stress):
+<div style="text-align: center; margin: 0.5em;">
+\[
+\widetilde{\mathbf{T}} = (\det F) \mathbf{T}
+\]
+</div>
+</li>
+
+<li>Stress power split:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\dot{\omega} = \dot{\omega}^e + \dot{\omega}^p
+\]
+\[
+\dot{\omega}^e = \widetilde{\mathbf{T}} : \dot{E}^e
+\quad , \quad
+\dot{\omega}^p = (C^e \widetilde{\mathbf{T}}) : \mathbf{L}^p
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>Elastic kinematics and stress measures are formulated relative to the relaxed configuration, cleanly separating plastic and elastic contributions.</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
 * Reference Configuration
 
 #+BEGIN_EXPORT html
