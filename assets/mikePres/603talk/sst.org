@@ -719,3 +719,95 @@ E^e = \frac{1}{2} (C^e - I)
 
 </div>
 #+END_EXPORT
+
+
+** Thermodynamics
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Thermodynamic Quantities</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Free energy density:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \psi = \epsilon - \theta \eta }
+\]
+</div>
+</li>
+
+<li>Reduced dissipation inequality:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\psi} + \eta \dot{\theta} - \rho^{-1} \mathbf{T} : \mathbf{L} + (\rho \theta)^{-1} \mathbf{q} \cdot \mathbf{g} \leq 0 }
+\]
+</div>
+</li>
+
+<li>State variables:
+\[
+\{ E^e, \theta, \bar{g}, \mathbf{\bar{B}}, s \}
+\]
+with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
+
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Power and Kirchhoff Stress</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Stress power per relaxed volume:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} : \mathbf{L} }
+\]
+</div>
+</li>
+
+<li>Weighted Cauchy (Kirchhoff) stress:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \mathbf{\widetilde{T}} = (\det F) \mathbf{T} }
+\quad \text{or} \quad
+\boxed{ \mathbf{\widetilde{T}} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} }
+\]
+</div>
+</li>
+
+<li>Decomposition of stress power:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \dot{\omega}^e + \dot{\omega}^p }
+\]
+\[
+\dot{\omega}^e = \mathbf{\widetilde{T}} : \dot{E}^e, \quad \dot{\omega}^p = (C^e \mathbf{\widetilde{T}}) : \mathbf{L}^p
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>Free energy and dissipation govern thermodynamic consistency.</li>
+<li>Stress power naturally splits into elastic and plastic parts.</li>
+<li>Kirchhoff stress simplifies stress evolution accounting for volume changes.</li>
+</ul>
+
+</div>
+#+END_EXPORT
