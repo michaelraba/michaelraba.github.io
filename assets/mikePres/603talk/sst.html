@@ -31,13 +31,13 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Viscoelastoplasticity and its Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-28 Mon 21:20</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-29 Tue 06:39</p>
 </section>
 
 
 <section>
-<section id="slide-orgcaa62a7">
-<h2 id="orgcaa62a7">Source Paper</h2>
+<section id="slide-org9648fac">
+<h2 id="org9648fac">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 <!-- LEFT column: Text + Image -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
@@ -60,8 +60,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orga47d6c8">
-<h2 id="orga47d6c8">Case Study: Wang (2001) Apply to Solder</h2>
+<section id="slide-orgecc4fba">
+<h2 id="orgecc4fba">Case Study: Wang (2001) Apply to Solder</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -93,8 +93,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org5ae6c4f">
-<h2 id="org5ae6c4f">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-org688ee83">
+<h2 id="org688ee83">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -132,8 +132,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org9bdb71d">
-<h2 id="org9bdb71d">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-org7c20bcb">
+<h2 id="org7c20bcb">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -178,8 +178,8 @@
 </div>
 
 </section>
-<section id="slide-org0e241a9">
-<h3 id="org0e241a9">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section id="slide-orgeee6648">
+<h3 id="orgeee6648">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -221,8 +221,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgbba27c6">
-<h2 id="orgbba27c6">Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)</h2>
+<section id="slide-orgfdfebca">
+<h2 id="orgfdfebca">Forward Euler Explicit time integration scheme Pseudocode</h2>
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -277,8 +277,8 @@
 </div>
 
 </section>
-<section id="slide-org1c0e43d">
-<h3 id="org1c0e43d">Code for Wang</h3>
+<section id="slide-org2def4f7">
+<h3 id="org2def4f7">Forward Euler Scheme for Anand Model</h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"   ><code trim><span style="color: #fb4934;">import</span> numpy <span style="color: #fb4934;">as</span> np
@@ -352,12 +352,11 @@ plt.show()
 </div>
 
 
-
 </section>
 </section>
 <section>
-<section id="slide-orgab959e9">
-<h2 id="orgab959e9">Strain rate sensitivity of stress m</h2>
+<section id="slide-orgf726f70">
+<h2 id="orgf726f70">Strain rate sensitivity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensitive (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -373,8 +372,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org3b8e4d1">
-<h2 id="org3b8e4d1">Flow rule</h2>
+<section id="slide-orgd95d110">
+<h2 id="orgd95d110">Flow rule</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -430,6 +429,7 @@ plt.show()
 <li>Direction given by \( \mathbf{T}' \).</li>
 <li>Magnitude determined by hyperbolic sine based on \( \bar{\sigma}/s \).</li>
 <li>\( \bar{\tau} \) represents the effective shear stress computed from deviatoric stress.</li>
+<li> \(\bar{\sigma} = \sqrt{\frac{3}{2} \mathbf{T'} : \mathbf{T'} }\) is the von Mises Equivalent stress, but is formally defined without yield point</li>
 <li>Full flow = <b>direction</b> × <b>magnitude</b>.</li>
 </ul>
 
@@ -439,8 +439,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org78690a6">
-<h2 id="org78690a6">Evolution Equation for the Stress</h2>
+<section id="slide-org08f7ad3">
+<h2 id="org08f7ad3">Evolution Equation for the Stress</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -497,8 +497,8 @@ plt.show()
 </div>
 
 </section>
-<section id="slide-org8dfbec3">
-<h3 id="org8dfbec3">Stress Evolution and Thermal Effects</h3>
+<section id="slide-orgb175286">
+<h3 id="orgb175286">Stress Evolution and Thermal Effects</h3>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -553,8 +553,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </section>
 </section>
 <section>
-<section id="slide-org329f265">
-<h2 id="org329f265">Relaxed (Intermediate) Configuration</h2>
+<section id="slide-orgc23b788">
+<h2 id="orgc23b788">Relaxed (Intermediate) Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -604,8 +604,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 
 
 </section>
-<section id="slide-org56cbb0d">
-<h3 id="org56cbb0d">Relaxed Configuration Constituative Laws</h3>
+<section id="slide-orgd306d1b">
+<h3 id="orgd306d1b">Relaxed Configuration Constituative Laws</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -685,15 +685,16 @@ E^e = \frac{1}{2} (C^e - I)
 <ul style="margin-top: 0.5em;">
 <li>Elastic kinematics and stress measures are formulated relative to the relaxed configuration, cleanly separating plastic and elastic contributions.</li>
 <li> Stress Power Split allows Anand to cleanly isolate plastic dissipation from elastic storage.</li>
-
+<li> Green-Lagrange strain tensor \(E^e\) is used because it symmetrically captures nonlinear elastic strain relative to the relaxed configuration</li>
+<li> The right Cauchy-Green tensor \(C^e = F^{e^T}F^e\) is required as an intermediate to compute \(E^e\) from the elastic deformation gradient \(F^e\) without referencing spatial coordinates </li>
 </ul>
 
 </div>
 
 
 </section>
-<section id="slide-orgadf9fb1">
-<h3 id="orgadf9fb1">Dissipation Separation: Elastic vs Plastic in Anand’s Model</h3>
+<section id="slide-orgbf8f06a">
+<h3 id="orgbf8f06a">Dissipation Separation: Elastic vs Plastic in Anand’s Model</h3>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <!-- Left Column -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44,160,44,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
@@ -745,8 +746,8 @@ The stress power split ensures that the second law is satisfied by assigning dis
 </section>
 </section>
 <section>
-<section id="slide-org265cfc2">
-<h2 id="org265cfc2">Reference Configuration</h2>
+<section id="slide-orge73ffec">
+<h2 id="orge73ffec">Reference Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -812,8 +813,8 @@ The stress power split ensures that the second law is satisfied by assigning dis
 
 
 </section>
-<section id="slide-org579b0d7">
-<h3 id="org579b0d7">Thermodynamics</h3>
+<section id="slide-org4bf5772">
+<h3 id="org4bf5772">Thermodynamics</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
