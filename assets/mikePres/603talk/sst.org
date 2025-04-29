@@ -1,11 +1,11 @@
 #+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
 #+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
-# #+REVEAL_THEME: black
 #+REVEAL_THEME: serif
-#+REVEAL_INIT_OPTIONS: slideNumber:true transition:'fade'
+# #+REVEAL_THEME: beige
+# #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
+#+REVEAL_INIT_OPTIONS: view:scroll
 #+OPTIONS: toc:nil num:nil
 #+REVEAL_EXTRA_CSS: style.css
-
 
 
 # The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.
@@ -194,7 +194,7 @@
 </div>
 #+END_EXPORT
 
-* Pseudocode and Plot: Wang-Anand Model (Low Strain Rate)
+* Forward Euler Explicit time integration scheme Pseudocode
 
 #+BEGIN_EXPORT html
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
@@ -251,7 +251,8 @@
 </div>
 #+END_EXPORT
 
-** Code for Wang
+** Forward Euler Scheme for Anand Model
+
 
 #+BEGIN_SRC python :results none :exports code
 import numpy as np
@@ -322,7 +323,6 @@ plt.ylim([0, 65])
 plt.tight_layout()
 plt.show()
 #+END_SRC
-
 
 
 * Strain rate sensitivity of stress m
@@ -397,6 +397,7 @@ plt.show()
 <li>Direction given by \( \mathbf{T}' \).</li>
 <li>Magnitude determined by hyperbolic sine based on \( \bar{\sigma}/s \).</li>
 <li>\( \bar{\tau} \) represents the effective shear stress computed from deviatoric stress.</li>
+<li> \(\bar{\sigma} = \sqrt{\frac{3}{2} \mathbf{T'} : \mathbf{T'} }\) is the von Mises Equivalent stress, but is formally defined without yield point</li>
 <li>Full flow = <b>direction</b> × <b>magnitude</b>.</li>
 </ul>
 
@@ -652,7 +653,8 @@ E^e = \frac{1}{2} (C^e - I)
 <ul style="margin-top: 0.5em;">
 <li>Elastic kinematics and stress measures are formulated relative to the relaxed configuration, cleanly separating plastic and elastic contributions.</li>
 <li> Stress Power Split allows Anand to cleanly isolate plastic dissipation from elastic storage.</li>
-
+<li> Green-Lagrange strain tensor \(E^e\) is used because it symmetrically captures nonlinear elastic strain relative to the relaxed configuration</li>
+<li> The right Cauchy-Green tensor \(C^e = F^{e^T}F^e\) is required as an intermediate to compute \(E^e\) from the elastic deformation gradient \(F^e\) without referencing spatial coordinates </li>
 </ul>
 
 </div>
