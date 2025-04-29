@@ -411,11 +411,13 @@ plt.show()
 
 <div style="flex: 1;">
 
-<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Evolution Equation</h3>
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Evolution Equation (Rate form of Hooke's Law)</h3>
 <div style="text-align: center; font-size: 1.2em; margin-bottom: 1em;">
 \[
 \overset{\nabla}{\mathbf{T}} = \mathbb{L} \left[ \mathbf{D} - \mathbf{D}^p \right] - \boldsymbol{\Pi} \dot{\theta}
 \]
+
+(rate-form Hooke’s law for finite deformation plasticity, with frame-indifference enforced through the Jaumann rate.)
 </div>
 
 <h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Jaumann Rate Definition</h3>
@@ -432,6 +434,7 @@ plt.show()
 <h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Material Tensors and Operators</h3>
 <ul style="margin-top: 0.5em;">
 <li>\( \mathbb{L} = 2\mu \mathbf{I} + \left( \kappa - \frac{2}{3}\mu \right) \mathbf{1} \otimes \mathbf{1} \) &mdash; isotropic elasticity tensor</li>
+<li>\(\mathbb{L}\mathbf{D} \) represents how instantaneous strain rates generate stresses according to the elastic material's stiffness properties. </li>
 <li>\( \mu = \mu(\theta) \), \( \kappa = \kappa(\theta) \) &mdash; temperature-dependent moduli</li>
 <li>\( \boldsymbol{\Pi} = (3\alpha \kappa) \mathbf{1} \) &mdash; stress-temperature coupling</li>
 <li>\( \alpha = \alpha(\theta) \) &mdash; thermal expansion coefficient</li>
@@ -648,11 +651,65 @@ E^e = \frac{1}{2} (C^e - I)
 <b>Summary:</b>
 <ul style="margin-top: 0.5em;">
 <li>Elastic kinematics and stress measures are formulated relative to the relaxed configuration, cleanly separating plastic and elastic contributions.</li>
+<li> Stress Power Split allows Anand to cleanly isolate plastic dissipation from elastic storage.</li>
+
 </ul>
 
 </div>
 #+END_EXPORT
 
+
+** Dissipation Separation: Elastic vs Plastic in Anand’s Model
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+<!-- Left Column -->
+<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44,160,44,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+<h3 style="color: #2ca02c;">Thermodynamic Separation</h3>
+<ol style="line-height: 1.5;">
+<li><b>Start with Total Dissipation:</b><br/>
+   \[
+   \mathcal{D} = \dot{\omega} - \dot{\psi} \geq 0
+   \]
+   where \(\dot{\omega} = \widehat{\mathbf{T}} : \dot{\mathbf{E}}^e + (\mathbf{C}^e \widehat{\mathbf{T}}) : \mathbf{L}^p\)
+</li>
+<li><b>Split Stress Power:</b><br/>
+   \[
+   \dot{\omega} = \dot{\omega}^e + \dot{\omega}^p
+   \]
+   with:
+<ul>
+<li>\( \dot{\omega}^e = \widehat{\mathbf{T}} : \dot{\mathbf{E}}^e \)</li>
+<li>\( \dot{\omega}^p = (\mathbf{C}^e \widehat{\mathbf{T}}) : \mathbf{L}^p \)</li>
+</ul>
+</li>
+<li><b>Group Terms with \( \dot{\psi} \):</b><br/>
+   \[
+   (\dot{\omega}^e - \dot{\psi}) + \dot{\omega}^p \geq 0
+   \]
+</li>
+<li><b>Apply Elastic Energy Consistency:</b><br/>
+   \[
+   \dot{\omega}^e - \dot{\psi} = 0
+   \quad \Rightarrow \quad \dot{\omega}^p \geq 0
+   \]
+</li>
+</ol>
+</div>
+<!-- Right Column -->
+<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255,127,14,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+<h3 style="color: #ff7f0e;">Key Physical Insights</h3>
+<ul style="line-height: 1.7;">
+<li><b>Elastic deformations</b> are recoverable and do not cause entropy production.</li>
+<li><b>All dissipation</b> stems from the plastic flow: \(\dot{\omega}^p\).</li>
+<li><b>Plastic work</b> increases entropy and governs viscoplastic evolution.</li>
+</ul>
+<div style="margin-top: 1.5em; background: #ffe6cc; padding: 0.8em 1em; border-radius: 8px; border-left: 4px solid #ff7f0e;">
+<b>Summary:</b><br/>
+The stress power split ensures that the second law is satisfied by assigning dissipation solely to irreversible processes.
+</div>
+</div>
+</div>
+#+END_EXPORT
 * Reference Configuration
 
 #+BEGIN_EXPORT html
