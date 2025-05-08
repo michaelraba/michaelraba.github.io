@@ -8,8 +8,6 @@
 #+REVEAL_EXTRA_CSS: style.css
 
 
-* Constructed Muffler
-
 * Spaceclaim Model
 
 #+BEGIN_EXPORT html
@@ -44,6 +42,29 @@
   </body>
 </html>
 #+END_EXPORT
+
+
+* Repository Link
+
+#+BEGIN_EXPORT html
+<div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1.2em 1.5em; border-radius: 8px;">
+    <h3 style="margin-top: 0; color: #1f77b4;">GitHub Repository</h3>
+    <p style="font-size: 1.1em; line-height: 1.6;">
+      You can view and explore the complete project source code, 3D models, and web demo files at the following link:
+    </p>
+
+    <p style="margin-top: 1em;">
+       <a href="https://github.com/michaelraba/multiChamberMuffler" target="_blank">
+        https://github.com/michaelraba/multiChamberMuffler
+      </a>
+    </p>
+  </div>
+
+</div>
+#+END_EXPORT
+
 
 
 * Main Assembly Drawing
