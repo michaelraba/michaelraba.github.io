@@ -10,6 +10,42 @@
 
 * Constructed Muffler
 
+* Spaceclaim Model
+
+#+BEGIN_EXPORT html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Muffler 3D Viewer</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+      model-viewer {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <model-viewer
+      src="./myGlb.glb"
+      alt="3D model of muffler"
+      camera-controls
+      auto-rotate
+      background-color="#ffffff"
+      shadow-intensity="1"
+      exposure="0.75"
+    ></model-viewer>
+  </body>
+</html>
+#+END_EXPORT
+
+
 * Main Assembly Drawing
 
 #+BEGIN_EXPORT html
@@ -83,3 +119,9 @@
 * PowerPoint Schematic of SIDLAB Component Breakdown
 * Simulated vs Measured Insertion Loss
 * Transmission Loss at 400°C and Harmonic Performance Analysis
+
+* References
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;"> <div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);"> <h3 style="margin-top: 0; color: #9467bd;">Cited Works</h3> <ol style="line-height: 1.8; margin-left: 1em;"> <li> Munjal ML. <i>Acoustics of Ducts and Mufflers</i>. 2nd ed. Wiley; 2014. ISBN: 9781118443125. <a href="https://doi.org/10.1002/9781118443125" target="_blank">https://doi.org/10.1002/9781118443125</a> </li> <li> Dokumacı E. <i>Duct Acoustics: Fundamentals and Applications to Mufflers and Silencers</i>. Cambridge University Press; 2021. ISBN: 9781108840750. <a href="https://doi.org/10.1017/9781108840750" target="_blank">https://doi.org/10.1017/9781108840750</a> </li> </ol> </div> </div> <hr style="margin-top: 2em; margin-bottom: 1.5em;"> <div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;"> <b>Note:</b> These references are foundational texts in muffler and duct acoustics and were consulted for system modeling, schematic development, and transmission loss analysis. </div>
+#+END_EXPORT
