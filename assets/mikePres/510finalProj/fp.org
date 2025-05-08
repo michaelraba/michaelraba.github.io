@@ -1,0 +1,85 @@
+#+TITLE: Multichamber Muffler System
+#+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+#+REVEAL_THEME: serif
+# #+REVEAL_THEME: beige
+# #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
+#+REVEAL_INIT_OPTIONS: view:scroll
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_EXTRA_CSS: style.css
+
+
+* Constructed Muffler
+
+* Main Assembly Drawing
+
+#+BEGIN_EXPORT html
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: 'Segoe UI', sans-serif; padding: 1em;">
+
+  <h3 style="margin-bottom: 1em;">Muffler Schematic with Annotations</h3>
+
+  <embed src="scheme.pdf" type="application/pdf" width="100%" height="700px" style="border: 1px solid #ccc; border-radius: 8px;" />
+
+  <p style="margin-top: 1em; font-size: 0.95em; color: #555;">
+    This assembly schematic shows chambers, baffles, inlet/outlet alignment, and structural layout for acoustical optimization.
+  </p>
+
+</div>
+#+END_EXPORT
+
+* Schematic Variants for Muffler Subcomponents
+
+#+BEGIN_EXPORT html
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 0.9em;">
+
+  <!-- Image 1 -->
+  <div style="flex: 0 0 30%; text-align: center;">
+    <img src="./imag/an01.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+    <div style="margin-top: 0.5em;">Part 1 — Chamber and Baffle</div>
+  </div>
+
+  <!-- Image 2 -->
+  <div style="flex: 0 0 30%; text-align: center;">
+    <img src="./imag/an02.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+    <div style="margin-top: 0.5em;">Part 2 — Fluid domain</div>
+  </div>
+
+  <!-- Image 3 -->
+  <div style="flex: 0 0 30%; text-align: center;">
+    <img src="./imag/an03.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+    <div style="margin-top: 0.5em;">Part 3 — Fiberglass Absorbant (gold)</div>
+  </div>
+
+  <!-- Image 4 -->
+  <div style="flex: 0 0 30%; text-align: center;">
+    <div style="margin-bottom: 0.5em;">Part 4 — Showing perforates (aimed at fiberglass)</div>
+    <img src="./imag/an04.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+  </div>
+
+  <!-- Image 5 -->
+  <div style="flex: 0 0 30%; text-align: center;">
+    <div style="margin-bottom: 0.5em;">Part 5 — Final Assembly View</div>
+    <img src="./imag/an05.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
+  </div>
+
+</div>
+#+END_EXPORT
+
+
+* Simulated vs Measured Transmission Loss (0–1000 Hz)
+
+#+BEGIN_EXPORT html
+<div style="text-align: center; padding: 1em; font-family: 'Segoe UI', sans-serif;">
+  <img src="./muffler_TL_20degC.png" alt="Transmission Loss at 20°C"
+       style="max-width: 90%; border: 2px solid #ccc; border-radius: 8px; box-shadow: 0 0 12px rgba(0,0,0,0.2);" />
+  <p style="margin-top: 1em; font-size: 1.1em; color: #333;">
+    <b>Figure:</b> Transmission Loss curve of the muffler between 5 Hz and 1000 Hz at 20°C.
+  </p>
+</div>
+#+END_EXPORT
+
+** Transmission Loss at 20°C
+
+* SIDLAB Model Submission for Transmission Loss
+* PowerPoint Schematic of SIDLAB Component Breakdown
+* Simulated vs Measured Insertion Loss
+* Transmission Loss at 400°C and Harmonic Performance Analysis
