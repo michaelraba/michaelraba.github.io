@@ -1,7 +1,7 @@
 ---
 permalink: /
-title: "About Michael Raba, MSc Candidate in Mechanical Engineering, University of Kentucky Pigman College of Engineering"
-excerpt: "About Michael Raba, MSc Candidate in Mechanical Engineering, University of Kentucky Pigman College of Engineering"
+title: "Focus: Passion in Engineering"
+excerpt: "Focus: Passion in Engineering"
 author_profile: true
 redirect_from: 
   - /about/
