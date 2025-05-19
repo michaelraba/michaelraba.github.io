@@ -1,83 +1,54 @@
 ---
-layout: archive
+layout: two-column
 title: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
+<div class="cv-column">
+## Work Experience
 
-{% include base_path %}
+- **Fall 2020–2023:** Research Assistant
+  - National Science Foundation
+  - Topic: Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe
+  - Supervisor: Professor Christoph Brehm (University of Maryland, College Park)
 
-<style>
-.cv-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-}
-.cv-column {
-  flex: 1 1 45%;
-  min-width: 300px;
-}
-.cv-column h2 {
-  margin-top: 0;
-}
-</style>
+- **Spring 2023:** Teaching Assistant
+  - Instructed students in ANOVA and DOE; equipment: wind tunnel, strain gage, beam deflection, LabVIEW data acquisition.
 
-<div class="cv-container">
-  <div class="cv-column">
-    <h2>Work Experience</h2>
-    <ul>
-      <li><strong>Fall 2020–2023:</strong> Research Assistant
-        <ul>
-          <li>National Science Foundation</li>
-          <li>Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe</li>
-          <li>Supervisor: Prof. Christoph Brehm (UMD College Park)</li>
-        </ul>
-      </li>
-      <li><strong>Spring 2023:</strong> Teaching Assistant
-        <ul>
-          <li>ANOVA, DOE; windtunnel, strain gage, beam deflection, LabView</li>
-        </ul>
-      </li>
-      <li><strong>Fall 2020:</strong> TA for Thermodynamics II</li>
-      <li><strong>Spring 2018:</strong> TA for Fluid Mechanics I</li>
-      <li><strong>Summer 2018:</strong> Research Assistant
-        <ul>
-          <li>UK Dept. of Aerospace Engineering</li>
-          <li>CFD air filter design with STAR-CCM+, Linux toolchain</li>
-        </ul>
-      </li>
-    </ul>
+- **Fall 2020:** Teaching Assistant for Thermodynamics II
 
-    <h2>Education</h2>
-    <ul>
-      <li><strong>M.Sc Mechanical Engineering</strong>, Univ. of Kentucky, Spring 2025</li>
-      <li><strong>B.A. Applied Mathematics</strong>, Univ. of Kentucky, Spring 2019</li>
-    </ul>
-  </div>
+- **Spring 2018:** Undergraduate Teaching Assistant for Fluid Mechanics I
 
-  <div class="cv-column">
-    <h2>Skill 1 – Scientific Parallel Computing</h2>
-    <ul>
-      <li>MPI, OpenMP (C++11/14/17, Fortran2018, Julia, Python, Matlab)</li>
-      <li>Standard C++: STL, resource management, concurrency, Boost, Eigen</li>
-      <li>Interoperability: &lt;python, c++, fortran, julia&gt;</li>
-      <li>Memory profiling: Vtune, Valgrind, gdb, totalview</li>
-      <li>HDF5, SZIP/LZF for large data</li>
-      <li>Git: branching/merging, CI/CD automation</li>
-      <li>Linux optimization: CentOS, Arch, Ubuntu</li>
-    </ul>
+- **Summer 2018:** Research Assistant
+  - University of Kentucky Department of Aerospace Engineering
+  - Optimized air filter design using commercial CFD tools and Linux workchain; meshing, STAR-CCM+, geometry cleanup.
+</div>
 
-    <h2>Skills</h2>
-    <ul>
-      <li>Signal Processing (Fourier)</li>
-      <li>Reduced Order Modeling</li>
-      <li>Turbulence theory</li>
-      <li>Matrix Methods</li>
-      <li>Technical writing</li>
-      <li>Ansys Workbench, STAR-CCM+</li>
-    </ul>
-  </div>
+<div class="cv-column">
+## Skills
+
+- **Scientific Parallel Computing:**
+  - MPI and OpenMP (C++11/14/17, Fortran2018, Julia, MATLAB, Python)
+  - ISO Standard C++: Data structures, resource management (caching, memoization), classes and class hierarchies, interfaces, concurrency, error handling, effective STL; libraries: Eigen and Boost
+  - Interoperability: Python, C++, Fortran, Julia; mixed Python and C stacks
+  - Memory profiling: Vtune Profiler, Valgrind, gdb, TotalView; large data handling (HDF5 with SZIP/LZF)
+  - Version control: Git (branching & merging), CI/CD tools to automate testing, building, and deployment
+  - Linux systems configuration and optimization (CentOS, Arch, Ubuntu)
+
+- **Additional Skills:**
+  - Signal Processing (Fourier analysis)
+  - Reduced Order Modeling Techniques
+  - Turbulence theory
+  - Matrix Methods
+  - Technical documentation and communication
+  - Ansys Workbench, STAR-CCM+
+</div>
+
+<div class="cv-column">
+## Education
+
+- **M.Sc. Mechanical Engineering**, University of Kentucky, Spring 2025
+- **B.A. Applied Mathematics**, University of Kentucky, Spring 2019
 </div>
