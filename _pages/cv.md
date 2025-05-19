@@ -9,72 +9,75 @@ redirect_from:
 
 {% include base_path %}
 
-Work experience
-======
+<style>
+.cv-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.cv-column {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.cv-column h2 {
+  margin-top: 0;
+}
+</style>
 
-* Fall 2020-2023: Research Assistant
-  * National Science Foundation
-  * Topic: Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe
-  * Supervisor: Professor Christoph Brehm (University of Maryland, College Park)
+<div class="cv-container">
+  <div class="cv-column">
+    <h2>Work Experience</h2>
+    <ul>
+      <li><strong>Fall 2020–2023:</strong> Research Assistant
+        <ul>
+          <li>National Science Foundation</li>
+          <li>Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe</li>
+          <li>Supervisor: Prof. Christoph Brehm (UMD College Park)</li>
+        </ul>
+      </li>
+      <li><strong>Spring 2023:</strong> Teaching Assistant
+        <ul>
+          <li>ANOVA, DOE; windtunnel, strain gage, beam deflection, LabView</li>
+        </ul>
+      </li>
+      <li><strong>Fall 2020:</strong> TA for Thermodynamics II</li>
+      <li><strong>Spring 2018:</strong> TA for Fluid Mechanics I</li>
+      <li><strong>Summer 2018:</strong> Research Assistant
+        <ul>
+          <li>UK Dept. of Aerospace Engineering</li>
+          <li>CFD air filter design with STAR-CCM+, Linux toolchain</li>
+        </ul>
+      </li>
+    </ul>
 
-* Spring 2023: Teaching Assistant
-   * Instruct students: ANOVA and DOE; equipment:  windtunnel,  strain gage, beam deflection, Labview data aquistion.
-* Fall 2020: Teaching Assistant for Thermodynamics II
-* Spring 2018: Undergraduate Teaching Assistant for Fluid Mechanics I
-* Summer 2018: Research Assistant
-  * University of Kentucky Department of Aerospace Engineering
-  * Optimize air filter design using commercial CFD tools and linux workchain; meshing, STAR-CCM+, geometry cleanup
+    <h2>Education</h2>
+    <ul>
+      <li><strong>M.Sc Mechanical Engineering</strong>, Univ. of Kentucky, Spring 2025</li>
+      <li><strong>B.A. Applied Mathematics</strong>, Univ. of Kentucky, Spring 2019</li>
+    </ul>
+  </div>
 
+  <div class="cv-column">
+    <h2>Skill 1 – Scientific Parallel Computing</h2>
+    <ul>
+      <li>MPI, OpenMP (C++11/14/17, Fortran2018, Julia, Python, Matlab)</li>
+      <li>Standard C++: STL, resource management, concurrency, Boost, Eigen</li>
+      <li>Interoperability: &lt;python, c++, fortran, julia&gt;</li>
+      <li>Memory profiling: Vtune, Valgrind, gdb, totalview</li>
+      <li>HDF5, SZIP/LZF for large data</li>
+      <li>Git: branching/merging, CI/CD automation</li>
+      <li>Linux optimization: CentOS, Arch, Ubuntu</li>
+    </ul>
 
-
-Skill 1 - Scientific Parallel Computing:
-======
-
-- Parallel Computing: MPI and OpenMP ( C++11/14/17, Fortran2018, Julia, Matlab and Python ) ;<br>
-- ISO Standard cpp: Datastructures, resource mangement (caching,memoization),  classes and class hierarchies, interfaces, concurrency, error handling, effective STL; libraries Eigen and Boost  <br>
-- Interoperability $\langle$ python,c++,fortran,julia$\rangle$ ; mixed python and C stacks
-- Memory profiling (Vtune profiler,Valgrind,gpdrftools,GDB,totalview); large data (hdf5 & szip/lzf);<br>
-- Version control (git → branching & merging, CI/CD tools to automate test,build, & deployment)<br>
-- Configure and optimize Linux systems (CentOS, Arch, Ubuntu)<br>
-
-
-Skills
-======
-
-  * Signal Processing (Fourier analysis)
-  * Reduced Order Modeling Techniques
-  * Turbulence theory
-  * Matrix Methods
-  * Technical documentation and communication
-  * Ansys Workbench, StarCcm+
-
-Education
-======
-* B.A. Applied Mathematics, University of Kentucky, Spring 2019
-* M.Sc Mechanical Engineering, University of Kentucky, Spring 2025
-
-
-
-{% comment %}
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
-{% endcomment %}
+    <h2>Skills</h2>
+    <ul>
+      <li>Signal Processing (Fourier)</li>
+      <li>Reduced Order Modeling</li>
+      <li>Turbulence theory</li>
+      <li>Matrix Methods</li>
+      <li>Technical writing</li>
+      <li>Ansys Workbench, STAR-CCM+</li>
+    </ul>
+  </div>
+</div>
