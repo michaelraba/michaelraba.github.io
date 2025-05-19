@@ -6,7 +6,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Eigenmike (Septic 🏈)"
+title                    : "MSc Mechanical Engineering"
 title_separator          : "-"
 name                     : &name "Michael Raba"
 description              : &description "personal description"
@@ -28,7 +28,7 @@ comments:
   facebook:
     appid                :
     num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    colorscheme          : # "dark" (default), "dark"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "gh-pages" # "master", "gh-pages"
