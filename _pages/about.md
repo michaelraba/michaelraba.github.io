@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a student in Mechanical Engineering with:
+Michael Raba, Mechanical Engineering MSc(2025)
 * Experience in partial differential equations in both numerics and functional analytic viewpoints
 * Scientific  parallel computing
 * Statistical approaches to fluid mechanics (Reduced Order Modeling)
