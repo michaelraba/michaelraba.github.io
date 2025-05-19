@@ -7,7 +7,6 @@ redirect_from:
   - /resume
 ---
 
-<iframe src="/assets/resume/re.pdf" width="100%" height="800px">
-  This browser does not support PDFs. Please download the PDF to view it:
-  <a href="/assets/resume/re.pdf">Download PDF</a>.
-</iframe>
+
+<embed src="/assets/michaelraba_cv.pdf" type="application/pdf" width="100%" height="1000px" />
+<p><a href="/assets/michaelraba_cv.pdf" download>Download CV (PDF)</a></p>
