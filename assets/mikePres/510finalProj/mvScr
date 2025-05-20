@@ -1,4 +1,4 @@
 cp /home/mi/onedrive/M3dat.csv .
 cp /home/mi/onedrive/multiChamberMuffler/Mark-I-MDF-clearned-data.wbpz .
-cp /home/mi/onedrive/multiChamberMuffler/Mark3.sid .
+zip ./files/Mark3Sid.zip /home/mi/onedrive/multiChamberMuffler/Mark3.sid
 

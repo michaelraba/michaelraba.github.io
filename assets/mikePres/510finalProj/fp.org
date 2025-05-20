@@ -149,54 +149,45 @@
 
 ** Transmission Loss at 20°C
 
-* SIDLAB Model Submission for Transmission Loss
-(link to github)
+* Sidlab and Ansys File Download Center
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em; margin-top: 1em;">
 
-* t
-#+begin_export html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Framed Image Display</title>
-  <style>
-    body {
-      background-color: #0e0e11;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      height: 100vh;
-      margin: 0;
-    }
+<!-- SIDLAB TAB -->
+<div style="flex: 1; background: rgba(30, 144, 255, 0.08); border-left: 6px solid #1e90ff; border-radius: 8px; padding: 1em 1.5em;">
+  <h3 style="margin-top: 0; color: #1e90ff;">SIDLAB Model</h3>
+  <ul style="margin-top: 0.5em;">
+    <li><b>File:</b> <code>Mark3.zip</code></li>
+    <li><b>Created with:</b> SIDLAB 5.1</li>
+    <li>
+      <a href="https://github.com/michaelraba/michaelraba.github.io/raw/main/assets/mikePres/510finalProj/files/Mark3.sid"
+         download="Mark3.zip"
+         style="color: #1e90ff; font-weight: bold;">
+         ⬇ Download SIDLAB File
+      </a>
+    </li>
+  </ul>
+</div>
 
-    .tab-frame {
-      background: linear-gradient(to right, #1e3a8a 12px, #1f2937 12px);
-      border-left: 12px solid #3b82f6;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
-      max-width: 90%;
-    }
+<!-- ANSYS TAB -->
+<div style="flex: 1; background: rgba(60, 179, 113, 0.08); border-left: 6px solid #3cb371; border-radius: 8px; padding: 1em 1.5em;">
+  <h3 style="margin-top: 0; color: #3cb371;">ANSYS Simulation</h3>
+  <ul style="margin-top: 0.5em;">
+    <li><b>File:</b> <code>Mark-I-MDF-clearned-data.wbpz</code></li>
+    <li><b>Created with:</b> ANSYS 2023 R2</li>
+    <li>
+      <a href="https://github.com/michaelraba/michaelraba.github.io/raw/main/assets/mikePres/510finalProj/files/Mark-I-MDF-clearned-data.wbpz"
+         style="color: #3cb371; font-weight: bold;">
+         ⬇ Download ANSYS File
+      </a>
+    </li>
+  </ul>
+</div>
 
-    .tab-frame img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 6px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-    }
-  </style>
-</head>
-<body>
+</div>
+#+END_EXPORT
 
-  <div class="tab-frame">
-    <img src="imag/sid1.png" alt="Framed Technical Image">
-  </div>
 
-</body>
-</html>
-#+end_export
 
 * Sidlab Components
 
