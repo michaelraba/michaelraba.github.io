@@ -157,10 +157,10 @@
 <div style="flex: 1; background: rgba(30, 144, 255, 0.08); border-left: 6px solid #1e90ff; border-radius: 8px; padding: 1em 1.5em;">
   <h3 style="margin-top: 0; color: #1e90ff;">SIDLAB Model</h3>
   <ul style="margin-top: 0.5em;">
-    <li><b>File:</b> <code>Mark3.zip</code></li>
+    <li><b>File:</b> <code>Mark3Sid.zip</code></li>
     <li><b>Created with:</b> SIDLAB 5.1</li>
     <li>
-      <a href="https://github.com/michaelraba/michaelraba.github.io/raw/main/assets/mikePres/510finalProj/files/Mark3.sid"
+      <a href="https://github.com/michaelraba/michaelraba.github.io/raw/main/assets/mikePres/510finalProj/files/Mark3Sid.zip"
          download="Mark3.zip"
          style="color: #1e90ff; font-weight: bold;">
          ⬇ Download SIDLAB File
