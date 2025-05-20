@@ -6,7 +6,7 @@
 #+REVEAL_INIT_OPTIONS: view:scroll
 #+OPTIONS: toc:nil num:nil
 #+REVEAL_EXTRA_CSS: style.css
-* S b
+* Multicomponent Muffler Internal Geometry
 #+BEGIN_EXPORT html
 <!DOCTYPE html>
 <html lang="en">
@@ -48,41 +48,6 @@
 </html>
 #+end_EXPORt
 
-
-* Spaceclaim Model a
-
-#+BEGIN_EXPORT html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Muffler 3D Viewer</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        background-color: #f4f4f4;
-      }
-      model-viewer {
-        width: 100vw;
-        height: 100vh;
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <model-viewer
-      src="./myGlb.glb"
-      alt="3D model of muffler"
-      camera-controls
-      auto-rotate
-      background-color="#ffffff"
-      shadow-intensity="1"
-      exposure="0.75"
-    ></model-viewer>
-  </body>
-</html>
-#+END_EXPORT
 
 * Dimensions
 
