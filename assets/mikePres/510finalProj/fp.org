@@ -6,9 +6,50 @@
 #+REVEAL_INIT_OPTIONS: view:scroll
 #+OPTIONS: toc:nil num:nil
 #+REVEAL_EXTRA_CSS: style.css
+* S b
+#+BEGIN_EXPORT html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Muffler 3D Viewer</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 1rem;
+      }
+      model-viewer {
+        width: 100%;
+        max-width: 900px;
+        height: 80vh;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <model-viewer
+      src="./myGlb.glb"
+      alt="3D model of muffler"
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      exposure="0.75"
+    ></model-viewer>
+  </body>
+</html>
+#+end_EXPORt
 
 
-* Spaceclaim Model
+* Spaceclaim Model a
 
 #+BEGIN_EXPORT html
 <!DOCTYPE html>
