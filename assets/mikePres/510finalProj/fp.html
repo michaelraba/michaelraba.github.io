@@ -30,11 +30,11 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Multichamber Muffler System</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-05-20 Tue 09:13</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-05-28 Wed 04:09</p>
 </section>
 <section>
-<section id="slide-org2d73ca3">
-<h2 id="org2d73ca3">Multicomponent Muffler Internal Geometry</h2>
+<section id="slide-orgc3ee901">
+<h2 id="orgc3ee901">Multicomponent Muffler Internal Geometry</h2>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,8 +78,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgf5c4b55">
-<h2 id="orgf5c4b55">Dimensions</h2>
+<section id="slide-orgefb9240">
+<h2 id="orgefb9240">Dimensions</h2>
 <object
   type="image/svg+xml"
   data="imag/svg1.svg"
@@ -90,8 +90,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgf1288e9">
-<h2 id="orgf1288e9">Schematic Variants for Muffler Subcomponents</h2>
+<section id="slide-orgf104987">
+<h2 id="orgf104987">Schematic Variants for Muffler Subcomponents</h2>
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 0.9em;">
 
   <!-- Image 1 -->
@@ -130,10 +130,11 @@
 </section>
 </section>
 <section>
-<section id="slide-org9dcf717">
-<h2 id="org9dcf717">Ansys Simulation</h2>
+<section id="slide-org88935df">
+<h2 id="org88935df">Ansys Simulation</h2>
 <p>
 Simulated Transmission Loss (0–1000 Hz) by approximating muffler walls as fluid
+at 20 deg C
 </p>
 
 <div style="text-align: center; padding: 1em; font-family: 'Segoe UI', sans-serif;">
@@ -144,15 +145,24 @@ Simulated Transmission Loss (0–1000 Hz) by approximating muffler walls as flui
   </p>
 </div>
 
-</section>
-<section id="slide-org5786838">
-<h3 id="org5786838">Transmission Loss at 20°C</h3>
+
 
 </section>
 </section>
 <section>
-<section id="slide-org80a77a5">
-<h2 id="org80a77a5">Sidlab and Ansys File Download Center</h2>
+<section id="slide-org76f6631">
+<h2 id="org76f6631">Simlab Simulation</h2>
+<p>
+Simulated Transmission Loss (0–1000 Hz) Simlab model
+</p>
+
+<img src="./muffler_TL_20degC.svg" alt="Muffler TL Plot" style="width:100%; max-width:800px;">
+
+</section>
+</section>
+<section>
+<section id="slide-org54dc0e0">
+<h2 id="org54dc0e0">Sidlab and Ansys File Download Center</h2>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em; margin-top: 1em;">
 
 <!-- SIDLAB TAB -->
@@ -190,11 +200,13 @@ Simulated Transmission Loss (0–1000 Hz) by approximating muffler walls as flui
 
 
 
+
+
 </section>
 </section>
 <section>
-<section id="slide-org4b75b8b">
-<h2 id="org4b75b8b">Sidlab Components</h2>
+<section id="slide-org41cefa6">
+<h2 id="org41cefa6">Sidlab Components</h2>
 <object
   type="image/svg+xml"
   data="imag/svg2.svg"
@@ -206,19 +218,26 @@ Simulated Transmission Loss (0–1000 Hz) by approximating muffler walls as flui
 </section>
 </section>
 <section>
-<section id="slide-orgd2418b2">
-<h2 id="orgd2418b2">Simulated vs Measured Insertion Loss</h2>
-</section>
-</section>
-<section>
-<section id="slide-org1cbae45">
-<h2 id="org1cbae45">Transmission Loss at 400°C and Harmonic Performance Analysis</h2>
+<section id="slide-org37b6c09">
+<h2 id="org37b6c09">Simulated vs Measured Insertion Loss</h2>
+<p>
+This plot compares the measured insertion loss from the <b>Big Blue Madness</b> muffler against the simulated transmission loss obtained from SIDLAB.
+</p>
+
+<img src="./imag/bbm_insert_loss.svg" alt="Simulated vs Measured Insertion Loss" style="width:100%; max-width:800px;">
+
 
 </section>
 </section>
 <section>
-<section id="slide-org4510bc1">
-<h2 id="org4510bc1">References</h2>
+<section id="slide-orgf155f7e">
+<h2 id="orgf155f7e">Transmission Loss at 400°C and Harmonic Performance Analysis</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaa9354a">
+<h2 id="orgaa9354a">References</h2>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;"> <div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);"> <h3 style="margin-top: 0; color: #9467bd;">Cited Works</h3> <ol style="line-height: 1.8; margin-left: 1em;"> <li> Munjal ML. <i>Acoustics of Ducts and Mufflers</i>. 2nd ed. Wiley; 2014. ISBN: 9781118443125. <a href="https://doi.org/10.1002/9781118443125" target="_blank">https://doi.org/10.1002/9781118443125</a> </li> <li> Dokumacı E. <i>Duct Acoustics: Fundamentals and Applications to Mufflers and Silencers</i>. Cambridge University Press; 2021. ISBN: 9781108840750. <a href="https://doi.org/10.1017/9781108840750" target="_blank">https://doi.org/10.1017/9781108840750</a> </li> </ol> </div> </div> <hr style="margin-top: 2em; margin-bottom: 1.5em;"> <div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;"> <b>Note:</b> These references are foundational texts in muffler and duct acoustics and were consulted for system modeling, schematic development, and transmission loss analysis. </div>
 </section>
 </section>

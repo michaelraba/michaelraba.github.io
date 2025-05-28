@@ -101,6 +101,7 @@
 
 * Ansys Simulation
  Simulated Transmission Loss (0–1000 Hz) by approximating muffler walls as fluid
+ at 20 deg C
 
 #+BEGIN_EXPORT html
 <div style="text-align: center; padding: 1em; font-family: 'Segoe UI', sans-serif;">
@@ -112,7 +113,15 @@
 </div>
 #+END_EXPORT
 
-** Transmission Loss at 20°C
+
+
+* Simlab Simulation
+
+ Simulated Transmission Loss (0–1000 Hz) Simlab model
+
+#+BEGIN_EXPORT html
+<img src="./muffler_TL_20degC.svg" alt="Muffler TL Plot" style="width:100%; max-width:800px;">
+#+end_EXPORT
 
 * Sidlab and Ansys File Download Center
 #+BEGIN_EXPORT html
@@ -154,6 +163,8 @@
 
 
 
+
+
 * Sidlab Components
 
 #+BEGIN_EXPORT html
@@ -167,6 +178,15 @@
 
 
 * Simulated vs Measured Insertion Loss
+
+
+This plot compares the measured insertion loss from the *Big Blue Madness* muffler against the simulated transmission loss obtained from SIDLAB.
+
+#+BEGIN_EXPORT html
+<img src="bbm_insert_loss.svg" alt="Simulated vs Measured Insertion Loss" style="width:100%; max-width:800px;">
+#+END_EXPORT
+
+
 * Transmission Loss at 400°C and Harmonic Performance Analysis
 
 * References
