@@ -114,7 +114,6 @@
 #+END_EXPORT
 
 
-
 * Simlab Simulation
 
  Simulated Transmission Loss (0–1000 Hz) Simlab model
@@ -183,11 +182,47 @@
 This plot compares the measured insertion loss from the *Big Blue Madness* muffler against the simulated transmission loss obtained from SIDLAB.
 
 #+BEGIN_EXPORT html
-<img src="bbm_insert_loss.svg" alt="Simulated vs Measured Insertion Loss" style="width:100%; max-width:800px;">
+<img src="./imag/bbm_insert_loss.svg" alt="Simulated vs Measured Insertion Loss" style="width:100%; max-width:800px;">
 #+END_EXPORT
 
 
-* Transmission Loss at 400°C and Harmonic Performance Analysis
+* Simulated vs Measured Insertion Loss
+
+#+BEGIN_EXPORT html
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; display: flex; flex-direction: column; align-items: center;">
+
+<!-- Scaled-down plot -->
+<div style="width: 85%; max-height: 55vh;">
+  <h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Measured vs Simulated TL</h3>
+  <img src="./imag/bbm_insert_loss.svg" alt="Simulated vs Measured Insertion Loss"
+       style="width:100%; border: 1px solid #ccc; border-radius: 8px;">
+</div>
+
+<!-- Explanation tab -->
+<div style="margin-top: 1.2em; background: rgba(0,128,0,0.05); padding: 1em 1.5em;
+            border-left: 6px solid #2ca02c; border-radius: 8px; width: 85%;
+            max-height: 30vh; overflow-y: auto;">
+
+<p>Insertion Loss (IL) quantifies how much sound is attenuated when a muffler is added to the system.</p>
+
+<p style="margin-top: 0.5em;"><b>General formula:</b></p>
+<div style="text-align: center;">
+$$
+\text{IL} = 10 \log_{10} \left( \frac{P_{\text{baseline}}}{P_{\text{muffler}}} \right)
+$$
+</div>
+
+<p style="margin-top: 0.5em;">Because our data is already in decibels (dB), this simplifies to:</p>
+
+<div style="text-align: center;">
+$$
+\text{IL} = \text{Power}_{\text{baseline (dB)}} - \text{Power}_{\text{muffler (dB)}}
+$$
+</div>
+
+</div>
+</div>
+#+END_EXPORT
 
 * References
 
