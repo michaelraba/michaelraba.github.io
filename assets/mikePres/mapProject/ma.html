@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Map of UKHealthcare</title>
+<meta name="author" content="Michael Raba, MSc Candidate at University of Kentucky"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-06-05 Thu 09:45</p>
+</section>
+
+<section>
+<section id="slide-orgb47cdb5">
+<h2 id="orgb47cdb5">map</h2>
+<style>
+  .map-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: flex-start;
+  }
+  .side-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .svg-container {
+    flex: 1;
+    position: relative;
+  }
+  .bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+</style>
+
+<div class="map-controls">
+  <!-- Left side superlayer buttons -->
+  <div class="side-buttons">
+    <button onclick="activateLayer('hDesk')">hDesk</button>
+    <button onclick="activateLayer('a1Desk')">a1Desk</button>
+  </div>
+
+  <!-- SVG viewer -->
+  <div class="svg-container">
+    <object id="mapObj" type="image/svg+xml" data="./svg.svg" width="100%" height="600px">
+      Your browser does not support SVG.
+    </object>
+  </div>
+</div>
+
+<!-- Bottom row sublayer buttons -->
+<div class="bottom-buttons">
+  <button onclick="showSub('PET')">PET</button>
+  <button onclick="showSub('Gill')">Gill</button>
+  <button onclick="showSub('Dentistry')">Dentistry</button>
+  <button onclick="showSub('CC')">CC</button>
+</div>
+
+<script>
+  let svgDoc = null;
+  let superlayers = {};
+  let currentSuperlayerId = 'hDesk';
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const obj = document.getElementById("mapObj");
+
+    obj.addEventListener("load", () => {
+      svgDoc = obj.contentDocument;
+
+      // Get references to both superlayers
+      superlayers = {
+        hDesk: svgDoc.getElementById("hDesk"),
+        a1Desk: svgDoc.getElementById("a1Desk")
+      };
+
+      // Initially activate hDesk
+      activateLayer("hDesk");
+    });
+  });
+
+  function activateLayer(layerId) {
+    currentSuperlayerId = layerId;
+
+    for (const [id, group] of Object.entries(superlayers)) {
+      if (!group) continue;
+      group.style.display = (id === layerId) ? "inline" : "none";
+    }
+  }
+
+  function showSub(subId) {
+    const activeLayer = superlayers[currentSuperlayerId];
+    if (!activeLayer) return;
+
+    // Hide all direct children of the current superlayer
+    Array.from(activeLayer.children).forEach(child => {
+      if (child.style) child.style.display = "none";
+    });
+
+    // Try to show the specified sublayer
+    const sub = svgDoc.getElementById(subId);
+    if (sub && activeLayer.contains(sub)) {
+      sub.style.display = "inline";
+      sub.querySelectorAll("*").forEach(el => {
+        if (el.style) el.style.display = "inline";
+      });
+    } else {
+      console.warn(`Sublayer "${subId}" not found in "${currentSuperlayerId}"`);
+    }
+  }
+</script>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+view:scroll,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

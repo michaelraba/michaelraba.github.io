@@ -1,0 +1,21 @@
+/* Slightly reduce base font size if needed */
+.reveal {
+  font-size: 0.98em;
+}
+
+/* Headings */
+.reveal h1 {
+  font-size: 1.5em;
+}
+.reveal h2 {
+  font-size: 1.2em;
+}
+.reveal h3 {
+  font-size: 1.0em;
+}
+
+/* MathJax font size */
+.reveal .MathJax,
+.reveal .MathJax_Display {
+  font-size: 0.9em !important;
+}
