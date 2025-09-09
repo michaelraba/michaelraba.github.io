@@ -1,0 +1,872 @@
+#+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
+#+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+#+REVEAL_THEME: serif
+# #+REVEAL_THEME: beige
+# #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
+#+REVEAL_INIT_OPTIONS: view:scroll
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_EXTRA_CSS: style.css
+
+
+# The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.
+
+
+* Source Paper
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+<!-- LEFT column: Text + Image -->
+<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+<div style="font-size: 1.2em; font-weight: bold; color: #2ca02c;">
+<i>Constitutive Equations for Hot-Working of Metals</i>
+</div>
+<div><b>Author:</b> Lallit Anand (1985)</div>
+<div><b>DOI:</b> <a href="https://doi.org/10.1016/0749-6419(85)90004-X" target="_blank">10.1016/0749-6419(85)90004-X</a></div>
+<div style="margin-top: 1em; font-size: 0.95em;">
+<i>One of the foundational papers in thermodynamically consistent viscoplasticity modeling—especially significant in the context of metals subjected to large strains and high temperatures.</i>
+</div>
+<img src="./state.png" alt="State Change under Hot Working" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-top: 1em;" />
+</div>
+<!-- RIGHT column: Only Paper Image -->
+<div style="flex: 1;">
+<img src="./anandPaper.png" alt="Anand 1985 Paper" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+</div>
+</div>
+#+END_EXPORT
+
+# Anand’s model is motivated by the limitations of classical plasticity: namely, its dependence on yield surfaces and loading-unloading rules. Instead, Anand proposes a unified approach to both plasticity and creep—essential for materials like solder where both effects occur simultaneously.
+
+* Case Study: Wang (2001) Apply to Solder
+
+#+BEGIN_EXPORT html
+<div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
+
+    <img src="wangPaper.png" alt="Wang Paper" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
+
+
+    <div style="font-size: 0.9em; color: #666;">
+      Source: Wang, C. H. (2001). “A Unified Creep–Plasticity Model for Solder Alloys.”<br/>
+      <b>DOI:</b> <a href="https://doi.org/10.1115/1.1371781" target="_blank">10.1115/1.1371781</a>
+    </div>
+
+  </div>
+
+  <div style="flex: 2; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1.2em 1.5em; border-radius: 8px;">
+    <div style="font-weight: bold; color: #1f77b4; font-size: 1.2em; margin-bottom: 0.5em;">Why Wang's Paper Matters</div>
+    <ul style="line-height: 1.6;">
+      <li>Applies Anand’s unified viscoplastic framework to model solder behavior.</li>
+      <li>Anand's model can be reduced and fitted from experiments.</li>
+      <li>transition the theory into engineering-scale implementation.</li>
+      <li>Targets solder joints in microelectronic packages (chip on PCB, soldered connections).</li>
+    </ul>
+
+    <img src="chip.png" alt="Chip and Solder Structure" style="width:100%; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.2);" />
+  </div>
+
+</div>
+#+END_EXPORT
+
+* Comparing Anand Model Predictions at Two Strain Rates
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
+<div style="font-weight: bold; color: #2ca02c; margin-bottom: 0.5em;">Observed Behavior</div>
+<ul>
+  <li><b>Top Graph (a):</b> \( \dot{\varepsilon} = 10^{-2} \, \text{s}^{-1} \)</li>
+  <li>High strain rate → higher stress</li>
+  <li>Recovery negligible → pronounced hardening</li>
+
+  <li><b>Bottom Graph (b):</b> \( \dot{\varepsilon} = 10^{-4} \, \text{s}^{-1} \)</li>
+  <li>Lower strain rate → lower stress at same strain</li>
+  <li>Recovery and creep effects more significant</li>
+</ul>
+<p style="margin-top: 1em;"><b>Model Accuracy:</b> Lines = model prediction, X = experimental data</p>
+</div>
+
+<div style="flex: 1; border-left: 6px solid #d62728; background: rgba(214, 39, 40, 0.06); padding: 1em 1.5em; border-radius: 8px;">
+<div style="font-weight: bold; color: #d62728; margin-bottom: 0.5em;">Key Insights from Wang (2001)</div>
+<ul>
+  <li>“At lower strain rates, recovery dominates… the stress levels off early.”</li>
+  <li>“At high strain rates, hardening dominates, and the stress grows continuously.”</li>
+</ul>
+<p style="margin-top: 1em;">Anand’s model smoothly captures strain-rate and temperature dependence of solder materials.</p>
+</div>
+
+</div>
+
+<div style="text-align: center; margin-top: 1.5em;">
+  <img src="wMPa.png" style="width: 40%; margin-right: 2em;">
+  <img src="wMPb.png" style="width: 40%;">
+</div>
+#+END_EXPORT
+
+
+
+* Main Equations of Wang's Anand-Type Viscoplastic Model
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<!-- Left column -->
+<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #1f77b4; margin-bottom: 0.5em;">Flow Rule (Plastic Strain Rate)</div>
+  <ul>
+    <li>\[
+    \dot{\varepsilon}^p = A \exp\left( -\frac{Q}{RT} \right)
+    \left[ \sinh\left( \frac{j \sigma}{s} \right) \right]^{1/m}
+    \]</li>
+    <li>Plastic strain rate increases with stress and temperature.</li>
+    <li>No explicit yield surface; flow occurs at all nonzero stresses.</li>
+  </ul>
+
+  <div style="font-weight: bold; color: #1f77b4; margin: 1em 0 0.5em;">Deformation Resistance Saturation \( s^* \)</div>
+  <ul>
+    <li>\[
+    s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{RT} \right) \right)^n
+    \]</li>
+    <li>Defines the steady-state value that \( s \) evolves toward.</li>
+    <li>Depends on strain rate and temperature.</li>
+  </ul>
+</div>
+
+<!-- Right column -->
+<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #ff7f0e; margin-bottom: 0.5em;">Evolution of Deformation Resistance \( s \)</div>
+  <ul>
+    <li>\[
+    \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a
+    \, \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p
+    \]</li>
+    <li>Describes dynamic hardening and softening of the material.</li>
+    <li>\( s \) evolves depending on proximity to \( s^* \) and flow activity.</li>
+  </ul>
+
+  <div style="font-size: 0.9em; color: #666; margin-top: 1em;">
+    Note: Constants \( A, Q, m, j, h_0, \hat{s}, n, a \) are material-specific and fitted to experimental creep/strain rate data.
+  </div>
+</div>
+
+</div>
+#+END_EXPORT
+
+** Anand Viscoplasticity Constants for 60Sn40Pb
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<!-- Left column -->
+<div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #9467bd; margin-bottom: 0.5em;">Image Reference</div>
+  <p>Values are from correspond to 60Sn40Pb solder parameters used in Anand's model:</p>
+  <ul>
+    <li><b>\( S_0 \)</b>: Initial deformation resistance</li>
+    <li><b>\( Q/R \)</b>: Activation energy over gas constant</li>
+    <li><b>\( A \)</b>: Pre-exponential factor for flow rate</li>
+    <li><b>\( \xi \)</b>: Multiplier of stress inside sinh</li>
+    <li><b>\( m \)</b>: Strain rate sensitivity of stress</li>
+    <li><b>\( h_0 \)</b>: Hardening/softening constant</li>
+    <li><b>\( \hat{s} \)</b>: Coefficient for saturation stress</li>
+    <li><b>\( n \)</b>: Strain rate sensitivity of saturation</li>
+    <li><b>\( a \)</b>: Strain rate sensitivity of hardening or softening</li>
+  </ul>
+</div>
+
+<!-- Right column -->
+<div style="flex: 1; border-left: 6px solid #8c564b; background: rgba(140, 86, 75, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+  <div style="font-weight: bold; color: #8c564b; margin-bottom: 0.5em;">Numerical Values</div>
+  <ul>
+    <li>\( S_0 = 5.633 \times 10^7 \) Pa</li>
+    <li>\( Q/R = 10830 \) K</li>
+    <li>\( A = 1.49 \times 10^7 \) s\(^{-1}\)</li>
+    <li>\( \xi = 11 \)</li>
+    <li>\( m = 0.303 \)</li>
+    <li>\( h_0 = 2.6408 \times 10^9 \) Pa</li>
+    <li>\( \hat{s} = 8.042 \times 10^7 \) Pa</li>
+    <li>\( n = 0.0231 \)</li>
+    <li>\( a = 1.34 \)</li>
+  </ul>
+  <p>These constants match Wang's paper for modeling 60Sn40Pb viscoplasticity.</p>
+</div>
+
+</div>
+#+END_EXPORT
+
+* Forward Euler Explicit time integration scheme Pseudocode
+
+#+BEGIN_EXPORT html
+<div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
+
+<!-- First Row: Pseudocode -->
+<div style="display: flex; gap: 2em; align-items: flex-start;">
+
+<!-- Left Column: Inputs & Initialization -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #e0eafc, #cfdef3); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #003366;">Initialization</h3>
+<ul>
+<li>Material constants: \( A, Q/R, j, m, h_0, \hat{s}, n, a, E \)</li>
+<li>Strain rate: \( \dot{\varepsilon} \)</li>
+<li>Temperature set: \( \{ T_i \} \)</li>
+<li>Set: \( \varepsilon^p(0) = 0, \quad s(0) = \hat{s} \)</li>
+</ul>
+
+<h3 style="margin-top: 1em; color: #003366;">Time Evolution Loop</h3>
+<ol>
+<li>\( \varepsilon_{\text{total}}(t) = \dot{\varepsilon} t \)</li>
+<li>\( \sigma_{\text{trial}} = E (\varepsilon_{\text{total}} - \varepsilon^p) \)</li>
+<li>Compute \( x = \frac{j \sigma}{s} \)</li>
+<li>Approximate \( \sinh(x) \) (linearize if \( |x| \ll 1 \))</li>
+<li>\( \dot{\varepsilon}^p = A e^{-Q/RT} (\sinh(x))^{1/m} \)</li>
+</ol>
+</div>
+
+<!-- Right Column: Evolution & Update -->
+<div style="flex: 1; background: linear-gradient(to bottom right, #fde2e2, #f9d0d0); padding: 1em 1.5em; border-radius: 12px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+
+<h3 style="margin-top: 0; color: #660000;">Plastic Flow & Resistance Evolution</h3>
+<ol start="6">
+<li>\( s^* = \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} e^{Q/RT} \right)^n \)</li>
+<li>\( \dot{s} = h_0 \left| 1 - \frac{s}{s^*} \right|^a \text{sign}\left(1 - \frac{s}{s^*}\right) \dot{\varepsilon}^p \)</li>
+<li>Update: \( \varepsilon^p(t+\Delta t) = \varepsilon^p(t) + \dot{\varepsilon}^p \Delta t \)</li>
+<li>Update: \( s(t+\Delta t) = s(t) + \dot{s} \Delta t \)</li>
+<li>Record \( (\varepsilon_{\text{total}}, \sigma_{\text{trial}}) \)</li>
+</ol>
+
+<h3 style="margin-top: 1em; color: #660000;">Termination</h3>
+<ul>
+<li>Stop when \( \varepsilon_{\text{total}} \geq \varepsilon_{\text{max}} \)</li>
+<li>Plot \( \sigma \) vs \( \varepsilon \) for all \( T_i \)</li>
+</ul>
+
+<img src="stress_vs_strain_62Sn36Pb2Ag.png" alt="Static Stress vs Strain Plot" style="width: 95%; border: 1px solid #ccc; border-radius: 10px;">
+
+</div>
+
+</div>
+
+
+</div>
+#+END_EXPORT
+
+** Forward Euler Scheme for Anand Model
+
+
+#+BEGIN_SRC python :results none :exports code
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Material constants for 62Sn36Pb2Ag solder alloy
+A = 2.24e8       # 1/s
+Q_R = 11200      # K
+j = 13           # dimensionless
+m = 0.21         # dimensionless
+h0 = 1.62e10     # Pa
+s0 = 8.47e7      # Pa
+s_hat = 8.47e7   # Pa
+n = 0.0277       # dimensionless
+a = 1.7          # dimensionless
+E = 5.2e10       # Pa (Elastic modulus)
+
+# Temperatures in Kelvin
+T_C = [-55, -25, 25, 75, 125]
+T_list = [T + 273.15 for T in T_C]
+
+# Simulation parameters
+strain_rate = 1e-5  # 1/s
+eps_total_max = 0.6
+t_max = eps_total_max / strain_rate
+time_steps = 10000
+t_eval = np.linspace(0, t_max, time_steps)
+
+# Define the ODE system
+def system(t, y, T):
+    ep_p, s = y
+    eps_total = strain_rate * t
+    sigma_trial = E * (eps_total - ep_p)
+    x = j * sigma_trial / s
+
+    if np.abs(x) < 0.01:
+        sinh_x = x
+    else:
+        sinh_x = np.sinh(np.clip(x, -30, 30))
+
+    sinh_x = np.maximum(sinh_x, 1e-12)
+    dep_p = A * np.exp(-Q_R / T) * sinh_x**(1/m)
+
+    s_star = s_hat * (dep_p / A * np.exp(Q_R / T))**n
+    ds = h0 * np.abs(1 - s/s_star)**a * np.sign(1 - s/s_star) * dep_p
+
+    return [dep_p, ds]
+
+# Plotting
+plt.figure(figsize=(9,6))
+
+for T in T_list:
+    sol = solve_ivp(system, [0, t_max], [0, s0], args=(T,), t_eval=t_eval, method='Radau', rtol=1e-6, atol=1e-9)
+    eps_total = strain_rate * sol.t
+    sigma = E * (eps_total - sol.y[0])
+
+    label = f"{int(T-273.15)}°C"
+    plt.plot(eps_total, sigma/1e6, label=label)
+
+plt.xlabel("Inelastic Strain ε (dimensionless)")
+plt.ylabel("Stress σ (MPa)")
+plt.title("Stress vs Inelastic Strain - 62Sn36Pb2Ag Alloy (Low Strain Rate 1e-5 1/s)")
+plt.grid(True)
+plt.legend(title="Temperature")
+plt.xlim([0, 0.6])
+plt.ylim([0, 65])
+plt.tight_layout()
+plt.show()
+#+END_SRC
+
+
+* Strain rate sensitivity of stress m
+
+- As \( m \to 0 \), rate insensitive (yield)
+- As \( m \to 1 \), small stress change causes big change in strain rate
+
+#+ATTR_HTML: :width 80% :style border-radius:8px
+#+BEGIN_EXPORT html
+<video autoplay loop muted playsinline>
+  <source src="manimAnim/media/videos/m14/1080p60/AnandFlowLaw.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+#+END_EXPORT
+
+
+* Flow rule
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Tensorial Flow Rule (directional form)</h3>
+<div style="text-align: center; font-size: 1.2em; margin-bottom: 1em;">
+\[
+\mathbf{D}^p = \dot{\epsilon}^p \left( \frac{3}{2} \frac{\mathbf{T}'}{\bar{\sigma}} \right)
+\]
+</div>
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Equivalent Stress Definition</h3>
+<div style="text-align: center; font-size: 1.2em;">
+\[
+\bar{\sigma} = \sqrt{\frac{3}{2} \mathbf{T}':\mathbf{T}'}
+\]
+</div>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Plastic Strain Rate (magnitude form)</h3>
+<div style="text-align: center; font-size: 1.2em; margin-bottom: 1em;">
+\[
+\dot{\epsilon}^p = A \exp\left( -\frac{Q}{R\theta} \right) \left[ \sinh\left( \xi \frac{\bar{\sigma}}{s} \right) \right]^{1/m}
+\]
+</div>
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Full Flow Rule with Hyperbolic Sine</h3>
+<div style="text-align: center; font-size: 1.2em; border: 2px solid #ccc; padding: 0.8em; border-radius: 8px;">
+\[
+\mathbf{D}^p = A \exp\left( -\frac{Q}{R\theta} \right) \left[ \sinh\left( \xi \frac{\bar{\sigma}}{s} \right) \right]^{1/m} \left( \frac{3}{2} \frac{\mathbf{T}'}{\bar{\sigma}} \right),
+\]
+<br>
+\[
+= \dot{\gamma}^p \left( \frac{\widetilde{\mathbf{T}}'}{2 \bar{\tau}} \right),
+\quad \bar{\tau} = \left\{ \frac{1}{2} \text{tr}(\widetilde{\mathbf{T}}'^2) \right\}^{1/2}
+\]
+</div>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+
+<ul style="margin-top: 0.5em;">
+<li>Direction given by \( \mathbf{T}' \).</li>
+<li>Magnitude determined by hyperbolic sine based on \( \bar{\sigma}/s \).</li>
+<li>\( \bar{\tau} \) represents the effective shear stress computed from deviatoric stress.</li>
+<li> \(\bar{\sigma} = \sqrt{\frac{3}{2} \mathbf{T'} : \mathbf{T'} }\) is the von Mises Equivalent stress, but is formally defined without yield point</li>
+<li>Full flow = <b>direction</b> × <b>magnitude</b>.</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+
+* Evolution Equation for the Stress
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Evolution Equation (Rate form of Hooke's Law)</h3>
+<div style="text-align: center; font-size: 1.2em; margin-bottom: 1em;">
+\[
+\overset{\nabla}{\mathbf{T}} = \mathbb{L} \left[ \mathbf{D} - \mathbf{D}^p \right] - \boldsymbol{\Pi} \dot{\theta}
+\]
+
+(rate-form Hooke’s law for finite deformation plasticity, with frame-indifference enforced through the Jaumann rate.)
+</div>
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Jaumann Rate Definition</h3>
+<div style="text-align: center; font-size: 1.2em;">
+\[
+\overset{\nabla}{\mathbf{T}} = \dot{\mathbf{T}} - \mathbf{W}\mathbf{T} + \mathbf{T}\mathbf{W}
+\]
+</div>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Material Tensors and Operators</h3>
+<ul style="margin-top: 0.5em;">
+<li>\( \mathbb{L} = 2\mu \mathbf{I} + \left( \kappa - \frac{2}{3}\mu \right) \mathbf{1} \otimes \mathbf{1} \) &mdash; isotropic elasticity tensor</li>
+<li>\(\mathbb{L}\mathbf{D} \) represents how instantaneous strain rates generate stresses according to the elastic material's stiffness properties. </li>
+<li>\( \mu = \mu(\theta) \), \( \kappa = \kappa(\theta) \) &mdash; temperature-dependent moduli</li>
+<li>\( \boldsymbol{\Pi} = (3\alpha \kappa) \mathbf{1} \) &mdash; stress-temperature coupling</li>
+<li>\( \alpha = \alpha(\theta) \) &mdash; thermal expansion coefficient</li>
+<li>\( \mathbf{D} = \text{sym}(\nabla \mathbf{v}) \) &mdash; stretching tensor</li>
+<li>\( \mathbf{W} = \text{skew}(\nabla \mathbf{v}) \) &mdash; spin tensor</li>
+<li>\( \mathbf{I} \) = fourth-order identity tensor</li>
+<li>\( \mathbf{1} \) = second-order identity tensor</li>
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+
+<ul style="margin-top: 0.5em;">
+<li>Stress rate follows Jaumann derivative to ensure frame indifference.</li>
+<li>Elastic response governed by isotropic fourth-order tensor \( \mathbb{L} \).</li>
+<li>Thermal expansion introduces additional stress through \( \boldsymbol{\Pi} \dot{\theta} \).</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+** Stress Evolution and Thermal Effects
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Evolution and Thermal Effects</h3>
+<p style="margin-bottom: 1em;">
+In the stress evolution equation,
+</p>
+<div style="text-align: center; font-size: 1.2em; margin-bottom: 1em;">
+\[
+\overset{\nabla}{\mathbf{T}} = \mathbb{L} \left[ \mathbf{D} - \mathbf{D}^p \right] - \boldsymbol{\Pi} \dot{\theta},
+\]
+</div>
+<p>
+the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that would occur due to pure thermal expansion alone, without any mechanical loading.
+</p>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Why Subtract the Thermal Term?</h3>
+<ul style="margin-top: 0.5em;">
+<li>Thermal expansion creates strain even without external forces.</li>
+<li>Without subtracting \( \boldsymbol{\Pi} \dot{\theta} \), the model would falsely attribute thermal strain as mechanical stress.</li>
+<li>Subtracting isolates the true mechanical response from thermal effects.</li>
+</ul>
+
+<div style="margin-top: 1em; text-align: center;">
+<img src="therm.png" style="width: 70%; border-radius: 8px; box-shadow: 0px 2px 8px rgba(0,0,0,0.1);">
+</div>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+
+<ul style="margin-top: 0.5em;">
+<li>Thermal expansion induces strain without force.</li>
+<li>Subtracting \( \boldsymbol{\Pi} \dot{\theta} \) ensures only mechanical strains generate stresses.</li>
+<li>This keeps the constitutive model physically accurate during heating and cooling.</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+
+* Relaxed (Intermediate) Configuration
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Context for the Relaxed Configuration</h3>
+
+<ul style="margin-top: 0.5em;">
+<li>The relaxed configuration represents the material after removing plastic deformations but before applying new elastic deformations.</li>
+
+<li>It is introduced to separate permanent plastic effects from recoverable elastic effects.</li>
+
+<li>All thermodynamic potentials, internal variables, and evolution laws are defined relative to this frame.</li>
+
+<li>The relaxed state provides a clean, natural reference for measuring elastic strain \( E^e \) and computing dissipation.</li>
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">What Happens in the Relaxed Configuration?</h3>
+
+<ul style="margin-top: 0.5em;">
+<li>The elastic deformation gradient \( F^e \) is measured from the relaxed state to the current deformed state.</li>
+
+<li>Elastic strain measures like \( C^e \) and \( E^e \) are defined in this configuration.</li>
+
+<li>The Kirchhoff stress \( \widetilde{\mathbf{T}} \) is naturally associated with the relaxed volume.</li>
+
+<li>Plastic flow is accounted for separately through the plastic velocity gradient \( \mathbf{L}^p \).</li>
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>The relaxed configuration isolates elastic responses cleanly, enabling proper definition of thermodynamics and plastic evolution laws.</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+
+** Relaxed Configuration Constituative Laws
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Kinematics in the Relaxed Configuration</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Elastic deformation gradient:
+<div style="text-align: center; margin: 0.5em;">
+\[
+F = F^e F^p
+\quad \Rightarrow \quad
+F^e = F F^{p-1}
+\]
+</div>
+</li>
+
+<li>Elastic right Cauchy-Green tensor:
+<div style="text-align: center; margin: 0.5em;">
+\[
+C^e = F^{eT} F^e
+\]
+</div>
+</li>
+
+<li>Elastic Green–Lagrange strain tensor:
+<div style="text-align: center; margin: 0.5em;">
+\[
+E^e = \frac{1}{2} (C^e - I)
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress and Power Quantities</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Kirchhoff stress (weighted Cauchy stress):
+<div style="text-align: center; margin: 0.5em;">
+\[
+\widetilde{\mathbf{T}} = (\det F) \mathbf{T}
+\]
+</div>
+</li>
+
+<li>Stress power split:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\dot{\omega} = \dot{\omega}^e + \dot{\omega}^p
+\]
+\[
+\dot{\omega}^e = \widetilde{\mathbf{T}} : \dot{E}^e
+\quad , \quad
+\dot{\omega}^p = (C^e \widetilde{\mathbf{T}}) : \mathbf{L}^p
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>Elastic kinematics and stress measures are formulated relative to the relaxed configuration, cleanly separating plastic and elastic contributions.</li>
+<li> Stress Power Split allows Anand to cleanly isolate plastic dissipation from elastic storage.</li>
+<li> Green-Lagrange strain tensor \(E^e\) is used because it symmetrically captures nonlinear elastic strain relative to the relaxed configuration</li>
+<li> The right Cauchy-Green tensor \(C^e = F^{e^T}F^e\) is required as an intermediate to compute \(E^e\) from the elastic deformation gradient \(F^e\) without referencing spatial coordinates </li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+
+** Dissipation Separation: Elastic vs Plastic in Anand’s Model
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+<!-- Left Column -->
+<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44,160,44,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+<h3 style="color: #2ca02c;">Thermodynamic Separation</h3>
+<ol style="line-height: 1.5;">
+<li><b>Start with Total Dissipation:</b><br/>
+   \[
+   \mathcal{D} = \dot{\omega} - \dot{\psi} \geq 0
+   \]
+   where \(\dot{\omega} = \widehat{\mathbf{T}} : \dot{\mathbf{E}}^e + (\mathbf{C}^e \widehat{\mathbf{T}}) : \mathbf{L}^p\)
+</li>
+<li><b>Split Stress Power:</b><br/>
+   \[
+   \dot{\omega} = \dot{\omega}^e + \dot{\omega}^p
+   \]
+   with:
+<ul>
+<li>\( \dot{\omega}^e = \widehat{\mathbf{T}} : \dot{\mathbf{E}}^e \)</li>
+<li>\( \dot{\omega}^p = (\mathbf{C}^e \widehat{\mathbf{T}}) : \mathbf{L}^p \)</li>
+</ul>
+</li>
+<li><b>Group Terms with \( \dot{\psi} \):</b><br/>
+   \[
+   (\dot{\omega}^e - \dot{\psi}) + \dot{\omega}^p \geq 0
+   \]
+</li>
+<li><b>Apply Elastic Energy Consistency:</b><br/>
+   \[
+   \dot{\omega}^e - \dot{\psi} = 0
+   \quad \Rightarrow \quad \dot{\omega}^p \geq 0
+   \]
+</li>
+</ol>
+</div>
+<!-- Right Column -->
+<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255,127,14,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
+<h3 style="color: #ff7f0e;">Key Physical Insights</h3>
+<ul style="line-height: 1.7;">
+<li><b>Elastic deformations</b> are recoverable and do not cause entropy production.</li>
+<li><b>All dissipation</b> stems from the plastic flow: \(\dot{\omega}^p\).</li>
+<li><b>Plastic work</b> increases entropy and governs viscoplastic evolution.</li>
+</ul>
+<div style="margin-top: 1.5em; background: #ffe6cc; padding: 0.8em 1em; border-radius: 8px; border-left: 4px solid #ff7f0e;">
+<b>Summary:</b><br/>
+The stress power split ensures that the second law is satisfied by assigning dissipation solely to irreversible processes.
+</div>
+</div>
+</div>
+#+END_EXPORT
+* Reference Configuration
+
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Framework in the Reference Configuration</h3>
+
+<ul style="margin-top: 0.5em;">
+<li>The free energy \( \psi \) is defined relative to the reference configuration.</li>
+<li>State variables like \( E^e, \theta, \bar{g}, \mathbf{\bar{B}}, s \) are used as arguments of \( \psi \).</li>
+<li>Stress is expressed using the second Piola–Kirchhoff tensor \( \mathbf{S} \).</li>
+<li>Dissipation inequality, stress–strain relations, and evolution laws are all written in reference variables.</li>
+<li>Mass density \( \rho_0 \) from the reference configuration normalizes all terms.</li>
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Key Equations in the Reference Frame</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Free energy:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \psi = \psi(E^e, \theta, \bar{g}, \mathbf{\bar{B}}, s) }
+\]
+</div>
+</li>
+
+<li>Dissipation inequality:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\psi} + \eta \dot{\theta} - \rho_0^{-1} \mathbf{S} : \dot{E} + (\rho_0 \theta)^{-1} \mathbf{q}_0 \cdot \mathbf{g}_0 \leq 0 }
+\]
+</div>
+</li>
+
+<li>Constitutive relation:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \mathbf{S} = \rho_0 \frac{\partial \psi}{\partial E^e} }
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>In the reference configuration, all energy storage, stress updates, and internal variable evolution are formulated with reference-frame quantities for consistency and objectivity.</li>
+</ul>
+
+</div>
+#+END_EXPORT
+
+
+** Thermodynamics
+#+BEGIN_EXPORT html
+<div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Thermodynamic Quantities</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Free energy density:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \psi = \epsilon - \theta \eta }
+\]
+</div>
+</li>
+
+<li>Reduced dissipation inequality:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\psi} + \eta \dot{\theta} - \rho^{-1} \mathbf{T} : \mathbf{L} + (\rho \theta)^{-1} \mathbf{q} \cdot \mathbf{g} \leq 0 }
+\]
+</div>
+</li>
+
+<li>State variables:
+\[
+\{ E^e, \theta, \bar{g}, \mathbf{\bar{B}}, s \}
+\]
+with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
+
+</ul>
+
+</div>
+
+<div style="flex: 1;">
+
+<h3 style="font-size: 1.2em; margin-bottom: 0.5em;">Stress Power and Kirchhoff Stress</h3>
+
+<ul style="margin-top: 0.5em;">
+
+<li>Stress power per relaxed volume:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} : \mathbf{L} }
+\]
+</div>
+</li>
+
+<li>Weighted Cauchy (Kirchhoff) stress:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \mathbf{\widetilde{T}} = (\det F) \mathbf{T} }
+\quad \text{or} \quad
+\boxed{ \mathbf{\widetilde{T}} = \left( \frac{\rho_0}{\rho} \right) \mathbf{T} }
+\]
+</div>
+</li>
+
+<li>Decomposition of stress power:
+<div style="text-align: center; margin: 0.5em;">
+\[
+\boxed{ \dot{\omega} = \dot{\omega}^e + \dot{\omega}^p }
+\]
+\[
+\dot{\omega}^e = \mathbf{\widetilde{T}} : \dot{E}^e, \quad \dot{\omega}^p = (C^e \mathbf{\widetilde{T}}) : \mathbf{L}^p
+\]
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<hr style="margin-top: 2em; margin-bottom: 1.5em;">
+
+<div style="font-family: 'Segoe UI', sans-serif; font-size: 1.05em; background: rgba(0,128,0,0.05); padding: 1em 2em; border-left: 6px solid #2ca02c; border-radius: 8px;">
+
+<b>Summary:</b>
+<ul style="margin-top: 0.5em;">
+<li>Free energy and dissipation govern thermodynamic consistency.</li>
+<li>Stress power naturally splits into elastic and plastic parts.</li>
+<li>Kirchhoff stress simplifies stress evolution accounting for volume changes.</li>
+</ul>
+
+</div>
+#+END_EXPORT

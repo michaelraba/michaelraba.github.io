@@ -1,18 +1,19 @@
-#!/usr/bin/env python3
-
-
 import xml.etree.ElementTree as ET
 
-# Load SVG
-tree = ET.parse('./svg.svg')
-root = tree.getroot()
 
-# SVGs usually use this namespace
-SVG_NS = "http://www.w3.org/2000/svg"
-ET.register_namespace('', SVG_NS)
+def list_svg_layers(svg_path):
+    tree = ET.parse(svg_path)
+    root = tree.getroot()
 
-# Print all elements with an id
-for elem in root.iter():
-    id_val = elem.attrib.get('id')
-    if id_val:
-        print(f"Found element with id: {id_val}")
+    def recurse_layers(element, path="root", depth=0):
+        for child in element:
+            if child.tag.endswith("g"):
+                layer_id = child.attrib.get("id", "(no id)")
+                new_path = f"{path}/{layer_id}"
+                print("  " * depth + f"→ {layer_id}")
+                recurse_layers(child, new_path, depth + 1)
+
+    recurse_layers(root)
+
+
+list_svg_layers("./svg.svg")

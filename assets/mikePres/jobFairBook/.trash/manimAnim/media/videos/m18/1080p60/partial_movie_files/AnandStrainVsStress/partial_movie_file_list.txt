@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m18/1080p60/partial_movie_files/AnandStrainVsStress/1976804181_3349575112_223132457.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m18/1080p60/partial_movie_files/AnandStrainVsStress/1790293035_2789429199_2029669801.mp4'
+file 'file:/home/mi/603/603talk/manimAnim/media/videos/m18/1080p60/partial_movie_files/AnandStrainVsStress/1790293035_3467822883_1453720215.mp4'

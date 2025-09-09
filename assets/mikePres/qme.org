@@ -1,4 +1,4 @@
-#+TITLE: Update Slide for June 11
+#+TITLE: POD Analysis of Turbulent Pipe Flow
 #+AUTHOR: M. Raba
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
@@ -12,7 +12,7 @@
 # #+latex_header: \mode<beamer>{\usetheme{metropolis}}
 #+reveal_theme: serif
 # #+reveal_extra_css: ./custom.css
-#+REVEAL_EXTRA_CSS: custom.css
+#+REVEAL_EXTRA_CSS: style.css
 
 
 #+HTML_HEAD: <style>
@@ -100,7 +100,7 @@ in sub-structs:
 
 * Equations Used in Code Procedure
 ** Classic POD Equations
-+ The following equations are used in the above code.
+The following equations are used in the above code.
 
 \begin{align}
 \label{eq:einstein}
@@ -128,7 +128,7 @@ in sub-structs:
 \end{align}
 
 ** Reconstruction
-The reconstruction is given by,
+The reconstruction is given by
 \begin{align}
 q(\xi,t) - \bar{q}(\xi) &\approx \sum_{j=1}^{r} a_j(t) \varphi_j(\xi) \Rightarrow  \\
 q(r,\theta,t;x)
@@ -210,10 +210,3 @@ The cross-correlation tensor $\mathbf{R}$ is defined as $\mathbf{R}\left(k ; m ;
 * Reconstruction
 ** Reconstruction
 [[file:iD/reconstruct-400-50.png]]
-
-* Thesis
- + Thesis File
-# #+BEGIN_EXPORT html
-# <iframe src="m.pdf"
-# </iframe>
-# #+END_EXPORT
