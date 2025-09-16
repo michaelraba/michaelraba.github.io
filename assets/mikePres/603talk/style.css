@@ -1,3 +1,10 @@
+.slide {
+  width: 1100px;
+  height: 1700px;
+}
+
+
+
 /* Slightly reduce base font size if needed */
 .reveal {
   font-size: 0.98em;

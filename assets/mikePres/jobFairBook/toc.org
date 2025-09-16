@@ -1,0 +1,37 @@
+#+LATEX_CLASS: book
+#+LATEX_CLASS_OPTIONS: [12pt,openright]
+#+OPTIONS: toc:nil
+
+#+LATEX: \frontmatter
+
+#+LATEX: \newpage
+#+LATEX: \thispagestyle{empty}
+#+LATEX: \begin{center}
+#+LATEX: \vspace*{4cm}
+#+LATEX: {\Huge \textbf{Michael Raba: Mechanical Engineering Portfolio 2025}}\\
+#+LATEX: \vfill
+#+LATEX: \end{center}
+#+LATEX: \cleardoublepage
+
+#+LATEX: \thispagestyle{empty}
+#+LATEX: \section*{Abstract}
+This book is a compilation of projects of Michael Raba and can be found at:
+
+#+LATEX: \texttt{https://michaelraba.github.io/talks/}
+#+LATEX: \cleardoublepage
+
+#+LATEX: \thispagestyle{empty}
+#+LATEX: \begin{center}
+#+LATEX: \Large \textbf{Table of Contents}
+#+LATEX: \end{center}
+#+LATEX: \vspace{1cm}
+
+#+LATEX: \noindent
+#+LATEX: Anand Model Viscoelastoplasticity and its Application to Solder Joints \dotfill 1
+
+#+LATEX: Multichamber Muffler System: FEA and Simlab Analysis of Toyota Corolla Muffler \dotfill 35
+
+#+LATEX: Modal Analysis of Turbulent Pipe Flow \dotfill 56
+#+LATEX: \cleardoublepage
+
+#+LATEX: \mainmatter

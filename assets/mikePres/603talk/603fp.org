@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>Anand Model: Viscoelastoplasticity and its Application to Solder Joints</title>
-<meta name="author" content="Michael Raba, MSc Candidate at University of Kentucky"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/serif.css" id="theme"/>
-
-<link rel="stylesheet" href="style.css"/>
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1 class="title">Anand Model: Viscoelastoplasticity and its Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-04-29 Tue 06:39</p>
-</section>
+#+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
+#+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+#+REVEAL_THEME: serif
+# #+REVEAL_THEME: beige
+# #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
+#+REVEAL_INIT_OPTIONS: view:scroll
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_EXTRA_CSS: style.css
 
 
-<section>
-<section id="slide-org9648fac">
-<h2 id="org9648fac">Source Paper</h2>
+# The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.
+
+
+* Source Paper
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 <!-- LEFT column: Text + Image -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
@@ -56,12 +31,13 @@
 <img src="./anandPaper.png" alt="Anand 1985 Paper" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
 </div>
 </div>
+#+END_EXPORT
 
-</section>
-</section>
-<section>
-<section id="slide-orgecc4fba">
-<h2 id="orgecc4fba">Case Study: Wang (2001) Apply to Solder</h2>
+# Anand’s model is motivated by the limitations of classical plasticity: namely, its dependence on yield surfaces and loading-unloading rules. Instead, Anand proposes a unified approach to both plasticity and creep—essential for materials like solder where both effects occur simultaneously.
+
+* Case Study: Wang (2001) Apply to Solder
+
+#+BEGIN_EXPORT html
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -89,12 +65,11 @@
   </div>
 
 </div>
+#+END_EXPORT
 
-</section>
-</section>
-<section>
-<section id="slide-org688ee83">
-<h2 id="org688ee83">Comparing Anand Model Predictions at Two Strain Rates</h2>
+* Comparing Anand Model Predictions at Two Strain Rates
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -126,14 +101,13 @@
   <img src="wMPa.png" style="width: 40%; margin-right: 2em;">
   <img src="wMPb.png" style="width: 40%;">
 </div>
+#+END_EXPORT
 
 
 
-</section>
-</section>
-<section>
-<section id="slide-org7c20bcb">
-<h2 id="org7c20bcb">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+* Main Equations of Wang's Anand-Type Viscoplastic Model
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -176,10 +150,11 @@
 </div>
 
 </div>
+#+END_EXPORT
 
-</section>
-<section id="slide-orgeee6648">
-<h3 id="orgeee6648">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+** Anand Viscoplasticity Constants for 60Sn40Pb
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -217,12 +192,11 @@
 </div>
 
 </div>
+#+END_EXPORT
 
-</section>
-</section>
-<section>
-<section id="slide-orgfdfebca">
-<h2 id="orgfdfebca">Forward Euler Explicit time integration scheme Pseudocode</h2>
+* Forward Euler Explicit time integration scheme Pseudocode
+
+#+BEGIN_EXPORT html
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -275,105 +249,99 @@
 
 
 </div>
+#+END_EXPORT
 
-</section>
-<section id="slide-org2def4f7">
-<h3 id="org2def4f7">Forward Euler Scheme for Anand Model</h3>
-<div class="org-src-container">
+** Forward Euler Scheme for Anand Model
 
-<pre  class="src src-python"   ><code trim><span style="color: #fb4934;">import</span> numpy <span style="color: #fb4934;">as</span> np
-<span style="color: #fb4934;">import</span> matplotlib.pyplot <span style="color: #fb4934;">as</span> plt
-<span style="color: #fb4934;">from</span> scipy.integrate <span style="color: #fb4934;">import</span> solve_ivp
 
-<span style="color: #928374;"># </span><span style="color: #928374;">Material constants for 62Sn36Pb2Ag solder alloy</span>
-<span style="color: #83a598;">A</span> = <span style="color: #d3869b; font-weight: bold;">2</span>.24e8       <span style="color: #928374;"># </span><span style="color: #928374;">1/s</span>
-<span style="color: #83a598;">Q_R</span> = <span style="color: #d3869b; font-weight: bold;">11200</span>      <span style="color: #928374;"># </span><span style="color: #928374;">K</span>
-<span style="color: #83a598;">j</span> = <span style="color: #d3869b; font-weight: bold;">13</span>           <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
-<span style="color: #83a598;">m</span> = <span style="color: #d3869b; font-weight: bold;">0.21</span>         <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
-<span style="color: #83a598;">h0</span> = <span style="color: #d3869b; font-weight: bold;">1</span>.62e10     <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
-<span style="color: #83a598;">s0</span> = <span style="color: #d3869b; font-weight: bold;">8</span>.47e7      <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
-<span style="color: #83a598;">s_hat</span> = <span style="color: #d3869b; font-weight: bold;">8</span>.47e7   <span style="color: #928374;"># </span><span style="color: #928374;">Pa</span>
-<span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0.0277</span>       <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
-<span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">1.7</span>          <span style="color: #928374;"># </span><span style="color: #928374;">dimensionless</span>
-<span style="color: #83a598;">E</span> = <span style="color: #d3869b; font-weight: bold;">5</span>.2e10       <span style="color: #928374;"># </span><span style="color: #928374;">Pa (Elastic modulus)</span>
+#+BEGIN_SRC python :results none :exports code
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
 
-<span style="color: #928374;"># </span><span style="color: #928374;">Temperatures in Kelvin</span>
-<span style="color: #83a598;">T_C</span> = [-<span style="color: #d3869b; font-weight: bold;">55</span>, -<span style="color: #d3869b; font-weight: bold;">25</span>, <span style="color: #d3869b; font-weight: bold;">25</span>, <span style="color: #d3869b; font-weight: bold;">75</span>, <span style="color: #d3869b; font-weight: bold;">125</span>]
-<span style="color: #83a598;">T_list</span> = [T + <span style="color: #d3869b; font-weight: bold;">273.15</span> <span style="color: #fb4934;">for</span> T <span style="color: #fb4934;">in</span> T_C]
+# Material constants for 62Sn36Pb2Ag solder alloy
+A = 2.24e8       # 1/s
+Q_R = 11200      # K
+j = 13           # dimensionless
+m = 0.21         # dimensionless
+h0 = 1.62e10     # Pa
+s0 = 8.47e7      # Pa
+s_hat = 8.47e7   # Pa
+n = 0.0277       # dimensionless
+a = 1.7          # dimensionless
+E = 5.2e10       # Pa (Elastic modulus)
 
-<span style="color: #928374;"># </span><span style="color: #928374;">Simulation parameters</span>
-<span style="color: #83a598;">strain_rate</span> = 1e-<span style="color: #d3869b; font-weight: bold;">5</span>  <span style="color: #928374;"># </span><span style="color: #928374;">1/s</span>
-<span style="color: #83a598;">eps_total_max</span> = <span style="color: #d3869b; font-weight: bold;">0.6</span>
-<span style="color: #83a598;">t_max</span> = eps_total_max / strain_rate
-<span style="color: #83a598;">time_steps</span> = <span style="color: #d3869b; font-weight: bold;">10000</span>
-<span style="color: #83a598;">t_eval</span> = np.linspace(<span style="color: #d3869b; font-weight: bold;">0</span>, t_max, time_steps)
+# Temperatures in Kelvin
+T_C = [-55, -25, 25, 75, 125]
+T_list = [T + 273.15 for T in T_C]
 
-<span style="color: #928374;"># </span><span style="color: #928374;">Define the ODE system</span>
-<span style="color: #fb4934;">def</span> <span style="color: #b8bb26;">system</span>(t, y, T):
-    <span style="color: #83a598;">ep_p</span>, <span style="color: #83a598;">s</span> = y
-    <span style="color: #83a598;">eps_total</span> = strain_rate * t
-    <span style="color: #83a598;">sigma_trial</span> = E * (eps_total - ep_p)
-    <span style="color: #83a598;">x</span> = j * sigma_trial / s
+# Simulation parameters
+strain_rate = 1e-5  # 1/s
+eps_total_max = 0.6
+t_max = eps_total_max / strain_rate
+time_steps = 10000
+t_eval = np.linspace(0, t_max, time_steps)
 
-    <span style="color: #fb4934;">if</span> np.<span style="color: #fe8019;">abs</span>(x) &lt; <span style="color: #d3869b; font-weight: bold;">0.01</span>:
-        <span style="color: #83a598;">sinh_x</span> = x
-    <span style="color: #fb4934;">else</span>:
-        sinh_x = np.sinh(np.clip(x, -<span style="color: #d3869b; font-weight: bold;">30</span>, <span style="color: #d3869b; font-weight: bold;">30</span>))
+# Define the ODE system
+def system(t, y, T):
+    ep_p, s = y
+    eps_total = strain_rate * t
+    sigma_trial = E * (eps_total - ep_p)
+    x = j * sigma_trial / s
 
-    <span style="color: #83a598;">sinh_x</span> = np.maximum(sinh_x, 1e-<span style="color: #d3869b; font-weight: bold;">12</span>)
-    <span style="color: #83a598;">dep_p</span> = A * np.exp(-Q_R / T) * sinh_x**(<span style="color: #d3869b; font-weight: bold;">1</span>/m)
+    if np.abs(x) < 0.01:
+        sinh_x = x
+    else:
+        sinh_x = np.sinh(np.clip(x, -30, 30))
 
-    <span style="color: #83a598;">s_star</span> = s_hat * (dep_p / A * np.exp(Q_R / T))**n
-    <span style="color: #83a598;">ds</span> = h0 * np.<span style="color: #fe8019;">abs</span>(<span style="color: #d3869b; font-weight: bold;">1</span> - s/s_star)**a * np.sign(<span style="color: #d3869b; font-weight: bold;">1</span> - s/s_star) * dep_p
+    sinh_x = np.maximum(sinh_x, 1e-12)
+    dep_p = A * np.exp(-Q_R / T) * sinh_x**(1/m)
 
-    <span style="color: #fb4934;">return</span> [dep_p, ds]
+    s_star = s_hat * (dep_p / A * np.exp(Q_R / T))**n
+    ds = h0 * np.abs(1 - s/s_star)**a * np.sign(1 - s/s_star) * dep_p
 
-<span style="color: #928374;"># </span><span style="color: #928374;">Plotting</span>
-plt.figure(figsize=(<span style="color: #d3869b; font-weight: bold;">9</span>,<span style="color: #d3869b; font-weight: bold;">6</span>))
+    return [dep_p, ds]
 
-<span style="color: #fb4934;">for</span> T <span style="color: #fb4934;">in</span> <span style="color: #83a598;">T_list</span>:
-    sol = solve_ivp(system, [<span style="color: #d3869b; font-weight: bold;">0</span>, t_max], [<span style="color: #d3869b; font-weight: bold;">0</span>, s0], args=(T,), t_eval=t_eval, method=<span style="color: #b8bb26;">'Radau'</span>, rtol=1e-<span style="color: #d3869b; font-weight: bold;">6</span>, atol=1e-<span style="color: #d3869b; font-weight: bold;">9</span>)
-    <span style="color: #83a598;">eps_total</span> = strain_rate * sol.t
-    <span style="color: #83a598;">sigma</span> = E * (eps_total - sol.y[<span style="color: #d3869b; font-weight: bold;">0</span>])
+# Plotting
+plt.figure(figsize=(9,6))
 
-    <span style="color: #83a598;">label</span> = f<span style="color: #b8bb26;">"</span>{<span style="color: #fe8019;">int</span>(T-273.15)}<span style="color: #b8bb26;">&#176;C"</span>
+for T in T_list:
+    sol = solve_ivp(system, [0, t_max], [0, s0], args=(T,), t_eval=t_eval, method='Radau', rtol=1e-6, atol=1e-9)
+    eps_total = strain_rate * sol.t
+    sigma = E * (eps_total - sol.y[0])
+
+    label = f"{int(T-273.15)}°C"
     plt.plot(eps_total, sigma/1e6, label=label)
 
-plt.xlabel(<span style="color: #b8bb26;">"Inelastic Strain &#949; (dimensionless)"</span>)
-plt.ylabel(<span style="color: #b8bb26;">"Stress &#963; (MPa)"</span>)
-plt.title(<span style="color: #b8bb26;">"Stress vs Inelastic Strain - 62Sn36Pb2Ag Alloy (Low Strain Rate 1e-5 1/s)"</span>)
-plt.grid(<span style="color: #d3869b;">True</span>)
-plt.legend(title=<span style="color: #b8bb26;">"Temperature"</span>)
-plt.xlim([<span style="color: #d3869b; font-weight: bold;">0</span>, <span style="color: #d3869b; font-weight: bold;">0.6</span>])
-plt.ylim([<span style="color: #d3869b; font-weight: bold;">0</span>, <span style="color: #d3869b; font-weight: bold;">65</span>])
+plt.xlabel("Inelastic Strain ε (dimensionless)")
+plt.ylabel("Stress σ (MPa)")
+plt.title("Stress vs Inelastic Strain - 62Sn36Pb2Ag Alloy (Low Strain Rate 1e-5 1/s)")
+plt.grid(True)
+plt.legend(title="Temperature")
+plt.xlim([0, 0.6])
+plt.ylim([0, 65])
 plt.tight_layout()
 plt.show()
-</code></pre>
-</div>
+#+END_SRC
 
 
-</section>
-</section>
-<section>
-<section id="slide-orgf726f70">
-<h2 id="orgf726f70">Strain rate sensitivity of stress m</h2>
-<ul>
-<li>As \( m \to 0 \), rate insensitive (yield)</li>
-<li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
+* Strain rate sensitivity of stress m
 
-</ul>
+- As \( m \to 0 \), rate insensitive (yield)
+- As \( m \to 1 \), small stress change causes big change in strain rate
 
+#+ATTR_HTML: :width 80% :style border-radius:8px
+#+BEGIN_EXPORT html
 <video autoplay loop muted playsinline>
   <source src="manimAnim/media/videos/m14/1080p60/AnandFlowLaw.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+#+END_EXPORT
 
 
-</section>
-</section>
-<section>
-<section id="slide-orgd95d110">
-<h2 id="orgd95d110">Flow rule</h2>
+* Flow rule
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -434,13 +402,12 @@ plt.show()
 </ul>
 
 </div>
+#+END_EXPORT
 
 
-</section>
-</section>
-<section>
-<section id="slide-org08f7ad3">
-<h2 id="org08f7ad3">Evolution Equation for the Stress</h2>
+* Evolution Equation for the Stress
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -495,10 +462,11 @@ plt.show()
 </ul>
 
 </div>
+#+END_EXPORT
 
-</section>
-<section id="slide-orgb175286">
-<h3 id="orgb175286">Stress Evolution and Thermal Effects</h3>
+** Stress Evolution and Thermal Effects
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -548,13 +516,12 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </ul>
 
 </div>
+#+END_EXPORT
 
 
-</section>
-</section>
-<section>
-<section id="slide-orgc23b788">
-<h2 id="orgc23b788">Relaxed (Intermediate) Configuration</h2>
+* Relaxed (Intermediate) Configuration
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -601,11 +568,12 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </ul>
 
 </div>
+#+END_EXPORT
 
 
-</section>
-<section id="slide-orgd306d1b">
-<h3 id="orgd306d1b">Relaxed Configuration Constituative Laws</h3>
+** Relaxed Configuration Constituative Laws
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -690,11 +658,11 @@ E^e = \frac{1}{2} (C^e - I)
 </ul>
 
 </div>
+#+END_EXPORT
 
 
-</section>
-<section id="slide-orgbf8f06a">
-<h3 id="orgbf8f06a">Dissipation Separation: Elastic vs Plastic in Anand’s Model</h3>
+** Dissipation Separation: Elastic vs Plastic in Anand’s Model
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <!-- Left Column -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44,160,44,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
@@ -743,11 +711,10 @@ The stress power split ensures that the second law is satisfied by assigning dis
 </div>
 </div>
 </div>
-</section>
-</section>
-<section>
-<section id="slide-orge73ffec">
-<h2 id="orge73ffec">Reference Configuration</h2>
+#+END_EXPORT
+* Reference Configuration
+
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -810,11 +777,11 @@ The stress power split ensures that the second law is satisfied by assigning dis
 </ul>
 
 </div>
+#+END_EXPORT
 
 
-</section>
-<section id="slide-org4bf5772">
-<h3 id="org4bf5772">Thermodynamics</h3>
+** Thermodynamics
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -902,27 +869,4 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 </ul>
 
 </div>
-</section>
-</section>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-slideNumber:true,transition:'fade',
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-
-});
-
-</script>
-</body>
-</html>
+#+END_EXPORT
