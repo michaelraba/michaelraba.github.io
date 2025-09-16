@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Debian)  (format=lualatex 2023.5.31)  15 SEP 2025 17:51
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Debian)  (format=lualatex 2023.5.31)  16 SEP 2025 13:04
  restricted system commands enabled.
 **F2025cv.tex
 (./F2025cv.tex
@@ -710,14 +710,14 @@ Here is how much of LuaTeX's memory you used:
  561 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 8 
 attribute, 53 glue_spec, 8 attribute_list, 1 write nodes
-   avail lists: 1:1,2:876,3:579,4:9,5:168,6:142,7:11813,8:10,9:811,10:8,11:984
+   avail lists: 1:1,2:862,3:570,4:9,5:252,6:139,7:11691,8:10,9:808,10:8,11:975
  35461 multiletter control sequences out of 65536+600000
  59 fonts using 6178295 bytes
  87i,16n,122p,1003b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/font
 s/truetype/msttcorefonts/Times_New_Roman.ttf></usr/share/fonts/truetype/msttcore
 fonts/Times_New_Roman_Bold.ttf>
-Output written on F2025cv.pdf (1 page, 74970 bytes).
+Output written on F2025cv.pdf (1 page, 73855 bytes).
 
 PDF statistics: 38 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream

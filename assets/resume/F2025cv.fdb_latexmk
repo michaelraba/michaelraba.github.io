@@ -1,5 +1,5 @@
 # Fdb version 3
-["lualatex"] 1757973080 "F2025cv.tex" "F2025cv.pdf" "F2025cv" 1757973081
+["lualatex"] 1758042242 "F2025cv.tex" "F2025cv.pdf" "F2025cv" 1758042243
   "/home/mi/.texlive2022/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1694985616 81819 943de47a424d8006cb945ecfb1acc821 ""
   "/home/mi/.texlive2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1683148179 128392 5ccdcd80529671c517f74edd952aa156 ""
   "/home/mi/.texlive2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1683148179 127309 2c3a7c325c755353a32b5f3d0c56cb88 ""
@@ -144,10 +144,10 @@
   "/usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf" 1255129361 64684 15a2082c8e31f411875a86ea2d29a0ee ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1683146713 4595794 2d34e5a126a0aa697a2f4f787f7af198 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1685530230 4614348 a04b71862ce65e53d3df11576a877ccc ""
-  "F2025cv.aux" 1757973081 554 e6f85c6f44bbe194532b4fa1fd8ca02c "lualatex"
+  "F2025cv.aux" 1758042243 554 e6f85c6f44bbe194532b4fa1fd8ca02c "lualatex"
   "F2025cv.out" 0 -1 0 "lualatex"
-  "F2025cv.tex" 1757973077 4158 56455fa5ecddbc9942d9cf2330838ec9 ""
-  "mcdowellcv.cls" 1757964368 7215 345300d27b95817847668a99535f333f ""
+  "F2025cv.tex" 1758042228 4112 f58b8b7a4d56dddd53a1c51b6510ecfb ""
+  "mcdowellcv.cls" 1757985867 7215 345300d27b95817847668a99535f333f ""
   (generated)
   "F2025cv.aux"
   "F2025cv.log"

@@ -1,4 +1,4 @@
-PWD /home/mi/cv/Fall25
+PWD /home/mi/michaelraba.github.io/assets/resume
 INPUT /var/lib/texmf/web2c/luahbtex/lualatex.fmt
 INPUT ./F2025cv.tex
 OUTPUT F2025cv.log
