@@ -1,0 +1,76 @@
+
+\documentclass[]{mcdowellcv}
+\usepackage{amsmath}
+
+\name{Michael Raba}
+\contacts{(859) 972-4725 \linebreak \href{mailto:michael.raba@uky.edu}{michael.raba@uky.edu} }
+
+\begin{document}
+\makeheader
+
+
+\begin{cvsection}{Featured Projects}
+  \begin{cvsubsection}{Projects}{}{}
+    \begin{itemize}
+
+
+\item \textbf{1. Multichamber Muffler Design} (2023). Designed a multichamber muffler system with internal components including chambers, baffles, perforates, and fiberglass absorbents. Simulated acoustic performance using industry-standard tools and validated results against measured data.
+  \begin{itemize}
+    \item \textbf{Tools Used}: \textbf{ANSYS 2023 (Acoustics Module)}, SIDLAB 5.1, (Verification of Model using 1d approximation)
+    \item Modeled transmission and insertion loss across 0–1000 Hz using fluid approximations
+    \item Created CAD-style schematics and component breakdowns for internal geometry
+    \item Compared simulated and measured acoustic data using Transmission Loss (TL) and Insertion Loss (IL) metrics
+    \item Published downloadable simulation files for reproducibility and benchmarking
+  \end{itemize}
+
+ \item \textbf{2. Viscoplastic Modeling} (2023). Applied Anand’s viscoplasticity model to simulate strain-rate and temperature-dependent behavior of solder alloys on microchip package. Forward Euler integration scheme in Python to solve constitutive equations and model stress evolution under thermal effects to verify Ansys model.
+    \begin{itemize}
+      \item \textbf{Tools Used}: \textbf{ANSYS (nonlinear materials module)}, Python NumPy (Verificiation using Numerical Model)
+      \item \textbf{Material parameter fitting} based on experimental data
+    \end{itemize}
+
+
+ \item \textbf{3. Electromagnetics Simulation: Finite Difference Time Domain --- Navier Stokes Simulation} (2019). Calculates in 3D space location of a particle in a \textbf{magnetized fluid flow} using the Yee Scheme, using finite difference equations and staggered time-stepping.
+
+\item \textbf{4. MSc Project – POD Analysis of Turbulent Pipe Flow} (2023). Developed a MATLAB-based framework to analyze turbulent rotating pipe flow using Proper Orthogonal Decomposition (POD). Compared Classic and Snapshot POD methods to extract dominant energetic structures and reconstruct flow fields.
+  \begin{itemize}
+    \item \textbf{Tools Used}: MATLAB, Python, C++, fortran2020, linux
+    \item Models produces a PCA simplified model of ~5 mb from 5 Terabytes of data to enable better design decisions
+  \end{itemize}
+\end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+
+
+\begin{cvsection}{Employment}
+  \begin{cvsubsection}{Research Assistant}{University of Kentucky}{2020 -- 2023}
+    \begin{itemize}
+      \item Collaboration with 11 PhD students at University of Maryland, College Park and University of Oxford
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Teaching Assistant}{University of Kentucky}{Fall 2020 \& Spring 2023}
+    \begin{itemize}
+      \item TA for course on Design of Experiments (DOE), (ME311 \texttt{Experimental Design II}), a senior level course covering Heat Transfer, Fluid Mechanics, Statics, Engineering Statistics and \texttt{R}; also taught \texttt{ME 330 Fluid Mechanics I} as an undergraduate and \texttt{ME 321 Thermodynamics II} as recitation leader in Fall 2020.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Wayfinding Assistant}{Chandler Medical Center}{Fall 2019 -- Spring 2020 and July 2023 -- Present}
+    \begin{itemize}
+      \item Developed custom wayfinding map app to assist hospital visitors. Flask, Python, SQL
+    \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+
+\begin{cvsection}{Education}
+  \begin{cvsubsection}{Lexington, KY}{University of Kentucky}{Fall 2015 -- December 2023}
+    \begin{itemize}
+      \item BA in Mathematics, May 2019. In-major GPA: 3.6.
+      \item MSc in Mechanical and Aerospace Engineering, December 2023 (Expected). GPA: 3.3
+    \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+\end{document}
