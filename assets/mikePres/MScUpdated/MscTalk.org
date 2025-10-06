@@ -788,7 +788,7 @@
 
 
 * Citations
-+BEGIN_EXPORT html
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; font-size: 90%;">
 
   <!-- LEFT column: Historical Experiments -->
@@ -814,7 +814,7 @@
 
 ** Citations 
 
-+BEGIN_EXPORT html
+#+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; font-size: 90%;">
 
   <!-- LEFT column: Theory & Scaling -->
