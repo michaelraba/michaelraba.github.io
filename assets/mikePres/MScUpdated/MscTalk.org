@@ -765,25 +765,25 @@
 ** Modal Profile φ²
 #+begin_export html
 <p><strong>Streamwise Component φ², S=3.0</strong></p>
-<img src="./f/wednesdayTable_page2-1.png" style="width:80%; height:auto;" alt="Modal φ²"/>
+<img src="./f/wednesdayTable_page1-1.png" style="width:80%; height:auto;" alt="Modal φ²"/>
 #+end_export
 
 ** Modal Profile φ³
 #+begin_export html
 <p><strong>Streamwise Component φ³, S=3.0</strong></p>
-<img src="./f/wednesdayTable_page3-1.png" style="width:80%; height:auto;" alt="Modal φ³"/>
+<img src="./f/wednesdayTable_page2-2.png" style="width:80%; height:auto;" alt="Modal φ³"/>
 #+end_export
 
 ** Modal Profile φ⁴
 #+begin_export html
 <p><strong>Streamwise Component φ⁴, S=3.0</strong></p>
-<img src="./f/wednesdayTable_page4-1.png" style="width:80%; height:auto;" alt="Modal φ⁴"/>
+<img src="./f/wednesdayTable_page3-3.png" style="width:80%; height:auto;" alt="Modal φ⁴"/>
 #+end_export
 
 ** Derivation of POD
 #+begin_export html
 <p><strong>Derivation of POD Projections</strong></p>
-<img src="./f/wednesdayTableB_page1-1.png" style="width:80%; height:auto;" alt="POD Derivation"/>
+<img src="./f/wednesdayTableB_page4-4.png" style="width:80%; height:auto;" alt="POD Derivation"/>
 #+end_export
 
 
