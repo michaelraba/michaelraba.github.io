@@ -1,15 +1,16 @@
-current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230327-2319695-q35fnf.rb extconf.rb
+current directory: /home/mi/michaelraba.github.io/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20251004-78951-f53xkc.rb extconf.rb
 creating Makefile
 
-current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+current directory: /home/mi/michaelraba.github.io/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
 make DESTDIR\= clean
 
-current directory: /home/mi/External/web/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+current directory: /home/mi/michaelraba.github.io/vendor/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
 make DESTDIR\=
 compiling ruby_http_parser.c
 compiling ryah_http_parser.c
 linking shared-object ruby_http_parser.so
+/gnu/store/4y5m9lb8k3qkb1y9m02sw9w9a6hacd16-bash-minimal-5.1.8/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 guile: warning: failed to install locale
 ld: /lib/x86_64-linux-gnu/libm.so.6: unknown type [0x13] section `.relr.dyn'
 ld: skipping incompatible /lib/x86_64-linux-gnu/libm.so.6 when searching for /lib/x86_64-linux-gnu/libm.so.6

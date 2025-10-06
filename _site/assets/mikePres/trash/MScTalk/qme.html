@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>POD Analysis of Turbulent Pipe Flow</title>
+<meta name="author" content="M. Raba"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+<link rel="stylesheet" href="./extra.css"/>
+<style>
+.reveal .MathJax_Display {
+font-size: 65%; /* Adjust this value as needed */
+}
+.reveal .MathJax_SVG {
+font-size: 65%; /* Adjust this value as needed */
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-10-01 Wed 01:29</p>
+</section>
+
+
+<section>
+<section id="slide-org2b7e3a8">
+<h2 id="org2b7e3a8"><span class="section-number-2">1.</span> Background and Motivation</h2>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Context & Relevance -->
+  <div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #9467bd;">
+      <i>Background and Motivation</i>
+    </div>
+
+    <div><b>Talk Title:</b> POD Analysis of Turbulent Pipe Flow</div>
+    <div><b>Why Rotating Pipe Flow?</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Simple geometry, yet rich in turbulent dynamics</li>
+      <li>Ideal for studying rotation-induced turbulence suppression</li>
+      <li>Relevant to aerospace, combustion, and industrial flows</li>
+    </ul>
+
+    <div><b>Historical Observations:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Rotation reduces skin friction and pressure loss</li>
+      <li>Experiments (e.g., White 1964, Kikuyama et al. 1983) showed relaminarization at high rotation rates</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT column: Research Gaps & Objectives -->
+  <div style="flex: 1; border-left: 6px solid #8c564b; background: rgba(140, 86, 75, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #8c564b;">
+      <i>Research Gaps & Objectives</i>
+    </div>
+
+    <div><b>Challenges:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Limited DNS studies at moderate-to-high Reynolds numbers</li>
+      <li>RANS/LES models struggle to capture suppression mechanisms</li>
+    </ul>
+
+    <div><b>Goals of This Work:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Use DNS to quantify turbulence suppression</li>
+      <li>Apply POD to identify dominant coherent structures</li>
+      <li>Provide benchmark data for turbulence model validation</li>
+    </ul>
+
+    <div style="margin-top: 1em; font-size: 0.95em;">
+      <i>This study bridges the gap between high-fidelity simulations and reduced-order modeling of rotating turbulent flows.</i>
+    </div>
+  </div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2c887d3">
+<h2 id="org2c887d3"><span class="section-number-2">2.</span> DNS Turbulent Model</h2>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Simulation Context -->
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
+      <i>DNS Configuration: Rotating Turbulent Pipe Flow</i>
+    </div>
+
+    <div><b>Flow Type:</b> Axially rotating turbulent pipe flow</div>
+    <div><b>Solver:</b> Nek5000 (Spectral Element Method)</div>
+    <div><b>Reynolds Numbers:</b> 5,300 and 11,700</div>
+    <div><b>Rotation Numbers (N):</b> 0 to 3</div>
+    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries</div>
+    <div><b>Purpose:</b> Study turbulence suppression and provide DNS benchmark data</div>
+  </div>
+
+  <!-- RIGHT column: Numerical & Grid Setup -->
+  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
+      <i>Numerical & Grid Details</i>
+    </div>
+
+    <div><b>Time Integration:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Viscous terms: BDF3 (implicit)</li>
+      <li>Nonlinear terms: Explicit extrapolation (3rd order)</li>
+    </ul>
+
+    <div><b>Grid Resolution (wall units y⁺):</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Radial: 0.14–4.4 (Re = 5300), 0.16–4.7 (Re = 11,700)</li>
+      <li>Azimuthal: 1.5–5.0</li>
+      <li>Streamwise: 3.0–9.9</li>
+    </ul>
+
+    <div><b>Mesh:</b> Hexahedral elements with high-order tensor polynomials</div>
+    <div><b>Parallelization:</b> MPI with auto-tuned algorithms</div>
+    <div><b>Pressure Solver:</b> Algebraic Multigrid (AMG)</div>
+    <div><b>Temporal Averaging:</b> Over 6.5 flow-throughs (after transient)</div>
+  </div>
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org920253a">
+<h2 id="org920253a"><span class="section-number-2">3.</span> POD Energy Modes</h2>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Direct POD Formulation -->
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
+      <i>Direct POD Formulation</i>
+    </div>
+
+    <p><b>(2.1)</b> Radial eigenvalue problem:</p>
+    $$ \int S(k, m; r, r') \, \Phi_n(k, m; r') \, r' \, dr' = \lambda_n(k, m) \, \Phi_n(k, m; r) $$
+
+    <p><b>(2.2)</b> Cross-correlation tensor:</p>
+    $$ S(k, m; r, r') = \lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k, m; r, t) \, \mathbf{u}^*(k, m; r', t) \, dt $$
+
+    <p><b>(2.3)</b> POD coefficient projection:</p>
+    $$ \alpha_n(k, m; t) = \int \mathbf{u}(k, m; r, t) \, \Phi_n^*(k, m; r) \, r \, dr $$
+  </div>
+
+  <!-- RIGHT column: Snapshot POD & Conditional Mode -->
+  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
+      <i>Snapshot POD & Conditional Mode</i>
+    </div>
+
+    <p><b>(2.4)</b> Time-domain eigenvalue problem:</p>
+    $$ \int R(k, m; t, t') \, \alpha_n(k, m; t') \, dt' = \lambda_n(k, m) \, \alpha_n(k, m; t) $$
+
+    <p><b>(2.5)</b> Mode reconstruction:</p>
+    $$ \int \mathbf{u}^T(k, m; r, t) \, \alpha_n^*(k, m; t) \, dt = \Phi_n^T(k, m; r) \, \lambda_n(k, m) $$
+
+    <p><b>(2.6)</b> Conditional mode definition:</p>
+    $$ \Psi_n(m; \xi, r) = \lim_{\chi \to \infty} \frac{1}{\chi} \int_0^\chi \int_0^\tau \mathbf{u}^T(m; r, x+\xi, t) \, \alpha_n(m; x, t) \, dt \, dx $$
+  </div>
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org22c81c6">
+<h2 id="org22c81c6"><span class="section-number-2">4.</span> FFT / POD Interpretation</h2>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: FFT Decomposition -->
+  <div style="flex: 1; border-left: 6px solid #17becf; background: rgba(23, 190, 207, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #17becf;">
+      <i>FFT Decomposition in Pipe Flow</i>
+    </div>
+
+    <p><b>Azimuthal FFT:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Exploits rotational symmetry of the pipe</li>
+      <li>Azimuthal mode number <i>m</i> defines spanwise length scale</li>
+      <li>Highlights circumferential structure and periodicity</li>
+    </ul>
+
+    <p><b>Streamwise FFT:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Captures axial periodicity and wavelength</li>
+      <li>Mode number <i>k</i> relates to streamwise extent of structures</li>
+      <li>Useful for identifying repeating patterns like VLSMs</li>
+    </ul>
+
+    <p><b>Why FFT?</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Geometry-driven decomposition</li>
+      <li>Modes are known a priori due to symmetry</li>
+      <li>Accelerates POD convergence</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT column: POD Characteristics -->
+  <div style="flex: 1; border-left: 6px solid #bcbd22; background: rgba(188, 189, 34, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #bcbd22;">
+      <i>Proper Orthogonal Decomposition (POD)</i>
+    </div>
+
+    <p><b>Nature of POD Modes:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Data-driven: extracted from simulation or experiment</li>
+      <li>Ranked by energy content (most energetic first)</li>
+      <li>Capture coherent structures across scales</li>
+    </ul>
+
+    <p><b>Snapshot POD:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Assumes separability of space and time</li>
+      <li>Reduces computational cost by working in time domain</li>
+      <li>Enables modal analysis of large datasets</li>
+    </ul>
+
+    <p><b>Complementarity:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>FFT modes reflect geometry</li>
+      <li>POD modes reflect physics and energy distribution</li>
+      <li>Combined FFT-POD approach enhances interpretability</li>
+    </ul>
+  </div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgedf3d01">
+<h2 id="orgedf3d01"><span class="section-number-2">5.</span> Energy (Eigenvalues)</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org58cdad9">
+<h2 id="org58cdad9"><span class="section-number-2">6.</span> Swirl Numbers \(N=\{0,1,3\}\)</h2>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org98273d1">
+<h2 id="org98273d1"><span class="section-number-2">7.</span> Code Execution and Layout</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+</section>
+<section id="slide-orgdc5b951">
+<h3 id="orgdc5b951"><span class="section-number-3">7.1.</span> Layout</h3>
+<ol>
+<li>b7.m</li>
+<li>initSpectral.m
+<ul>
+<li>reads in binary files, takes eg m-fft</li>
+
+</ul></li>
+<li>\(\hookrightarrow\) initEigs.m
+<ul>
+<li>forms corrMat, finds eigenvalues</li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-org80ebabc">
+<h3 id="org80ebabc"><span class="section-number-3">7.2.</span> Layout 2</h3>
+<ol>
+<li>\(\hookrightarrow\) initPod.m
+<ul>
+<li>carries out POD calculations (quadrature, multiplication ggf betwen  \(\alpha \Phi\)) according to Papers (Citriniti George 2000 for Classic POD, Hellstrom Smits 2017 for Snapshot POD)</li>
+
+</ul></li>
+<li>\(\hookrightarrow\)  timeReconstructFlow.m
+<ul>
+<li>performs 2d reconstruction + plotSkmr (generates 1d radial graph)</li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-org02b76a5">
+<h3 id="org02b76a5"><span class="section-number-3">7.3.</span> Important Switches</h3>
+<p>
+pipe = Pipe(); creates a Pipe Class. As the functions (above) are called, data is stored
+in sub-structs:
+</p>
+<ol>
+<li>obj.CaseId - stores properties like Re, rotation number \(S\), experimental flags such as quadrature (simpson/trapezoidal), number of gridpoints, frequently called vectors (rMat \(r=1,\ldots , 0.5\))</li>
+<li>obj.pod - eigen data, used for calculating POD</li>
+<li>obj.solution - computed POD modes</li>
+<li>obj.plt - plot configuration</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org244d363">
+<h2 id="org244d363"><span class="section-number-2">8.</span> Equations Used in Code Procedure</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+</section>
+<section id="slide-org30df3e5">
+<h3 id="org30df3e5"><span class="section-number-3">8.1.</span> Classic POD Equations</h3>
+<p>
+The following equations are used in the above code.
+</p>
+
+<div>
+\begin{align}
+\label{eq:einstein}
+&\int_{r^{\prime}} \mathbf{S}\left(k ; m ; r, r^{\prime}\right) \Phi^{(n)}\left(k ; m ; r^{\prime}\right) r^{\prime} \mathrm{d} r^{\prime}=\lambda^{(n)}(k ; m) \Phi^{(n)}(k ; m ; r) \\
+&\mathbf{S}\left(k ; m ; r, r^{\prime}\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t \\
+&\alpha^{(n)}(k ; m ; t)=\int_r \mathbf{u}(k ; m ; r, t) \Phi^{(n)^*}(k ; m ; r) r \mathrm{~d} r
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgd4ae7da">
+<h3 id="orgd4ae7da"><span class="section-number-3">8.2.</span> Classic POD Equations (Fixed)</h3>
+<div>
+\begin{align}
+& \int_{r^{\prime}} \underbrace{r^{1 / 2} S_{i, j}\left(r, r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{W_{i, j}\left(r, r^{\prime} ; m ; f\right)} \underbrace{\phi_j^{*(n)}\left(r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{\hat{\phi}_j^{\psi(i)}\left(r^{\prime} ; m ; f\right)} \mathrm{d} r^{\prime} \\
+& =\underbrace{\lambda^{(n)}(m, f)}_{\hat{\lambda}^{(n)}(m ; f)} \underbrace{r^{1 / 2} \phi_i^{(n)}(r ; m ; f)}_{\hat{\phi}_i^{(n)}(r, m ; f)} \\
+%& \Rightarrow\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau\left(r^{1 / 2} \mathbf{u}(m ; r, t), r^{1 / 2} \\
+%\times \mathbf{u}\left(m ; r, t^{\prime}\right)\right) \alpha_n(m ; t) d t^{\prime} \\
+%&=\lambda_n(m) \alpha_n(m ; t),
+&\alpha_n(m ; t)=\int_r \mathbf{u}(m ; r, t) r^{1 / 2} \Phi_n^*(m ; r) d r
+\end{align}
+
+</div>
+
+</section>
+<section id="slide-org8eccd33">
+<h3 id="org8eccd33"><span class="section-number-3">8.3.</span> Snapshot POD Equations</h3>
+<div>
+\begin{align}
+&\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t \\
+&=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) \\
+&\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r \\
+&\lim_{\tau \to \infty} \frac{1}{\tau} \int_{0}^{\tau} \mathbf{u}_{\mathbf{T}}(k; m; r, t) \alpha^{(n)*}(k; m; t) \, \mathrm{d}t \\
+&= \Phi_{\mathbf{T}}^{(n)}(k; m; r) \lambda^{(n)}(k; m).
+\end{align}
+
+</div>
+
+</section>
+<section id="slide-orgc08d529">
+<h3 id="orgc08d529"><span class="section-number-3">8.4.</span> Reconstruction</h3>
+<p>
+The reconstruction is given by
+</p>
+<div>
+\begin{align}
+q(\xi,t) - \bar{q}(\xi) &\approx \sum_{j=1}^{r} a_j(t) \varphi_j(\xi) \Rightarrow  \\
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)} (r;m;x)
+\end{align}
+
+</div>
+<p>
+Since the snapshot pod implementation is not error-free, the reconstruction can only be recovered by writing
+for \(\text{factor} \gg 0\).
+</p>
+<div>
+\begin{align}
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \text{(factor $\gamma$)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgcb788eb">
+<h3 id="orgcb788eb"><span class="section-number-3">8.5.</span> Reconstruction</h3>
+<p>
+In order to reconstruct in code, caseId.fluctuation = &rsquo;off&rsquo;. This is incorrect.
+The necessary use of (factor \(\gamma\)) is incorrect
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgcbe95d8">
+<h2 id="orgcbe95d8"><span class="section-number-2">9.</span> Derivation</h2>
+<p>
+To derive the questioned equation, consider the integral:
+</p>
+
+<div>
+\begin{align}
+\frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+
+</div>
+
+<p>
+Substitute \(\mathbf{u}_{\mathrm{T}}\) with its expansion:
+</p>
+
+<div>
+\begin{align}
+\frac{1}{\tau} \int_0^\tau\left(\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r) \alpha^{(l)}(k ; m ; t)\right) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgb98b647">
+<h3 id="orgb98b647"><span class="section-number-3">9.1.</span> 4 Derivation</h3>
+<p>
+Exchange the order of summation and integration, and apply orthogonality,
+</p>
+
+<div>
+\begin{align}
+\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(l)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+</div>
+
+<p>
+Due to the orthogonality, namely that \(\alpha^{(n)}\) and \(\alpha^{(p)}\) are uncorrelated
+</p>
+
+<div>
+\begin{align}
+\langle a^{(n)} \alpha^{(p)} \rangle = \lambda^{(n)} \delta_{np}
+\end{align}
+
+</div>
+
+<p>
+all terms where \(l \neq n\) will vanish, and there remains only the \(l=n\) term,
+</p>
+
+<div>
+\begin{align}
+\Phi_{\mathrm{T}}^{(n)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(n)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+</div>
+
+<p>
+This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( \(\Phi_{\mathrm{T}}^{(n)}\) ) of each mode scaled by its significance \(\left(\lambda^{(n)}\right)\).
+</p>
+</section>
+<section id="slide-orge6087c4">
+<h3 id="orge6087c4"><span class="section-number-3">9.2.</span> 6 Derivation</h3>
+<p>
+The cross-correlation tensor \(\mathbf{R}\) is defined as \(\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r\). This tensor is now transformed from \(\left[3 r \times 3 r^{\prime}\right]\) to a \(\left[t \times t^{\prime}\right]\) tensor. The \(n\) POD modes are then constructed as,
+</p>
+
+<div>
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) .
+\end{align}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4d593e2">
+<h2 id="org4d593e2"><span class="section-number-2">10.</span> Result Comparison Classic/Snapshot</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+</section>
+<section id="slide-org4cb3f45">
+<h3 id="org4cb3f45"><span class="section-number-3">10.1.</span> Radial Classic</h3>
+
+<div id="orgb681122" class="figure">
+<p><img src="iD/classic-pod-radial.png" alt="classic-pod-radial.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4ba2dc1">
+<h3 id="org4ba2dc1"><span class="section-number-3">10.2.</span> Snapshot-Classic Comparison</h3>
+
+<div id="orgd534e13" class="figure">
+<p><img src="iD/classic-snapshot-compare-radial.png" alt="classic-snapshot-compare-radial.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orga2e234e">
+<h3 id="orga2e234e"><span class="section-number-3">10.3.</span> Klassik POD S=0.0</h3>
+
+<div id="org3ac0084" class="figure">
+<p><img src="iD/pod.k0.0.png" alt="pod.k0.0.png" />
+</p>
+</div>
+</section>
+<section id="slide-org49979b1">
+<h3 id="org49979b1"><span class="section-number-3">10.4.</span> Klassik POD S=3.0</h3>
+
+<div id="orgb6e1be7" class="figure">
+<p><img src="iD/pod.k3.0.png" alt="pod.k3.0.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge11bc31">
+<h2 id="orge11bc31"><span class="section-number-2">11.</span> Energy n=0 Classic</h2>
+
+<div id="orgd3747ce" class="figure">
+<p><img src="iD/k.n0.egy.png" alt="k.n0.egy.png" />
+</p>
+</div>
+</section>
+<section id="slide-org41079ca">
+<h3 id="org41079ca"><span class="section-number-3">11.1.</span> n=3 Classic</h3>
+
+<div id="orgd328113" class="figure">
+<p><img src="iD/k.n3.egy.png" alt="k.n3.egy.png" />
+</p>
+</div>
+</section>
+<section id="slide-org686b4e5">
+<h3 id="org686b4e5"><span class="section-number-3">11.2.</span> Analysis</h3>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge1e18be">
+<h2 id="orge1e18be"><span class="section-number-2">12.</span> Reconstruction</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+</section>
+<section id="slide-orgcb454c0">
+<h3 id="orgcb454c0"><span class="section-number-3">12.1.</span> Reconstruction</h3>
+
+<div id="orgf91404a" class="figure">
+<p><img src="iD/reconstruct-400-50.png" alt="reconstruct-400-50.png" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

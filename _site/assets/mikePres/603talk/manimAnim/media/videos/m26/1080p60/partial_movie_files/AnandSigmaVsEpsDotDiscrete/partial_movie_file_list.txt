@@ -1,0 +1,10 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3529212410_1308747855_223132457.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_446067343_2358159668.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_3946185330_1416810334.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_2521726375_169992217.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_3638432481_4089527711.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_3195953983_1657010191.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_3568647318_1976494550.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_332222726_2316368456.mp4'
+file 'file:/home/mi/michaelraba.github.io/assets/mikePres/603talk/manimAnim/media/videos/m26/1080p60/partial_movie_files/AnandSigmaVsEpsDotDiscrete/3040924799_1733944848_2039458870.mp4'

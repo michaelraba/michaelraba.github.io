@@ -17,4 +17,3 @@ Michael Raba, Mechanical Engineering MSc(2025)
 <img src="/assets/picture/muffler2.jpg" alt="Muffler Image" style="width:100%; max-height:500px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;" />
 
 
-/assets/picture/muffler2.jpg

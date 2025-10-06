@@ -1,0 +1,212 @@
+#+TITLE: POD Analysis of Turbulent Pipe Flow
+#+AUTHOR: M. Raba
+#+LATEX_COMPILER: xelatex
+# this is the size i usually use:
+#+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
+
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+#+HTML_HEAD: <link rel="stylesheet" href="./extra.css"/>
+#+REVEAL_HTML_HEAD_EXTRA: <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+#+REVEAL_HTML_HEAD_EXTRA: <script>mermaid.initialize({ startOnLoad: true });</script>
+
+# #+latex_header: \mode<beamer>{\usetheme{metropolis}}
+#+reveal_theme: serif
+# #+reveal_extra_css: ./custom.css
+#+REVEAL_EXTRA_CSS: style.css
+
+
+#+HTML_HEAD: <style>
+#+HTML_HEAD: .reveal .MathJax_Display {
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: .reveal .MathJax_SVG {
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: </style>
+
+
+#+LATEX_HEADER:\setcounter{MaxMatrixCols}{20}
+# #+latex_header: \mode<beamer>{\usetheme{league}}
+# #+latex_header:\usepackage{xeCJK}
+#+latex_header:\usepackage{fontspec}
+#+latex_header:\setmonofont{DejaVu Sans Mono}
+# #+latex_header:\setmainfont{Avenir LT Std}
+# #+latex_header:\setsansfont{Avenir LT Std}
+# #+latex_header:\setsansfont{SF UI Text}
+# #+latex_header: \setbeamerfont{section}{size=\scriptsize,series=\bfseries,parent=structure}
+# #+latex_header: \setbeamerfont{section}{font=EB Garamond}
+
+#+latex_header: \usepackage{setspace}
+#+latex_header: \onehalfspacing
+#+OPTIONS: toc:nil
+# #+OPTIONS: toc:t
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER:  \usepackage[table]{xcolor}
+#+LATEX_HEADER: \usepackage{colortbl}
+#+LATEX_HEADER:  \usepackage{sectsty}
+#+LATEX_HEADER:  \usepackage{soul}
+#+LATEX_HEADER: \allsectionsfont{\normalfont\sffamily\bfseries}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER:\usepackage{siunitx}
+#+LATEX_HEADER:\usepackage{physics}
+# #+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage[tikz]{bclogo}
+# #+latex_header:\usepackage[citestyle=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+#+latex_header:\usepackage[style=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+# #+latex_header:\addbibresource{bib.bib}
+#+latex_header:\bibliography{bib.bib}
+# #+latex_header:\addbibresource{bib}
+# #+latex_header:\setmainfont[Variant = 1, Ligatures = {Common,Rare}]{Zapfino}%
+# #+latex_header: ​\setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
+# #+latex_header:\usepackage[cache=false]{minted}
+#+latex_header:\usepackage{minted,xcolor}
+# #+latex_header:\usemintedstyle{monokai}
+#+latex_header:\usemintedstyle{manni}
+# #+latex_header:\usemintedstyle{perldoc}
+# #+latex_header:\definecolor{bg}{HTML}{282828}
+# #+latex_header:\definecolor{bg}{HTML}{4d1933} # dark purple color
+# #+latex_header:\definecolor{bg}{HTML}{fdffcf} # yellow
+#+latex_header:\definecolor{bg}{HTML}{ffffe6}
+#+latex_header:\setminted{bgcolor=bg}
+#+latex_header:\setminted{linenos}
+# #+latex_header:\setminted{fontsize=\large}
+# #+latex_header:\setminted{framesep=2mm}
+# #+latex_header:\setminted{escapeinsid=e||,mathescape}
+#+latex_header:\definecolor{Tiffany}{HTML}{00ffdd}
+#+latex_header:\setbeamercolor{alerted text}{fg=Orange}
+#+latex_header:\setbeamercolor{frametitle}{bg=tyrianPurple}
+#+latex_header: \usepackage{tikz}
+#+latex_header: \metroset{block=fill}
+
+* Code Execution and Layout
+** Layout
+1. b7.m
+2. initSpectral.m
+   - reads in binary files, takes eg m-fft
+3. $\hookrightarrow$ initEigs.m
+   - forms corrMat, finds eigenvalues
+**  Layout 2
+4. $\hookrightarrow$ initPod.m
+   - carries out POD calculations (quadrature, multiplication ggf betwen  $\alpha \Phi$) according to Papers (Citriniti George 2000 for Classic POD, Hellstrom Smits 2017 for Snapshot POD)
+5. $\hookrightarrow$  timeReconstructFlow.m
+   - performs 2d reconstruction + plotSkmr (generates 1d radial graph)
+** Important Switches
+pipe = Pipe(); creates a Pipe Class. As the functions (above) are called, data is stored
+in sub-structs:
+1. obj.CaseId - stores properties like Re, rotation number $S$, experimental flags such as quadrature (simpson/trapezoidal), number of gridpoints, frequently called vectors (rMat $r=1,\ldots , 0.5$)
+2. obj.pod - eigen data, used for calculating POD
+3. obj.solution - computed POD modes
+4. obj.plt - plot configuration
+
+* Equations Used in Code Procedure
+** Classic POD Equations
+The following equations are used in the above code.
+
+\begin{align}
+\label{eq:einstein}
+&\int_{r^{\prime}} \mathbf{S}\left(k ; m ; r, r^{\prime}\right) \Phi^{(n)}\left(k ; m ; r^{\prime}\right) r^{\prime} \mathrm{d} r^{\prime}=\lambda^{(n)}(k ; m) \Phi^{(n)}(k ; m ; r) \\
+&\mathbf{S}\left(k ; m ; r, r^{\prime}\right)=\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r^{\prime}, t\right) \mathrm{d} t \\
+&\alpha^{(n)}(k ; m ; t)=\int_r \mathbf{u}(k ; m ; r, t) \Phi^{(n)^*}(k ; m ; r) r \mathrm{~d} r
+\end{align}
+** Classic POD Equations (Fixed)
+\begin{align}
+& \int_{r^{\prime}} \underbrace{r^{1 / 2} S_{i, j}\left(r, r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{W_{i, j}\left(r, r^{\prime} ; m ; f\right)} \underbrace{\phi_j^{*(n)}\left(r^{\prime} ; m ; f\right) r^{\prime 1 / 2}}_{\hat{\phi}_j^{\psi(i)}\left(r^{\prime} ; m ; f\right)} \mathrm{d} r^{\prime} \\
+& =\underbrace{\lambda^{(n)}(m, f)}_{\hat{\lambda}^{(n)}(m ; f)} \underbrace{r^{1 / 2} \phi_i^{(n)}(r ; m ; f)}_{\hat{\phi}_i^{(n)}(r, m ; f)} \\
+%& \Rightarrow\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau\left(r^{1 / 2} \mathbf{u}(m ; r, t), r^{1 / 2} \\
+%\times \mathbf{u}\left(m ; r, t^{\prime}\right)\right) \alpha_n(m ; t) d t^{\prime} \\
+%&=\lambda_n(m) \alpha_n(m ; t),
+&\alpha_n(m ; t)=\int_r \mathbf{u}(m ; r, t) r^{1 / 2} \Phi_n^*(m ; r) d r
+\end{align}
+
+** Snapshot POD Equations
+\begin{align}
+&\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t \\
+&=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) \\
+&\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r \\
+&\lim_{\tau \to \infty} \frac{1}{\tau} \int_{0}^{\tau} \mathbf{u}_{\mathbf{T}}(k; m; r, t) \alpha^{(n)*}(k; m; t) \, \mathrm{d}t \\
+&= \Phi_{\mathbf{T}}^{(n)}(k; m; r) \lambda^{(n)}(k; m).
+\end{align}
+
+** Reconstruction
+The reconstruction is given by
+\begin{align}
+q(\xi,t) - \bar{q}(\xi) &\approx \sum_{j=1}^{r} a_j(t) \varphi_j(\xi) \Rightarrow  \\
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)} (r;m;x)
+\end{align}
+Since the snapshot pod implementation is not error-free, the reconstruction can only be recovered by writing
+for $\text{factor} \gg 0$.
+\begin{align}
+q(r,\theta,t;x)
+&=
+\bar{q}(r,\theta,t;x) + \text{(factor $\gamma$)}\sum_{n=1} \sum_{m=0} \alpha^{(n)}(m;t) \Phi^{(n)}(r;m;x)
+\end{align}
+** Reconstruction
+In order to reconstruct in code, caseId.fluctuation = 'off'. This is incorrect.
+The necessary use of (factor $\gamma$) is incorrect
+* Derivation
+To derive the questioned equation, consider the integral:
+
+\begin{align}
+\frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+
+Substitute $\mathbf{u}_{\mathrm{T}}$ with its expansion:
+
+\begin{align}
+\frac{1}{\tau} \int_0^\tau\left(\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r) \alpha^{(l)}(k ; m ; t)\right) \alpha^{(n)^*}(k ; m ; t) d t .
+\end{align}
+** 4 Derivation
+Exchange the order of summation and integration, and apply orthogonality,
+
+\begin{align}
+\sum_l \Phi_{\mathrm{T}}^{(l)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(l)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+Due to the orthogonality, namely that $\alpha^{(n)}$ and $\alpha^{(p)}$ are uncorrelated
+
+\begin{align}
+\langle a^{(n)} \alpha^{(p)} \rangle = \lambda^{(n)} \delta_{np}
+\end{align}
+
+all terms where $l \neq n$ will vanish, and there remains only the $l=n$ term,
+
+\begin{align}
+\Phi_{\mathrm{T}}^{(n)}(k ; m ; r)\left(\frac{1}{\tau} \int_0^\tau \alpha^{(n)}(k ; m ; t) \alpha^{(n)^*}(k ; m ; t) d t\right) .
+\end{align}
+
+This derivation assumes the normalization of modes and their orthogonality, along with the eigenvalue relationship to simplify the original integral into a form that reveals the spatial structure ( $\Phi_{\mathrm{T}}^{(n)}$ ) of each mode scaled by its significance $\left(\lambda^{(n)}\right)$.
+** 6 Derivation
+The cross-correlation tensor $\mathbf{R}$ is defined as $\mathbf{R}\left(k ; m ; t, t^{\prime}\right)=\int_r \mathbf{u}(k ; m ; r, t) \mathbf{u}^*\left(k ; m ; r, t^{\prime}\right) r \mathrm{~d} r$. This tensor is now transformed from $\left[3 r \times 3 r^{\prime}\right]$ to a $\left[t \times t^{\prime}\right]$ tensor. The $n$ POD modes are then constructed as,
+
+\begin{align}
+\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) \mathrm{d} t=\Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}(k ; m) .
+\end{align}
+
+* Result Comparison Classic/Snapshot
+** Radial Classic
+#+ATTR_HTML: :style width:900px; height:auto;
+
+[[file:iD/classic-pod-radial.png]]
+
+** Snapshot-Classic Comparison
+[[file:iD/classic-snapshot-compare-radial.png]]
+
+** Klassik POD S=0.0
+[[file:iD/pod.k0.0.png]]
+** Klassik POD S=3.0
+[[file:iD/pod.k3.0.png]]
+
+* Energy n=0 Classic
+
+[[file:iD/k.n0.egy.png]]
+** n=3 Classic
+[[file:iD/k.n3.egy.png]]
+** Analysis
+
+
+
+* Reconstruction
+** Reconstruction
+[[file:iD/reconstruct-400-50.png]]

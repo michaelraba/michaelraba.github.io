@@ -1,0 +1,16 @@
+
+#+TITLE: Resume
+#+AUTHOR: Michael Raba
+#+OPTIONS: toc:nil num:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [letterpaper,11pt]
+#+LATEX_HEADER: \usepackage[empty]{fullpage}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage[hidelinks]{hyperref}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \setlist[itemize]{noitemsep, topsep=2pt}
+
+# #+INCLUDE: "./april25res.ltx" src latex
+#+INCLUDE: resl.org

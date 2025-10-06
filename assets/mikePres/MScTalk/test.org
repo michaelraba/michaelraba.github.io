@@ -1,0 +1,24 @@
+#+TITLE: Reveal Test
+#+AUTHOR: Michael Raba
+
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+#+REVEAL_HTML_HEAD_EXTRA: <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+#+REVEAL_HTML_HEAD_EXTRA: <script>mermaid.initialize({ startOnLoad: true });</script>
+
+#+reveal_theme: serif
+#+REVEAL_EXTRA_CSS: style.css
+
+
+#+REVEAL_THEME: serif
+#+REVEAL_INIT_OPTIONS: controls:true, progress:true, slideNumber:true, transition:'fade'
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_EXTRA_CSS: style.css
+
+* Slide One
+This is the first slide.
+
+* Slide Two
+This is the second slide.
+
+** Subslide
+This is a subslide.

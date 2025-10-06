@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>POD Analysis of Turbulent Pipe Flow</title>
+<meta name="author" content="M. Raba"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+.reveal .MathJax_Display {
+font-size: 65%; /* Adjust this value as needed */
+}
+.reveal .MathJax_SVG {
+font-size: 65%; /* Adjust this value as needed */
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-10-06 Mon 04:24</p>
+</section>
+<section>
+<section id="slide-org65c9483">
+<h2 id="org65c9483">Background and Motivation</h2>
+<div class="outline-text-2" id="text-org65c9483">
+</div>
+</section>
+<section id="slide-org835c532">
+<h3 id="org835c532">Literature Review</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Context & Relevance -->
+  <div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #9467bd;">
+      <i>Background and Motivation</i>
+    </div>
+
+    <div><b>Talk Title:</b> POD Analysis of Turbulent Pipe Flow</div>
+    <div><b>Why Rotating Pipe Flow?</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Simple geometry, yet rich in turbulent dynamics</li>
+      <li>Ideal for studying rotation-induced turbulence suppression</li>
+      <li>Relevant to aerospace, combustion, and industrial flows</li>
+    </ul>
+
+    <div><b>Historical Observations:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Rotation reduces skin friction and pressure loss</li>
+      <li>Experiments (e.g., White 1964, Kikuyama et al. 1983) showed relaminarization at high rotation rates</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT column: Research Gaps & Objectives -->
+  <div style="flex: 1; border-left: 6px solid #8c564b; background: rgba(140, 86, 75, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #8c564b;">
+      <i>Research Gaps & Objectives</i>
+    </div>
+
+    <div><b>Challenges:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Limited DNS studies at moderate-to-high Reynolds numbers</li>
+      <li>RANS/LES models struggle to capture suppression mechanisms</li>
+    </ul>
+
+    <div><b>Goals of This Work:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Use DNS to quantify turbulence suppression</li>
+      <li>Apply POD to identify dominant coherent structures</li>
+      <li>Provide benchmark data for turbulence model validation</li>
+    </ul>
+
+    <div style="margin-top: 1em; font-size: 0.95em;">
+      <i>This study bridges the gap between high-fidelity simulations and reduced-order modeling of rotating turbulent flows.</i>
+    </div>
+  </div>
+
+</div>
+</section>
+<section id="slide-org8aae59d">
+<h3 id="org8aae59d">DNS Turbulent Model</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Simulation Context -->
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
+      <i>DNS Configuration: Rotating Turbulent Pipe Flow</i>
+    </div>
+
+    <div><b>Flow Type:</b> Axially rotating turbulent pipe flow</div>
+    <div><b>Solver:</b> Nek5000 (Spectral Element Method)</div>
+    <div><b>Reynolds Numbers:</b> 5,300 and 11,700</div>
+    <div><b>Rotation Numbers (N):</b> 0 to 3</div>
+    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries</div>
+    <div><b>Purpose:</b> Study turbulence suppression and provide DNS benchmark data</div>
+  </div>
+
+  <!-- RIGHT column: Numerical & Grid Setup -->
+  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
+      <i>Numerical & Grid Details</i>
+    </div>
+
+    <div><b>Time Integration:</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Viscous terms: BDF3 (implicit)</li>
+      <li>Nonlinear terms: Explicit extrapolation (3rd order)</li>
+    </ul>
+
+    <div><b>Grid Resolution (wall units y⁺):</b></div>
+    <ul style="margin-left: 1em;">
+      <li>Radial: 0.14–4.4 (Re = 5300), 0.16–4.7 (Re = 11,700)</li>
+      <li>Azimuthal: 1.5–5.0</li>
+      <li>Streamwise: 3.0–9.9</li>
+    </ul>
+
+    <div><b>Mesh:</b> Hexahedral elements with high-order tensor polynomials</div>
+    <div><b>Parallelization:</b> MPI with auto-tuned algorithms</div>
+    <div><b>Pressure Solver:</b> Algebraic Multigrid (AMG)</div>
+    <div><b>Temporal Averaging:</b> Over 6.5 flow-throughs (after transient)</div>
+  </div>
+
+</div>
+</section>
+<section id="slide-org1ecc18d">
+<h3 id="org1ecc18d">Background: Rotating Pipe Flow &amp; Relaminarization</h3>
+<div style="column-count:2; column-gap:3em; font-size:90%;">
+<p><strong>Scientific Context</strong></p>
+<ul>
+<li>Rotating pipe flow is a canonical system for studying flow stabilization and relaminarization.</li>
+<li>Rotation modifies turbulence production and redistributes momentum through Coriolis and centrifugal effects.</li>
+<li>Relaminarization occurs when rotation suppresses the near-wall turbulence regeneration cycle.</li>
+</ul>
+
+<p><strong>Key Phenomena</strong></p>
+<ul>
+<li>Competition between destabilizing wall shear and stabilizing radial pressure gradients.</li>
+<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates.</li>
+<li>Relaminarized or quasi-laminar states can persist at high Reynolds numbers.</li>
+</ul>
+</div>
+
+<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
+<div style="font-size:70%; line-height:1.3;">
+[1] White (1964), <em>J. Fluid Mech.</em> — early rotating pipe experiments.  
+[2] Kikuyama et al. (1983), <em>JSME Int. J.</em> — visualization of relaminarization.  
+[3] Imao (1996), <em>Exp. Fluids</em> — centrifugal stabilization and mean profiles.
+</div>
+</section>
+<section id="slide-org3b58c22">
+<h3 id="org3b58c22">DNS, Theory, and Modal Decomposition</h3>
+<div style="column-count:2; column-gap:3em; font-size:90%;">
+<p><strong>DNS and Analytical Foundations</strong></p>
+<ul>
+<li>DNS captures relaminarization at Re = 10⁴–10⁵ under rotation.</li>
+<li>Scaling and symmetry analyses (Oberlack, 1999; 2001) relate turbulence structure to invariants.</li>
+<li>Hellström et al. (2017) provide reproducible experimental and DNS methodology for relaminarization.</li>
+</ul>
+
+<p><strong>Modal Analysis (POD)</strong></p>
+<ul>
+<li>Proper Orthogonal Decomposition (POD) identifies energy-dominant coherent structures.</li>
+<li>Developed by Lumley (1967); extended by Taira et al. (2017) for complex turbulent systems.</li>
+<li>Recent studies (Brehm 2019; Ashton 2019) combine DNS and POD for energy transfer diagnostics.</li>
+</ul>
+</div>
+
+<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
+<div style="font-size:70%; line-height:1.3;">
+[1] Orlandi & Fatica (1997), <em>J. Fluid Mech.</em> — first DNS of rotating pipe turbulence.  
+[2] Feiz & Tavoularis (2005), <em>Phys. Fluids</em> — DNS of turbulent pipe under rotation.  
+[3] Hellström et al. (2017), <em>Phys. Rev. Fluids</em> — experimental/DNS methodology for relaminarization.  
+[4] Oberlack (1999; 2001), <em>J. Fluid Mech.</em> — scaling and symmetry theory.  
+[5] Lumley (1967), <em>Atmos. Turbulence</em>; Taira et al. (2017), <em>AIAA J.</em>
+</div>
+</section>
+<section id="slide-orgb51f565">
+<h3 id="orgb51f565">Control &amp; Transition Mechanisms</h3>
+<div style="column-count:2; column-gap:3em; font-size:90%;">
+<p><strong>Mechanistic Understanding</strong></p>
+<ul>
+<li>Rotation alters the balance of production and dissipation terms in the turbulent kinetic energy budget.</li>
+<li>Flow control studies show relaminarization through imposed swirl or wall rotation.</li>
+<li>Experimental relaminarization occurs by suppression of near-wall vortices and streak breakdown.</li>
+</ul>
+
+<p><strong>Recent Advances</strong></p>
+<ul>
+<li>Kühnen et al. (2014, 2018) demonstrated full relaminarization through wall rotation and suction control.</li>
+<li>These results motivate DNS-based exploration of transient energy transfer and POD modal evolution.</li>
+<li>Ongoing studies bridge classical rotation control and modern data-driven modal analysis.</li>
+</ul>
+</div>
+
+<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
+<div style="font-size:70%; line-height:1.3;">
+[1] Kühnen et al. (2014; 2018), <em>Nat. Phys.</em> — experimental control and relaminarization.  
+[2] Brehm (2019); Ashton (2019) — POD analysis of relaminarizing turbulence.  
+[3] Kolmogorov (1941), <em>Dokl. Akad. Nauk SSSR</em> — statistical theory foundation.
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org42b404f">
+<h2 id="org42b404f">Method Spectral Element Direct Numerical Simulation (DNS)</h2>
+<div class="outline-text-2" id="text-org42b404f">
+</div>
+</section>
+<section id="slide-org9e91c79">
+<h3 id="org9e91c79">Slide 1: Introduction</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+    <p><strong>Background</strong></p>
+    <ul>
+      <li>Transition and relaminarization in rotating pipe flows depend on rotation rate and Reynolds number.</li>
+      <li>Relaminarization can occur when imposed swirl suppresses near-wall turbulence production.</li>
+      <li>Applications: rotating heat exchangers, turbomachinery, compact fluid systems.</li>
+    </ul>
+  </div>
+  <div class="column" style="width:48%; float:right;">
+    <p><strong>Governing Equations</strong></p>
+    \begin{align}
+    \nabla \cdot \mathbf{u} &= 0, \\
+    \frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u}\cdot\nabla)\mathbf{u} &= -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} - 2 \boldsymbol{\Omega}\times\mathbf{u}
+    \end{align}
+    <p style="font-size:small;">References: Alfredsson & Persson (1989)[1], Johnston et al. (1972)[2]</p>
+  </div>
+</div>
+</section>
+<section id="slide-org3068da1">
+<h3 id="org3068da1">Slide 2: Spectral Element Method (DNS)</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+    <p><strong>Simulation Setup</strong></p>
+    <ul>
+      <li>Circular pipe: D=1, L=12D</li>
+      <li>Re = 5300, 12700, non-slip wall</li>
+      <li>Legendre basis, polynomial order 6</li>
+      <li>Non-uniform mesh finer near wall to capture Kolmogorov/Taylor scales</li>
+    </ul>
+  </div>
+  <div class="column" style="width:48%; float:right;">
+    <p><strong>Navier-Stokes in Cylindrical Coordinates</strong></p>
+    \begin{align}
+    \frac{\partial w}{\partial t} + w \frac{\partial w}{\partial r} + \frac{v}{r} \frac{\partial w}{\partial \theta} + u \frac{\partial w}{\partial x} - \frac{v^2}{r} &= -\frac{1}{\rho} \frac{\partial p}{\partial r} + \nu \left(\mathcal{D} w - \frac{w}{r^2} - \frac{2}{r^2}\frac{\partial v}{\partial \theta} \right) - 2\Omega v \\
+    \frac{\partial v}{\partial t} + w \frac{\partial v}{\partial r} + \frac{vw}{r} + \frac{v}{r} \frac{\partial v}{\partial \theta} + u \frac{\partial v}{\partial x} &= -\frac{1}{\rho r} \frac{\partial p}{\partial \theta} + \nu \left(\mathcal{D} v - \frac{v}{r^2} + \frac{2}{r^2}\frac{\partial w}{\partial \theta} \right) + 2\Omega w \\
+    \frac{\partial u}{\partial t} + w \frac{\partial u}{\partial r} + \frac{v}{r} \frac{\partial u}{\partial \theta} + u \frac{\partial u}{\partial x} &= -\frac{1}{\rho} \frac{\partial p}{\partial x} + \nu \mathcal{D} u
+    \end{align}
+    <p style="font-size:small;">References: Kundu (2015)[3], Hellström et al. (2017)[4]</p>
+  </div>
+</div>
+</section>
+<section id="slide-org320bb0b">
+<h3 id="org320bb0b">Slide 3: Mesh and Simulation Details</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+    <p><strong>Mesh Details</strong></p>
+    <ul>
+      <li>Non-uniform grid denser near walls</li>
+      <li>Grid spacings (y+) for streamwise extent of 15D</li>
+      <li>Example: Re=5300, Δr⁺=0.14–4, Δθ⁺=1.5–4.5, Δz⁺=3–9.9</li>
+    </ul>
+  </div>
+  <div class="column" style="width:48%; float:right;">
+    <p><strong>Boundary Conditions</strong></p>
+    \begin{align}
+    u_r(R) &= 0, \\
+    u_\theta(R) &= \Omega R, \\
+    u_x(R) &= 0
+    \end{align}
+    <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall, incompressible flow</p>
+  </div>
+</div>
+
+<hr>
+<div style="font-size:0.8em;">
+[1] Alfredsson & Persson, 1989.<br>
+[2] Johnston et al., 1972.<br>
+[3] Kundu, 2015, <em>Fluid Mechanics</em>.<br>
+[4] Hellström et al., 2017, J. Fluid Mech. 829:164–188.
+</div>
+</section>
+<section id="slide-org8a1d26c">
+<h3 id="org8a1d26c">DNS Mesh</h3>
+<div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
+  <div class="column" style="flex:1;">
+    <p><strong>Simulation Domain</strong></p>
+    <ul>
+      <li>Circular pipe, D = 1, L = 12D</li>
+      <li>Reynolds numbers: 5300, 12700</li>
+      <li>Non-slip at walls, periodic at inlet/outlet</li>
+      <li>Spectral element method: Legendre basis, order l = 6</li>
+    </ul>
+    <p><strong>Governing Equations</strong></p>
+    \begin{align}
+    \nabla \cdot \boldsymbol{u} &= 0 \\
+    \frac{\partial \boldsymbol{u}}{\partial t}+ (\boldsymbol{u}\cdot\nabla)\boldsymbol{u} &= -\nabla p + \frac{1}{Re} \nabla^2 \boldsymbol{u}
+    \end{align}
+  </div>
+  <div class="column" style="flex:1;">
+    <p><strong>Mesh Images</strong></p>
+    <p>Non-uniform mesh (finer near walls)</p>
+    <img src="./f/g1.png" style="width:100%; height:auto;"/>
+    <p>Uniform, interpolated mesh for POD analysis</p>
+    <img src="./f/g2.png" style="width:100%; height:auto;"/>
+  </div>
+</div>
+</section>
+<section id="slide-org105af98">
+<h3 id="org105af98">Grid Spacing and Boundary Conditions</h3>
+<div class="columns"> <div class="column" style="width:48%; float:left;"> <p><strong>Grid Spacings (y⁺ units)</strong></p> <table border="1" style="border-collapse:collapse; width:100%;"> <thead> <tr> <th>Re</th> <th>Δr⁺ / Δθ⁺ / Δz⁺</th> <th>N Δt × 10⁶</th> </tr> </thead> <tbody> <tr> <td>5,300</td> <td>0.14–4 / 1.5–4.5 / 3–9.9</td> <td>20</td> </tr> <tr> <td>11,700</td> <td>0.15–4.5 / 1.5–4.8 / 3–10</td> <td>120</td> </tr> </tbody> </table> </div> <div class="column" style="width:48%; float:right;"> <p><strong>Boundary Conditions</strong></p> \begin{align} u_r(R) &= 0, \\ u_\theta(R) &= \Omega R, \\ u_x(R) &= 0 \end{align} <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall; incompressible flow</p> </div> </div>
+</section>
+</section>
+<section>
+<section id="slide-orgabca9c6">
+<h2 id="orgabca9c6">Proper Orthogonal Decomposition</h2>
+<div class="outline-text-2" id="text-orgabca9c6">
+</div>
+</section>
+<section id="slide-org04f32f8">
+<h3 id="org04f32f8">POD Energy Modes</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: Direct POD Formulation -->
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
+      <i>Direct POD Formulation</i>
+    </div>
+
+    <p><b>(2.1)</b> Radial eigenvalue problem:</p>
+    $$ \int S(k, m; r, r') \, \Phi_n(k, m; r') \, r' \, dr' = \lambda_n(k, m) \, \Phi_n(k, m; r) $$
+
+    <p><b>(2.2)</b> Cross-correlation tensor:</p>
+    $$ S(k, m; r, r') = \lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k, m; r, t) \, \mathbf{u}^*(k, m; r', t) \, dt $$
+
+    <p><b>(2.3)</b> POD coefficient projection:</p>
+    $$ \alpha_n(k, m; t) = \int \mathbf{u}(k, m; r, t) \, \Phi_n^*(k, m; r) \, r \, dr $$
+  </div>
+
+  <!-- RIGHT column: Snapshot POD & Conditional Mode -->
+  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
+      <i>Snapshot POD & Conditional Mode</i>
+    </div>
+
+    <p><b>(2.4)</b> Time-domain eigenvalue problem:</p>
+    $$ \int R(k, m; t, t') \, \alpha_n(k, m; t') \, dt' = \lambda_n(k, m) \, \alpha_n(k, m; t) $$
+
+    <p><b>(2.5)</b> Mode reconstruction:</p>
+    $$ \int \mathbf{u}^T(k, m; r, t) \, \alpha_n^*(k, m; t) \, dt = \Phi_n^T(k, m; r) \, \lambda_n(k, m) $$
+
+    <p><b>(2.6)</b> Conditional mode definition:</p>
+    $$ \Psi_n(m; \xi, r) = \lim_{\chi \to \infty} \frac{1}{\chi} \int_0^\chi \int_0^\tau \mathbf{u}^T(m; r, x+\xi, t) \, \alpha_n(m; x, t) \, dt \, dx $$
+  </div>
+
+</div>
+</section>
+<section id="slide-org4ddf70a">
+<h3 id="org4ddf70a">FFT / POD Interpretation</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: FFT Decomposition -->
+  <div style="flex: 1; border-left: 6px solid #17becf; background: rgba(23, 190, 207, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #17becf;">
+      <i>FFT Decomposition in Pipe Flow</i>
+    </div>
+
+    <p><b>Azimuthal FFT:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Exploits rotational symmetry of the pipe</li>
+      <li>Azimuthal mode number <i>m</i> defines spanwise length scale</li>
+      <li>Highlights circumferential structure and periodicity</li>
+    </ul>
+
+    <p><b>Streamwise FFT:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Captures axial periodicity and wavelength</li>
+      <li>Mode number <i>k</i> relates to streamwise extent of structures</li>
+      <li>Useful for identifying repeating patterns like VLSMs</li>
+    </ul>
+
+    <p><b>Why FFT?</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Geometry-driven decomposition</li>
+      <li>Modes are known a priori due to symmetry</li>
+      <li>Accelerates POD convergence</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT column: POD Characteristics -->
+  <div style="flex: 1; border-left: 6px solid #bcbd22; background: rgba(188, 189, 34, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.1em; font-weight: bold; color: #bcbd22;">
+      <i>Proper Orthogonal Decomposition (POD)</i>
+    </div>
+
+    <p><b>Nature of POD Modes:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Data-driven: extracted from simulation or experiment</li>
+      <li>Ranked by energy content (most energetic first)</li>
+      <li>Capture coherent structures across scales</li>
+    </ul>
+
+    <p><b>Snapshot POD:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>Assumes separability of space and time</li>
+      <li>Reduces computational cost by working in time domain</li>
+      <li>Enables modal analysis of large datasets</li>
+    </ul>
+
+    <p><b>Complementarity:</b></p>
+    <ul style="margin-left: 1em;">
+      <li>FFT modes reflect geometry</li>
+      <li>POD modes reflect physics and energy distribution</li>
+      <li>Combined FFT-POD approach enhances interpretability</li>
+    </ul>
+  </div>
+
+</div>
+</section>
+<section id="slide-org5cd42f3">
+<h3 id="org5cd42f3">Proper Orthogonal Decomposition (POD)</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+  <p><strong>POD Overview</strong></p>
+  <ul>
+    <li>Decomposes turbulent velocity field to a reduced order model (ROM)</li>
+    <li>Orthogonal basis captures dominant flow patterns <sup>1</sup></li>
+    <li>Snapshot POD faster convergence than classical POD</li>
+    <li>Hybrid FFT-POD: Fourier modes in θ, POD in radial direction</li>
+  </ul>
+  </div>
+
+  <div class="column" style="width:48%; float:right;">
+  <p><strong>Snapshot POD: Hilbert Space</strong></p>
+  <div class="math">
+  $$\langle q_1, q_2 \rangle_{r,t} = \int q_1 q_2^* r \, dr \, dt$$
+  $$\lambda = \frac{ E\{ | q(r,t) , \Phi(r,t) |^2 \} }{ \langle \Phi(r,t), \Phi(r,t) \rangle_{r,t} }$$
+  $$\int R(t,t') \Phi(t')\,dt = \lambda \Phi(t)$$
+  </div>
+  </div>
+</div>
+
+<hr>
+<div style="font-size:0.8em;">
+[1] Lumley, 1967; [2] Taira et al., 2017.
+</div>
+</section>
+<section id="slide-org4761a83">
+<h3 id="org4761a83">Snapshot POD: Eigenvalue Problem</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+  <p><strong>Direct POD Equation</strong></p>
+  <div class="math">
+  $$\int_{r'} \mathbf{S}(k; m; r, r') \Phi^{(n)}(k; m; r') r' dr' = \lambda^{(n)}(k;m) \Phi^{(n)}(k; m; r)$$
+  $$\mathbf{S}(k; m; r, r') = \lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k; m; r, t) \mathbf{u}^*(k; m; r', t) dt$$
+  </div>
+  </div>
+
+  <div class="column" style="width:48%; float:right;">
+  <p><strong>Temporal Coefficients</strong></p>
+  <div class="math">
+  $$\alpha^{(n)}(k; m; t) = \int_r \mathbf{u}(k; m; r, t) \Phi^{(n)^*}(k; m; r) r dr$$
+  $$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_T(k; m; r, t) \alpha^{(n)^*}(k; m; t) dt = \Phi_T^{(n)}(k; m; r) \lambda^{(n)}(k;m)$$
+  </div>
+  </div>
+</div>
+
+<hr>
+<div style="font-size:0.8em;">
+[1] Lumley, 1967; [2] Taira et al., 2017; [3] Tutkun & George, 2001; [4] Hellström & Smits, 2014.
+</div>
+</section>
+<section id="slide-org04a8ebe">
+<h3 id="org04a8ebe">Classical POD Form</h3>
+<div class="columns">
+  <div class="column" style="width:48%; float:left;">
+  <p><strong>Correlation Tensor</strong></p>
+  <div class="math">
+  $$\int_{r'} \mathbf{S}(k; m; r, r') \Phi^{(n)}(k; m; r') r' dr' = \lambda^{(n)}(k; m) \Phi^{(n)}(k; m; r)$$
+  $$\int_{r'} W_{i,j}(r,r') \hat{\phi}_j^{*(n)}(r') dr' = \hat{\lambda}^{(n)}(m;f) \hat{\phi}_i^{(n)}(r,m;f)$$
+  </div>
+  </div>
+
+  <div class="column" style="width:48%; float:right;">
+  <p><strong>Time Coefficient</strong></p>
+  <div class="math">
+  $$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau (r^{1/2} \mathbf{u}(m;r,t), r^{1/2}\mathbf{u}(m;r,t')) \alpha_n(m;t') dt' = \lambda_n(m) \alpha_n(m;t)$$
+  $$\alpha_n(m;t) = \int_r \mathbf{u}(m;r,t) r^{1/2} \Phi_n^*(m;r) dr$$
+  </div>
+  </div>
+</div>
+
+<hr>
+<div style="font-size:0.8em;">
+[1] Tutkun & George, 2001; [2] Hellström & Smits, 2014.
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org01fb22b">
+<h2 id="org01fb22b">Radial Projections</h2>
+<div class="outline-text-2" id="text-org01fb22b">
+</div>
+</section>
+<section id="slide-org00779ac">
+<h3 id="org00779ac">POD Mode Behavior at N = 0</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: POD Interpretation for N = 0 -->
+  <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #2ca02c;">
+      <i>POD Mode Behavior at N = 0</i>
+    </div>
+
+    <ul style="margin-left: 1em;">
+      <li><b>Rotation Number:</b> N = 0 (non-rotating pipe)</li>
+      <li><b>Flow Regime:</b> Classical turbulent pipe flow</li>
+      <li><b>Azimuthal Modes:</b> m = 2 to 36</li>
+      <li><b>Radial Profiles:</b> Symmetric, peak away from wall</li>
+      <li><b>Conditional Modes:</b> Show coherent structures aligned with streamwise direction</li>
+      <li><b>Interpretation:</b> Near-wall turbulence is strong; structures are well-developed and span the pipe radius</li>
+    </ul>
+
+    <div style="margin-top: 1em; font-size: 0.95em;">
+      <i>This baseline case helps contrast the effects of rotation on POD mode shape and energy distribution.</i>
+    </div>
+  </div>
+
+  <!-- RIGHT column: Image Display -->
+  <div style="flex: 1;">
+    <img src="./images/z0.png" alt="POD Modes for N=0" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+  </div>
+
+</div>
+</section>
+<section id="slide-org54ff47c">
+<h3 id="org54ff47c">POD Mode Behavior at N = 1</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: POD Interpretation for N = 1 -->
+  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
+      <i>POD Mode Behavior at N = 1</i>
+    </div>
+
+    <ul style="margin-left: 1em;">
+      <li><b>Rotation Number:</b> N = 1 (moderate rotation)</li>
+      <li><b>Swirl Number:</b> Ratio of azimuthal to axial momentum flux; quantifies rotational intensity</li>
+      <li><b>Flow Regime:</b> Transitional toward relaminarization</li>
+      <li><b>Azimuthal Modes:</b> m = 2 to 36</li>
+      <li><b>Radial Profiles:</b> Begin to shift inward; near-wall peaks flatten</li>
+      <li><b>Azimuthal Structure:</b> Enhanced swirl due to Coriolis effects</li>
+      <li><b>Interpretation:</b> Rotation suppresses near-wall turbulence and redistributes energy toward the core</li>
+    </ul>
+
+    <div style="margin-top: 1em; font-size: 0.95em;">
+      <i>Compared to N = 0, the POD modes at N = 1 show early signs of turbulence suppression and structural reorganization.</i>
+    </div>
+  </div>
+
+  <!-- RIGHT column: Image Display -->
+  <div style="flex: 1;">
+    <img src="./images/z1.png" alt="POD Modes for N=1" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+  </div>
+
+</div>
+</section>
+<section id="slide-orga1b37c6">
+<h3 id="orga1b37c6">N=3</h3>
+<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- LEFT column: POD Interpretation for N = 3 -->
+    <div style="flex: 1; border-left: 6px solid #d62728; background: rgba(214, 39, 40, 0.05); padding: 1em 1.5em; border-radius: 8px;">
+        <div style="font-size: 1.2em; font-weight: bold; color: #d62728;">
+              <i>POD Mode Behavior at N = 3</i>
+                  </div>
+
+                      <ul style="margin-left: 1em;">
+                            <li><b>Rotation Number:</b> N = 3 (strong rotation)</li>
+                                  <li><b>Swirl Number:</b> High azimuthal momentum; dominant rotational effects</li>
+                                        <li><b>Flow Regime:</b> Strong turbulence suppression; approaching relaminarization</li>
+                                              <li><b>Azimuthal Modes:</b> Energy concentrated in low modes (m = 5–20)</li>
+                                                    <li><b>Radial Profiles:</b> Streamwise structures shift closer to wall; radial structures broaden</li>
+                                                          <li><b>Azimuthal Structure:</b> Reduced wall-normal extent; secondary peaks emerge</li>
+                                                                <li><b>Interpretation:</b> Rotation reorganizes turbulence, suppresses near-wall activity, and enhances core coherence</li>
+                                                                    </ul>
+
+                                                                        <div style="margin-top: 1em; font-size: 0.95em;">
+                                                                              <i>At N = 3, POD modes show strong coherence and redistribution of energy, with dominant structures moving toward the wall and secondary peaks forming near the centerline.</i>
+                                                                                  </div>
+                                                                                    </div>
+
+                                                                                      <!-- RIGHT column: Image Display -->
+                                                                                        <div style="flex: 1;">
+                                                                                            <img src="./images/z3.png" alt="POD Modes for N=3" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+                                                                                              </div>
+
+                                                                                              </div>
+</section>
+</section>
+<section>
+<section id="slide-org0b872cc">
+<h2 id="org0b872cc">FFT-POD Mode Shapes</h2>
+<div style="display: flex; flex-direction: column; gap: 1.5em; font-family: 'Segoe UI', sans-serif;">
+
+  <!-- Title -->
+  <div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; text-align: center;">
+    POD Mode 1 at Re = 11,700 for Azimuthal Modes m = 5 and m = 10
+  </div>
+
+  <!-- Image Row -->
+  <div style="display: flex; gap: 2em; justify-content: center; align-items: flex-start;">
+
+    <!-- Left Image: m = 5 -->
+    <div style="flex: 1; text-align: center;">
+      <img src="./images/baileyedit/screenshot2023-04-15_10-45-50_.png" alt="POD Mode 1, m=5" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+      <div style="margin-top: 0.5em; font-size: 0.95em; color: #34495e;">
+        <i>Azimuthal Mode m = 5 (N = 3)</i><br/>
+        Coherent structure with 5-lobed symmetry; strong modal energy concentration.
+      </div>
+    </div>
+
+    <!-- Right Image: m = 10 -->
+    <div style="flex: 1; text-align: center;">
+      <img src="./images/baileyedit/screenshot2023-04-15_10-47-35_.png" alt="POD Mode 1, m=10" style="max-width: 100%; border: 1px solid #ccc; border-radius: 6px;" />
+      <div style="margin-top: 0.5em; font-size: 0.95em; color: #34495e;">
+        <i>Azimuthal Mode m = 10 (N = 1)</i><br/>
+        Finer-scale oscillatory structure; reduced energy per mode compared to m = 5.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8ba6048">
+<h2 id="org8ba6048">Radial POD Modes</h2>
+
+<div id="org9ef4d9c" class="figure">
+<p><img src="../origPODtalks/images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>\(N=0.0\) Radial POD Azimuthal Modes</p>
+</div>
+</section>
+<section id="slide-orgad49a30">
+<h3 id="orgad49a30">\(N=0.5\)</h3>
+
+<div id="org15f5803" class="figure">
+<p><img src="../origPODtalks/images/reveal/screenshot2023-01-06_11-43-02_.png" alt="screenshot2023-01-06_11-43-02_.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>\(N=0.5\) Radial POD Azimuthal Modes</p>
+</div>
+
+
+<div id="org9b0bef1" class="figure">
+<p><img src="../origPODtalks/images/reveal/screenshot2023-01-06_11-48-02_.png" alt="screenshot2023-01-06_11-48-02_.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Ref (Hellstrom 2017 Benchmark)</p>
+</div>
+</section>
+<section id="slide-org1583a38">
+<h3 id="org1583a38">\(N=3\)</h3>
+
+<div id="org41aaa8e" class="figure">
+<p><img src="../origPODtalks/images/baileyedit/screenshot2023-04-15_10-48-49_.png" alt="screenshot2023-04-15_10-48-49_.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>\(N=3\) Radial POD Azimuthal Modes</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org62b709b">
+<h2 id="org62b709b">Rotating Pipe POD Results</h2>
+<div class="outline-text-2" id="text-org62b709b">
+</div>
+</section>
+<section id="slide-org6a66957">
+<h3 id="org6a66957">Rotating Pipe POD Results — POD Theory &amp; 2D Projection</h3>
+<div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
+  <div class="column" style="flex:1;">
+    <p><strong>POD Modes & 2D Projection</strong></p>
+    <ul>
+      <li>Azimuthal modes m ∈ [1,30]</li>
+      <li>Streamwise-invariant, averaged along x</li>
+      <li>Phase-flipped to ensure consistent ±1 orientation</li>
+      <li>FFT in θ direction for radial profiles</li>
+    </ul>
+    <p><strong>Radial Modal Profile Equation</strong></p>
+    <div>
+    \[
+    \begin{align}
+    \Phi_{\mathrm{T}}^{(n)}(k ; m ; r) \lambda^{(n)}( m) &=
+    \left\langle\lim _{\tau \rightarrow \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; m ; r, t) \alpha^{(n)^*}(k ; m ; t) dt \right\rangle \\
+    &= \mathcal{F}_\theta \left( \lim _{\tau \rightarrow \infty} \frac{1}{N}  \sum_k^{N} \frac{1}{\tau} \int_0^\tau \mathbf{u}_{\mathrm{T}}(k ; \theta ; r, t) \alpha^{(n)^*}(k ; m ; t) dt \right) \\
+    &= \text{(Fourier transform in azimuthal direction of phase-shifted eigenface)}
+    \end{align}
+    \]
+    </div>
+  </div>
+  <div class="column" style="flex:1;">
+    <p><strong>2D POD Projection Example</strong></p>
+    <img src="./f/smooth1.png" style="width:100%; height:auto;" alt="Smooth POD Mode"/>
+  </div>
+</div>
+</section>
+<section id="slide-org0235388">
+<h3 id="org0235388">Modal Profile φ²</h3>
+<p><strong>Streamwise Component φ², S=3.0</strong></p>
+<img src="./f/wednesdayTable_page2-2.png" style="width:80%; height:auto;" alt="Modal φ²"/>
+</section>
+<section id="slide-org8d550fd">
+<h3 id="org8d550fd">Modal Profile φ³</h3>
+<p><strong>Streamwise Component φ³, S=3.0</strong></p>
+<img src="./f/wednesdayTable_page3-3.png" style="width:80%; height:auto;" alt="Modal φ³"/>
+</section>
+<section id="slide-orgfd97507">
+<h3 id="orgfd97507">Modal Profile φ⁴</h3>
+<p><strong>Streamwise Component φ⁴, S=3.0</strong></p>
+<img src="./f/wednesdayTable_page4-4.png" style="width:80%; height:auto;" alt="Modal φ⁴"/>
+</section>
+<section id="slide-orge7e9f13">
+<h3 id="orge7e9f13">Derivation of POD</h3>
+<p><strong>Derivation of POD Projections</strong></p>
+<img src="./f/wednesdayTableB_page1-1.png" style="width:80%; height:auto;" alt="POD Derivation"/>
+</section>
+</section>
+<section>
+<section id="slide-org91a70c8">
+<h2 id="org91a70c8">Citations</h2>
+<section>
+  <h2>References</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; font-size: 0.85em; line-height: 1.3;">
+    <div>
+      <ol>
+        <li>
+          Hellström, L. H. O. (2017). <em>Relaminarisation of Turbulent Pipe Flow through Oscillatory Forcing</em>. PhD thesis, Princeton University<br>
+          <small>— Methodology and experimental setup for relaminarization in rotating/oscillatory conditions.</small>
+        </li>
+
+        <li>
+          Kühnen, J., Holtz, E., Hof, B. (2014). <em>Experimental investigation of turbulent drag reduction by wall rotation</em>. <strong>J. Fluid Mech.</strong>, 738:463–487.<br>
+          <small>— Shows streamwise wall rotation can trigger relaminarization.</small>
+        </li>
+
+        <li>
+          Kühnen, J., Song, B., Scarselli, D., Budanur, N. B., Riedl, M., Willis, A. P., Hof, B. (2018). <em>Destabilizing turbulence in pipe flow</em>. <strong>Nature Phys.</strong>, 14(4):386–390.<br>
+          <small>— Demonstrated full relaminarization via body forcing.</small>
+        </li>
+
+        <li>
+          Xiao, Y., Peixinho, J. (2019). <em>Experimental investigation of relaminarisation of turbulent flow in a rotating pipe</em>. <strong>J. Fluid Mech.</strong>, 862: R1.<br>
+          <small>— Full relaminarization achieved through global rotation.</small>
+        </li>
+
+        <li>
+          Czarske, J., Büttner, L., Budinger, M., et al. (2002). <em>Velocity measurements in rotating turbulent pipe flow</em>. <strong>Exp. Fluids</strong>, 33(1):115–123.<br>
+          <small>— Laser-Doppler data showing turbulence structure changes under rotation.</small>
+        </li>
+      </ol>
+    </div>
+
+    <div>
+      <ol start="6">
+        <li>
+          Johnston, J. P., Halleen, R. M., Lezius, D. K. (1972). <em>Effects of spanwise rotation on the structure of two-dimensional fully developed turbulent channel flow</em>. <strong>J. Fluid Mech.</strong>, 56(3):533–557.<br>
+          <small>— Classic rotation-induced turbulence suppression study.</small>
+        </li>
+
+        <li>
+          Grundestam, O., Wallin, S., Johansson, A. V. (2008). <em>Direct numerical simulations of rotating turbulent pipe flow</em>. <strong>J. Fluid Mech.</strong>, 598:177–199.<br>
+          <small>— DNS showing relaminarization trends with rotation rate.</small>
+        </li>
+
+        <li>
+          Facciolo, L., Peixinho, J. (2018). <em>Dynamics of laminar and turbulent flows in rotating pipes</em>. <strong>Phys. Rev. Fluids</strong>, 3:034603.<br>
+          <small>— Defines critical rotation numbers for relaminarization.</small>
+        </li>
+
+        <li>
+          Reynolds, O. (1883). <em>An experimental investigation of the circumstances which determine whether the motion of water shall be direct or sinuous</em>. <strong>Phil. Trans. R. Soc.</strong>, 174:935–982.<br>
+          <small>— Foundational work on laminar–turbulent transition.</small>
+        </li>
+
+        <li>
+          Wu, X., Moin, P. (2008). <em>A direct numerical simulation study on the mean velocity characteristics in turbulent pipe flow</em>. <strong>J. Fluid Mech.</strong>, 608:81–112.<br>
+          <small>— DNS baseline for assessing relaminarization thresholds.</small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls:true, progress:true, slideNumber:true, transition:'fade',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
