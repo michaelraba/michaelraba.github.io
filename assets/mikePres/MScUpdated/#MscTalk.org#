@@ -1,5 +1,5 @@
-#+TITLE: POD Analysis of Turbulent Pipe Flow
 #+AUTHOR: M. Raba
+#+TITLE: POD Analysis of Turbulent Pipe Flow
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
 #+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
@@ -788,51 +788,68 @@
 
 
 * Citations
-+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; font-size: 90%;">
 
-  <!-- LEFT column: Historical Experiments -->
-<div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight:bold; font-size:1.1em; color:#9467bd;">Historical Rotating Pipe Experiments</div>
-<ul>
-<li>White (1964), <em>J. Fluid Mech.</em> — early rotating pipe flow experiments.</li>
-<li>Kikuyama et al. (1983), <em>JSME Int. J.</em> — visualization of relaminarization under rotation.</li>
-<li>Imao (1996), <em>Exp. Fluids</em> — centrifugal stabilization and mean profiles.</li>
-</ul>
-</div>
-<!-- RIGHT column: DNS Studies -->
-<div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight:bold; font-size:1.1em; color:#ff7f0e;">DNS of Rotating Turbulent Pipe Flow</div>
-<ul>
-<li>Orlandi & Fatica (1997), <em>J. Fluid Mech.</em> — first DNS of rotating pipe turbulence.</li>
-<li>Feiz & Tavoularis (2005), <em>Phys. Fluids</em> — DNS of turbulent pipe under rotation.</li>
-<li>Hellström et al. (2017), <em>Phys. Rev. Fluids</em> — experimental/DNS methodology for relaminarization.</li>
-</ul>
-</div>
-</div>
-#+END_EXPORT
+#+BEGIN_EXPORT html
+<section>
+  <h2>References</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; font-size: 0.85em; line-height: 1.3;">
+    <div>
+      <ol>
+        <li>
+          Hellström, L. H. O. (2017). <em>Relaminarisation of Turbulent Pipe Flow through Oscillatory Forcing</em>. PhD thesis, Princeton University<br>
+          <small>— Methodology and experimental setup for relaminarization in rotating/oscillatory conditions.</small>
+        </li>
 
-** Citations 
+        <li>
+          Kühnen, J., Holtz, E., Hof, B. (2014). <em>Experimental investigation of turbulent drag reduction by wall rotation</em>. <strong>J. Fluid Mech.</strong>, 738:463–487.<br>
+          <small>— Shows streamwise wall rotation can trigger relaminarization.</small>
+        </li>
 
-+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; font-size: 90%;">
+        <li>
+          Kühnen, J., Song, B., Scarselli, D., Budanur, N. B., Riedl, M., Willis, A. P., Hof, B. (2018). <em>Destabilizing turbulence in pipe flow</em>. <strong>Nature Phys.</strong>, 14(4):386–390.<br>
+          <small>— Demonstrated full relaminarization via body forcing.</small>
+        </li>
 
-  <!-- LEFT column: Theory & Scaling -->
-<div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight:bold; font-size:1.1em; color:#1f77b4;">Theory and Scaling</div>
-<ul>
-<li>Oberlack (1999; 2001), <em>J. Fluid Mech.</em> — scaling and symmetry theory for turbulence structures.</li>
-</ul>
-</div>
-                          <!-- RIGHT column: Modal Analysis / POD -->
-<div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-<div style="font-weight:bold; font-size:1.1em; color:#2ca02c;">Modal Analysis (POD)</div>
-<ul>
-<li>Lumley (1967), <em>Atmos. Turbulence</em> — original POD formulation.</li>
-<li>Taira et al. (2017), <em>AIAA J.</em> — POD extensions to complex turbulent systems.</li>
-<li>Brehm (2019) — DNS + POD energy transfer diagnostics.</li>
-<li>Ashton (2019) — DNS + POD studies.</li>
-</ul>
-</div>
-</div>
+        <li>
+          Xiao, Y., Peixinho, J. (2019). <em>Experimental investigation of relaminarisation of turbulent flow in a rotating pipe</em>. <strong>J. Fluid Mech.</strong>, 862: R1.<br>
+          <small>— Full relaminarization achieved through global rotation.</small>
+        </li>
+
+        <li>
+          Czarske, J., Büttner, L., Budinger, M., et al. (2002). <em>Velocity measurements in rotating turbulent pipe flow</em>. <strong>Exp. Fluids</strong>, 33(1):115–123.<br>
+          <small>— Laser-Doppler data showing turbulence structure changes under rotation.</small>
+        </li>
+      </ol>
+    </div>
+
+    <div>
+      <ol start="6">
+        <li>
+          Johnston, J. P., Halleen, R. M., Lezius, D. K. (1972). <em>Effects of spanwise rotation on the structure of two-dimensional fully developed turbulent channel flow</em>. <strong>J. Fluid Mech.</strong>, 56(3):533–557.<br>
+          <small>— Classic rotation-induced turbulence suppression study.</small>
+        </li>
+
+        <li>
+          Grundestam, O., Wallin, S., Johansson, A. V. (2008). <em>Direct numerical simulations of rotating turbulent pipe flow</em>. <strong>J. Fluid Mech.</strong>, 598:177–199.<br>
+          <small>— DNS showing relaminarization trends with rotation rate.</small>
+        </li>
+
+        <li>
+          Facciolo, L., Peixinho, J. (2018). <em>Dynamics of laminar and turbulent flows in rotating pipes</em>. <strong>Phys. Rev. Fluids</strong>, 3:034603.<br>
+          <small>— Defines critical rotation numbers for relaminarization.</small>
+        </li>
+
+        <li>
+          Reynolds, O. (1883). <em>An experimental investigation of the circumstances which determine whether the motion of water shall be direct or sinuous</em>. <strong>Phil. Trans. R. Soc.</strong>, 174:935–982.<br>
+          <small>— Foundational work on laminar–turbulent transition.</small>
+        </li>
+
+        <li>
+          Wu, X., Moin, P. (2008). <em>A direct numerical simulation study on the mean velocity characteristics in turbulent pipe flow</em>. <strong>J. Fluid Mech.</strong>, 608:81–112.<br>
+          <small>— DNS baseline for assessing relaminarization thresholds.</small>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
 #+END_EXPORT
