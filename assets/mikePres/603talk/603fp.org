@@ -3,6 +3,11 @@
 #+REVEAL_THEME: serif
 # #+REVEAL_THEME: beige
 # #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
+#+REVEAL_EXTRA_CSS: style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/
+#+REVEAL_INIT_OPTIONS: controls:true, progress:true, slideNumber:true, transition:'fade'
+#+OPTIONS: toc:nil num:nil
+
 #+REVEAL_INIT_OPTIONS: view:scroll
 #+OPTIONS: toc:nil num:nil
 #+REVEAL_EXTRA_CSS: style.css
