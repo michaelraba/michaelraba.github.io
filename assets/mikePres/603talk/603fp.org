@@ -1,16 +1,84 @@
 #+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
 #+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+
+#+LATEX_COMPILER: xelatex
+# this is the size i usually use:
+#+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
+
+
 #+REVEAL_THEME: serif
-# #+REVEAL_THEME: beige
-# #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
 #+REVEAL_EXTRA_CSS: style.css
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/
 #+REVEAL_INIT_OPTIONS: controls:true, progress:true, slideNumber:true, transition:'fade'
 #+OPTIONS: toc:nil num:nil
 
-#+REVEAL_INIT_OPTIONS: view:scroll
-#+OPTIONS: toc:nil num:nil
-#+REVEAL_EXTRA_CSS: style.css
+
+
+#+HTML_HEAD: <style>
+#+HTML_HEAD: .reveal .MathJax_Display {
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: .reveal .MathJax_SVG {
+#+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
+#+HTML_HEAD: }
+#+HTML_HEAD: </style>
+
+
+#+LATEX_HEADER:\setcounter{MaxMatrixCols}{20}
+# #+latex_header: \mode<beamer>{\usetheme{league}}
+# #+latex_header:\usepackage{xeCJK}
+#+latex_header:\usepackage{fontspec}
+#+latex_header:\setmonofont{DejaVu Sans Mono}
+# #+latex_header:\setmainfont{Avenir LT Std}
+# #+latex_header:\setsansfont{Avenir LT Std}
+# #+latex_header:\setsansfont{SF UI Text}
+# #+latex_header: \setbeamerfont{section}{size=\scriptsize,series=\bfseries,parent=structure}
+# #+latex_header: \setbeamerfont{section}{font=EB Garamond}
+
+#+latex_header: \usepackage{setspace}
+#+latex_header: \onehalfspacing
+#+OPTIONS: toc:nil
+# #+OPTIONS: toc:t
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER:  \usepackage[table]{xcolor}
+#+LATEX_HEADER: \usepackage{colortbl}
+#+LATEX_HEADER:  \usepackage{sectsty}
+#+LATEX_HEADER:  \usepackage{soul}
+#+LATEX_HEADER: \allsectionsfont{\normalfont\sffamily\bfseries}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER:\usepackage{siunitx}
+#+LATEX_HEADER:\usepackage{physics}
+# #+LATEX_HEADER:\usepackage{amsmath}
+#+LATEX_HEADER:\usepackage[tikz]{bclogo}
+# #+latex_header:\usepackage[citestyle=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+#+latex_header:\usepackage[style=authoryear-icomp,bibstyle=authoryear, hyperref=true,backref=true,maxcitenames=3,url=true,backend=biber,natbib=true]{biblatex}
+# #+latex_header:\addbibresource{bib.bib}
+#+latex_header:\bibliography{bib.bib}
+# #+latex_header:\addbibresource{bib}
+# #+latex_header:\setmainfont[Variant = 1, Ligatures = {Common,Rare}]{Zapfino}%
+# #+latex_header: ​\setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
+# #+latex_header:\usepackage[cache=false]{minted}
+#+latex_header:\usepackage{minted,xcolor}
+# #+latex_header:\usemintedstyle{monokai}
+#+latex_header:\usemintedstyle{manni}
+# #+latex_header:\usemintedstyle{perldoc}
+# #+latex_header:\definecolor{bg}{HTML}{282828}
+# #+latex_header:\definecolor{bg}{HTML}{4d1933} # dark purple color
+# #+latex_header:\definecolor{bg}{HTML}{fdffcf} # yellow
+#+latex_header:\definecolor{bg}{HTML}{ffffe6}
+#+latex_header:\setminted{bgcolor=bg}
+#+latex_header:\setminted{linenos}
+# #+latex_header:\setminted{fontsize=\large}
+# #+latex_header:\setminted{framesep=2mm}
+# #+latex_header:\setminted{escapeinsid=e||,mathescape}
+#+latex_header:\definecolor{Tiffany}{HTML}{00ffdd}
+#+latex_header:\setbeamercolor{alerted text}{fg=Orange}
+#+latex_header:\setbeamercolor{frametitle}{bg=tyrianPurple}
+#+latex_header: \usepackage{tikz}
+#+latex_header: \metroset{block=fill}
+
+
+
 
 
 # The paper we're focusing on today is Anand's 1985 model, which offers a thermodynamically consistent approach to inelastic deformation. This has been incredibly influential for modeling metals at high temperature, particularly in the context of solder joints.

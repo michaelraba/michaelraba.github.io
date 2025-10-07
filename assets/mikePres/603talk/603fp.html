@@ -9,9 +9,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css"/>
 
-<link rel="stylesheet" href="./reveal.js/css/theme/serif.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css" id="theme"/>
 
 <link rel="stylesheet" href="style.css"/>
 
@@ -21,21 +21,29 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = './reveal.js/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+.reveal .MathJax_Display {
+font-size: 65%; /* Adjust this value as needed */
+}
+.reveal .MathJax_SVG {
+font-size: 65%; /* Adjust this value as needed */
+}
+</style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Anand Model: Viscoelastoplasticity and its Application to Solder Joints</h1><p class="subtitle"></p>
-<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-10-07 Tue 15:34</p>
+<h2 class="author">Michael Raba, MSc Candidate at University of Kentucky</h2><p class="date">Created: 2025-10-07 Tue 18:57</p>
 </section>
 <section>
-<section id="slide-org2728a3f">
-<h2 id="org2728a3f">Source Paper</h2>
+<section id="slide-org0008cfd">
+<h2 id="org0008cfd">Source Paper</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 <!-- LEFT column: Text + Image -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
@@ -57,8 +65,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org6b7033f">
-<h2 id="org6b7033f">Case Study: Wang (2001) Apply to Solder</h2>
+<section id="slide-org819164d">
+<h2 id="org819164d">Case Study: Wang (2001) Apply to Solder</h2>
 <div style="display: flex; align-items: flex-start; gap: 2em; font-family: 'Segoe UI', sans-serif;">
 
   <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5em;">
@@ -89,8 +97,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgc467e2d">
-<h2 id="orgc467e2d">Comparing Anand Model Predictions at Two Strain Rates</h2>
+<section id="slide-orgbab2646">
+<h2 id="orgbab2646">Comparing Anand Model Predictions at Two Strain Rates</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44, 160, 44, 0.06); padding: 1em 1.5em; border-radius: 8px;">
@@ -125,8 +133,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgf227999">
-<h2 id="orgf227999">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
+<section id="slide-org000b1d0">
+<h2 id="org000b1d0">Main Equations of Wang&rsquo;s Anand-Type Viscoplastic Model</h2>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -170,8 +178,8 @@
 
 </div>
 </section>
-<section id="slide-orga1d9e99">
-<h3 id="orga1d9e99">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
+<section id="slide-orgf7999a4">
+<h3 id="orgf7999a4">Anand Viscoplasticity Constants for 60Sn40Pb</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <!-- Left column -->
@@ -212,8 +220,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org766ef0d">
-<h2 id="org766ef0d">Forward Euler Explicit time integration scheme Pseudocode</h2>
+<section id="slide-orga4e4af2">
+<h2 id="orga4e4af2">Forward Euler Explicit time integration scheme Pseudocode</h2>
 <div style="display: flex; flex-direction: column; gap: 2em; font-family: 'Fira Sans', sans-serif; font-size: 1.05em;">
 
 <!-- First Row: Pseudocode -->
@@ -267,8 +275,8 @@
 
 </div>
 </section>
-<section id="slide-org8a2b3dc">
-<h3 id="org8a2b3dc">Forward Euler Scheme for Anand Model</h3>
+<section id="slide-org53b524b">
+<h3 id="org53b524b">Forward Euler Scheme for Anand Model</h3>
 <div class="org-src-container">
 
 <pre  class="src src-python"   ><code trim><span style="color: #51afef;">import</span> numpy <span style="color: #51afef;">as</span> np
@@ -343,8 +351,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org2751d3c">
-<h2 id="org2751d3c">Strain rate sensitivity of stress m</h2>
+<section id="slide-org286f8ce">
+<h2 id="org286f8ce">Strain rate sensitivity of stress m</h2>
 <ul>
 <li>As \( m \to 0 \), rate insensitive (yield)</li>
 <li>As \( m \to 1 \), small stress change causes big change in strain rate</li>
@@ -358,8 +366,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org43d35c9">
-<h2 id="org43d35c9">Flow rule</h2>
+<section id="slide-orgc78476b">
+<h2 id="orgc78476b">Flow rule</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -423,8 +431,8 @@ plt.show()
 </section>
 </section>
 <section>
-<section id="slide-org930c174">
-<h2 id="org930c174">Evolution Equation for the Stress</h2>
+<section id="slide-org2978671">
+<h2 id="org2978671">Evolution Equation for the Stress</h2>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -480,8 +488,8 @@ plt.show()
 
 </div>
 </section>
-<section id="slide-org64965cf">
-<h3 id="org64965cf">Stress Evolution and Thermal Effects</h3>
+<section id="slide-org3772f9e">
+<h3 id="org3772f9e">Stress Evolution and Thermal Effects</h3>
 <div style="display: flex; gap: 3em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -534,8 +542,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 </section>
 </section>
 <section>
-<section id="slide-org9f8cbc5">
-<h2 id="org9f8cbc5">Relaxed (Intermediate) Configuration</h2>
+<section id="slide-org2b5470d">
+<h2 id="org2b5470d">Relaxed (Intermediate) Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -583,8 +591,8 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 
 </div>
 </section>
-<section id="slide-org5de48b0">
-<h3 id="org5de48b0">Relaxed Configuration Constituative Laws</h3>
+<section id="slide-orge0e4039">
+<h3 id="orge0e4039">Relaxed Configuration Constituative Laws</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -670,8 +678,8 @@ E^e = \frac{1}{2} (C^e - I)
 
 </div>
 </section>
-<section id="slide-org21fbd78">
-<h3 id="org21fbd78">Dissipation Separation: Elastic vs Plastic in Anand’s Model</h3>
+<section id="slide-orga41ed41">
+<h3 id="orga41ed41">Dissipation Separation: Elastic vs Plastic in Anand’s Model</h3>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 <!-- Left Column -->
 <div style="flex: 1; border-left: 6px solid #2ca02c; background: rgba(44,160,44,0.07); padding: 1em 1.5em; border-radius: 10px; box-shadow: 0px 2px 6px rgba(0,0,0,0.15);">
@@ -723,8 +731,8 @@ The stress power split ensures that the second law is satisfied by assigning dis
 </section>
 </section>
 <section>
-<section id="slide-org198ccf6">
-<h2 id="org198ccf6">Reference Configuration</h2>
+<section id="slide-org8f57820">
+<h2 id="org8f57820">Reference Configuration</h2>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -788,8 +796,8 @@ The stress power split ensures that the second law is satisfied by assigning dis
 
 </div>
 </section>
-<section id="slide-org7f842a9">
-<h3 id="org7f842a9">Thermodynamics</h3>
+<section id="slide-org82adaa2">
+<h3 id="org82adaa2">Thermodynamics</h3>
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">
 
 <div style="flex: 1;">
@@ -881,20 +889,20 @@ with \( E^e \) as elastic strain and \( s \) as internal resistance.</li>
 </section>
 </div>
 </div>
-<script src="./reveal.js/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-view:scroll,
+controls:true, progress:true, slideNumber:true, transition:'fade',
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 
 });
 
