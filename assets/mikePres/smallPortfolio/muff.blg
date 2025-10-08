@@ -1,0 +1,4 @@
+[0] Config.pm:306> INFO - This is Biber 2.18
+[1] Config.pm:309> INFO - Logfile is 'muff.blg'
+[66] biber:340> INFO - === Wed Oct  8, 2025, 08:17:40
+[76] Biber.pm:418> INFO - Reading 'muff.bcf'
