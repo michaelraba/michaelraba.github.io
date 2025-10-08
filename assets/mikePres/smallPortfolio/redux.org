@@ -66,7 +66,7 @@
 #+LATEX_HEADER: \definecolor{Tiffany}{HTML}{00FFDD}
 
 # --- Beamer Color Overrides ---
-#+LATEX_HEADER: \setbeamercolor{alerted text}{fg=TyriannPurple}
+#+LATEX_HEADER: \setbeamercolor{alerted text}{fg=orange}
 #+LATEX_HEADER: \setbeamercolor{frametitle}{bg=TyrianPurple,fg=white}
 #+LATEX_HEADER: \setbeamercolor{section in toc}{fg=TyrianPurple}
 #+LATEX_HEADER: \setbeamercolor{progress bar in head/foot}{fg=TyrianPurple,bg=gray!30}
@@ -123,19 +123,15 @@
 :BEAMER_col: 0.88
 :END:
 
-
-#+caption: Schematic
-#+ATTR_LATEX: :width 0.5\textwidth
-[[./schematicMuf.png]]
-
 #+caption: Multicomponent Muffler Internal Geometry (Ansys Workbench/Acoustics Module)
-#+ATTR_LATEX: :width 0.6\textwidth
+#+ATTR_LATEX: :width 0.7\textwidth
 [[file:./images/screenshot-02.png]]
 
 
 #+ATTR_LATEX: :width 0.7\textwidth
 #+caption: Sidlab 1d approximation (Transfer Matrix system)
 [[../510finalProj/imag/sid1.png]]
+
 
 
 
@@ -236,73 +232,3 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 #+caption: Relaminarized flow (Broadband Energy Distribution)
 [[../origPODtalks/images/baileyedit/screenshot2023-04-15_10-48-49_.png]]
 
-* Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
-
-** Left Column
-:PROPERTIES:
-:BEAMER_col: 0.88
-:END:
-
-*** Microgripper Design
-
-
-- ME 514: A microgripper is a small-scale mechanical device designed to grasp, manipulate, or position micro-sized objects, often used in biomedical, microassembly, and MEMS applications.
-- Our design goal is to optimize the flexible gripper geometry to maximize Geometric Advantage (GA) while maintaining structural reliability (stress ≤ 15 MPa).
-- *Geometric Advantage (GA)* is a performance metric defined as the ratio of the output displacement to the input displacement, indicating how effectively the gripper amplifies motion.
-*** Set Objective & Constraints
-  - Objective: Maximize deformation (improve GA).
-  - Constraint: Stress ≤ 15 MPa.
-  - Optimization Method: Adaptive Single-Objective (gradient-based) to *Maximize GA (via X-axis deformation)*
-
-*** Output Parameters
-| Parameter                     | Description                     |
-|------------------------------+---------------------------------|
-| X-axis Directional Deformation | Objective (linked to GA)       |
-| Minimum Combined Stress       | Constraint check               |
-| Maximum Combined Stress       | Constraint check               |
-
-
-\begin{figure}[h]
-\centering
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-05.png}
-  \caption{Microgripper shape}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-07.png}
-  \caption{Input parameters for optimization}
-\end{minipage}
-
-\vspace{1em}
-
-\begin{minipage}{0.6\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-04.png}
-  \caption{Optimized shape (Maximizes GA)}
-\end{minipage}
-\end{figure}
-
-** Right Column
-:PROPERTIES:
-:BEAMER_col: 0.88
-:END:
-
-\begin{alertbox}{Thread and Bolt Design with Ansys}
-
-- Assume coefficeint of friction between bolt  and nut $=0.2$, mirror symmetry, and 2d simulation to reduce computation
-
-#+ATTR_LATEX: :width 0.3\textwidth
-#+caption: Threaded nut and bolt 
-[[file:./images/screenshot-08.png]]
-
-#+ATTR_LATEX: :width 0.3\textwidth
-#+caption: Mesh
-[[file:./images/screenshot-10.png]]
-
-#+ATTR_LATEX: :width 0.3\textwidth
-#+caption:Shows bolt and nut assemblies *experience uneven stress distribution*, with most stress concentrated on a few lower threads.
- Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
-[[file:./images/screenshot-11.png]]
-\end{alertbox}

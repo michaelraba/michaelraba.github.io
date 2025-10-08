@@ -1,4 +1,4 @@
-% Created 2025-10-08 Wed 15:18
+% Created 2025-10-08 Wed 14:04
 % Intended LaTeX compiler: xelatex
 \documentclass[professionalfonts,11pt]{beamer}
 \usepackage{graphicx}
@@ -43,7 +43,7 @@ sectionpage=progressbar
 \setminted{bgcolor=bg,linenos}
 \definecolor{TyrianPurple}{HTML}{66023C}
 \definecolor{Tiffany}{HTML}{00FFDD}
-\setbeamercolor{alerted text}{fg=TyriannPurple}
+\setbeamercolor{alerted text}{fg=orange}
 \setbeamercolor{frametitle}{bg=TyrianPurple,fg=white}
 \setbeamercolor{section in toc}{fg=TyrianPurple}
 \setbeamercolor{progress bar in head/foot}{fg=TyrianPurple,bg=gray!30}
@@ -72,7 +72,7 @@ sectionpage=progressbar
 \begin{document}
 
 \maketitle
-\begin{frame}[label={sec:org2339588}]{Multichamber Muffler}
+\begin{frame}[label={sec:org50a8f41}]{Multichamber Muffler}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \textbf{Insertion Loss for Multichamber vs Competing Mufflers}
@@ -105,13 +105,7 @@ sectionpage=progressbar
 \begin{column}{0.88\columnwidth}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.5\textwidth]{./schematicMuf.png}
-\caption{Schematic}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.6\textwidth]{./images/screenshot-02.png}
+\includegraphics[width=0.7\textwidth]{./images/screenshot-02.png}
 \caption{Multicomponent Muffler Internal Geometry (Ansys Workbench/Acoustics Module)}
 \end{figure}
 
@@ -124,7 +118,7 @@ sectionpage=progressbar
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org7dfeb68}]{Anand Model: Viscoelastoplasticity and its Application to Solder Joints}
+\begin{frame}[label={sec:org3e88baf}]{Anand Model: Viscoelastoplasticity and its Application to Solder Joints}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \begin{figure}[htbp]
@@ -186,7 +180,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orga8bc03a}]{Turbulence Suppression (SVD-FFT Method)}
+\begin{frame}[label={sec:org15dd6c4}]{Turbulence Suppression (SVD-FFT Method)}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \begin{figure}[htbp]
@@ -225,85 +219,6 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 \includegraphics[width=0.7\textwidth]{../origPODtalks/images/baileyedit/screenshot2023-04-15_10-48-49_.png}
 \caption{Relaminarized flow (Broadband Energy Distribution)}
 \end{figure}
-\end{column}
-\end{columns}
-\end{frame}
-\begin{frame}[label={sec:orgd0d27de}]{Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)}
-\begin{columns}
-\begin{column}{0.88\columnwidth}
-\begin{block}{Microgripper Design}
-\begin{itemize}
-\item ME 514: A microgripper is a small-scale mechanical device designed to grasp, manipulate, or position micro-sized objects, often used in biomedical, microassembly, and MEMS applications.
-\item Our design goal is to optimize the flexible gripper geometry to maximize Geometric Advantage (GA) while maintaining structural reliability (stress ≤ 15 MPa).
-\item \alert{Geometric Advantage (GA)} is a performance metric defined as the ratio of the output displacement to the input displacement, indicating how effectively the gripper amplifies motion.
-\end{itemize}
-\end{block}
-\begin{block}{Set Objective \& Constraints}
-\begin{itemize}
-\item Objective: Maximize deformation (improve GA).
-\item Constraint: Stress ≤ 15 MPa.
-\item Optimization Method: Adaptive Single-Objective (gradient-based) to \alert{Maximize GA (via X-axis deformation)}
-\end{itemize}
-\end{block}
-\begin{block}{Output Parameters}
-\begin{center}
-\begin{tabular}{ll}
-Parameter & Description\\
-\hline
-X-axis Directional Deformation & Objective (linked to GA)\\
-Minimum Combined Stress & Constraint check\\
-Maximum Combined Stress & Constraint check\\
-\end{tabular}
-\end{center}
-
-
-\begin{figure}[h]
-\centering
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-05.png}
-  \caption{Microgripper shape}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-07.png}
-  \caption{Input parameters for optimization}
-\end{minipage}
-
-\vspace{1em}
-
-\begin{minipage}{0.6\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-04.png}
-  \caption{Optimized shape (Maximizes GA)}
-\end{minipage}
-\end{figure}
-\end{block}
-\end{column}
-\begin{column}{0.88\columnwidth}
-Thread and Bolt Design with Ansys
-
-\begin{itemize}
-\item Assume coefficeint of friction between bolt  and nut \(=0.2\), mirror symmetry, and 2d simulation to reduce computation
-\end{itemize}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.3\textwidth]{./images/screenshot-08.png}
-\caption{Threaded nut and bolt}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.3\textwidth]{./images/screenshot-10.png}
-\caption{Mesh}
-\end{figure}
-
-Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
-\begin{center}
-\includegraphics[width=0.3\textwidth]{./images/screenshot-11.png}
-\caption{Shows bolt and nut assemblies \textbf{experience uneven stress distribution}, with most stress concentrated on a few lower threads.}
-\end{center}
 \end{column}
 \end{columns}
 \end{frame}
