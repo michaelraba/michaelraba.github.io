@@ -1,4 +1,4 @@
-% Created 2025-10-08 Wed 15:18
+% Created 2025-10-09 Thu 06:54
 % Intended LaTeX compiler: xelatex
 \documentclass[professionalfonts,11pt]{beamer}
 \usepackage{graphicx}
@@ -14,6 +14,7 @@
 \setlength{\textwidth}{15in}
 \setlength{\paperheight}{11in}
 \setlength{\textwidth}{9in}
+\usepackage{amssymb}
 \usetheme{metropolis}
 \usecolortheme{default}
 \metroset{
@@ -72,7 +73,7 @@ sectionpage=progressbar
 \begin{document}
 
 \maketitle
-\begin{frame}[label={sec:org2339588}]{Multichamber Muffler}
+\begin{frame}[label={sec:orgad061ea}]{Multichamber Muffler}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \textbf{Insertion Loss for Multichamber vs Competing Mufflers}
@@ -124,7 +125,7 @@ sectionpage=progressbar
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:org7dfeb68}]{Anand Model: Viscoelastoplasticity and its Application to Solder Joints}
+\begin{frame}[label={sec:orge663848}]{Anand Model: Viscoelastoplasticity and its Application to Solder Joints}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \begin{figure}[htbp]
@@ -186,7 +187,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orga8bc03a}]{Turbulence Suppression (SVD-FFT Method)}
+\begin{frame}[label={sec:orgf74ef22}]{Turbulence Suppression (SVD-FFT Method)}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \begin{figure}[htbp]
@@ -228,7 +229,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}[label={sec:orgd0d27de}]{Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)}
+\begin{frame}[label={sec:org6ceecef}]{Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)}
 \begin{columns}
 \begin{column}{0.88\columnwidth}
 \begin{block}{Microgripper Design}
@@ -269,14 +270,6 @@ Maximum Combined Stress & Constraint check\\
   \includegraphics[width=0.9\textwidth]{./images/screenshot-07.png}
   \caption{Input parameters for optimization}
 \end{minipage}
-
-\vspace{1em}
-
-\begin{minipage}{0.6\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-04.png}
-  \caption{Optimized shape (Maximizes GA)}
-\end{minipage}
 \end{figure}
 \end{block}
 \end{column}
@@ -298,11 +291,44 @@ Thread and Bolt Design with Ansys
 \includegraphics[width=0.3\textwidth]{./images/screenshot-10.png}
 \caption{Mesh}
 \end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}[label={sec:org90f3a8d}]{Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)}
+\begin{columns}
+\begin{column}{0.88\columnwidth}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{./images/screenshot-04.png}
+\caption{Design points \(P3, P2,P6\).}
+\end{figure}
+\begin{block}{Gripper (continued)}
+Goal is to optimize geometry so it could amplify motion efficiently (maximize Geometric Advantage) while keeping stresses within safe limits.
+\begin{itemize}
+\item input motion at the actuator is small, amplifying motion achieves the displacement
+
+\begin{itemize}
+\item If \(GA>1\)
+\end{itemize}
+\item \alert{P2:} Controls the curvature near the base of the gripper arm.
+\begin{itemize}
+\item influences stiffness and how the arm starts to bend under load
+\end{itemize}
+\item \alert{P3:} located mid-span of gripper arm
+\begin{itemize}
+\item largest range of motion, affects overall flexibility and amplification
+\item near tip and fine tunes end geometry, impacts contact alignment and stress distribution at the gripping point
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.88\columnwidth}
+Thread and Bolt Design with Ansys
 
 Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
 \begin{center}
-\includegraphics[width=0.3\textwidth]{./images/screenshot-11.png}
-\caption{Shows bolt and nut assemblies \textbf{experience uneven stress distribution}, with most stress concentrated on a few lower threads.}
+\includegraphics[width=0.8\textwidth]{./images/screenshot-11.png}
+\caption{\textbf{uneven stress distribution} most stress concentrated on a few lower threads.}
 \end{center}
 \end{column}
 \end{columns}

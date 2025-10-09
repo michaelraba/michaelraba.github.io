@@ -12,7 +12,7 @@
 # #+latex_header: \setlength{\textwidth}{9in}
 # #+latex_header: \setlength{\paperheight}{8.5in}
 # #+latex_header: \setlength{\textwidth}{7in}
-
+#+latex_header: \usepackage{amssymb}
 
 # #+LATEX_CLASS_OPTIONS: [aspectratio=169,professionalfonts,11pt]
 # #+LATEX_HEADER: \usepackage[paperwidth=17in, paperheight=11in, margin=0.5in, landscape]{geometry}
@@ -289,7 +289,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 :BEAMER_col: 0.88
 :END:
 
-\begin{alertbox}{Thread and Bolt Design with Ansys}
+Thread and Bolt Design with Ansys
 
 - Assume coefficeint of friction between bolt  and nut $=0.2$, mirror symmetry, and 2d simulation to reduce computation
 
@@ -305,4 +305,39 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 #+caption:Shows bolt and nut assemblies *experience uneven stress distribution*, with most stress concentrated on a few lower threads.
  Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
 [[file:./images/screenshot-11.png]]
-\end{alertbox}
+
+
+* Addendum
+
+** Left Column
+:PROPERTIES:
+:BEAMER_col: 0.88
+:END:
+
+#+ATTR_LATEX: :width 0.6\textwidth
+#+caption: Design points $P3, P2,P6$. 
+[[./images/screenshot-04.png]]
+
+*** Gripper (continued)
+
+Goal is to optimize geometry so it could amplify motion efficiently (maximize Geometric Advantage) while keeping stresses within safe limits.
+- input motion at the actuator is small, amplifying motion achieves the displacement
+- $GA= \frac{\delta_{\text{output}}{\delta_\text{input} > 1 \quad \therefore $ motion is amplified!!
+  - If $GA>1$ 
+- *P2:* Controls the curvature near the base of the gripper arm.
+  - influences stiffness and how the arm starts to bend under load
+- *P3:* located mid-span of gripper arm
+- largest range of motion, affects overall flexibility and amplification 
+- near tip
+  - fine tunes end geometry, impacts contact alignment and stress distribution at the gripping point
+** Right Column
+:PROPERTIES:
+:BEAMER_col: 0.88
+:END:
+
+Thread and Bolt Design with Ansys
+
+#+ATTR_LATEX: :width 0.6\textwidth
+#+caption:*uneven stress distribution* most stress concentrated on a few lower threads.
+ Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
+[[file:./images/screenshot-11.png]]
