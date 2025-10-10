@@ -274,14 +274,6 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
   \includegraphics[width=0.9\textwidth]{./images/screenshot-07.png}
   \caption{Input parameters for optimization}
 \end{minipage}
-
-\vspace{1em}
-
-\begin{minipage}{0.6\textwidth}
-  \centering
-  \includegraphics[width=0.9\textwidth]{./images/screenshot-04.png}
-  \caption{Optimized shape (Maximizes GA)}
-\end{minipage}
 \end{figure}
 
 ** Right Column
@@ -301,13 +293,9 @@ Thread and Bolt Design with Ansys
 #+caption: Mesh
 [[file:./images/screenshot-10.png]]
 
-#+ATTR_LATEX: :width 0.3\textwidth
-#+caption:Shows bolt and nut assemblies *experience uneven stress distribution*, with most stress concentrated on a few lower threads.
- Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
-[[file:./images/screenshot-11.png]]
 
 
-* Addendum
+* Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
 
 ** Left Column
 :PROPERTIES:
@@ -322,14 +310,13 @@ Thread and Bolt Design with Ansys
 
 Goal is to optimize geometry so it could amplify motion efficiently (maximize Geometric Advantage) while keeping stresses within safe limits.
 - input motion at the actuator is small, amplifying motion achieves the displacement
-- $GA= \frac{\delta_{\text{output}}{\delta_\text{input} > 1 \quad \therefore $ motion is amplified!!
+
   - If $GA>1$ 
 - *P2:* Controls the curvature near the base of the gripper arm.
   - influences stiffness and how the arm starts to bend under load
 - *P3:* located mid-span of gripper arm
-- largest range of motion, affects overall flexibility and amplification 
-- near tip
-  - fine tunes end geometry, impacts contact alignment and stress distribution at the gripping point
+  - largest range of motion, affects overall flexibility and amplification 
+  - near tip and fine tunes end geometry, impacts contact alignment and stress distribution at the gripping point
 ** Right Column
 :PROPERTIES:
 :BEAMER_col: 0.88
@@ -337,7 +324,7 @@ Goal is to optimize geometry so it could amplify motion efficiently (maximize Ge
 
 Thread and Bolt Design with Ansys
 
-#+ATTR_LATEX: :width 0.6\textwidth
+#+ATTR_LATEX: :width 0.8\textwidth
 #+caption:*uneven stress distribution* most stress concentrated on a few lower threads.
  Improving efficiency involves redistributing some of the load to upper threads to reduce maximum stress and enhance overall performance
 [[file:./images/screenshot-11.png]]
