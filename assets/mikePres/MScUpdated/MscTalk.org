@@ -836,3 +836,34 @@
 </div>
 </div>
 #+END_EXPORT
+
+* Adding new slides 1
+#+caption: Rotating Boundary condition animation (N=3)
+  [[./images/1011.animated.gif]]
+
+* Adding new slides 1
+#+caption: Reconstruction
+  [[./images/1011reconstruct.png]]
+
+* Adding new slides 1
+  [[./images/1011.3d.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=0
+  [[./images/1011.5300n0Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=1 {2,5,8,\ldots}, flipped
+  [[./images/1011.5300n1Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=1 \{2,4,6\,\ldots}
+  [[./images/1011.5300n1Radial.goodv2.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=3
+  [[./images/1011.5300n3Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=11700, N=3
+  [[./images/1011.11700n3.png]]
