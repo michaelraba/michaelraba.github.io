@@ -39,18 +39,23 @@ font-size: 65%; /* Adjust this value as needed */
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
-<h2 class="author">M. Raba</h2><p class="date">Created: 2025-10-13 Mon 06:56</p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-10-14 Tue 09:21</p>
 </section>
 
 
 <section>
-<section id="slide-orge3af0d4">
-<h2 id="orge3af0d4">Background and Motivation</h2>
-<div class="outline-text-2" id="text-orge3af0d4">
+<section id="slide-orgda0ae2d">
+<h2 id="orgda0ae2d">Background and Motivation</h2>
+
+<div id="org737281d" class="figure">
+<p><img src="./images/1011.animated.gif" alt="1011.animated.gif" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Rotating Boundary condition animation (\(N=3\))</p>
 </div>
+
 </section>
-<section id="slide-orge6dc8b5">
-<h3 id="orge6dc8b5">Literature Review</h3>
+<section id="slide-orgb6ace9b">
+<h3 id="orgb6ace9b">Literature Review</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Context & Relevance -->
@@ -104,8 +109,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org85116c1">
-<h3 id="org85116c1">DNS Turbulent Model</h3>
+<section id="slide-org01359f3">
+<h3 id="org01359f3">DNS Turbulent Model</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Simulation Context -->
@@ -118,7 +123,8 @@ font-size: 65%; /* Adjust this value as needed */
     <div><b>Solver:</b> Nek5000 (Spectral Element Method)</div>
     <div><b>Reynolds Numbers:</b> 5,300 and 11,700</div>
     <div><b>Rotation Numbers (N):</b> 0 to 3</div>
-    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries</div>
+    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries;  longer domains needed to capture elongated structures and reach statistical steady state</div>
+
     <div><b>Purpose:</b> Study turbulence suppression and provide DNS benchmark data</div>
   </div>
 
@@ -151,8 +157,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orgb6e1ae3">
-<h3 id="orgb6e1ae3">Background: Rotating Pipe Flow &amp; Relaminarization</h3>
+<section id="slide-org2ae64b3">
+<h3 id="org2ae64b3">Background: Rotating Pipe Flow &amp; Relaminarization</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>Scientific Context</strong></p>
 <ul>
@@ -164,7 +170,7 @@ font-size: 65%; /* Adjust this value as needed */
 <p><strong>Key Phenomena</strong></p>
 <ul>
 <li>Competition between destabilizing wall shear and stabilizing radial pressure gradients.</li>
-<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates.</li>
+<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates (because of drag reduction Fatica 97).</li>
 <li>Relaminarized or quasi-laminar states can persist at high Reynolds numbers.</li>
 </ul>
 </div>
@@ -178,8 +184,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orgdfd0086">
-<h3 id="orgdfd0086">DNS, Theory, and Modal Decomposition</h3>
+<section id="slide-org518cd07">
+<h3 id="org518cd07">DNS, Theory, and Modal Decomposition</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>DNS and Analytical Foundations</strong></p>
 <ul>
@@ -207,8 +213,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orgce184d6">
-<h3 id="orgce184d6">Control &amp; Transition Mechanisms</h3>
+<section id="slide-org2aba712">
+<h3 id="org2aba712">Control &amp; Transition Mechanisms</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>Mechanistic Understanding</strong></p>
 <ul>
@@ -235,13 +241,13 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org8954a64">
-<h2 id="org8954a64">Method Spectral Element Direct Numerical Simulation (DNS)</h2>
-<div class="outline-text-2" id="text-org8954a64">
+<section id="slide-org2c971d6">
+<h2 id="org2c971d6">Method Spectral Element Direct Numerical Simulation (DNS)</h2>
+<div class="outline-text-2" id="text-org2c971d6">
 </div>
 </section>
-<section id="slide-org3441cd5">
-<h3 id="org3441cd5">Slide 1: Introduction</h3>
+<section id="slide-orga3f797e">
+<h3 id="orga3f797e">Slide 1: Introduction</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Background</strong></p>
@@ -262,8 +268,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org65f6774">
-<h3 id="org65f6774">Slide 2: Spectral Element Method (DNS)</h3>
+<section id="slide-orgd92e0fc">
+<h3 id="orgd92e0fc">Slide 2: Spectral Element Method (DNS)</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Simulation Setup</strong></p>
@@ -286,8 +292,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org466ebc7">
-<h3 id="org466ebc7">Slide 3: Mesh and Simulation Details</h3>
+<section id="slide-org3404ceb">
+<h3 id="org3404ceb">Slide 3: Mesh and Simulation Details</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Mesh Details</strong></p>
@@ -317,8 +323,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org6bbc497">
-<h3 id="org6bbc497">DNS Mesh</h3>
+<section id="slide-org6e13b94">
+<h3 id="org6e13b94">DNS Mesh</h3>
 <div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
   <div class="column" style="flex:1;">
     <p><strong>Simulation Domain</strong></p>
@@ -345,20 +351,20 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orge2d83ce">
-<h3 id="orge2d83ce">Grid Spacing and Boundary Conditions</h3>
+<section id="slide-org196a4e2">
+<h3 id="org196a4e2">Grid Spacing and Boundary Conditions</h3>
 <div class="columns"> <div class="column" style="width:48%; float:left;"> <p><strong>Grid Spacings (y⁺ units)</strong></p> <table border="1" style="border-collapse:collapse; width:100%;"> <thead> <tr> <th>Re</th> <th>Δr⁺ / Δθ⁺ / Δz⁺</th> <th>N Δt × 10⁶</th> </tr> </thead> <tbody> <tr> <td>5,300</td> <td>0.14–4 / 1.5–4.5 / 3–9.9</td> <td>20</td> </tr> <tr> <td>11,700</td> <td>0.15–4.5 / 1.5–4.8 / 3–10</td> <td>120</td> </tr> </tbody> </table> </div> <div class="column" style="width:48%; float:right;"> <p><strong>Boundary Conditions</strong></p> \begin{align} u_r(R) &= 0, \\ u_\theta(R) &= \Omega R, \\ u_x(R) &= 0 \end{align} <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall; incompressible flow</p> </div> </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org66ae202">
-<h2 id="org66ae202">Proper Orthogonal Decomposition</h2>
-<div class="outline-text-2" id="text-org66ae202">
+<section id="slide-org545879e">
+<h2 id="org545879e">Proper Orthogonal Decomposition</h2>
+<div class="outline-text-2" id="text-org545879e">
 </div>
 </section>
-<section id="slide-orgbc1930d">
-<h3 id="orgbc1930d">POD Energy Modes</h3>
+<section id="slide-org7443270">
+<h3 id="org7443270">POD Energy Modes</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Direct POD Formulation -->
@@ -397,8 +403,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org04962bc">
-<h3 id="org04962bc">FFT / POD Interpretation</h3>
+<section id="slide-org8c0b8b3">
+<h3 id="org8c0b8b3">FFT / POD Interpretation</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: FFT Decomposition -->
@@ -460,8 +466,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgdfc3ed2">
-<h3 id="orgdfc3ed2">Proper Orthogonal Decomposition (POD)</h3>
+<section id="slide-org108d9af">
+<h3 id="org108d9af">Proper Orthogonal Decomposition (POD)</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>POD Overview</strong></p>
@@ -489,8 +495,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org3bb9a7c">
-<h3 id="org3bb9a7c">Snapshot POD: Eigenvalue Problem</h3>
+<section id="slide-org8d9e338">
+<h3 id="org8d9e338">Snapshot POD: Eigenvalue Problem</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>Direct POD Equation</strong></p>
@@ -515,8 +521,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgd7e5908">
-<h3 id="orgd7e5908">Classical POD Form</h3>
+<section id="slide-orgac95d6b">
+<h3 id="orgac95d6b">Classical POD Form</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>Correlation Tensor</strong></p>
@@ -544,13 +550,13 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org5dda375">
-<h2 id="org5dda375">Radial Projections</h2>
-<div class="outline-text-2" id="text-org5dda375">
+<section id="slide-org64149eb">
+<h2 id="org64149eb">Radial Projections</h2>
+<div class="outline-text-2" id="text-org64149eb">
 </div>
 </section>
-<section id="slide-org3ac38b2">
-<h3 id="org3ac38b2">POD Mode Behavior at N = 0</h3>
+<section id="slide-org2c5f5f5">
+<h3 id="org2c5f5f5">POD Mode Behavior at N = 0</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: POD Interpretation for N = 0 -->
@@ -581,8 +587,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orge0542ab">
-<h3 id="orge0542ab">POD Mode Behavior at N = 1</h3>
+<section id="slide-orgb8c709b">
+<h3 id="orgb8c709b">POD Mode Behavior at N = 1</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: POD Interpretation for N = 1 -->
@@ -615,8 +621,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orgf01d57d">
-<h3 id="orgf01d57d">N=3</h3>
+<section id="slide-orgdb36c0e">
+<h3 id="orgdb36c0e">N=3</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: POD Interpretation for N = 3 -->
@@ -651,8 +657,8 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org72d6e37">
-<h2 id="org72d6e37">FFT-POD Mode Shapes</h2>
+<section id="slide-orgda2a5ee">
+<h2 id="orgda2a5ee">FFT-POD Mode Shapes</h2>
 <div style="display: flex; flex-direction: column; gap: 1.5em; font-family: 'Segoe UI', sans-serif;">
 
   <!-- Title -->
@@ -689,53 +695,53 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org43ac507">
-<h2 id="org43ac507">Radial POD Modes</h2>
+<section id="slide-orga22f876">
+<h2 id="orga22f876">Radial POD Modes</h2>
 
-<div id="org391ea9e" class="figure">
+<div id="orgcf8eb35" class="figure">
 <p><img src="../origPODtalks/images/reveal/screenshot2023-01-05_13-26-09_.png" alt="screenshot2023-01-05_13-26-09_.png" />
 </p>
-<p><span class="figure-number">Figure 1: </span>\(N=0.0\) Radial POD Azimuthal Modes</p>
+<p><span class="figure-number">Figure 2: </span>\(N=0.0\) Radial POD Azimuthal Modes</p>
 </div>
 
 </section>
-<section id="slide-org9f783ee">
-<h3 id="org9f783ee">\(N=0.5\)</h3>
+<section id="slide-org988973e">
+<h3 id="org988973e">\(N=0.5\)</h3>
 
-<div id="orgcf1c3db" class="figure">
+<div id="org2e9608b" class="figure">
 <p><img src="../origPODtalks/images/reveal/screenshot2023-01-06_11-43-02_.png" alt="screenshot2023-01-06_11-43-02_.png" />
 </p>
-<p><span class="figure-number">Figure 2: </span>\(N=0.5\) Radial POD Azimuthal Modes</p>
+<p><span class="figure-number">Figure 3: </span>\(N=0.5\) Radial POD Azimuthal Modes</p>
 </div>
 
 
-<div id="orgd6867b7" class="figure">
+<div id="orga3f77d9" class="figure">
 <p><img src="../origPODtalks/images/reveal/screenshot2023-01-06_11-48-02_.png" alt="screenshot2023-01-06_11-48-02_.png" />
 </p>
-<p><span class="figure-number">Figure 3: </span>Ref (Hellstrom 2017 Benchmark)</p>
+<p><span class="figure-number">Figure 4: </span>Ref (Hellstrom 2017 Benchmark)</p>
 </div>
 
 </section>
-<section id="slide-org3e24da2">
-<h3 id="org3e24da2">\(N=3\)</h3>
+<section id="slide-orge769559">
+<h3 id="orge769559">\(N=3\)</h3>
 
-<div id="orgc8f0195" class="figure">
+<div id="org5b3bbc2" class="figure">
 <p><img src="../origPODtalks/images/baileyedit/screenshot2023-04-15_10-48-49_.png" alt="screenshot2023-04-15_10-48-49_.png" />
 </p>
-<p><span class="figure-number">Figure 4: </span>\(N=3\) Radial POD Azimuthal Modes</p>
+<p><span class="figure-number">Figure 5: </span>\(N=3\) Radial POD Azimuthal Modes</p>
 </div>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org43abe6a">
-<h2 id="org43abe6a">Rotating Pipe POD Results</h2>
-<div class="outline-text-2" id="text-org43abe6a">
+<section id="slide-org3aeeb4b">
+<h2 id="org3aeeb4b">Rotating Pipe POD Results</h2>
+<div class="outline-text-2" id="text-org3aeeb4b">
 </div>
 </section>
-<section id="slide-org9bb90b0">
-<h3 id="org9bb90b0">Rotating Pipe POD Results — POD Theory &amp; 2D Projection</h3>
+<section id="slide-orgb0c09d3">
+<h3 id="orgb0c09d3">Rotating Pipe POD Results — POD Theory &amp; 2D Projection</h3>
 <div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
   <div class="column" style="flex:1;">
     <p><strong>POD Modes & 2D Projection</strong></p>
@@ -763,35 +769,139 @@ font-size: 65%; /* Adjust this value as needed */
   </div>
 </div>
 </section>
-<section id="slide-org38042b3">
-<h3 id="org38042b3">Modal Profile φ²</h3>
+<section id="slide-orgf9058a9">
+<h3 id="orgf9058a9">Modal Profile φ²</h3>
 <p><strong>Streamwise Component φ², S=3.0</strong></p>
 <img src="./f/wednesdayTable_page1-1.png" style="width:80%; height:auto;" alt="Modal φ²"/>
 
 </section>
-<section id="slide-orgfad7637">
-<h3 id="orgfad7637">Modal Profile φ³</h3>
+<section id="slide-orgdb258e9">
+<h3 id="orgdb258e9">Modal Profile φ³</h3>
 <p><strong>Streamwise Component φ³, S=3.0</strong></p>
 <img src="./f/wednesdayTable_page2-2.png" style="width:80%; height:auto;" alt="Modal φ³"/>
 
 </section>
-<section id="slide-org05e5b06">
-<h3 id="org05e5b06">Modal Profile φ⁴</h3>
+<section id="slide-orga1cb6e7">
+<h3 id="orga1cb6e7">Modal Profile φ⁴</h3>
 <p><strong>Streamwise Component φ⁴, S=3.0</strong></p>
 <img src="./f/wednesdayTable_page3-3.png" style="width:80%; height:auto;" alt="Modal φ⁴"/>
 
 </section>
-<section id="slide-org3ec4ad8">
-<h3 id="org3ec4ad8">Derivation of POD</h3>
+<section id="slide-org7955c83">
+<h3 id="org7955c83">Derivation of POD</h3>
 <p><strong>Derivation of POD Projections</strong></p>
 <img src="./f/wednesdayTableB_page4-4.png" style="width:80%; height:auto;" alt="POD Derivation"/>
+
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgb168cee">
-<h2 id="orgb168cee">Citations</h2>
+<section id="slide-org12de9ff">
+<h2 id="org12de9ff">Adding new slides 1</h2>
+
+<div id="org138046e" class="figure">
+<p><img src="./images/1011.animated.gif" alt="1011.animated.gif" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Rotating Boundary condition animation (N=3)</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge75af62">
+<h2 id="orge75af62">Adding new slides 1</h2>
+
+<div id="org9815e4c" class="figure">
+<p><img src="./images/1011reconstruct.png" alt="1011reconstruct.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Reconstruction</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6a4db9d">
+<h2 id="org6a4db9d">Adding new slides 1</h2>
+
+<div id="org7169b22" class="figure">
+<p><img src="./images/1011.3d.png" alt="1011.3d.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga67032d">
+<h2 id="orga67032d">Adding new slides 1</h2>
+
+<div id="org406baf4" class="figure">
+<p><img src="./images/1011.5300n0Radial.good.png" alt="1011.5300n0Radial.good.png" />
+</p>
+<p><span class="figure-number">Figure 8: </span>Re=5300, N=0</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org091ce8a">
+<h2 id="org091ce8a">Adding new slides 1</h2>
+
+<div id="orge73bfeb" class="figure">
+<p><img src="./images/1011.5300n1Radial.good.png" alt="1011.5300n1Radial.good.png" />
+</p>
+<p><span class="figure-number">Figure 9: </span>Re=5300, N=1 \(\{2,5,8,\ldots\}\), flipped</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org870a813">
+<h2 id="org870a813">Adding new slides 1</h2>
+
+<div id="orge6c8a1f" class="figure">
+<p><img src="./images/1011.5300n1Radial.goodv2.png" alt="1011.5300n1Radial.goodv2.png" />
+</p>
+<p><span class="figure-number">Figure 10: </span>Re=5300, N=1,  \(\{2,4,6,\ldots\}\)</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd70eaad">
+<h2 id="orgd70eaad">Adding new slides 1</h2>
+
+<div id="org55f5d96" class="figure">
+<p><img src="./images/1011.5300n3Radial.good.png" alt="1011.5300n3Radial.good.png" />
+</p>
+<p><span class="figure-number">Figure 11: </span>Re=5300, N=3</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org94fc88e">
+<h2 id="org94fc88e">Adding new slides 1</h2>
+
+<div id="org2d49e7f" class="figure">
+<p><img src="./images/1011.11700n3.png" alt="1011.11700n3.png" />
+</p>
+<p><span class="figure-number">Figure 12: </span>Re=11700, N=3</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2f24d8d">
+<h2 id="org2f24d8d">Relaminarization</h2>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2ace6a2">
+<h2 id="org2ace6a2">Citations</h2>
 <div style="display: flex; gap: 2em; font-size: 90%;">
 
   <!-- LEFT column: Historical Experiments -->
@@ -815,8 +925,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgf3f057a">
-<h3 id="orgf3f057a">Citations</h3>
+<section id="slide-orgf01680f">
+<h3 id="orgf01680f">Citations</h3>
 <div style="display: flex; gap: 2em; font-size: 90%;">
 
   <!-- LEFT column: Theory & Scaling -->
@@ -837,364 +947,6 @@ font-size: 65%; /* Adjust this value as needed */
 </ul>
 </div>
 </div>
-
-</section>
-</section>
-<section>
-<section id="slide-org307e7d4">
-<h2 id="org307e7d4">Adding new slides 1</h2>
-
-<div id="org5baa3bd" class="figure">
-<p><img src="./images/1011.animated.gif" alt="1011.animated.gif" />
-</p>
-<p><span class="figure-number">Figure 5: </span>Rotating Boundary condition animation (N=3)</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgd97ae11">
-<h2 id="orgd97ae11">Adding new slides 1</h2>
-
-<div id="org24be5e0" class="figure">
-<p><img src="./images/1011reconstruct.png" alt="1011reconstruct.png" />
-</p>
-<p><span class="figure-number">Figure 6: </span>Reconstruction</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org1d10209">
-<h2 id="org1d10209">Adding new slides 1</h2>
-
-<div id="orga5d6605" class="figure">
-<p><img src="./images/1011.3d.png" alt="1011.3d.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgc87c670">
-<h2 id="orgc87c670">Adding new slides 1</h2>
-
-<div id="org4cf0f0b" class="figure">
-<p><img src="./images/1011.5300n0Radial.good.png" alt="1011.5300n0Radial.good.png" />
-</p>
-<p><span class="figure-number">Figure 7: </span>Re=5300, N=0</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgefa2d58">
-<h2 id="orgefa2d58">Adding new slides 1</h2>
-
-<div id="orgc4b95dc" class="figure">
-<p><img src="./images/1011.5300n1Radial.good.png" alt="1011.5300n1Radial.good.png" />
-</p>
-<p><span class="figure-number">Figure 8: </span>Re=5300, N=1 \(\{2,5,8,\ldots\}\), flipped</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgc34feb7">
-<h2 id="orgc34feb7">Adding new slides 1</h2>
-
-<div id="orgc8aa14f" class="figure">
-<p><img src="./images/1011.5300n1Radial.goodv2.png" alt="1011.5300n1Radial.goodv2.png" />
-</p>
-<p><span class="figure-number">Figure 9: </span>Re=5300, N=1,  \(\{2,4,6,\ldots\}\)</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org1b40242">
-<h2 id="org1b40242">Adding new slides 1</h2>
-
-<div id="orgdb48a3a" class="figure">
-<p><img src="./images/1011.5300n3Radial.good.png" alt="1011.5300n3Radial.good.png" />
-</p>
-<p><span class="figure-number">Figure 10: </span>Re=5300, N=3</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org8626148">
-<h2 id="org8626148">Adding new slides 1</h2>
-
-<div id="org99ce4a7" class="figure">
-<p><img src="./images/1011.11700n3.png" alt="1011.11700n3.png" />
-</p>
-<p><span class="figure-number">Figure 11: </span>Re=11700, N=3</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgbc930d6">
-<h2 id="orgbc930d6">Relaminarization</h2>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relaminarization Indicators</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f9f9f9;
-  }
-  .slide-container {
-    display: flex;
-    gap: 20px;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 15px;
-  }
-  .tab {
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    display: inline-block;
-    color: #fff;
-  }
-  .tab.indicators { background-color: #6c8efb; } /* soft blue */
-  .tab.evidence { background-color: #f59e42; } /* soft orange */
-  ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab indicators">Indicators of Relaminarization</div>
-    <ul>
-      <li>Energy concentrated in fewer azimuthal modes.</li>
-      <li>Near-wall turbulence significantly suppressed.</li>
-      <li>Radial structures broaden and shift inward.</li>
-      <li>Oscillatory amplitude reduced (less chaotic).</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab evidence">Evidence from POD Plots</div>
-    <ul>
-      <li><strong>N = 0:</strong> Wide mode range (m = 2–36), strong near-wall peaks.</li>
-      <li><strong>N = 1:</strong> Peaks flatten, oscillations dampen, energy redistribution begins.</li>
-      <li><strong>N = 3:</strong> Energy in low modes (m = 5–20), secondary peaks near centerline, near-wall activity weak.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
-
-</section>
-</section>
-<section>
-<section id="slide-orgad818dd">
-<h2 id="orgad818dd">Energy Levels are required</h2>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relaminarization Evidence</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 40px;
-    color: #333;
-  }
-  .slide-title {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  .slide-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    padding: 20px;
-    translateY(-4px);
-  }
-  .tab {
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: inline-block;
-    color: #fff;
-    font-size: 1.1em;
-  }
-  .tab.radial {
-    background: linear-gradient(135deg, #6c8efb, #8fa8ff);
-  }
-  .tab.energy {
-    background: linear-gradient(135deg, #f59e42, #f7b76a);
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 1em;
-    line-height: 1.6;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-title">Relaminarization: Structure vs Energy Evidence</div>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab radial">Radial Eigenvector Projections</div>
-    <ul>
-      <li>Show spatial structure of dominant POD modes.</li>
-      <li>Indicate near-wall turbulence suppression.</li>
-      <li>Reveal energy redistribution toward the core.</li>
-      <li><strong>Limitation:</strong> Cannot quantify turbulence energy collapse.</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab energy">Eigenvalues (Energy)</div>
-    <ul>
-      <li>Measure kinetic energy captured by each mode.</li>
-      <li>Confirm if higher modes lose energy (turbulence decay).</li>
-      <li>Essential for proving relaminarization quantitatively.</li>
-      <li><strong>Without eigenvalues:</strong> Only qualitative trends, not definitive proof.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
-
-</section>
-</section>
-<section>
-<section id="slide-org0af7285">
-<h2 id="org0af7285">Relaminarization (cont.)</h2>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POD-FFT and Relaminarization</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 40px;
-    color: #333;
-  }
-  .slide-title {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  .slide-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    padding: 20px;
-  }
-  .tab {
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: inline-block;
-    color: #fff;
-    font-size: 1.1em;
-  }
-  .tab.can {
-    background: linear-gradient(135deg, #6c8efb, #8fa8ff);
-  }
-  .tab.cannot {
-    background: linear-gradient(135deg, #f59e42, #f7b76a);
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 1em;
-    line-height: 1.6;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-title">Can POD-FFT Confirm Relaminarization?</div>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab can">What POD-FFT Can Tell You</div>
-    <ul>
-      <li>Energy collapse into fewer POD modes.</li>
-      <li>Suppression of high-frequency turbulent content.</li>
-      <li>Structural reorganization toward core coherence.</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab cannot">What It Cannot Prove Alone</div>
-    <ul>
-      <li>Complete shutdown of turbulence production.</li>
-      <li>Reynolds stress reduction to laminar levels.</li>
-      <li>Friction factor approaching laminar value.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
 </section>
 </section>
 </div>

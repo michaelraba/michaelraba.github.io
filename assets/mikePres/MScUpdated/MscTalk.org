@@ -78,6 +78,9 @@
 
 
 * Background and Motivation
+#+caption: Rotating Boundary condition animation ($N=3$)
+  [[./images/1011.animated.gif]]
+
 ** Literature Review
 #+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
@@ -147,7 +150,8 @@
     <div><b>Solver:</b> Nek5000 (Spectral Element Method)</div>
     <div><b>Reynolds Numbers:</b> 5,300 and 11,700</div>
     <div><b>Rotation Numbers (N):</b> 0 to 3</div>
-    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries</div>
+    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries;  longer domains needed to capture elongated structures and reach statistical steady state</div>
+
     <div><b>Purpose:</b> Study turbulence suppression and provide DNS benchmark data</div>
   </div>
 
@@ -197,7 +201,7 @@
 <p><strong>Key Phenomena</strong></p>
 <ul>
 <li>Competition between destabilizing wall shear and stabilizing radial pressure gradients.</li>
-<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates.</li>
+<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates (because of drag reduction Fatica 97).</li>
 <li>Relaminarized or quasi-laminar states can persist at high Reynolds numbers.</li>
 </ul>
 </div>
@@ -787,6 +791,42 @@
 #+end_export
 
 
+
+* Adding new slides 1
+#+caption: Rotating Boundary condition animation (N=3)
+  [[./images/1011.animated.gif]]
+
+* Adding new slides 1
+#+caption: Reconstruction
+  [[./images/1011reconstruct.png]]
+
+* Adding new slides 1
+  [[./images/1011.3d.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=0
+  [[./images/1011.5300n0Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=1 $\{2,5,8,\ldots\}$, flipped
+  [[./images/1011.5300n1Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=1,  $\{2,4,6,\ldots\}$
+  [[./images/1011.5300n1Radial.goodv2.png]]
+
+* Adding new slides 1
+#+caption: Re=5300, N=3
+  [[./images/1011.5300n3Radial.good.png]]
+
+* Adding new slides 1
+#+caption: Re=11700, N=3
+  [[./images/1011.11700n3.png]]
+
+* Relaminarization
+
+
+
 * Citations
 #+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; font-size: 90%;">
@@ -836,294 +876,3 @@
 </div>
 </div>
 #+END_EXPORT
-
-* Adding new slides 1
-#+caption: Rotating Boundary condition animation (N=3)
-  [[./images/1011.animated.gif]]
-
-* Adding new slides 1
-#+caption: Reconstruction
-  [[./images/1011reconstruct.png]]
-
-* Adding new slides 1
-  [[./images/1011.3d.png]]
-
-* Adding new slides 1
-#+caption: Re=5300, N=0
-  [[./images/1011.5300n0Radial.good.png]]
-
-* Adding new slides 1
-#+caption: Re=5300, N=1 $\{2,5,8,\ldots\}$, flipped
-  [[./images/1011.5300n1Radial.good.png]]
-
-* Adding new slides 1
-#+caption: Re=5300, N=1,  $\{2,4,6,\ldots\}$
-  [[./images/1011.5300n1Radial.goodv2.png]]
-
-* Adding new slides 1
-#+caption: Re=5300, N=3
-  [[./images/1011.5300n3Radial.good.png]]
-
-* Adding new slides 1
-#+caption: Re=11700, N=3
-  [[./images/1011.11700n3.png]]
-
-* Relaminarization
-
-#+begin_export html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relaminarization Indicators</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f9f9f9;
-  }
-  .slide-container {
-    display: flex;
-    gap: 20px;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 15px;
-  }
-  .tab {
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    display: inline-block;
-    color: #fff;
-  }
-  .tab.indicators { background-color: #6c8efb; } /* soft blue */
-  .tab.evidence { background-color: #f59e42; } /* soft orange */
-  ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab indicators">Indicators of Relaminarization</div>
-    <ul>
-      <li>Energy concentrated in fewer azimuthal modes.</li>
-      <li>Near-wall turbulence significantly suppressed.</li>
-      <li>Radial structures broaden and shift inward.</li>
-      <li>Oscillatory amplitude reduced (less chaotic).</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab evidence">Evidence from POD Plots</div>
-    <ul>
-      <li><strong>N = 0:</strong> Wide mode range (m = 2–36), strong near-wall peaks.</li>
-      <li><strong>N = 1:</strong> Peaks flatten, oscillations dampen, energy redistribution begins.</li>
-      <li><strong>N = 3:</strong> Energy in low modes (m = 5–20), secondary peaks near centerline, near-wall activity weak.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
-#+end_export
-
-* Energy Levels are required 
-
-#+begin_export html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relaminarization Evidence</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 40px;
-    color: #333;
-  }
-  .slide-title {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  .slide-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    padding: 20px;
-    translateY(-4px);
-  }
-  .tab {
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: inline-block;
-    color: #fff;
-    font-size: 1.1em;
-  }
-  .tab.radial {
-    background: linear-gradient(135deg, #6c8efb, #8fa8ff);
-  }
-  .tab.energy {
-    background: linear-gradient(135deg, #f59e42, #f7b76a);
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 1em;
-    line-height: 1.6;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-title">Relaminarization: Structure vs Energy Evidence</div>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab radial">Radial Eigenvector Projections</div>
-    <ul>
-      <li>Show spatial structure of dominant POD modes.</li>
-      <li>Indicate near-wall turbulence suppression.</li>
-      <li>Reveal energy redistribution toward the core.</li>
-      <li><strong>Limitation:</strong> Cannot quantify turbulence energy collapse.</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab energy">Eigenvalues (Energy)</div>
-    <ul>
-      <li>Measure kinetic energy captured by each mode.</li>
-      <li>Confirm if higher modes lose energy (turbulence decay).</li>
-      <li>Essential for proving relaminarization quantitatively.</li>
-      <li><strong>Without eigenvalues:</strong> Only qualitative trends, not definitive proof.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
-#+end_export
-
-* Relaminarization (cont.)
-
-#+begin_export html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POD-FFT and Relaminarization</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 40px;
-    color: #333;
-  }
-  .slide-title {
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  .slide-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-  }
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    padding: 20px;
-  }
-  .tab {
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: inline-block;
-    color: #fff;
-    font-size: 1.1em;
-  }
-  .tab.can {
-    background: linear-gradient(135deg, #6c8efb, #8fa8ff);
-  }
-  .tab.cannot {
-    background: linear-gradient(135deg, #f59e42, #f7b76a);
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 1em;
-    line-height: 1.6;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-</style>
-</head>
-<body>
-
-<div class="slide-title">Can POD-FFT Confirm Relaminarization?</div>
-
-<div class="slide-container">
-  <!-- Column 1 -->
-  <div class="column">
-    <div class="tab can">What POD-FFT Can Tell You</div>
-    <ul>
-      <li>Energy collapse into fewer POD modes.</li>
-      <li>Suppression of high-frequency turbulent content.</li>
-      <li>Structural reorganization toward core coherence.</li>
-    </ul>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="column">
-    <div class="tab cannot">What It Cannot Prove Alone</div>
-    <ul>
-      <li>Complete shutdown of turbulence production.</li>
-      <li>Reynolds stress reduction to laminar levels.</li>
-      <li>Friction factor approaching laminar value.</li>
-    </ul>
-  </div>
-</div>
-
-</body>
-</html>
-#+end_export
