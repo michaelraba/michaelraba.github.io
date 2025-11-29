@@ -39,28 +39,75 @@ font-size: 65%; /* Adjust this value as needed */
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
-<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-29 Sat 13:58</p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-29 Sat 16:19</p>
 </section>
 
-
 <section>
-<section id="slide-org7a608d0">
-<h2 id="org7a608d0">Relaminarization</h2>
-</section>
-</section>
-<section>
-<section id="slide-org5589d1f">
-<h2 id="org5589d1f">Validation of the POD</h2>
+<section id="slide-org5d6610f">
+<h2 id="org5d6610f">Outline: Physics, Relam Goal, Tools</h2>
 </section>
 </section>
 <section>
-<section id="slide-orga55dd20">
-<h2 id="orga55dd20">POD Formulation: Weighted \(L^2\) Structure</h2>
-<div class="outline-text-2" id="text-orga55dd20">
+<section id="slide-orge375e70">
+<h2 id="orge375e70">Relaminarization</h2>
+<div class="outline-text-2" id="text-orge375e70">
 </div>
 </section>
-<section id="slide-orgd55b00c">
-<h3 id="orgd55b00c">POD Formulation: Weighted \(L^2\) Structure</h3>
+<section id="slide-org36f15fa">
+<h3 id="org36f15fa">Energy \(S=0\)</h3>
+
+<div id="org219e8d8" class="figure">
+<p><img src="./im/energy_dist_Re5300_S00.png" alt="energy_dist_Re5300_S00.png" />
+</p>
+</div>
+</section>
+<section id="slide-org722b0d6">
+<h3 id="org722b0d6">Energy \(S=0.5\)</h3>
+
+<div id="org89680a7" class="figure">
+<p><img src="./im/energy_dist_Re5300_S50.png" alt="energy_dist_Re5300_S50.png" />
+</p>
+</div>
+</section>
+<section id="slide-org886d316">
+<h3 id="org886d316">Energy \(S=1\)</h3>
+
+<div id="org506d382" class="figure">
+<p><img src="./im/energy_dist_Re5300_S10.png" alt="energy_dist_Re5300_S10.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgb835f8c">
+<h3 id="orgb835f8c">Energy \(S=2\)</h3>
+
+<div id="orge47ea9e" class="figure">
+<p><img src="./im/energy_dist_Re5300_S20.png" alt="energy_dist_Re5300_S20.png" />
+</p>
+</div>
+</section>
+<section id="slide-org96dc5c9">
+<h3 id="org96dc5c9">Energy \(S=3\)</h3>
+
+<div id="org3624978" class="figure">
+<p><img src="./im/energy_dist_Re5300_S30.png" alt="energy_dist_Re5300_S30.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8bd516c">
+<h2 id="org8bd516c">Validation of the POD</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgd708a8c">
+<h2 id="orgd708a8c">POD Formulation: Weighted \(L^2\) Structure</h2>
+<div class="outline-text-2" id="text-orgd708a8c">
+</div>
+</section>
+<section id="slide-org7735b97">
+<h3 id="org7735b97">POD Formulation: Weighted \(L^2\) Structure</h3>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
 
 <!-- Left Column -->
@@ -146,8 +193,8 @@ u_T(k;m;r,t)\,\alpha^{(n)*}(k;m;t)\,dt
 
 
 </section>
-<section id="slide-org80dbcc2">
-<h3 id="org80dbcc2">Motivation: Large-Scale Motions in Pipe Flow</h3>
+<section id="slide-org0c60703">
+<h3 id="org0c60703">Motivation: Large-Scale Motions in Pipe Flow</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -175,8 +222,8 @@ The largest structures in pipe flow are strongly associated with low azimuthal w
 </div>
 
 </section>
-<section id="slide-org7596430">
-<h3 id="org7596430">Spectral Decomposition Approach</h3>
+<section id="slide-org03b3b8b">
+<h3 id="org03b3b8b">Spectral Decomposition Approach</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -208,8 +255,8 @@ Real-valued physical fields require Hermitian symmetry across $m$.
 </div>
 
 </section>
-<section id="slide-org0eaf9dd">
-<h3 id="org0eaf9dd">Weighted Inner Product and Correlation Matrix</h3>
+<section id="slide-org897832a">
+<h3 id="org897832a">Weighted Inner Product and Correlation Matrix</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Theory -->
@@ -262,8 +309,8 @@ with weight matrix \( W = \mathrm{diag}(r_1\Delta r,\dots,r_{N_r}\Delta r) \) re
 </div>
 
 </section>
-<section id="slide-orgbb552bb">
-<h3 id="orgbb552bb">Eigenvalue Problem (Snapshot POD)</h3>
+<section id="slide-org5435e5d">
+<h3 id="org5435e5d">Eigenvalue Problem (Snapshot POD)</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column -->
@@ -295,8 +342,8 @@ If the mean field exists, it must be removed: \(\hat{u}&#39; = \hat{u} - \overli
 </div>
 
 </section>
-<section id="slide-org8c573a9">
-<h3 id="org8c573a9">Back-Transformation to Physical Space</h3>
+<section id="slide-org9d248e9">
+<h3 id="org9d248e9">Back-Transformation to Physical Space</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -339,8 +386,8 @@ The spectral spatial POD modes are recovered by projecting the eigenvectors back
 </div>
 
 </section>
-<section id="slide-orgd5305b8">
-<h3 id="orgd5305b8">Time Coefficients</h3>
+<section id="slide-orgfa905c6">
+<h3 id="orgfa905c6">Time Coefficients</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -380,8 +427,8 @@ The time coefficients \(b_k(t)\) are the instantaneous amplitude of the correspo
 </div>
 
 </section>
-<section id="slide-org4d638b8">
-<h3 id="org4d638b8">Field Reconstruction</h3>
+<section id="slide-org2ce1b1d">
+<h3 id="org2ce1b1d">Field Reconstruction</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -396,7 +443,7 @@ The reconstructed spectral field is built from selected POD modes $k=1..P$ and a
 The final physical field is obtained via an inverse FFT in the azimuthal direction.
 </p>
 <div style="margin-top: 1em; padding: 10px; background-color: #fceceb; border-left: 5px solid #e74c3c;">
-<b>Implementation Note (from MATLAB code):</b> Due to the coordinate mapping or IFFT implementation, the final physical plot requires a $180^\circ$ rotation (or reflection in $y$) to align correctly with the original data, as seen in <code>plotReconstruction.m</code>.
+<b>Implementation Note (from MATLAB code):</b>
 </div>
 </div>
 

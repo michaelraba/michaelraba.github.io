@@ -76,8 +76,21 @@
 #+latex_header: \usepackage{tikz}
 #+latex_header: \metroset{block=fill}
 
-
+* Outline: Physics, Relam Goal, Tools
 * Relaminarization
+
+** Energy $S=0$
+[[./im/energy_dist_Re5300_S00.png]]
+** Energy $S=0.5$
+[[./im/energy_dist_Re5300_S50.png]]
+** Energy $S=1$
+[[./im/energy_dist_Re5300_S10.png]]
+** Energy $S=2$
+[[./im/energy_dist_Re5300_S20.png]]
+** Energy $S=3$
+
+[[./im/energy_dist_Re5300_S30.png]]
+
 * Validation of the POD
 * POD Formulation: Weighted \(L^2\) Structure
 ** POD Formulation: Weighted \(L^2\) Structure
@@ -425,7 +438,7 @@ The reconstructed spectral field is built from selected POD modes $k=1..P$ and a
 The final physical field is obtained via an inverse FFT in the azimuthal direction.
 </p>
 <div style="margin-top: 1em; padding: 10px; background-color: #fceceb; border-left: 5px solid #e74c3c;">
-<b>Implementation Note (from MATLAB code):</b> Due to the coordinate mapping or IFFT implementation, the final physical plot requires a $180^\circ$ rotation (or reflection in $y$) to align correctly with the original data, as seen in <code>plotReconstruction.m</code>.
+<b>Implementation Note (from MATLAB code):</b>
 </div>
 </div>
 
