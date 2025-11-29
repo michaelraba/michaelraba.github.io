@@ -39,14 +39,28 @@ font-size: 65%; /* Adjust this value as needed */
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
-<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-29 Sat 13:55</p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-29 Sat 13:58</p>
 </section>
 
 
-
 <section>
-<section id="slide-org75af153">
-<h2 id="org75af153">POD Formulation: Weighted \(L^2\) Structure</h2>
+<section id="slide-org7a608d0">
+<h2 id="org7a608d0">Relaminarization</h2>
+</section>
+</section>
+<section>
+<section id="slide-org5589d1f">
+<h2 id="org5589d1f">Validation of the POD</h2>
+</section>
+</section>
+<section>
+<section id="slide-orga55dd20">
+<h2 id="orga55dd20">POD Formulation: Weighted \(L^2\) Structure</h2>
+<div class="outline-text-2" id="text-orga55dd20">
+</div>
+</section>
+<section id="slide-orgd55b00c">
+<h3 id="orgd55b00c">POD Formulation: Weighted \(L^2\) Structure</h3>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
 
 <!-- Left Column -->
@@ -132,8 +146,8 @@ u_T(k;m;r,t)\,\alpha^{(n)*}(k;m;t)\,dt
 
 
 </section>
-<section id="slide-org5c4de55">
-<h3 id="org5c4de55">Motivation: Large-Scale Motions in Pipe Flow</h3>
+<section id="slide-org80dbcc2">
+<h3 id="org80dbcc2">Motivation: Large-Scale Motions in Pipe Flow</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -161,8 +175,8 @@ The largest structures in pipe flow are strongly associated with low azimuthal w
 </div>
 
 </section>
-<section id="slide-org9043361">
-<h3 id="org9043361">Spectral Decomposition Approach</h3>
+<section id="slide-org7596430">
+<h3 id="org7596430">Spectral Decomposition Approach</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -194,8 +208,8 @@ Real-valued physical fields require Hermitian symmetry across $m$.
 </div>
 
 </section>
-<section id="slide-org6ba2b05">
-<h3 id="org6ba2b05">Weighted Inner Product and Correlation Matrix</h3>
+<section id="slide-org0eaf9dd">
+<h3 id="org0eaf9dd">Weighted Inner Product and Correlation Matrix</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Theory -->
@@ -248,8 +262,8 @@ with weight matrix \( W = \mathrm{diag}(r_1\Delta r,\dots,r_{N_r}\Delta r) \) re
 </div>
 
 </section>
-<section id="slide-org4b0d42c">
-<h3 id="org4b0d42c">Eigenvalue Problem (Snapshot POD)</h3>
+<section id="slide-orgbb552bb">
+<h3 id="orgbb552bb">Eigenvalue Problem (Snapshot POD)</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column -->
@@ -281,8 +295,8 @@ If the mean field exists, it must be removed: \(\hat{u}&#39; = \hat{u} - \overli
 </div>
 
 </section>
-<section id="slide-org3bde1b3">
-<h3 id="org3bde1b3">Back-Transformation to Physical Space</h3>
+<section id="slide-org8c573a9">
+<h3 id="org8c573a9">Back-Transformation to Physical Space</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -325,8 +339,8 @@ The spectral spatial POD modes are recovered by projecting the eigenvectors back
 </div>
 
 </section>
-<section id="slide-orge421334">
-<h3 id="orge421334">Time Coefficients</h3>
+<section id="slide-orgd5305b8">
+<h3 id="orgd5305b8">Time Coefficients</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -366,8 +380,8 @@ The time coefficients \(b_k(t)\) are the instantaneous amplitude of the correspo
 </div>
 
 </section>
-<section id="slide-orga80ab5b">
-<h3 id="orga80ab5b">Field Reconstruction</h3>
+<section id="slide-org4d638b8">
+<h3 id="org4d638b8">Field Reconstruction</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 

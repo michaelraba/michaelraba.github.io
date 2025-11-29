@@ -77,8 +77,10 @@
 #+latex_header: \metroset{block=fill}
 
 
-
+* Relaminarization
+* Validation of the POD
 * POD Formulation: Weighted \(L^2\) Structure
+** POD Formulation: Weighted \(L^2\) Structure
 
 #+BEGIN_EXPORT html
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
