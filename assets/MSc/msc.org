@@ -91,7 +91,28 @@
 
 [[./im/energy_dist_Re5300_S30.png]]
 
-* Validation of the POD
+* What is Swirl?
+* Drag Reduction
+* 3d Structure
+* Vortex Field and Their Radial Graph
+* Simulation, Mesh and Boundary
+* Validation of the POD: Reconstruction
+Reconstruction for $Re=5300$ for different Swirl numbers
+** Energy $S=0$
+[[./im/recon_Re5300_S00.png]]
+** Energy $S=0.5$
+[[./im/recon_Re5300_S50.png]]
+** Energy $S=1$
+[[./im/recon_Re5300_S10.png]]
+** Energy $S=2$
+[[./im/recon_Re5300_S20.png]]
+** Energy $S=3$
+[[./im/recon_Re5300_S30.png]]
+
+* Fundamental Objects of the POD
+** time coefficient
+** Spectral
+** Physical (Post translated)
 * POD Formulation: Weighted \(L^2\) Structure
 ** POD Formulation: Weighted \(L^2\) Structure
 
