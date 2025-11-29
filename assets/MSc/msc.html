@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>POD Analysis of Turbulent Pipe Flow</title>
+<meta name="author" content="M. Raba"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+.reveal .MathJax_Display {
+font-size: 65%; /* Adjust this value as needed */
+}
+.reveal .MathJax_SVG {
+font-size: 65%; /* Adjust this value as needed */
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow</h1><p class="subtitle"></p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-29 Sat 13:17</p>
+</section>
+
+
+
+<section>
+<section id="slide-org27a6f7d">
+<h2 id="org27a6f7d">POD Formulation: Weighted \(L^2\) Structure</h2>
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
+
+<!-- Left Column -->
+<div style="flex: 1; text-align: left;">
+
+<div style="font-size: 1.4em; font-weight: bold; color: #2980b9; margin-bottom: 0.5em;">
+Deriving POD Coefficients in Weighted \(L^2\)
+</div>
+
+<p style="font-size: 1.05em; color: #34495e; line-height: 1.5;">
+We begin with the spatiotemporal correlation tensor
+defined for each azimuthal and axial wavenumber pair \((k,m)\):
+</p>
+
+<div style="background: #f5faff; padding: 12px; border-radius: 8px; border: 1px solid #b5d0ea;">
+\[
+S(k;m;r,r') = \lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau
+u(k;m;r,t)\,u^*(k;m;r',t)\, dt
+\tag{2.2}
+\]
+</div>
+
+<p style="font-size: 1.05em; margin-top: 1em; color: #34495e;">
+The method of snapshots assumes separability in space and time,
+leading to the projection coefficients:
+</p>
+
+<div style="background: #f5faff; padding: 12px; border-radius: 8px; border: 1px solid #b5d0ea;">
+\[
+\alpha^{(n)}(k;m;t)
+= \int_r u(k;m;r,t)\,\phi^{(n)*}(k;m;r)\,dr
+\tag{2.3}
+\]
+</div>
+
+</div>
+
+<!-- Right Column -->
+<div style="flex: 1; background: #fff8e8; padding: 20px; border-radius: 8px; border: 1px solid #e0b872;">
+
+<div style="font-weight: bold; font-size: 1.25em; color: #d35400;">
+Reformulated Eigen Problem
+</div>
+
+<p style="font-size: 1.05em; color: #5a4e3c; line-height: 1.5; margin-top: 10px;">
+The temporal correlation tensor is
+</p>
+
+<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
+\[
+R(k;m;t,t') = \int_r u(k;m;r,t)\,u^*(k;m;r,t')\,dr
+\]
+</div>
+
+<p style="font-size: 1.05em; margin-top: 1em; color: #5a4e3c;">
+The POD coefficients satisfy
+</p>
+
+<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
+\[
+\lim_{\tau\to\infty} \frac{1}{\tau}\int_0^\tau
+R(k;m;t,t')\,\alpha^{(n)}(k;m;t')\,dt'
+= \lambda^{(n)}(k;m)\,\alpha^{(n)}(k;m;t)
+\tag{2.4}
+\]
+</div>
+
+<p style="font-size: 1.05em; margin-top: 1em; color: #5a4e3c;">
+And the spatial modes recover as
+</p>
+
+<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
+\[
+\phi^{(n)}_T(k;m;r)=
+\lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau
+u_T(k;m;r,t)\,\alpha^{(n)*}(k;m;t)\,dt
+\tag{2.5}
+\]
+</div>
+
+</div>
+</div>
+
+</section>
+<section id="slide-org9cda2d6">
+<h3 id="org9cda2d6">Theoretical Framework and Methodology Overview: Spectral Snapshot POD</h3>
+
+</section>
+<section id="slide-org859dc40">
+<h3 id="org859dc40">Motivation: Large-Scale Motions in Pipe Flow</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+<!-- Left Column: Text -->
+<div style="flex: 1; text-align: left;">
+<div style="font-size: 1.4em; font-weight: bold; color: #e74c3c; margin-bottom: 0.5em;">
+Targeting Energetic Coherent Structures
+</div>
+<ul style="font-size: 1.1em; line-height: 1.6; color: #34495e;">
+<li><b>Context:</b> Turbulent pipe flow is dominated by Very-Large-Scale Motions (VLSMs), which contain a significant fraction of the turbulent kinetic energy.</li>
+<li><b>Challenge:</b> These structures are long (several pipe diameters) and wrap around the pipe circumference. </li>
+<li><b>Why POD?</b> Proper Orthogonal Decomposition (POD) provides the most efficient basis (in an $L^2$ sense) to represent these energetic flow structures.</li>
+<li><b>Why FFT-POD?</b> By exploiting the azimuthal homogeneity, the problem is decoupled, making the calculation feasible and structures clearer.</li>
+</ul>
+</div>
+<!-- Right Column: Key Takeaway -->
+<div style="flex: 1; background: #fff0f5; padding: 20px; border-radius: 8px; border: 1px solid #c93780; text-align: center;">
+<div style="font-weight: bold; font-size: 1.2em; color: #c93780;">
+Key Insight (Hellström & Smits)
+</div>
+<p style="font-size: 1.05em; color: #34495e; margin-top: 10px;">
+The largest structures in pipe flow are strongly associated with low azimuthal wavenumbers ($m$), such as $m=1$ to $m=5$.
+</p>
+<small style="color: #7f8c8d;">This spectral separation is the foundation of the methodology.</small>
+</div>
+</div>
+
+</section>
+<section id="slide-org26f9e62">
+<h3 id="org26f9e62">Spectral Decomposition Approach</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+<!-- Left Column: Text -->
+<div style="flex: 1; text-align: left;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Theoretical Framework
+</div>
+<ul style="font-size: 1.1em; line-height: 1.6; color: #34495e;">
+<li><b>Objective:</b> Extract energetic coherent structures from turbulent pipe-flow data. </li>
+<li><b>Spectral Step:</b> Because the flow is homogeneous in the azimuthal direction, an FFT in $\theta$ gives complex-valued azimuthal modes $\hat{u}_m(r,t)$.</li>
+<li><b>Result:</b> POD is performed independently for each $m$, reducing dimensionality and ensuring Hermitian symmetry for physical (real) reconstructions.</li>
+</ul>
+</div>
+<!-- Right Column START: Visual/Eq Box Shell -->
+<div style="flex: 1; background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+<div style="font-weight: bold; text-align: center; margin-bottom: 1em;">Spectral Decomposition</div>
+
+<p>
+\[u(r, \theta, t)
+= \sum_{m=-M}^{M} \hat{u}_m(r, t)\, e^{i m \theta},
+\qquad \hat{u}_{-m}=\hat{u}_m^{*}\]
+</p>
+
+
+<div style="font-size: 0.9em; text-align: center; color: #7f8c8d;">
+Real-valued physical fields require Hermitian symmetry across $m$.
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-org9894228">
+<h3 id="org9894228">Weighted Inner Product and Correlation Matrix</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+<!-- Left Column: Theory -->
+<div style="flex: 1;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Snapshot POD in Weighted $L^2$ Space
+</div>
+<p style="font-size: 1.1em; color: #34495e;">
+To preserve kinetic-energy orthogonality in cylindrical coordinates, the POD uses a weighted inner product
+with weight matrix $W = \mathrm{diag}(r_1\Delta r,\dots,r_{N_r}\Delta r)$ representing both geometry ($r$) and quadrature ($\Delta r$).
+</p>
+<div style="margin-top: 1em; padding: 10px; background-color: #eef2f5; border-left: 5px solid #2c3e50;">
+<b>Snapshot Matrix:</b> $X = [\hat{u}_1,\,\hat{u}_2,\dots,\hat{u}_{N_s}] \in \mathbb{C}^{N_r \times N_s}$. The radial coordinate $r$ acts as the weight $R$ in the inner product.
+</div>
+</div>
+
+<!-- Right Column: Equations -->
+
+<div style="flex: 1; text-align: center;">
+<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+<div style="font-weight: bold; color: #c0392b;">Weighted Inner Product</div>
+
+<p>
+\[\langle f, g\rangle_R
+= \int_0^R f^*(r)\, r\, g(r)\, dr
+\;\;\Longrightarrow\;\;
+\langle f, g\rangle_R = f^* W g\]
+</p>
+
+
+<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Continuous POD Eigenproblem</div>
+
+<p>
+\[\int_0^R C_m(r, r') \, \phi_{k,m}(r') \, r' \, dr' = \lambda_{k,m} \, \phi_{k,m}(r)\]
+</p>
+
+
+<div style="font-weight: bold; color: #c0392b; margin-top: 1em;">Weighted Correlation Matrix (Snapshot Method)</div>
+
+<p>
+\[K = X^\ast W X\]
+</p>
+
+<small style="color: #7f8c8d;">This ensures energy-consistent POD modes in cylindrical geometry.</small>
+
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-orgad31b2a">
+<h3 id="orgad31b2a">Eigenvalue Problem (Snapshot POD)</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+<!-- Left Column -->
+<div style="flex: 1;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Temporal Eigenproblem
+</div>
+<p style="font-size: 1.1em; color: #34495e;">
+Solving the snapshot POD eigenproblem gives the temporal coefficients as eigenvectors, and the modal energies as eigenvalues.
+If the mean field exists, it must be removed: $\hat{u}&#39; = \hat{u} - \overline{u}$.
+</p>
+</div>
+
+<!-- Right Column -->
+
+<div style="flex: 1; text-align: center;">
+<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+<div style="font-weight: bold; color: #2980b9;">Snapshot POD Eigenproblem</div>
+
+<p>
+\[K\, a^{(k)} = \lambda_k\, a^{(k)}\]
+</p>
+
+<small style="color: #7f8c8d;">$a^{(k)}$: temporal eigenvectors, $\lambda_k$: POD modal energies</small>
+
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-org851ddc2">
+<h3 id="org851ddc2">Back-Transformation to Physical Space</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+
+<!-- Left Column -->
+
+<div style="flex: 1;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Recovering Spectral Spatial Modes $\phi_k(r)$
+</div>
+<p style="font-size: 1.1em; color: #34495e;">
+The spectral spatial POD modes are recovered by projecting the eigenvectors back onto the snapshot matrix. These modes are functions of the radial coordinate $r$ only.
+</p>
+</div>
+
+<!-- Right Column -->
+
+<div style="flex: 1; text-align: center;">
+<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+<div style="font-weight: bold; color: #c0392b;">Spatial Mode (Correctly Normalized)</div>
+
+<p>
+\[\phi_k
+= \frac{1}{\sqrt{\lambda_k}}\, X\, a^{(k)}
+\quad\text{(if $K = X^\ast W X$ was used)}\]
+</p>
+
+
+<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Alternative (Weighted Projection)</div>
+
+<p>
+\[\phi_k
+= \frac{1}{\sqrt{\lambda_k}}\, W\, X\, a^{(k)}
+\quad\text{(if $K = X^\ast X$ was used)}\]
+</p>
+
+
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-org7fb86bf">
+<h3 id="org7fb86bf">Time Coefficients</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+
+<!-- Left Column -->
+
+<div style="flex: 1;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Recovering Temporal Dynamics
+</div>
+<p style="font-size: 1.1em; color: #34495e;">
+The time coefficients $b_k(t)$ (also called proper orthogonal values) represent the instantaneous amplitude of the corresponding spatial mode $\phi_k$. They are used for the final flow reconstruction.
+</p>
+</div>
+
+<!-- Right Column -->
+
+<div style="flex: 1; text-align: center;">
+<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+<div style="font-weight: bold; color: #c0392b;">Using Eigenvectors (Your Method)</div>
+
+<p>
+\[b_k(t_i) = a^{(k)}_i \sqrt{\lambda_k}\]
+</p>
+
+
+<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Via Weighted Projection (Alternative)</div>
+
+<p>
+\[b_k(t_i) = \langle \phi_k, \hat{u}_i \rangle_R
+= \phi_k^\ast W\, \hat{u}_i\]
+</p>
+
+
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-orgc07b0b4">
+<h3 id="orgc07b0b4">Field Reconstruction</h3>
+
+<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
+
+<!-- Left Column -->
+
+<div style="flex: 1;">
+<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
+Final Reconstruction and Visualization
+</div>
+<p style="font-size: 1.1em; color: #34495e;">
+The reconstructed spectral field is built from selected POD modes $k=1..P$ and azimuthal modes $m$.
+The final physical field is obtained via an inverse FFT in the azimuthal direction.
+</p>
+<div style="margin-top: 1em; padding: 10px; background-color: #fceceb; border-left: 5px solid #e74c3c;">
+<b>Implementation Note (from MATLAB code):</b> Due to the coordinate mapping or IFFT implementation, the final physical plot requires a $180^\circ$ rotation (or reflection in $y$) to align correctly with the original data, as seen in <code>plotReconstruction.m</code>.
+</div>
+</div>
+
+<!-- Right Column -->
+
+<div style="flex: 1; text-align: center;">
+<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+<div style="font-weight: bold; color: #c0392b;">Spectral Reconstruction</div>
+
+<p>
+\[\hat{u}_{recon}(r,t)
+= \sum_{m=M_\min}^{M_\max}
+  \sum_{k=1}^{P}
+  b_{k,m}(t)\,\phi_{k,m}(r)\]
+</p>
+
+
+<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Physical Reconstruction</div>
+
+<p>
+\[\tilde{u}_{recon}(r,\theta,t)
+= \mathrm{IFFT}_\theta\!\left[
+\hat{u}_{recon}(r,t)
+\right]\]
+</p>
+
+
+</div>
+</div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls:true, progress:true, slideNumber:true, transition:'fade',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
