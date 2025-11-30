@@ -181,7 +181,6 @@
 </div>
 #+END_EXPORT
 
-
 ** Background: Rotating Pipe Flow & Relaminarization
 :PROPERTIES:
 :reveal_slide_number: t
@@ -374,9 +373,8 @@
   <div class="column" style="flex:1;">
     <p><strong>Mesh Images</strong></p>
     <p>Non-uniform mesh (finer near walls)</p>
-    <img src="./f/g1.png" style="width:100%; height:auto;"/>
+    <img src="./im/grid1.png" style="width:100%; height:auto;"/>
     <p>Uniform, interpolated mesh for POD analysis</p>
-    <img src="./f/g2.png" style="width:100%; height:auto;"/>
   </div>
 </div>
 #+end_export
