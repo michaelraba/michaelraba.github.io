@@ -186,7 +186,6 @@ Table 1: Simulation Details (Streamwise Extend of $15D$)
     <p><strong>Mesh Images</strong></p>
     <p>Non-uniform mesh (finer near walls)</p>
     <img src="./im/grid1.png" style="width:100%; height:auto;"/>
-    <p>Uniform, interpolated mesh for POD analysis</p>
   </div>
 </div>
 #+end_export
