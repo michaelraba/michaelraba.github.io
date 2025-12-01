@@ -154,8 +154,9 @@ Table 1: Simulation Details (Streamwise Extend of $15D$)
 | 11,700 | 0.16–4.7/1.5–5.0/3.0–9.9 | 120 |
 | 19,000 | 0.15–4.5/1.5–4.8/3.0–10. | 440 |
 
----
-
+** Rotating Pipe Crosssection
+#+caption: Computed Rotating pipe from Nek5000, high resolution flow with $N_{\Delta x } = 20$ million hex elements
+[[./im/1011.animated.gif]]
 ** Computational Implementation (Nek5000)
 
 + The mesh is comprised of **hexahedral elements**.
