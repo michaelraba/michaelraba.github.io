@@ -98,7 +98,7 @@
 + Rotation Number / Swirl Rate ($N$)
 - Definition:
   $N = \frac{V_w}{U}$
-  (also referred to as swirl rate)
+  swirl rate in this study: $S=0,0.5,1,2,3$. These numbers were done before eg (Fatica 1997).
 - Characterizes the angular velocity $\Omega$ through the azimuthal velocity of the pipe inner wall:
   $V_\theta(r = R) = \frac{\Omega D}{2}$
 
