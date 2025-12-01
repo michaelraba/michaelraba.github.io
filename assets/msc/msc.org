@@ -1,18 +1,13 @@
 #+TITLE: POD Analysis of Turbulent Pipe Flow and Relaminarization
-#+AUTHOR: M. Raba
+#+AUTHOR: Michael Raba, MSc Candidate Department of Mechanical Engineering, University of Kentucky Fall 2025
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
 #+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
-
-
 #+REVEAL_THEME: serif
 #+REVEAL_EXTRA_CSS: style.css
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/
 #+REVEAL_INIT_OPTIONS: controls:true, progress:true, slideNumber:true, transition:'fade'
 #+OPTIONS: toc:nil num:nil
-
-
-
 #+HTML_HEAD: <style>
 #+HTML_HEAD: .reveal .MathJax_Display {
 #+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
@@ -21,8 +16,6 @@
 #+HTML_HEAD:     font-size: 65%; /* Adjust this value as needed */
 #+HTML_HEAD: }
 #+HTML_HEAD: </style>
-
-
 #+LATEX_HEADER:\setcounter{MaxMatrixCols}{20}
 # #+latex_header: \mode<beamer>{\usetheme{league}}
 # #+latex_header:\usepackage{xeCJK}
@@ -33,7 +26,6 @@
 # #+latex_header:\setsansfont{SF UI Text}
 # #+latex_header: \setbeamerfont{section}{size=\scriptsize,series=\bfseries,parent=structure}
 # #+latex_header: \setbeamerfont{section}{font=EB Garamond}
-
 #+latex_header: \usepackage{setspace}
 #+latex_header: \onehalfspacing
 #+OPTIONS: toc:nil
@@ -78,7 +70,7 @@
 
 * Abstract
 :PROPERTIES:
-:reveal_background: ./tyr.png
+:reveal_background: ./green.jpg
 :reveal_background_size: cover
 :END:
 
@@ -86,288 +78,93 @@
 + The simulation is performed by spectral finite element package Nek5000, a high fidelity DNS simulation, fifth order accurate in space and second order accurate in time.
 + A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points.
 + Numerical Method has been tested by previous authors Davis 2017 et al.
-+ When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation.
-+ Through Proper orthogonal decomposition, which decomposes the velocity field $u_{\theta}, u_r, u_x$, show  large scale motions (LSM) leading the transport or vorticity away from the pipe wall.
++ When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation for low rotation numbers
++ Through a ROM (reduced order method) FFT-POD, which decomposes the velocity field $u_{\theta}, u_r, u_x$ into ordered energy modes, show large scale motions (LSM) leading the transport or vorticity away from the pipe wall.
 
+* Background
 
-* Background and Motivation
-#+caption: Rotating Boundary condition animation ($N=3$)
-  [[./gif/5300S0.gif]]
+** Introduction to Axially Rotating Pipe Flow
+- Flow configuration: The axis of rotation is parallel to the mean flow direction.
+- Laminar flow behavior:
+  - The axial mean flow is not directly affected by rotation.
+  - The axial velocity profile remains the laminar parabolic profile (Poiseuille flow):
+    $u_z(r) = U_{\text{max}}\left(1 - \frac{r^2}{R^2}\right)$
 
-** Literature Review
-#+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+** Reynolds Number $Re$ and Swirl Rate $N$
+- Definition:
+  $Re = \frac{U D}{\nu}$
+- Based on mean bulk velocity $U$, pipe diameter $D$, and kinematic viscosity $\nu$.
 
-  <!-- LEFT column: Context & Relevance -->
-  <div style="flex: 1; border-left: 6px solid #9467bd; background: rgba(148, 103, 189, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
-    <div style="font-size: 1.2em; font-weight: bold; color: #9467bd;">
-      <i>Background and Motivation</i>
-    </div>
++ Rotation Number / Swirl Rate ($N$)
+- Definition:
+  $N = \frac{V_w}{U}$
+  (also referred to as swirl rate)
+- Characterizes the angular velocity $\Omega$ through the azimuthal velocity of the pipe inner wall:
+  $V_\theta(r = R) = \frac{\Omega D}{2}$
 
-    <div><b>Talk Title:</b> POD Analysis of Turbulent Pipe Flow</div>
-    <div><b>Why Rotating Pipe Flow?</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Simple geometry, yet rich in turbulent dynamics</li>
-      <li>Ideal for studying rotation-induced turbulence suppression</li>
-      <li>Relevant to aerospace, combustion, and industrial flows</li>
-    </ul>
+** Laminar vs. Turbulent Flow Behavior
+- Initially laminar flow can be destabilized by rotation.
+- Initially turbulent flow can be seemingly relaminarized for sufficiently large $N$.
+- Turbulence suppression is observed as a reduction in turbulence intensity and mixing length, related to the Richardson number $Ri$.
 
-    <div><b>Historical Observations:</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Rotation reduces skin friction and pressure loss</li>
-      <li>Experiments (e.g., White 1964, Kikuyama et al. 1983) showed relaminarization at high rotation rates</li>
-    </ul>
-  </div>
+** Turbulence and Relaminarization
+- Significance: Axially rotating pipe flow is a prototypical case to study relaminarization mechanisms.
+- Centrifugal and near-wall effects:
+  - Modifications of near-wall flow structures contribute to relaminarization.
+  - Centrifugal forces influence mean flow and turbulence dynamics.
+- Numerical methods:
+  - RANS and wall-resolved LES fail to capture the turbulence-suppression physics.
+  - DNS can effectively study rotation effects on turbulent structures.
+- Research gap: Prior DNS studies were restricted to relatively low $Re$ and $N$; this work provides detailed DNS at larger $Re$ and varying $N$.
 
-  <!-- RIGHT column: Research Gaps & Objectives -->
-  <div style="flex: 1; border-left: 6px solid #8c564b; background: rgba(140, 86, 75, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
-    <div style="font-size: 1.1em; font-weight: bold; color: #8c564b;">
-      <i>Research Gaps & Objectives</i>
-    </div>
+** Key Experimental Findings
+- White (1964): Up to $40\%$ reduction in pressure loss at very high rotation numbers due to suppressed radial transport.
+- Kikuyama et al. (1983): Initially turbulent flow can relaminarize at high $N$, while initially laminar flow can destabilize.
+- Imao et al. (1996): Reduced turbulence intensity with increasing rotation rate; verified relation between reduced mixing length and $Ri$.
+- Facciolo et al. (2007): Mean velocity distributions agree with Lie-group scaling laws (Oberlack 1999, 2001).
 
-    <div><b>Challenges:</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Limited DNS studies at moderate-to-high Reynolds numbers</li>
-      <li>RANS/LES models struggle to capture suppression mechanisms</li>
-    </ul>
-
-    <div><b>Goals of This Work:</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Use DNS to quantify turbulence suppression</li>
-      <li>Apply POD to identify dominant coherent structures</li>
-      <li>Provide benchmark data for turbulence model validation</li>
-    </ul>
-
-    <div style="margin-top: 1em; font-size: 0.95em;">
-      <i>This study bridges the gap between high-fidelity simulations and reduced-order modeling of rotating turbulent flows.</i>
-    </div>
-  </div>
-
-</div>
-#+END_EXPORT
+** Numerical Simulation Results (Prior Studies)
+- Scope: Few numerical studies compared to spanwise rotating channel flow.
+- DNS prior studies: $Re \le 7400$, typically low $N$, observed partial turbulence suppression but not full relaminarization.
+- Orlandi & Fatica (1997): DNS up to $N = 2$ (later $N = 10$) at $Re = 4900$; mean streamwise velocity approached laminar Poiseuille profile.
+- Feiz et al. (2005): DNS at $Re = 4900$ and $Re = 7400$; LES at $Re = 20,000$ showed stronger skin-friction reduction with increasing $N$ at higher $Re$.
+- Observations:
+  - Tangential velocity profiles are similar across $Re$.
+  - Differences between experimental and DNS data partially due to flow condition uncertainties and measurement locations.
 
 
 
+*  DNS of Rotating Turbulent Flow
+** Setup
++ The study investigated **physical phenomena in a rotating turbulent flow** using **Direct Numerical Simulation (DNS)** at three Reynolds numbers ($\text{Re}$): **5,300, 11,700**.
++ Simulations assumed **fully-developed turbulent flow** and employed **periodic boundaries in the streamwise direction**.
++ The **incompressible Navier-Stokes equations** are solved in a reference frame **rotating with the pipe walls**.
+  + **Centrifugal and Coriolis forces** were included as **source terms**.
++ **Sufficient temporal and spatial resolution** was crucial for accurately studying the intricate nature of turbulence.
++ The **computational meshes** ensured the **wide range of turbulent scales** are well resolved, with grid spacing close to $\Delta y^+ = 1$.
+  + **Grid resolution and sizes ($N_{\Delta x}$) are provided in Table 1** (details below).
+  + Radial ($\Delta r^+$), azimuthal ($\Delta R\Theta^+$), and streamwise ($\Delta z^+$) grid spacings are reported in **$y^+$-units**.
+  + **Different ranges** for the grid spacings are provided because the mesh is **non-uniform** within the computational domain.
++ To obtain **fully-converged turbulent statistics**, a total compute time of **at least ten flow-through times** was used (excluding the initial transient time).
 
-** DNS Turbulent Model
-#+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+Table 1: Simulation Details (Streamwise Extend of $15D$)
 
-  <!-- LEFT column: Simulation Context -->
-  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
-    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
-      <i>DNS Configuration: Rotating Turbulent Pipe Flow</i>
-    </div>
+| $\text{Re}$ | $\Delta r^+$/ $\Delta R\Theta^+$/ $\Delta z^+$ | $N_{\Delta x} \times 10^6$ |
+| 5,300 | 0.14–4.4/1.5–4.5/3.0–9.9 | 20 |
+| 11,700 | 0.16–4.7/1.5–5.0/3.0–9.9 | 120 |
+| 19,000 | 0.15–4.5/1.5–4.8/3.0–10. | 440 |
 
-    <div><b>Flow Type:</b> Axially rotating turbulent pipe flow</div>
-    <div><b>Solver:</b> Nek5000 (Spectral Element Method)</div>
-    <div><b>Reynolds Numbers:</b> 5,300 and 11,700</div>
-    <div><b>Rotation Numbers (N):</b> 0 to 3</div>
-    <div><b>Domain:</b> Streamwise extent of 15D, periodic boundaries;  longer domains needed to capture elongated structures and reach statistical steady state</div>
+---
 
-    <div><b>Purpose:</b> Study turbulence suppression and provide DNS benchmark data</div>
-  </div>
+** Computational Implementation (Nek5000)
 
-  <!-- RIGHT column: Numerical & Grid Setup -->
-  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px; display: flex; flex-direction: column; gap: 1em;">
-    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
-      <i>Numerical & Grid Details</i>
-    </div>
-
-    <div><b>Time Integration:</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Viscous terms: BDF3 (implicit)</li>
-      <li>Nonlinear terms: Explicit extrapolation (3rd order)</li>
-    </ul>
-
-    <div><b>Grid Resolution (wall units y⁺):</b></div>
-    <ul style="margin-left: 1em;">
-      <li>Radial: 0.14–4.4 (Re = 5300), 0.16–4.7 (Re = 11,700)</li>
-      <li>Azimuthal: 1.5–5.0</li>
-      <li>Streamwise: 3.0–9.9</li>
-    </ul>
-
-    <div><b>Mesh:</b> Hexahedral elements with high-order tensor polynomials</div>
-    <div><b>Parallelization:</b> MPI with auto-tuned algorithms</div>
-    <div><b>Pressure Solver:</b> Algebraic Multigrid (AMG)</div>
-    <div><b>Temporal Averaging:</b> Over 6.5 flow-throughs (after transient)</div>
-  </div>
-
-</div>
-#+END_EXPORT
-
-** Background: Rotating Pipe Flow & Relaminarization
-:PROPERTIES:
-:reveal_slide_number: t
-:END:
-
-#+begin_export html
-<div style="column-count:2; column-gap:3em; font-size:90%;">
-<p><strong>Scientific Context</strong></p>
-<ul>
-<li>Rotating pipe flow is a canonical system for studying flow stabilization and relaminarization.</li>
-<li>Rotation modifies turbulence production and redistributes momentum through Coriolis and centrifugal effects.</li>
-<li>Relaminarization occurs when rotation suppresses the near-wall turbulence regeneration cycle.</li>
-</ul>
-
-<p><strong>Key Phenomena</strong></p>
-<ul>
-<li>Competition between destabilizing wall shear and stabilizing radial pressure gradients.</li>
-<li>Reduction in Reynolds stresses and near-wall streaks at high rotation rates (because of drag reduction Fatica 97).</li>
-<li>Relaminarized or quasi-laminar states can persist at high Reynolds numbers.</li>
-</ul>
-</div>
-
-<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
-<div style="font-size:70%; line-height:1.3;">
-[1] White (1964), <em>J. Fluid Mech.</em> — early rotating pipe experiments.
-[2] Kikuyama et al. (1983), <em>JSME Int. J.</em> — visualization of relaminarization.
-[3] Imao (1996), <em>Exp. Fluids</em> — centrifugal stabilization and mean profiles.
-</div>
-#+end_export
-
-
-** DNS, Theory, and Modal Decomposition
-:PROPERTIES:
-:reveal_slide_number: t
-:END:
-
-#+begin_export html
-<div style="column-count:2; column-gap:3em; font-size:90%;">
-<p><strong>DNS and Analytical Foundations</strong></p>
-<ul>
-<li>DNS captures relaminarization at Re = 10⁴–10⁵ under rotation.</li>
-<li>Scaling and symmetry analyses (Oberlack, 1999; 2001) relate turbulence structure to invariants.</li>
-<li>Hellström et al. (2017) provide reproducible experimental and DNS methodology for relaminarization.</li>
-</ul>
-
-<p><strong>Modal Analysis (POD)</strong></p>
-<ul>
-<li>Proper Orthogonal Decomposition (POD) identifies energy-dominant coherent structures.</li>
-<li>Developed by Lumley (1967); extended by Taira et al. (2017) for complex turbulent systems.</li>
-<li>Recent studies (Brehm 2019; Ashton 2019) combine DNS and POD for energy transfer diagnostics.</li>
-</ul>
-</div>
-
-<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
-<div style="font-size:70%; line-height:1.3;">
-[1] Orlandi & Fatica (1997), <em>J. Fluid Mech.</em> — first DNS of rotating pipe turbulence.
-[2] Feiz & Tavoularis (2005), <em>Phys. Fluids</em> — DNS of turbulent pipe under rotation.
-[3] Hellström et al. (2017), <em>Phys. Rev. Fluids</em> — experimental/DNS methodology for relaminarization.
-[4] Oberlack (1999; 2001), <em>J. Fluid Mech.</em> — scaling and symmetry theory.
-[5] Lumley (1967), <em>Atmos. Turbulence</em>; Taira et al. (2017), <em>AIAA J.</em>
-</div>
-#+end_export
-
-
-** Control & Transition Mechanisms
-:PROPERTIES:
-:reveal_slide_number: t
-:END:
-
-#+begin_export html
-<div style="column-count:2; column-gap:3em; font-size:90%;">
-<p><strong>Mechanistic Understanding</strong></p>
-<ul>
-<li>Rotation alters the balance of production and dissipation terms in the turbulent kinetic energy budget.</li>
-<li>Flow control studies show relaminarization through imposed swirl or wall rotation.</li>
-<li>Experimental relaminarization occurs by suppression of near-wall vortices and streak breakdown.</li>
-</ul>
-
-<p><strong>Recent Advances</strong></p>
-<ul>
-<li>Kühnen et al. (2014, 2018) demonstrated full relaminarization through wall rotation and suction control.</li>
-<li>These results motivate DNS-based exploration of transient energy transfer and POD modal evolution.</li>
-<li>Ongoing studies bridge classical rotation control and modern data-driven modal analysis.</li>
-</ul>
-</div>
-
-<hr style="margin-top:2em; border:none; border-top:1px solid #ccc;">
-<div style="font-size:70%; line-height:1.3;">
-[1] Kühnen et al. (2014; 2018), <em>Nat. Phys.</em> — experimental control and relaminarization.
-[2] Brehm (2019); Ashton (2019) — POD analysis of relaminarizing turbulence.
-[3] Kolmogorov (1941), <em>Dokl. Akad. Nauk SSSR</em> — statistical theory foundation.
-</div>
-#+end_export
-
-* Method Spectral Element Direct Numerical Simulation (DNS)
-** Slide 1: Introduction
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-    <p><strong>Background</strong></p>
-    <ul>
-      <li>Transition and relaminarization in rotating pipe flows depend on rotation rate and Reynolds number.</li>
-      <li>Relaminarization can occur when imposed swirl suppresses near-wall turbulence production.</li>
-      <li>Applications: rotating heat exchangers, turbomachinery, compact fluid systems.</li>
-    </ul>
-  </div>
-  <div class="column" style="width:48%; float:right;">
-    <p><strong>Governing Equations</strong></p>
-    \begin{align}
-    \nabla \cdot \mathbf{u} &= 0, \\
-    \frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u}\cdot\nabla)\mathbf{u} &= -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} - 2 \boldsymbol{\Omega}\times\mathbf{u}
-    \end{align}
-    <p style="font-size:small;">References: Alfredsson & Persson (1989)[1], Johnston et al. (1972)[2]</p>
-  </div>
-</div>
-#+end_export
-
-** Slide 2: Spectral Element Method (DNS)
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-    <p><strong>Simulation Setup</strong></p>
-    <ul>
-      <li>Circular pipe: D=1, L=12D</li>
-      <li>Re = 5300, 12700, non-slip wall</li>
-      <li>Legendre basis, polynomial order 6</li>
-      <li>Non-uniform mesh finer near wall to capture Kolmogorov/Taylor scales</li>
-    </ul>
-  </div>
-  <div class="column" style="width:48%; float:right;">
-    <p><strong>Navier-Stokes in Cylindrical Coordinates</strong></p>
-    \begin{align}
-    \frac{\partial w}{\partial t} + w \frac{\partial w}{\partial r} + \frac{v}{r} \frac{\partial w}{\partial \theta} + u \frac{\partial w}{\partial x} - \frac{v^2}{r} &= -\frac{1}{\rho} \frac{\partial p}{\partial r} + \nu \left(\mathcal{D} w - \frac{w}{r^2} - \frac{2}{r^2}\frac{\partial v}{\partial \theta} \right) - 2\Omega v \\
-    \frac{\partial v}{\partial t} + w \frac{\partial v}{\partial r} + \frac{vw}{r} + \frac{v}{r} \frac{\partial v}{\partial \theta} + u \frac{\partial v}{\partial x} &= -\frac{1}{\rho r} \frac{\partial p}{\partial \theta} + \nu \left(\mathcal{D} v - \frac{v}{r^2} + \frac{2}{r^2}\frac{\partial w}{\partial \theta} \right) + 2\Omega w \\
-    \frac{\partial u}{\partial t} + w \frac{\partial u}{\partial r} + \frac{v}{r} \frac{\partial u}{\partial \theta} + u \frac{\partial u}{\partial x} &= -\frac{1}{\rho} \frac{\partial p}{\partial x} + \nu \mathcal{D} u
-    \end{align}
-    <p style="font-size:small;">References: Kundu (2015)[3], Hellström et al. (2017)[4]</p>
-  </div>
-</div>
-#+end_export
-
-** Slide 3: Mesh and Simulation Details
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-    <p><strong>Mesh Details</strong></p>
-    <ul>
-      <li>Non-uniform grid denser near walls</li>
-      <li>Grid spacings (y+) for streamwise extent of 15D</li>
-      <li>Example: Re=5300, Δr⁺=0.14–4, Δθ⁺=1.5–4.5, Δz⁺=3–9.9</li>
-    </ul>
-  </div>
-  <div class="column" style="width:48%; float:right;">
-    <p><strong>Boundary Conditions</strong></p>
-    \begin{align}
-    u_r(R) &= 0, \\
-    u_\theta(R) &= \Omega R, \\
-    u_x(R) &= 0
-    \end{align}
-    <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall, incompressible flow</p>
-  </div>
-</div>
-
-<hr>
-<div style="font-size:0.8em;">
-[1] Alfredsson & Persson, 1989.<br>
-[2] Johnston et al., 1972.<br>
-[3] Kundu, 2015, <em>Fluid Mechanics</em>.<br>
-[4] Hellström et al., 2017, J. Fluid Mech. 829:164–188.
-</div>
-#+end_export
-
++ The mesh is comprised of **hexahedral elements**.
++ The solution is composed of **$N^{th}$-order tensor product polynomials** within each element.
++ The use of **local lexicographical ordering** within each macro element, and only evaluating $O(EN^4)$ discrete operators (which typically have $O(EN^6)$ non-zeros), leads to **cache and vectorization efficiency**.
++ The code (**Nek5000**) minimally uses external libraries to increase **compile speed**.
++ **Matrix operations** are implemented in **assembler code $M \times M$ routines** to speed up computations.
++ **Parallelism is automatically tuned** for each machine by testing the three available parallel algorithms at the beginning of each run to determine the optimal one.
++ The **algebraic multi-grid solver** was chosen from the different pressure Poisson solvers available in Nek5000 for this work.
 ** DNS Mesh
 #+begin_export html
 <div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
@@ -394,579 +191,87 @@
 </div>
 #+end_export
 
+* POD–FFT Procedure
 
-** Grid Spacing and Boundary Conditions
+** ROM
+Goal: Reduce an infinite-dimensional vector space problem in 3D with infinite degrees of freedom to a finite, small-scale linear algebra problem defined by the temporal correlation matrix ($N_s​\times N_s$​), which can be solved efficiently using linear algebra
+** POD Definition
+The fundamental definition of the Proper Orthogonal Decomposition involves finding the basis functions ($\hat{\boldsymbol{\phi}}_k$) that maximize the energy projection, which is equivalent to solving the integral eigenvalue problem:
 
-#+begin_export html
-<div class="columns"> <div class="column" style="width:48%; float:left;"> <p><strong>Grid Spacings (y⁺ units)</strong></p> <table border="1" style="border-collapse:collapse; width:100%;"> <thead> <tr> <th>Re</th> <th>Δr⁺ / Δθ⁺ / Δz⁺</th> <th>N Δt × 10⁶</th> </tr> </thead> <tbody> <tr> <td>5,300</td> <td>0.14–4 / 1.5–4.5 / 3–9.9</td> <td>20</td> </tr> <tr> <td>11,700</td> <td>0.15–4.5 / 1.5–4.8 / 3–10</td> <td>120</td> </tr> </tbody> </table> </div> <div class="column" style="width:48%; float:right;"> <p><strong>Boundary Conditions</strong></p> \begin{align} u_r(R) &= 0, \\ u_\theta(R) &= \Omega R, \\ u_x(R) &= 0 \end{align} <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall; incompressible flow</p> </div> </div>
-#+end_export
+$$\text{Maximize}_{\hat{\boldsymbol{\phi}}} \quad \frac{\langle |\mathbf{u} \cdot \hat{\boldsymbol{\phi}}|^2 \rangle_R}{\langle \hat{\boldsymbol{\phi}}, \hat{\boldsymbol{\phi}} \rangle_R}
+\quad \implies \quad
+\int_0^R \mathbf{R}(r, r') \, \hat{\boldsymbol{\phi}}_{k}(r') \, r' \, dr' = \lambda_{k} \, \hat{\boldsymbol{\phi}}_{k}(r)$$
 
-* Proper Orthogonal Decomposition
+Where:
 
-** POD Energy Modes
-#+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+- $\langle \cdot \rangle_R$ is the weighted (energy) inner product.
+- $\mathbf{R}(r, r')$ is the two-point correlation tensor of the flow field.
+- $\hat{\boldsymbol{\phi}}_{k}$ are the optimal spatial modes.
+- $\lambda_k$ is the energy (eigenvalue) associated with that mode
 
-  <!-- LEFT column: Direct POD Formulation -->
-  <div style="flex: 1; border-left: 6px solid #1f77b4; background: rgba(31, 119, 180, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-size: 1.2em; font-weight: bold; color: #1f77b4;">
-      <i>Direct POD Formulation</i>
-    </div>
++ We are searching for the single spatial structure $\hat{\phi}$ that contains the maximum fraction of the total average flow energy , ensuring the structure is normalized so it has unit energy itself. The resulting function ϕ^​ is the first POD mode, which is the most energetic coherent structure in the data set.
 
-    <p><b>(2.1)</b> Radial eigenvalue problem:</p>
-    $$ \int S(k, m; r, r') \, \Phi_n(k, m; r') \, r' \, dr' = \lambda_n(k, m) \, \Phi_n(k, m; r) $$
++ This maximization problem is equivalent to the integral equation via calculus of variations Fredholm theory
+- Turbulent data is statistical stationary (Elliptic problem)
 
-    <p><b>(2.2)</b> Cross-correlation tensor:</p>
-    $$ S(k, m; r, r') = \lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k, m; r, t) \, \mathbf{u}^*(k, m; r', t) \, dt $$
+** Snapshot POD: Temporal Solution and Mode Construction
 
-    <p><b>(2.3)</b> POD coefficient projection:</p>
-    $$ \alpha_n(k, m; t) = \int \mathbf{u}(k, m; r, t) \, \Phi_n^*(k, m; r) \, r \, dr $$
-  </div>
+The Snapshot Proper Orthogonal Decomposition method solves two interconnected equations to find the optimal basis set.
 
-  <!-- RIGHT column: Snapshot POD & Conditional Mode -->
-  <div style="flex: 1; border-left: 6px solid #ff7f0e; background: rgba(255, 127, 14, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-size: 1.1em; font-weight: bold; color: #ff7f0e;">
-      <i>Snapshot POD & Conditional Mode</i>
-    </div>
+1. Temporal Eigenvalue Problem (Eq. 2.4)
 
-    <p><b>(2.4)</b> Time-domain eigenvalue problem:</p>
-    $$ \int R(k, m; t, t') \, \alpha_n(k, m; t') \, dt' = \lambda_n(k, m) \, \alpha_n(k, m; t) $$
+The process begins by solving the temporal eigenvalue problem using the correlation tensor $\mathbf{R}(t, t')$ (the discrete matrix $K$ in implementation). The solution yields the eigenvalues ($\lambda^{(n)}$) and the raw temporal eigenvectors ($\alpha^{(n)}$):
 
-    <p><b>(2.5)</b> Mode reconstruction:</p>
-    $$ \int \mathbf{u}^T(k, m; r, t) \, \alpha_n^*(k, m; t) \, dt = \Phi_n^T(k, m; r) \, \lambda_n(k, m) $$
+$$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{R}(k; m; t, t') \alpha^{(n)}(k; m; t') \, dt' = \lambda^{(n)}(k; m) \alpha^{(n)}(k; m; t) \tag{2.4}$$
 
-    <p><b>(2.6)</b> Conditional mode definition:</p>
-    $$ \Psi_n(m; \xi, r) = \lim_{\chi \to \infty} \frac{1}{\chi} \int_0^\chi \int_0^\tau \mathbf{u}^T(m; r, x+\xi, t) \, \alpha_n(m; x, t) \, dt \, dx $$
-  </div>
+2. Spatial Mode Construction (Eq. 2.5)
 
-</div>
-#+END_EXPORT
+The spatial modes ($\mathbf{\Phi}_T^{(n)}$) are then constructed by projecting the temporal eigenvectors back onto the snapshot matrix $\mathbf{u}_T$ (which represents all flow snapshots):
 
+$$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_T(k; m; r, t) \alpha^{(n)*}(k; m; t) \, dt = \mathbf{\Phi}_T^{(n)}(k; m; r) \lambda^{(n)}(k; m) \tag{2.5}$$
 
-** FFT / POD Interpretation
-#+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
+** Necessity of Scaling for Flow Reconstruction
 
-  <!-- LEFT column: FFT Decomposition -->
-  <div style="flex: 1; border-left: 6px solid #17becf; background: rgba(23, 190, 207, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-size: 1.2em; font-weight: bold; color: #17becf;">
-      <i>FFT Decomposition in Pipe Flow</i>
-    </div>
+The final step for flow reconstruction is to obtain the physical time coefficient, $b_k(t)$, from the eigenvector $\alpha^{(n)}(t)$.
 
-    <p><b>Azimuthal FFT:</b></p>
-    <ul style="margin-left: 1em;">
-      <li>Exploits rotational symmetry of the pipe</li>
-      <li>Azimuthal mode number <i>m</i> defines spanwise length scale</li>
-      <li>Highlights circumferential structure and periodicity</li>
-    </ul>
+Equation (2.5) shows that the spatial mode $\mathbf{\Phi}_T^{(n)}$ is multiplied by the eigenvalue $\lambda^{(n)}$. To separate the normalized mode from the energy and obtain the physical time coefficient for reconstruction, the raw eigenvector must be scaled:
 
-    <p><b>Streamwise FFT:</b></p>
-    <ul style="margin-left: 1em;">
-      <li>Captures axial periodicity and wavelength</li>
-      <li>Mode number <i>k</i> relates to streamwise extent of structures</li>
-      <li>Useful for identifying repeating patterns like VLSMs</li>
-    </ul>
+Eigenvector Scaling: The raw eigenvector $\alpha^{(n)}(t)$ is a unit vector that only defines the relative time evolution.
 
-    <p><b>Why FFT?</b></p>
-    <ul style="margin-left: 1em;">
-      <li>Geometry-driven decomposition</li>
-      <li>Modes are known a priori due to symmetry</li>
-      <li>Accelerates POD convergence</li>
-    </ul>
-  </div>
+Physical Amplitude: Scaling it by $\sqrt{\lambda^{(n)}}$ converts it into the true physical time coefficient $b_k(t)$, which carries the mode's instantaneous kinetic energy.
 
-  <!-- RIGHT column: POD Characteristics -->
-  <div style="flex: 1; border-left: 6px solid #bcbd22; background: rgba(188, 189, 34, 0.05); padding: 1em 1.5em; border-radius: 8px;">
-    <div style="font-size: 1.1em; font-weight: bold; color: #bcbd22;">
-      <i>Proper Orthogonal Decomposition (POD)</i>
-    </div>
+The Final Step: Only these scaled coefficients $b_{k,m}(t)$ are correctly used in the final summation to reconstruct the velocity field.
 
-    <p><b>Nature of POD Modes:</b></p>
-    <ul style="margin-left: 1em;">
-      <li>Data-driven: extracted from simulation or experiment</li>
-      <li>Ranked by energy content (most energetic first)</li>
-      <li>Capture coherent structures across scales</li>
-    </ul>
+$$\text{Required Time Coefficient: } \quad b_k(t) = \alpha^{(k)}(t) \cdot \sqrt{\lambda_k}$$
 
-    <p><b>Snapshot POD:</b></p>
-    <ul style="margin-left: 1em;">
-      <li>Assumes separability of space and time</li>
-      <li>Reduces computational cost by working in time domain</li>
-      <li>Enables modal analysis of large datasets</li>
-    </ul>
+$$\text{Used in Reconstruction: } \quad \tilde{\mathbf{u}}_{recon} \propto \sum_{k} b_{k}(t)\,\mathbf{\Phi}_{k}(r)$$
 
-    <p><b>Complementarity:</b></p>
-    <ul style="margin-left: 1em;">
-      <li>FFT modes reflect geometry</li>
-      <li>POD modes reflect physics and energy distribution</li>
-      <li>Combined FFT-POD approach enhances interpretability</li>
-    </ul>
-  </div>
+** Spatial Decoupling
 
-</div>
-#+END_EXPORT
++ Spectral Decoupling: The three-dimensional flow field is first decomposed into a set of independent, complex, two-dimensional fields
 
-** Proper Orthogonal Decomposition (POD)
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-  <p><strong>POD Overview</strong></p>
-  <ul>
-    <li>Decomposes turbulent velocity field to a reduced order model (ROM)</li>
-    <li>Orthogonal basis captures dominant flow patterns <sup>1</sup></li>
-    <li>Snapshot POD faster convergence than classical POD</li>
-    <li>Hybrid FFT-POD: Fourier modes in θ, POD in radial direction</li>
-  </ul>
-  </div>
+  - (azimuthal modes, $\hat{\mathbf{u}}_m(r,t)$) using a Fast Fourier Transform (FFT) in the homogeneous direction.
+  - This step drastically reduces the dimensionality of the subsequent POD problem by solving for each mode $m$ separately.
 
-  <div class="column" style="width:48%; float:right;">
-  <p><strong>Snapshot POD: Hilbert Space</strong></p>
-  <div class="math">
-  $$\langle q_1, q_2 \rangle_{r,t} = \int q_1 q_2^* r \, dr \, dt$$
-  $$\lambda = \frac{ E\{ | q(r,t) , \Phi(r,t) |^2 \} }{ \langle \Phi(r,t), \Phi(r,t) \rangle_{r,t} }$$
-  $$\int R(t,t') \Phi(t')\,dt = \lambda \Phi(t)$$
-  </div>
-  </div>
-</div>
-
-<hr>
-<div style="font-size:0.8em;">
-[1] Lumley, 1967; [2] Taira et al., 2017.
-</div>
-#+end_export
-
-** Snapshot POD: Eigenvalue Problem
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-  <p><strong>Direct POD Equation</strong></p>
-  <div class="math">
-  $$\int_{r'} \mathbf{S}(k; m; r, r') \Phi^{(n)}(k; m; r') r' dr' = \lambda^{(n)}(k;m) \Phi^{(n)}(k; m; r)$$
-  $$\mathbf{S}(k; m; r, r') = \lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}(k; m; r, t) \mathbf{u}^*(k; m; r', t) dt$$
-  </div>
-  </div>
-
-  <div class="column" style="width:48%; float:right;">
-  <p><strong>Temporal Coefficients</strong></p>
-  <div class="math">
-  $$\alpha^{(n)}(k; m; t) = \int_r \mathbf{u}(k; m; r, t) \Phi^{(n)^*}(k; m; r) r dr$$
-  $$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_T(k; m; r, t) \alpha^{(n)^*}(k; m; t) dt = \Phi_T^{(n)}(k; m; r) \lambda^{(n)}(k;m)$$
-  </div>
-  </div>
-</div>
-
-<hr>
-<div style="font-size:0.8em;">
-[1] Lumley, 1967; [2] Taira et al., 2017; [3] Tutkun & George, 2001; [4] Hellström & Smits, 2014.
-</div>
-#+end_export
-
-** Classical POD Form
-#+begin_export html
-<div class="columns">
-  <div class="column" style="width:48%; float:left;">
-  <p><strong>Correlation Tensor</strong></p>
-  <div class="math">
-  $$\int_{r'} \mathbf{S}(k; m; r, r') \Phi^{(n)}(k; m; r') r' dr' = \lambda^{(n)}(k; m) \Phi^{(n)}(k; m; r)$$
-  $$\int_{r'} W_{i,j}(r,r') \hat{\phi}_j^{*(n)}(r') dr' = \hat{\lambda}^{(n)}(m;f) \hat{\phi}_i^{(n)}(r,m;f)$$
-  </div>
-  </div>
-
-  <div class="column" style="width:48%; float:right;">
-  <p><strong>Time Coefficient</strong></p>
-  <div class="math">
-  $$\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau (r^{1/2} \mathbf{u}(m;r,t), r^{1/2}\mathbf{u}(m;r,t')) \alpha_n(m;t') dt' = \lambda_n(m) \alpha_n(m;t)$$
-  $$\alpha_n(m;t) = \int_r \mathbf{u}(m;r,t) r^{1/2} \Phi_n^*(m;r) dr$$
-  </div>
-  </div>
-</div>
-
-<hr>
-<div style="font-size:0.8em;">
-[1] Tutkun & George, 2001; [2] Hellström & Smits, 2014.
-</div>
-#+end_export
-
-* POD Formulation: Weighted \(L^2\) Structure
-** POD Formulation: Weighted \(L^2\) Structure
-
-#+BEGIN_EXPORT html
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
-
-<!-- Left Column -->
-<div style="flex: 1; text-align: left;">
-
-<div style="font-size: 1.4em; font-weight: bold; color: #2980b9; margin-bottom: 0.5em;">
-Deriving POD Coefficients in Weighted \(L^2\)
-</div>
-
-<p style="font-size: 1.05em; color: #34495e; line-height: 1.5;">
-We begin with the spatiotemporal correlation tensor
-defined for each azimuthal and axial wavenumber pair \((k,m)\):
-</p>
-
-<div style="background: #f5faff; padding: 12px; border-radius: 8px; border: 1px solid #b5d0ea;">
-\[
-S(k;m;r,r') = \lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau
-u(k;m;r,t)\,u^*(k;m;r',t)\, dt
-\tag{2.2}
-\]
-</div>
-
-<p style="font-size: 1.05em; margin-top: 1em; color: #34495e;">
-The method of snapshots assumes separability in space and time,
-leading to the projection coefficients:
-</p>
-
-<div style="background: #f5faff; padding: 12px; border-radius: 8px; border: 1px solid #b5d0ea;">
-\[
-\alpha^{(n)}(k;m;t)
-= \int_r u(k;m;r,t)\,\phi^{(n)*}(k;m;r)\,dr
-\tag{2.3}
-\]
-</div>
-
-</div>
-
-<!-- Right Column -->
-<div style="flex: 1; background: #fff8e8; padding: 20px; border-radius: 8px; border: 1px solid #e0b872;">
-
-<div style="font-weight: bold; font-size: 1.25em; color: #d35400;">
-Reformulated Eigen Problem
-</div>
-
-<p style="font-size: 1.05em; color: #5a4e3c; line-height: 1.5; margin-top: 10px;">
-The temporal correlation tensor is
-</p>
-
-<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
-\[
-R(k;m;t,t') = \int_r u(k;m;r,t)\,u^*(k;m;r,t')\,dr
-\]
-</div>
-
-<p style="font-size: 1.05em; margin-top: 1em; color: #5a4e3c;">
-The POD coefficients satisfy
-</p>
-
-<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
-\[
-\lim_{\tau\to\infty} \frac{1}{\tau}\int_0^\tau
-R(k;m;t,t')\,\alpha^{(n)}(k;m;t')\,dt'
-= \lambda^{(n)}(k;m)\,\alpha^{(n)}(k;m;t)
-\tag{2.4}
-\]
-</div>
-
-<p style="font-size: 1.05em; margin-top: 1em; color: #5a4e3c;">
-And the spatial modes recover as
-</p>
-
-<div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e0b872;">
-\[
-\phi^{(n)}_T(k;m;r)=
-\lim_{\tau\to\infty}\frac{1}{\tau}\int_0^\tau
-u_T(k;m;r,t)\,\alpha^{(n)*}(k;m;t)\,dt
-\tag{2.5}
-\]
-</div>
-
-</div>
-</div>
-#+END_EXPORT
-
-
-** Motivation: Large-Scale Motions in Pipe Flow
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-<!-- Left Column: Text -->
-<div style="flex: 1; text-align: left;">
-<div style="font-size: 1.4em; font-weight: bold; color: #e74c3c; margin-bottom: 0.5em;">
-Targeting Energetic Coherent Structures
-</div>
-<ul style="font-size: 1.1em; line-height: 1.6; color: #34495e;">
-<li><b>Context:</b> Turbulent pipe flow is dominated by Very-Large-Scale Motions (VLSMs), which contain a significant fraction of the turbulent kinetic energy.</li>
-<li><b>Take Care:</b> POD collapse infinite-d vector space to countable indexed vector space (property of compact operator). Operator must be symmetric, and compact with regard to the weighted infinite-d weighted inner product, not the cartestian inner product  </li>
-<li><b>Why POD?</b> Proper Orthogonal Decomposition (POD) provides the most efficient basis (in an \(L^2\) sense) to represent these energetic flow structures.</li>
-<li><b>Why FFT-POD?</b> FFT in azimuthal direction reduces problem further! Going from 3d problem to 1d problem in \(t\). </li>
-</ul>
-</div>
-<!-- Right Column: Key Takeaway -->
-<div style="flex: 1; background: #fff0f5; padding: 20px; border-radius: 8px; border: 1px solid #c93780; text-align: center;">
-<div style="font-weight: bold; font-size: 1.2em; color: #c93780;">
-LSM \(\Rightarrow\) small azimuthal wave number
-</div>
-<p style="font-size: 1.05em; color: #34495e; margin-top: 10px;">
-The largest structures in pipe flow are strongly associated with low azimuthal wavenumbers ($m$). We can recover a velocity component with good resolution with few number of POD modes (say 5), and a decent number of azimuthal modes (say around 25).
-</p>
-<small style="color: #7f8c8d;">This spectral separation is the foundation of the methodology.</small>
-</div>
-</div>
-#+END_EXPORT
-
-** Spectral Decomposition Approach
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-<!-- Left Column: Text -->
-<div style="flex: 1; text-align: left;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Theoretical Framework
-</div>
-<ul style="font-size: 1.1em; line-height: 1.6; color: #34495e;">
-<li><b>Objective:</b> Extract energetic coherent structures from turbulent pipe-flow data. </li>
-<li><b>Spectral Step:</b> Because the flow is homogeneous in the azimuthal direction, an FFT in $\theta$ gives complex-valued azimuthal modes \(\hat{u}_m(r,t)\).</li>
-<li><b>Result:</b> POD is performed independently for each \(m\), reducing dimensionality and ensuring Hermitian symmetry for physical (real) reconstructions.</li>
-</ul>
-</div>
-<!-- Right Column START: Visual/Eq Box Shell -->
-<div style="flex: 1; background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
-<div style="font-weight: bold; text-align: center; margin-bottom: 1em;">Spectral Decomposition</div>
-#+END_EXPORT
-
-$$u(r, \theta, t)
-= \sum_{m=-M}^{M} \hat{u}_m(r, t)\, e^{i m \theta},
-\qquad \hat{u}_{-m}=\hat{u}_m^{*}$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-size: 0.9em; text-align: center; color: #7f8c8d;">
-Real-valued physical fields require Hermitian symmetry across $m$.
-</div>
-</div>
-</div>
-#+END_EXPORT
-
-** Weighted Inner Product and Correlation Matrix
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-<!-- Left Column: Theory -->
-<div style="flex: 1;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Snapshot POD in Weighted \(L^2\) Space
-</div>
-<p style="font-size: 1.1em; color: #34495e;">
-To preserve kinetic-energy orthogonality in cylindrical coordinates, the POD uses a weighted inner product
-with weight matrix \( W = \mathrm{diag}(r_1\Delta r,\dots,r_{N_r}\Delta r) \) representing both geometry \( r \) and quadrature \( \Delta r \).
-</p>
-<div style="margin-top: 1em; padding: 10px; background-color: #eef2f5; border-left: 5px solid #2c3e50;">
-<b>Snapshot Matrix:</b>
-</div>
-\( X = [\hat{u}_1,\,\hat{u}_2,\dots,\hat{u}_{N_s}] \in \mathbb{C}^{N_r \times N_s} \). The radial coordinate \( r \) acts as the weight \( R \) in the inner product.
-</div>
-
-<!-- Right Column: Equations -->
-
-<div style="flex: 1; text-align: center;">
-<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-
-<div style="font-weight: bold; color: #c0392b;">Weighted Inner Product</div>
-#+END_EXPORT
-
-$$\langle f, g\rangle_R
-= \int_0^R f^*(r)\, r\, g(r)\, dr
-\;\;\Longrightarrow\;\;
-\langle f, g\rangle_R = f^* W g$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Continuous POD Eigenproblem</div>
-#+END_EXPORT
-
-$$\int_0^R C_m(r, r') \, \phi_{k,m}(r') \, r' \, dr' = \lambda_{k,m} \, \phi_{k,m}(r)$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-weight: bold; color: #c0392b; margin-top: 1em;">Weighted Correlation Matrix (Snapshot Method)</div>
-#+END_EXPORT
-
-$$K = X^\ast W X$$
-
-#+BEGIN_EXPORT html
-<small style="color: #7f8c8d;">This ensures energy-consistent POD modes in cylindrical geometry.</small>
-
-</div>
-</div>
-</div>
-#+END_EXPORT
-
-** Eigenvalue Problem (Snapshot POD)
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-<!-- Left Column -->
-<div style="flex: 1;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Temporal Eigenproblem
-</div>
-<p style="font-size: 1.1em; color: #34495e;">
-Solving the snapshot POD eigenproblem gives the temporal coefficients as eigenvectors, and the modal energies as eigenvalues.
-If the mean field exists, it must be removed: \(\hat{u}&#39; = \hat{u} - \overline{u}\).
-</p>
-</div>
-
-<!-- Right Column -->
-
-<div style="flex: 1; text-align: center;">
-<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-
-<div style="font-weight: bold; color: #2980b9;">Snapshot POD Eigenproblem</div>
-#+END_EXPORT
-
-$$K\, a^{(k)} = \lambda_k\, a^{(k)}$$
-
-#+BEGIN_EXPORT html
-<small style="color: #7f8c8d;">$a^{(k)}$: temporal eigenvectors, $\lambda_k$: POD modal energies</small>
-
-</div>
-</div>
-</div>
-#+END_EXPORT
-
-** Back-Transformation to Physical Space
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-
-<!-- Left Column -->
-
-<div style="flex: 1;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Recovering Spectral Spatial Modes \(\phi_k(r)\)
-</div>
-<p style="font-size: 1.1em; color: #34495e;">
-The spectral spatial POD modes are recovered by projecting the eigenvectors back onto the snapshot matrix. These modes are functions of the radial coordinate \(r\) only.
-</p>
-</div>
-
-<!-- Right Column -->
-
-<div style="flex: 1; text-align: center;">
-<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-
-<div style="font-weight: bold; color: #c0392b;">Spatial Mode (Correctly Normalized)</div>
-#+END_EXPORT
-
-$$\phi_k
-= \frac{1}{\sqrt{\lambda_k}}\, X\, a^{(k)}
-\quad\text{(if $K = X^\ast W X$ was used)}$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Alternative (Weighted Projection)</div>
-#+END_EXPORT
-
-$$\phi_k
-= \frac{1}{\sqrt{\lambda_k}}\, W\, X\, a^{(k)}
-\quad\text{(if $K = X^\ast X$ was used)}$$
-
-#+BEGIN_EXPORT html
-
-</div>
-</div>
-</div>
-#+END_EXPORT
-
-** Time Coefficients
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-
-<!-- Left Column -->
-
-<div style="flex: 1;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Temporal Dynamics Recovery
-</div>
-<p style="font-size: 1.1em; color: #34495e;">
-The time coefficients \(b_k(t)\) are the instantaneous amplitude of the corresponding spatial mode \(\phi_k\).
-</p>
-</div>
-
-<!-- Right Column -->
-
-<div style="flex: 1; text-align: center;">
-<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-
-<div style="font-weight: bold; color: #c0392b;">Using Eigenvectors (Used Method)</div>
-#+END_EXPORT
-
-$$b_k(t_i) = a^{(k)}_i \sqrt{\lambda_k}$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Via Weighted Projection (Alternative)</div>
-#+END_EXPORT
-
-$$b_k(t_i) = \langle \phi_k, \hat{u}_i \rangle_R
-= \phi_k^\ast W\, \hat{u}_i$$
-
-#+BEGIN_EXPORT html
-
-</div>
-</div>
-</div>
-#+END_EXPORT
-
-** Field Reconstruction
-
-#+BEGIN_EXPORT html
-
-<div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
-
-<!-- Left Column -->
-
-<div style="flex: 1;">
-<div style="font-size: 1.4em; font-weight: bold; color: #2c3e50; margin-bottom: 0.5em;">
-Final Reconstruction and Visualization
-</div>
-<p style="font-size: 1.1em; color: #34495e;">
-The reconstructed spectral field is built from selected POD modes $k=1..P$ and azimuthal modes $m$.
-The final physical field is obtained via an inverse FFT in the azimuthal direction.
-</p>
-<div style="margin-top: 1em; padding: 10px; background-color: #fceceb; border-left: 5px solid #e74c3c;">
-<b>Implementation Note (from MATLAB code):</b>
-</div>
-</div>
-
-<!-- Right Column -->
-
-<div style="flex: 1; text-align: center;">
-<div style="background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-
-<div style="font-weight: bold; color: #c0392b;">Spectral Reconstruction</div>
-#+END_EXPORT
-
-$$\hat{u}_{recon}(r,t)
-= \sum_{m=M_\min}^{M_\max}
-  \sum_{k=1}^{P}
-  b_{k,m}(t)\,\phi_{k,m}(r)$$
-
-#+BEGIN_EXPORT html
-
-<div style="font-weight: bold; color: #2980b9; margin-top: 1em;">Physical Reconstruction</div>
-#+END_EXPORT
-
-$$\tilde{u}_{recon}(r,\theta,t)
-= \mathrm{IFFT}_\theta\!\left[
-\hat{u}_{recon}(r,t)
-\right]$$
-
-#+BEGIN_EXPORT html
-
-</div>
-</div>
-</div>
-#+END_EXPORT
-
+* POD Model Validation
+:PROPERTIES:
+:reveal_background: ./green.jpg
+:reveal_background_size: cover
+:END:
+** Reconstruction
+#+caption: Rotating Boundary condition animation ($N=3$)
+  [[./gif/5300S0.gif]]
+* Radial Velocity Profiles (W)
+** S=0
+[[./radialVel/p9_Re5300_S00_VarW_P5.png]]
+** S=0.5
+[[./radialVel/p9_Re5300_S50_VarW_P5.png]]
+** S=1
+[[./radialVel/p9_Re5300_S10_VarW_P5.png]]
+** S=2
+[[./radialVel/p9_Re5300_S20_VarW_P5.png]]
+** S=3
+[[./radialVel/p9_Re5300_S30_VarW_P5.png]]
 * Relaminarization
 
 ** Energy $S=0$
@@ -982,18 +287,42 @@ $$\tilde{u}_{recon}(r,\theta,t)
 [[./im/energy_dist_Re5300_S30.png]]
 
 
-* Radial Velocity Profiles (W)
-** S=0
-[[./radialVel/p9_Re5300_S00_VarW_P5.png]]
-** S=0.5
-[[./radialVel/p9_Re5300_S50_VarW_P5.png]]
-** S=1
-[[./radialVel/p9_Re5300_S10_VarW_P5.png]]
-** S=2
-[[./radialVel/p9_Re5300_S20_VarW_P5.png]]
-** S=3
-[[./radialVel/p9_Re5300_S30_VarW_P5.png]]
-* Swirl and Drag Reduction
+* Analysis of Relative Energy Distribution
+** Analysis of Relative Energy Distribution ($E_r$) vs. Rotation Rate ($S$)
+
++ The provided figures plot the relative energy ($E_r$) of the axial velocity fluctuation ($u$) across the Azimuthal Mode number ($m$) for a constant Reynolds number of $Re = 5300$ at five different rotation rates ($S$).
+
+** 1. Baseline Turbulent State ($S = 0.0$)
+
++ Energy Distribution: At $S=0.0$ (non-rotating, fully turbulent flow), the energy spectrum is broadband. While some low modes ($m=4$ to $m=7$) carry significant energy, the energy is distributed across a large range of modes, extending visibly beyond $m=15$.
+
++ Physical Interpretation: This distribution is typical of complex, three-dimensional turbulence, where fluctuations occur across many different scales and azimuthal angles simultaneously.
+
+** 2. Onset of Rotation ($S = 1.0$ to $S = 2.0$)
+
++ Modal Collapse: As rotation increases, a dramatic transformation occurs: the energy spectrum collapses into a few dominant, low-wavenumber modes, primarily the m=1 mode.
+
+m=1 Dominance: The relative energy captured by the $m=1$ mode jumps from about $0.02$ at $S=0.0$ to nearly $0.19$ at $S=1.0$ and approximately $0.26$ at $S=2.0$.
+
++ Narrowing Spectrum: The cumulative energy needed to capture 80% of the total energy drops sharply (e.g., requiring only about $m=4$ modes at $S=2.0$ compared to $m=11$ at $S=0.0$).
+
++ Physical Interpretation: This indicates a severe simplification and stabilization of the flow. Small-scale, high-wavenumber turbulent structures are suppressed, and flow dynamics become dominated by a large-scale, helical structure (the $m=1$ mode). This is the spectral signature of turbulence suppression.
+
+** 3. Strong Rotation / Relaminarization Regime ($S = 3.0$ to $S = 5.0$)
+
++ Sustained Concentration: The $m=1$ mode remains overwhelmingly dominant at $S=3.0$ and $S=5.0$, confirming the flow remains in a highly stabilized state.
+
++ Minimal High-Wavenumber Activity: Energy levels for $m>5$ are near zero, demonstrating that the flow has effectively ceased to support typical small-scale turbulence, consistent with relaminarization.
+
++ Flow Mechanism: The rotational stiffness (Taylor-Proudman effect) dampens radial velocity fluctuations, inhibiting the vortex stretching mechanism required to sustain turbulence, forcing the kinetic energy into the large-scale, non-turbulent $m=1$ mode.
+
+** Summary
+
++ These graphs visually confirm that axial rotation fundamentally alters the energy cascade, moving the flow from a broadband spectrum ($S=0.0$) to a highly concentrated spectrum dominated by the large-scale $m=1$ mode ($S \ge 1.0$).
+
+* Citations
+
+* Delete Sections:
 * Validation of the POD: Reconstruction
 Reconstruction for $Re=5300$ for different Swirl numbers
 ** Energy $S=0$
@@ -1007,14 +336,7 @@ Reconstruction for $Re=5300$ for different Swirl numbers
 ** Energy $S=3$
 [[./im/recon_Re5300_S30.png]]
 
-* Fundamental Objects of the POD
-** time coefficient
-** Spectral
-** Physical (Post translated)
 * Vortex Field and Their Radial Graph
-
-
-* Extras
 
 * Radial Velocity Profiles (U,V,W,P)
 ** S=0
@@ -1042,3 +364,4 @@ Reconstruction for $Re=5300$ for different Swirl numbers
 [[./radialVel/p9_Re5300_S30_VarV_P5.png]]
 [[./radialVel/p9_Re5300_S30_VarW_P5.png]]
 [[./radialVel/p9_Re5300_S30_VarP_P5.png]]
+
