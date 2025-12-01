@@ -74,9 +74,9 @@
 :reveal_background_size: cover
 :END:
 
-+ Flow in a circular pipe rotating about its axis at low Reynolds number is investigated.
++ Circular pipe flow, rotating about its axis at low Reynolds number (Re 5,300) is investigated.
 + The simulation is performed by spectral finite element package Nek5000, a high fidelity DNS simulation, fifth order accurate in space and second order accurate in time.
-+ A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points.
++ A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points (583200).
 + Numerical Method has been tested by previous authors Davis 2017 et al.
 + When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation for low rotation numbers
 + Through a ROM (reduced order method) FFT-POD, which decomposes the velocity field $u_{\theta}, u_r, u_x$ into ordered energy modes, show large scale motions (LSM) leading the transport or vorticity away from the pipe wall.
@@ -356,9 +356,14 @@ The axisymmetric mode ($m=0$, plotted as $m=1$) is fully detached from the wall 
 * Citations
 References
 
-+ Orlandi, P. & Fatica, M. (1997). Direct simulations of turbulent flow in a pipe rotating about its axis. Journal of Fluid Mechanics, 343, 43–72.
+   1. P. Orlandi and M. Fatica, "Direct simulations of turbulent flow in a pipe rotating about its axis," J. Fluid Mech., vol. 343, pp. 43–72, 1997.
 
-+ Hellström, L. & Smits, A. J. (2017). The structure of optimal perturbations in turbulent pipe flow. Journal of Fluid Mechanics, 815, 608–635.
+   2. L. Hellström and A. J. Smits, "The structure of optimal perturbations in turbulent pipe flow," J. Fluid Mech., vol. 815, pp. 608–635, 2017.
+
+   3. C. Brehm, J. Davis, S. Ganju, and S. Bailey, "A Numerical Investigation of the Effects of Rotation on Turbulent Pipe Flows," in 11th International Symposium on Turbulence and Shear Flow Phenomena (TSFP11), 2019, pp. 1–9.
+
+
+
 * Additional Data: Radial Velocity Profiles ($\Phi_r,\phi_\theta,\phi_x,p$)
 ** S=0
 *** $\Phi_r$
