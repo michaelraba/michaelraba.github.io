@@ -39,21 +39,38 @@ font-size: 65%; /* Adjust this value as needed */
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow and Relaminarization</h1><p class="subtitle"></p>
-<h2 class="author">M. Raba</h2><p class="date">Created: 2025-11-30 Sun 18:40</p>
+<h2 class="author">M. Raba</h2><p class="date">Created: 2025-12-01 Mon 01:06</p>
+</section>
+
+<section>
+<section id="slide-orgb96b9e5" data-background="./tyr.png" data-background-size="cover">
+<h2 id="orgb96b9e5">Abstract</h2>
+<ul>
+<li>Flow in a circular pipe rotating about its axis at low Reynolds number is investigated.</li>
+<li>The simulation is performed by spectral finite element package Nek5000, a high fidelity DNS simulation, fifth order accurate in space and second order accurate in time.</li>
+<li>A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points.</li>
+<li>Numerical Method has been tested by previous authors Davis 2017 et al.</li>
+<li>When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation.</li>
+<li>Through Proper orthogonal decomposition, which decomposes the velocity field \(u_{\theta}, u_r, u_x\), show  large scale motions (LSM) leading the transport or vorticity away from the pipe wall.</li>
+
+</ul>
+
+
+</section>
 </section>
 <section>
-<section id="slide-org7a2e4ca">
-<h2 id="org7a2e4ca">Background and Motivation</h2>
+<section id="slide-orgc236d2a">
+<h2 id="orgc236d2a">Background and Motivation</h2>
 
-<div id="orgcb5d330" class="figure">
+<div id="orgb541b94" class="figure">
 <p><img src="./gif/5300S0.gif" alt="5300S0.gif" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Rotating Boundary condition animation (\(N=3\))</p>
 </div>
 
 </section>
-<section id="slide-org802838c">
-<h3 id="org802838c">Literature Review</h3>
+<section id="slide-org73d3ae1">
+<h3 id="org73d3ae1">Literature Review</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Context & Relevance -->
@@ -107,8 +124,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-orgae64f67">
-<h3 id="orgae64f67">DNS Turbulent Model</h3>
+<section id="slide-org4dc40ee">
+<h3 id="org4dc40ee">DNS Turbulent Model</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Simulation Context -->
@@ -154,8 +171,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org527a970">
-<h3 id="org527a970">Background: Rotating Pipe Flow &amp; Relaminarization</h3>
+<section id="slide-org2c5951d">
+<h3 id="org2c5951d">Background: Rotating Pipe Flow &amp; Relaminarization</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>Scientific Context</strong></p>
 <ul>
@@ -181,8 +198,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org410aa30">
-<h3 id="org410aa30">DNS, Theory, and Modal Decomposition</h3>
+<section id="slide-orgb39f9d7">
+<h3 id="orgb39f9d7">DNS, Theory, and Modal Decomposition</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>DNS and Analytical Foundations</strong></p>
 <ul>
@@ -210,8 +227,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org8300773">
-<h3 id="org8300773">Control &amp; Transition Mechanisms</h3>
+<section id="slide-org8a179cc">
+<h3 id="org8a179cc">Control &amp; Transition Mechanisms</h3>
 <div style="column-count:2; column-gap:3em; font-size:90%;">
 <p><strong>Mechanistic Understanding</strong></p>
 <ul>
@@ -238,13 +255,13 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org3fe796e">
-<h2 id="org3fe796e">Method Spectral Element Direct Numerical Simulation (DNS)</h2>
-<div class="outline-text-2" id="text-org3fe796e">
+<section id="slide-orge9186cc">
+<h2 id="orge9186cc">Method Spectral Element Direct Numerical Simulation (DNS)</h2>
+<div class="outline-text-2" id="text-orge9186cc">
 </div>
 </section>
-<section id="slide-org5ce9101">
-<h3 id="org5ce9101">Slide 1: Introduction</h3>
+<section id="slide-org5d16afe">
+<h3 id="org5d16afe">Slide 1: Introduction</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Background</strong></p>
@@ -265,8 +282,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orge239dfb">
-<h3 id="orge239dfb">Slide 2: Spectral Element Method (DNS)</h3>
+<section id="slide-orgce9d43b">
+<h3 id="orgce9d43b">Slide 2: Spectral Element Method (DNS)</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Simulation Setup</strong></p>
@@ -289,8 +306,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgb8ecc2d">
-<h3 id="orgb8ecc2d">Slide 3: Mesh and Simulation Details</h3>
+<section id="slide-org3a3ef81">
+<h3 id="org3a3ef81">Slide 3: Mesh and Simulation Details</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
     <p><strong>Mesh Details</strong></p>
@@ -320,8 +337,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org0ba4376">
-<h3 id="org0ba4376">DNS Mesh</h3>
+<section id="slide-org0d23c83">
+<h3 id="org0d23c83">DNS Mesh</h3>
 <div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
   <div class="column" style="flex:1;">
     <p><strong>Simulation Domain</strong></p>
@@ -347,20 +364,20 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org524532f">
-<h3 id="org524532f">Grid Spacing and Boundary Conditions</h3>
+<section id="slide-org0bb3d02">
+<h3 id="org0bb3d02">Grid Spacing and Boundary Conditions</h3>
 <div class="columns"> <div class="column" style="width:48%; float:left;"> <p><strong>Grid Spacings (y⁺ units)</strong></p> <table border="1" style="border-collapse:collapse; width:100%;"> <thead> <tr> <th>Re</th> <th>Δr⁺ / Δθ⁺ / Δz⁺</th> <th>N Δt × 10⁶</th> </tr> </thead> <tbody> <tr> <td>5,300</td> <td>0.14–4 / 1.5–4.5 / 3–9.9</td> <td>20</td> </tr> <tr> <td>11,700</td> <td>0.15–4.5 / 1.5–4.8 / 3–10</td> <td>120</td> </tr> </tbody> </table> </div> <div class="column" style="width:48%; float:right;"> <p><strong>Boundary Conditions</strong></p> \begin{align} u_r(R) &= 0, \\ u_\theta(R) &= \Omega R, \\ u_x(R) &= 0 \end{align} <p style="font-size:small;">Rotation vector: Ω = Ω e_k; smooth wall; incompressible flow</p> </div> </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org251f599">
-<h2 id="org251f599">Proper Orthogonal Decomposition</h2>
-<div class="outline-text-2" id="text-org251f599">
+<section id="slide-org6870f81">
+<h2 id="org6870f81">Proper Orthogonal Decomposition</h2>
+<div class="outline-text-2" id="text-org6870f81">
 </div>
 </section>
-<section id="slide-org6df920c">
-<h3 id="org6df920c">POD Energy Modes</h3>
+<section id="slide-orgcfbeb22">
+<h3 id="orgcfbeb22">POD Energy Modes</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: Direct POD Formulation -->
@@ -399,8 +416,8 @@ font-size: 65%; /* Adjust this value as needed */
 
 
 </section>
-<section id="slide-org4298b60">
-<h3 id="org4298b60">FFT / POD Interpretation</h3>
+<section id="slide-org9de84bb">
+<h3 id="org9de84bb">FFT / POD Interpretation</h3>
 <div style="display: flex; gap: 2em; align-items: flex-start; font-family: 'Segoe UI', sans-serif;">
 
   <!-- LEFT column: FFT Decomposition -->
@@ -462,8 +479,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-org746de12">
-<h3 id="org746de12">Proper Orthogonal Decomposition (POD)</h3>
+<section id="slide-org3391505">
+<h3 id="org3391505">Proper Orthogonal Decomposition (POD)</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>POD Overview</strong></p>
@@ -491,8 +508,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgb9a8a43">
-<h3 id="orgb9a8a43">Snapshot POD: Eigenvalue Problem</h3>
+<section id="slide-org05a0036">
+<h3 id="org05a0036">Snapshot POD: Eigenvalue Problem</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>Direct POD Equation</strong></p>
@@ -517,8 +534,8 @@ font-size: 65%; /* Adjust this value as needed */
 </div>
 
 </section>
-<section id="slide-orgb54b57a">
-<h3 id="orgb54b57a">Classical POD Form</h3>
+<section id="slide-org3588a6d">
+<h3 id="org3588a6d">Classical POD Form</h3>
 <div class="columns">
   <div class="column" style="width:48%; float:left;">
   <p><strong>Correlation Tensor</strong></p>
@@ -545,13 +562,13 @@ font-size: 65%; /* Adjust this value as needed */
 </section>
 </section>
 <section>
-<section id="slide-org956c187">
-<h2 id="org956c187">POD Formulation: Weighted \(L^2\) Structure</h2>
-<div class="outline-text-2" id="text-org956c187">
+<section id="slide-org2ae24db">
+<h2 id="org2ae24db">POD Formulation: Weighted \(L^2\) Structure</h2>
+<div class="outline-text-2" id="text-org2ae24db">
 </div>
 </section>
-<section id="slide-org927ed96">
-<h3 id="org927ed96">POD Formulation: Weighted \(L^2\) Structure</h3>
+<section id="slide-orga5c7a9c">
+<h3 id="orga5c7a9c">POD Formulation: Weighted \(L^2\) Structure</h3>
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: flex-start;">
 
 <!-- Left Column -->
@@ -637,8 +654,8 @@ u_T(k;m;r,t)\,\alpha^{(n)*}(k;m;t)\,dt
 
 
 </section>
-<section id="slide-org7dded45">
-<h3 id="org7dded45">Motivation: Large-Scale Motions in Pipe Flow</h3>
+<section id="slide-orgee5e0cd">
+<h3 id="orgee5e0cd">Motivation: Large-Scale Motions in Pipe Flow</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -666,8 +683,8 @@ The largest structures in pipe flow are strongly associated with low azimuthal w
 </div>
 
 </section>
-<section id="slide-orge3d9f1f">
-<h3 id="orge3d9f1f">Spectral Decomposition Approach</h3>
+<section id="slide-org15947e2">
+<h3 id="org15947e2">Spectral Decomposition Approach</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Text -->
@@ -699,8 +716,8 @@ Real-valued physical fields require Hermitian symmetry across $m$.
 </div>
 
 </section>
-<section id="slide-org96df07c">
-<h3 id="org96df07c">Weighted Inner Product and Correlation Matrix</h3>
+<section id="slide-orgade68ce">
+<h3 id="orgade68ce">Weighted Inner Product and Correlation Matrix</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column: Theory -->
@@ -753,8 +770,8 @@ with weight matrix \( W = \mathrm{diag}(r_1\Delta r,\dots,r_{N_r}\Delta r) \) re
 </div>
 
 </section>
-<section id="slide-orgcff314d">
-<h3 id="orgcff314d">Eigenvalue Problem (Snapshot POD)</h3>
+<section id="slide-org61d10b3">
+<h3 id="org61d10b3">Eigenvalue Problem (Snapshot POD)</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 <!-- Left Column -->
@@ -786,8 +803,8 @@ If the mean field exists, it must be removed: \(\hat{u}&#39; = \hat{u} - \overli
 </div>
 
 </section>
-<section id="slide-org26b6ee5">
-<h3 id="org26b6ee5">Back-Transformation to Physical Space</h3>
+<section id="slide-org7281dc9">
+<h3 id="org7281dc9">Back-Transformation to Physical Space</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -830,8 +847,8 @@ The spectral spatial POD modes are recovered by projecting the eigenvectors back
 </div>
 
 </section>
-<section id="slide-orgefaf7e2">
-<h3 id="orgefaf7e2">Time Coefficients</h3>
+<section id="slide-org7c7c0a9">
+<h3 id="org7c7c0a9">Time Coefficients</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -871,8 +888,8 @@ The time coefficients \(b_k(t)\) are the instantaneous amplitude of the correspo
 </div>
 
 </section>
-<section id="slide-org6c873ac">
-<h3 id="org6c873ac">Field Reconstruction</h3>
+<section id="slide-orgfe8ea40">
+<h3 id="orgfe8ea40">Field Reconstruction</h3>
 
 <div style="display: flex; gap: 2em; font-family: 'Segoe UI', sans-serif; align-items: center;">
 
@@ -923,47 +940,47 @@ The final physical field is obtained via an inverse FFT in the azimuthal directi
 </section>
 </section>
 <section>
-<section id="slide-org4edd772">
-<h2 id="org4edd772">Relaminarization</h2>
-<div class="outline-text-2" id="text-org4edd772">
+<section id="slide-org04e0c5b">
+<h2 id="org04e0c5b">Relaminarization</h2>
+<div class="outline-text-2" id="text-org04e0c5b">
 </div>
 </section>
-<section id="slide-orga7f0f32">
-<h3 id="orga7f0f32">Energy \(S=0\)</h3>
+<section id="slide-orgc31af1a">
+<h3 id="orgc31af1a">Energy \(S=0\)</h3>
 
-<div id="org28358d3" class="figure">
+<div id="org5da62cf" class="figure">
 <p><img src="./im/energy_dist_Re5300_S00.png" alt="energy_dist_Re5300_S00.png" />
 </p>
 </div>
 </section>
-<section id="slide-org7f60c37">
-<h3 id="org7f60c37">Energy \(S=0.5\)</h3>
+<section id="slide-org0579989">
+<h3 id="org0579989">Energy \(S=0.5\)</h3>
 
-<div id="org6874ed9" class="figure">
+<div id="orgc927ab0" class="figure">
 <p><img src="./im/energy_dist_Re5300_S50.png" alt="energy_dist_Re5300_S50.png" />
 </p>
 </div>
 </section>
-<section id="slide-org42d9b8a">
-<h3 id="org42d9b8a">Energy \(S=1\)</h3>
+<section id="slide-orge2e41a1">
+<h3 id="orge2e41a1">Energy \(S=1\)</h3>
 
-<div id="orgfe348de" class="figure">
+<div id="org95ea401" class="figure">
 <p><img src="./im/energy_dist_Re5300_S10.png" alt="energy_dist_Re5300_S10.png" />
 </p>
 </div>
 </section>
-<section id="slide-org7d42086">
-<h3 id="org7d42086">Energy \(S=2\)</h3>
+<section id="slide-orgfdf5717">
+<h3 id="orgfdf5717">Energy \(S=2\)</h3>
 
-<div id="orga4c9bdb" class="figure">
+<div id="org109f515" class="figure">
 <p><img src="./im/energy_dist_Re5300_S20.png" alt="energy_dist_Re5300_S20.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgcaffe7a">
-<h3 id="orgcaffe7a">Energy \(S=3\)</h3>
+<section id="slide-org0b5e71f">
+<h3 id="org0b5e71f">Energy \(S=3\)</h3>
 
-<div id="orgcd305d2" class="figure">
+<div id="orgd9feff0" class="figure">
 <p><img src="./im/energy_dist_Re5300_S30.png" alt="energy_dist_Re5300_S30.png" />
 </p>
 </div>
@@ -972,100 +989,100 @@ The final physical field is obtained via an inverse FFT in the azimuthal directi
 </section>
 </section>
 <section>
-<section id="slide-org0586941">
-<h2 id="org0586941">Radial Velocity Profiles (W)</h2>
-<div class="outline-text-2" id="text-org0586941">
+<section id="slide-orge6dbe1a">
+<h2 id="orge6dbe1a">Radial Velocity Profiles (W)</h2>
+<div class="outline-text-2" id="text-orge6dbe1a">
 </div>
 </section>
-<section id="slide-orgc40696a">
-<h3 id="orgc40696a">S=0</h3>
+<section id="slide-org56a0e31">
+<h3 id="org56a0e31">S=0</h3>
 
-<div id="org560c1c8" class="figure">
+<div id="orga0289da" class="figure">
 <p><img src="./radialVel/p9_Re5300_S00_VarW_P5.png" alt="p9_Re5300_S00_VarW_P5.png" />
 </p>
 </div>
 </section>
-<section id="slide-org5ca3538">
-<h3 id="org5ca3538">S=0.5</h3>
+<section id="slide-orga2b8e18">
+<h3 id="orga2b8e18">S=0.5</h3>
 
-<div id="org91f8110" class="figure">
+<div id="orgbbcabb4" class="figure">
 <p><img src="./radialVel/p9_Re5300_S50_VarW_P5.png" alt="p9_Re5300_S50_VarW_P5.png" />
 </p>
 </div>
 </section>
-<section id="slide-org56bba42">
-<h3 id="org56bba42">S=1</h3>
+<section id="slide-org1729a65">
+<h3 id="org1729a65">S=1</h3>
 
-<div id="orgb9c509f" class="figure">
+<div id="orgcf9d6dc" class="figure">
 <p><img src="./radialVel/p9_Re5300_S10_VarW_P5.png" alt="p9_Re5300_S10_VarW_P5.png" />
 </p>
 </div>
 </section>
-<section id="slide-org976e3e7">
-<h3 id="org976e3e7">S=2</h3>
+<section id="slide-orgf8f8137">
+<h3 id="orgf8f8137">S=2</h3>
 
-<div id="orgd28a709" class="figure">
+<div id="org3d9fecd" class="figure">
 <p><img src="./radialVel/p9_Re5300_S20_VarW_P5.png" alt="p9_Re5300_S20_VarW_P5.png" />
 </p>
 </div>
 </section>
-<section id="slide-orgb109ce0">
-<h3 id="orgb109ce0">S=3</h3>
+<section id="slide-orgc0eca10">
+<h3 id="orgc0eca10">S=3</h3>
 
-<div id="orgd8b4eff" class="figure">
+<div id="org8b59ff7" class="figure">
 <p><img src="./radialVel/p9_Re5300_S30_VarW_P5.png" alt="p9_Re5300_S30_VarW_P5.png" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org44e2ff3">
-<h2 id="org44e2ff3">Swirl and Drag Reduction</h2>
+<section id="slide-org08cf82a">
+<h2 id="org08cf82a">Swirl and Drag Reduction</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgd2bb237">
-<h2 id="orgd2bb237">Validation of the POD: Reconstruction</h2>
+<section id="slide-org2c4c0f5">
+<h2 id="org2c4c0f5">Validation of the POD: Reconstruction</h2>
 <p>
 Reconstruction for \(Re=5300\) for different Swirl numbers
 </p>
 </section>
-<section id="slide-org81c34e9">
-<h3 id="org81c34e9">Energy \(S=0\)</h3>
+<section id="slide-org61c6776">
+<h3 id="org61c6776">Energy \(S=0\)</h3>
 
-<div id="org00b907a" class="figure">
+<div id="orgfdb4474" class="figure">
 <p><img src="./im/recon_Re5300_S00.png" alt="recon_Re5300_S00.png" />
 </p>
 </div>
 </section>
-<section id="slide-org885d5aa">
-<h3 id="org885d5aa">Energy \(S=0.5\)</h3>
+<section id="slide-orgf0c26ac">
+<h3 id="orgf0c26ac">Energy \(S=0.5\)</h3>
 
-<div id="org201032f" class="figure">
+<div id="org7703108" class="figure">
 <p><img src="./im/recon_Re5300_S50.png" alt="recon_Re5300_S50.png" />
 </p>
 </div>
 </section>
-<section id="slide-org0d525c0">
-<h3 id="org0d525c0">Energy \(S=1\)</h3>
+<section id="slide-orgac9f0b9">
+<h3 id="orgac9f0b9">Energy \(S=1\)</h3>
 
-<div id="orgd1e0137" class="figure">
+<div id="org05974a9" class="figure">
 <p><img src="./im/recon_Re5300_S10.png" alt="recon_Re5300_S10.png" />
 </p>
 </div>
 </section>
-<section id="slide-orge5b9eb1">
-<h3 id="orge5b9eb1">Energy \(S=2\)</h3>
+<section id="slide-org9ac6c16">
+<h3 id="org9ac6c16">Energy \(S=2\)</h3>
 
-<div id="org3b4bd27" class="figure">
+<div id="org7b041c0" class="figure">
 <p><img src="./im/recon_Re5300_S20.png" alt="recon_Re5300_S20.png" />
 </p>
 </div>
 </section>
-<section id="slide-org4c98d55">
-<h3 id="org4c98d55">Energy \(S=3\)</h3>
+<section id="slide-org203fbaa">
+<h3 id="org203fbaa">Energy \(S=3\)</h3>
 
-<div id="org8376bbb" class="figure">
+<div id="org158fb16" class="figure">
 <p><img src="./im/recon_Re5300_S30.png" alt="recon_Re5300_S30.png" />
 </p>
 </div>
@@ -1073,42 +1090,42 @@ Reconstruction for \(Re=5300\) for different Swirl numbers
 </section>
 </section>
 <section>
-<section id="slide-orgdf96098">
-<h2 id="orgdf96098">Fundamental Objects of the POD</h2>
-<div class="outline-text-2" id="text-orgdf96098">
+<section id="slide-orge7a8143">
+<h2 id="orge7a8143">Fundamental Objects of the POD</h2>
+<div class="outline-text-2" id="text-orge7a8143">
 </div>
 </section>
-<section id="slide-orge5434c5">
-<h3 id="orge5434c5">time coefficient</h3>
+<section id="slide-org829d6fe">
+<h3 id="org829d6fe">time coefficient</h3>
 </section>
-<section id="slide-orge77c30e">
-<h3 id="orge77c30e">Spectral</h3>
+<section id="slide-orgde6e6df">
+<h3 id="orgde6e6df">Spectral</h3>
 </section>
-<section id="slide-orge014698">
-<h3 id="orge014698">Physical (Post translated)</h3>
+<section id="slide-org8ccf133">
+<h3 id="org8ccf133">Physical (Post translated)</h3>
 </section>
 </section>
 <section>
-<section id="slide-org5a94fdd">
-<h2 id="org5a94fdd">Vortex Field and Their Radial Graph</h2>
+<section id="slide-orgd565ff2">
+<h2 id="orgd565ff2">Vortex Field and Their Radial Graph</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgd7b52f5">
-<h2 id="orgd7b52f5">Extras</h2>
+<section id="slide-org18dcc21">
+<h2 id="org18dcc21">Extras</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org1a849cf">
-<h2 id="org1a849cf">Radial Velocity Profiles (U,V,W,P)</h2>
-<div class="outline-text-2" id="text-org1a849cf">
+<section id="slide-org28091b8">
+<h2 id="org28091b8">Radial Velocity Profiles (U,V,W,P)</h2>
+<div class="outline-text-2" id="text-org28091b8">
 </div>
 </section>
-<section id="slide-org490530a">
-<h3 id="org490530a">S=0</h3>
+<section id="slide-orga224b71">
+<h3 id="orga224b71">S=0</h3>
 <p>
 <img src="./radialVel/p9_Re5300_S00_VarU_P5.png" alt="p9_Re5300_S00_VarU_P5.png" />
 <img src="./radialVel/p9_Re5300_S00_VarV_P5.png" alt="p9_Re5300_S00_VarV_P5.png" />
@@ -1116,8 +1133,8 @@ Reconstruction for \(Re=5300\) for different Swirl numbers
 <img src="./radialVel/p9_Re5300_S00_VarP_P5.png" alt="p9_Re5300_S00_VarP_P5.png" />
 </p>
 </section>
-<section id="slide-org4fbc12f">
-<h3 id="org4fbc12f">S=0.5</h3>
+<section id="slide-org75e5438">
+<h3 id="org75e5438">S=0.5</h3>
 <p>
 <img src="./radialVel/p9_Re5300_S50_VarU_P5.png" alt="p9_Re5300_S50_VarU_P5.png" />
 <img src="./radialVel/p9_Re5300_S50_VarV_P5.png" alt="p9_Re5300_S50_VarV_P5.png" />
@@ -1125,8 +1142,8 @@ Reconstruction for \(Re=5300\) for different Swirl numbers
 <img src="./radialVel/p9_Re5300_S50_VarP_P5.png" alt="p9_Re5300_S50_VarP_P5.png" />
 </p>
 </section>
-<section id="slide-orgd54e878">
-<h3 id="orgd54e878">S=1</h3>
+<section id="slide-org76c33b5">
+<h3 id="org76c33b5">S=1</h3>
 <p>
 <img src="./radialVel/p9_Re5300_S10_VarU_P5.png" alt="p9_Re5300_S10_VarU_P5.png" />
 <img src="./radialVel/p9_Re5300_S10_VarV_P5.png" alt="p9_Re5300_S10_VarV_P5.png" />
@@ -1134,8 +1151,8 @@ Reconstruction for \(Re=5300\) for different Swirl numbers
 <img src="./radialVel/p9_Re5300_S10_VarP_P5.png" alt="p9_Re5300_S10_VarP_P5.png" />
 </p>
 </section>
-<section id="slide-orgc04a966">
-<h3 id="orgc04a966">S=2</h3>
+<section id="slide-org233d3dc">
+<h3 id="org233d3dc">S=2</h3>
 <p>
 <img src="./radialVel/p9_Re5300_S20_VarU_P5.png" alt="p9_Re5300_S20_VarU_P5.png" />
 <img src="./radialVel/p9_Re5300_S20_VarV_P5.png" alt="p9_Re5300_S20_VarV_P5.png" />
@@ -1143,8 +1160,8 @@ Reconstruction for \(Re=5300\) for different Swirl numbers
 <img src="./radialVel/p9_Re5300_S20_VarP_P5.png" alt="p9_Re5300_S20_VarP_P5.png" />
 </p>
 </section>
-<section id="slide-orgd58b59c">
-<h3 id="orgd58b59c">S=3</h3>
+<section id="slide-orgfa3e1bd">
+<h3 id="orgfa3e1bd">S=3</h3>
 <p>
 <img src="./radialVel/p9_Re5300_S30_VarU_P5.png" alt="p9_Re5300_S30_VarU_P5.png" />
 <img src="./radialVel/p9_Re5300_S30_VarV_P5.png" alt="p9_Re5300_S30_VarV_P5.png" />

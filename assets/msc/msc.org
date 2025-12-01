@@ -75,6 +75,21 @@
 #+latex_header:\setbeamercolor{frametitle}{bg=tyrianPurple}
 #+latex_header: \usepackage{tikz}
 #+latex_header: \metroset{block=fill    }
+
+* Abstract
+:PROPERTIES:
+:reveal_background: ./tyr.png
+:reveal_background_size: cover
+:END:
+
++ Flow in a circular pipe rotating about its axis at low Reynolds number is investigated.
++ The simulation is performed by spectral finite element package Nek5000, a high fidelity DNS simulation, fifth order accurate in space and second order accurate in time.
++ A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points.
++ Numerical Method has been tested by previous authors Davis 2017 et al.
++ When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation.
++ Through Proper orthogonal decomposition, which decomposes the velocity field $u_{\theta}, u_r, u_x$, show  large scale motions (LSM) leading the transport or vorticity away from the pipe wall.
+
+
 * Background and Motivation
 #+caption: Rotating Boundary condition animation ($N=3$)
   [[./gif/5300S0.gif]]
