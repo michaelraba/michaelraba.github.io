@@ -361,86 +361,67 @@ References
 + Orlandi, P. & Fatica, M. (1997). Direct simulations of turbulent flow in a pipe rotating about its axis. Journal of Fluid Mechanics, 343, 43–72.
 
 + Hellström, L. & Smits, A. J. (2017). The structure of optimal perturbations in turbulent pipe flow. Journal of Fluid Mechanics, 815, 608–635.
-* Additional Data
-* Radial Velocity Profiles (U,V,W,P)
+* Additional Data: Radial Velocity Profiles ($\Phi_r,\phi_\theta,\phi_x,p$)
 ** S=0
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S00_VarU_P5.png]]
+
+*** $\Phi_\theta$
 [[./radialVel/p9_Re5300_S00_VarV_P5.png]]
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S00_VarW_P5.png]]
+
+*** 0.P
 [[./radialVel/p9_Re5300_S00_VarP_P5.png]]
 ** S=0.5
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S50_VarU_P5.png]]
+
+*** $\Phi_\theta$
 [[./radialVel/p9_Re5300_S50_VarV_P5.png]]
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S50_VarW_P5.png]]
+
+*** 0.P
 [[./radialVel/p9_Re5300_S50_VarP_P5.png]]
 ** S=1
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S10_VarU_P5.png]]
+
+*** $\Phi_\theta$
 [[./radialVel/p9_Re5300_S10_VarV_P5.png]]
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S10_VarW_P5.png]]
+
+*** 0.P
 [[./radialVel/p9_Re5300_S10_VarP_P5.png]]
-** S=2
+** S = 2
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S20_VarU_P5.png]]
+
+*** $\Phi_\theta$
 [[./radialVel/p9_Re5300_S20_VarV_P5.png]]
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S20_VarW_P5.png]]
+
+*** 0.P
 [[./radialVel/p9_Re5300_S20_VarP_P5.png]]
 ** S=3
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S30_VarU_P5.png]]
+
+*** $\Phi_\theta$
 [[./radialVel/p9_Re5300_S30_VarV_P5.png]]
+
+*** $\Phi_r$
 [[./radialVel/p9_Re5300_S30_VarW_P5.png]]
+
+*** 0.P
 [[./radialVel/p9_Re5300_S30_VarP_P5.png]]
-
-
-* Analysis of Relative Energy Distribution
-** Analysis of Relative Energy Distribution ($E_r$) vs. Rotation Rate ($S$)
-
-+ The provided figures plot the relative energy ($E_r$) of the axial velocity fluctuation ($u$) across the Azimuthal Mode number ($m$) for a constant Reynolds number of $Re = 5300$ at five different rotation rates ($S$).
-
-** 1. Baseline Turbulent State ($S = 0.0$)
-
-+ Energy Distribution: At $S=0.0$ (non-rotating, fully turbulent flow), the energy spectrum is broadband. While some low modes ($m=4$ to $m=7$) carry significant energy, the energy is distributed across a large range of modes, extending visibly beyond $m=15$.
-
-+ Physical Interpretation: This distribution is typical of complex, three-dimensional turbulence, where fluctuations occur across many different scales and azimuthal angles simultaneously.
-
-** 2. Onset of Rotation ($S = 1.0$ to $S = 2.0$)
-
-+ Modal Collapse: As rotation increases, a dramatic transformation occurs: the energy spectrum collapses into a few dominant, low-wavenumber modes, primarily the m=1 mode.
-
-m=1 Dominance: The relative energy captured by the $m=1$ mode jumps from about $0.02$ at $S=0.0$ to nearly $0.19$ at $S=1.0$ and approximately $0.26$ at $S=2.0$.
-
-+ Narrowing Spectrum: The cumulative energy needed to capture 80% of the total energy drops sharply (e.g., requiring only about $m=4$ modes at $S=2.0$ compared to $m=11$ at $S=0.0$).
-
-+ Physical Interpretation: This indicates a severe simplification and stabilization of the flow. Small-scale, high-wavenumber turbulent structures are suppressed, and flow dynamics become dominated by a large-scale, helical structure (the $m=1$ mode). This is the spectral signature of turbulence suppression.
-
-** 3. Strong Rotation / Relaminarization Regime ($S = 3.0$ to $S = 5.0$)
-
-+ Sustained Concentration: The $m=1$ mode remains overwhelmingly dominant at $S=3.0$ and $S=5.0$, confirming the flow remains in a highly stabilized state.
-
-+ Minimal High-Wavenumber Activity: Energy levels for $m>5$ are near zero, demonstrating that the flow has effectively ceased to support typical small-scale turbulence, consistent with relaminarization.
-
-+ Flow Mechanism: The rotational stiffness (Taylor-Proudman effect) dampens radial velocity fluctuations, inhibiting the vortex stretching mechanism required to sustain turbulence, forcing the kinetic energy into the large-scale, non-turbulent $m=1$ mode.
-
-** Summary
-
-+ These graphs visually confirm that axial rotation fundamentally alters the energy cascade, moving the flow from a broadband spectrum ($S=0.0$) to a highly concentrated spectrum dominated by the large-scale $m=1$ mode ($S \ge 1.0$).
-
-* Analysis of Radial Modes Energy
-**  I. Overall Structural Behavior (All N)
-+  The most energetic fluctuations (all POD modes) are concentrated in the near-wall region, primarily in the domain $1 - r/R < 0.2$. This aligns with the understanding that turbulent energy production is a boundary-layer phenomenon. Y The rotational effect causes a systematic suppression of small-scale structures (high azimuthal modes) and promotes the dominance of the largest-scale structure ($m=1$).
-
-**  II. Baseline State ($N = 0.0$ - Non-Rotating)
-+  Energy Distribution: The first POD mode (Mode 1) shows several azimuthal modes (e.g., $m=5, 9, 13$) contributing substantially to the total structure, with broadly similar maximum magnitudes.
-+  Structure Complexity: The radial profiles for high $m$ (e.g., $m=25, 29$) are oscillatory and reach significant amplitudes, indicating a complex, multi-scale, fully turbulent flow structure.
-
-**  III. Low to Moderate Rotation ($N = 1.0$ to $N = 3.0$)
-+  m=1 Dominance Emerges: Even at $N=1.0$, the $m=1$ mode (blue line) begins to stand out, having the largest magnitude and extending furthest from the wall, particularly in Mode 1.
-+  High-m Suppression: Structures associated with high $m$ (small scales) are strongly suppressed. Their maximum amplitude drops, and they become visually more confined to the immediate vicinity of the wall.
-+  Radial Confinement: The rotational stiffness rapidly reduces the ability of turbulent structures to penetrate the flow core.
-
-**  IV. Strong Rotation / Relaminarization Regime ($N = 5.0$)
-+  Structural Collapse: The first POD mode (Mode 1) is overwhelmingly dominated by the $m=1$ structure. The high-$m$ structures are now barely visible in terms of magnitude compared to the $m=1$ mode.
-+  Scale Separation: The flow is effectively decomposed into two states:
-
-+ 1. A persistent, large-scale, helical disturbance ($m=1$) that extends well into the core ($1-r/R \approx 0.5$).
-
-+ 2. Highly dampened, complex, small-scale structures (high $m$) that are tightly confined to the viscous sublayer ($1-r/R < 0.1$).
-+  Relaminarization Confirmation: The near-total structural suppression of high-wavenumber modes confirms that the energy collapse observed previously translates directly into a loss of the small, energetic eddies that define classical pipe turbulence, leading to relaminarization.
