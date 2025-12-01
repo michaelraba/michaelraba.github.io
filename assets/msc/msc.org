@@ -282,43 +282,6 @@ Hellstrom 2017: high-$Re$ Optimal Perturbations (OPs) show remarkably similar ra
 + Validation: confirms POD procedure successfully extracts the fundamental, robust near-wall structures
 + Both datasets show the maximum fluctuation amplitude is tightly concentrated in the near-wall region ($y/R \approx 0.05$ to $0.1$).
 
-* ROM Reconstruction
-** S=0
-[[./im/ROM/s0.p1m3.png]]
-S = 0.0 (Turbulent Baseline): Fully developed pipe turbulence. High-energy structures across all azimuthal modes ($m$). Broadband spectral activity. Wall-dominated dynamics; structures active and chaotic near the boundary. No core reorganization.
-
-** S=0.5
-S = 0.5 (Initial Stabilization): Low-order reconstruction (P=1, M=0-2). Snapshot shows the first distinct structural simplification. The largest non-axisymmetric structures ($m=1, 2$) are suppressed, allowing the axisymmetric core flow ($m=0$) to begin asserting dominance. Initial shift from wall-dominated to core-influenced dynamics.
-[[./im/ROM/s5.p1m3.png]]
-** S=1
-[[./im/ROM/s1.p1m3.png]]
-S = 1.0 (Decisive Transition): Low-order reconstruction (P=1, M=0-2). This is the point of structural dominance shift. The $m=0$ core structure clearly outweighs the turbulent $m=1, 2$ components. The large-scale asymmetric activity is suppressed, leading to the formation of a simple, large, rotationally-aligned structure.
-** S=2
-[[./im/ROM/s2.p1m3.png]]
-S = 2.0 (Near Relaminarization): Low-order reconstruction (P=1, M=0-2). Snapshot shows maximal structural purity; the $m=0$ core structure is fully established and dominant. The turbulent components ($m=1, 2$) are effectively extinguished. A very clean, stable structure, now fully detached from the wall.
-** S=3
-[[./im/ROM/s3.p1m3.png]]
-Post-Optimal Stabilization): Low-order reconstruction (P=1, M=0-2). The flow remains highly stabilized and core-dominated ($m=0$). However, when compared to $S=2.0$, this state shows a subtle but persistent deviation from perfect structural purity. This suggests the onset of new, weak secondary flow phenomena near the wall (e.g., Ekman layer instability) that are captured by the low-order model, confirming that $S=2.0$ achieved the maximal degree of simplification. Fatica 1997: wall rotation generates a secondary flow (or swirling flow) through the mechanism of the Ekman layer. This secondary motion is characterized by fluid being pushed towards the center of the pipe at the wall, and returning along the centerline.
-
-* Radial Velocity Profiles (W)
-** S=0
-[[./radialVel/p9_Re5300_S00_VarW_P5.png]]
-+ Dominant POD modes (Mode 1-5) are composed of many superimposed, high-amplitude azimuthal structures (multi-$m$).
-
-+ This complexity is characteristic of fully developed turbulence.
-** S=0.5
-[[./radialVel/p9_Re5300_S50_VarW_P5.png]]
-
-Axisymmetric mode ($m=0$, plotted as $m=1$) gains dominance and penetrates deeper into the flow core, and turbulent modes ($m \ge 1$) show reduced amplitude, especially the high-$m$ modes. Flow dynamics begin to transition from complex 3D turbulence to a simpler, more axisymmetric state.
-** S=1
-[[./radialVel/p9_Re5300_S10_VarW_P5.png]]
-+ $S=0.5$ shows initial stabilization, while $S=1.0$ marks the decisive reorganization where the energy cascade is effectively broken
-** S=2
-[[./radialVel/p9_Re5300_S20_VarW_P5.png]]
-The single most energetic structure (the axisymmetric $m=0$ mode) reorganizes away from the wall and is now established in the core of the pipe flow, structurally confirming the detachment of the dynamics from the boundary layer and the completion of relaminarization.
-** S=3
-[[./radialVel/p9_Re5300_S30_VarW_P5.png]]
-The axisymmetric mode ($m=0$, plotted as $m=1$) is fully detached from the wall and dominates the structure near the pipe center ($1-r/R \approx 0.5$).
 * Relaminarization
 
 ** Energy $S=0$
@@ -351,6 +314,43 @@ The axisymmetric mode ($m=0$, plotted as $m=1$) is fully detached from the wall 
   + Flow has transitioned to a stable, simplified quasi-laminar state.
 
 + Dynamics are governed almost entirely by the large-scale, non-turbulent helical structure.
+* ROM Reconstruction
+** S=0
+[[./im/ROM/s0.p1m3.png]]
+S = 0.0 (Turbulent Baseline): Fully developed pipe turbulence. High-energy structures across all azimuthal modes ($m$). Broadband spectral activity. Wall-dominated dynamics; structures active and chaotic near the boundary. No core reorganization.
+
+** S=0.5
+S = 0.5 (Initial Stabilization): Low-order reconstruction (P=1, M=0-2). Snapshot shows the first distinct structural simplification. The largest non-axisymmetric structures ($m=1, 2$) are suppressed, allowing the axisymmetric core flow ($m=0$) to begin asserting dominance. Initial shift from wall-dominated to core-influenced dynamics.
+[[./im/ROM/s5.p1m3.png]]
+** S=1
+[[./im/ROM/s1.p1m3.png]]
+S = 1.0 (Decisive Transition): Low-order reconstruction (P=1, M=0-2). This is the point of structural dominance shift. The $m=0$ core structure clearly outweighs the turbulent $m=1, 2$ components. The large-scale asymmetric activity is suppressed, leading to the formation of a simple, large, rotationally-aligned structure.
+** S=2
+[[./im/ROM/s2.p1m3.png]]
+S = 2.0 (Near Relaminarization): Low-order reconstruction (P=1, M=0-2). Snapshot shows maximal structural purity; the $m=0$ core structure is fully established and dominant. The turbulent components ($m=1, 2$) are effectively extinguished. A very clean, stable structure, now fully detached from the wall.
+** S=3
+[[./im/ROM/s3.p1m3.png]]
+Post-Optimal Stabilization): Low-order reconstruction (P=1, M=0-2). The flow remains highly stabilized and core-dominated ($m=0$). However, when compared to $S=2.0$, this state shows a subtle but persistent deviation from perfect structural purity. This suggests the onset of new, weak secondary flow phenomena near the wall (e.g., Ekman layer instability) that are captured by the low-order model, confirming that $S=2.0$ achieved the maximal degree of simplification. Fatica 1997: wall rotation generates a secondary flow (or swirling flow) through the mechanism of the Ekman layer. This secondary motion is characterized by fluid being pushed towards the center of the pipe at the wall, and returning along the centerline.
+
+* Radial Velocity Profiles ($u_z$)
+** S=0
+[[./radialVel/p9_Re5300_S00_VarW_P5.png]]
++ Dominant POD modes (Mode 1-5) are composed of many superimposed, high-amplitude azimuthal structures (multi-$m$).
+
++ This complexity is characteristic of fully developed turbulence.
+** S=0.5
+[[./radialVel/p9_Re5300_S50_VarW_P5.png]]
+
+Axisymmetric mode ($m=0$, plotted as $m=1$) gains dominance and penetrates deeper into the flow core, and turbulent modes ($m \ge 1$) show reduced amplitude, especially the high-$m$ modes. Flow dynamics begin to transition from complex 3D turbulence to a simpler, more axisymmetric state.
+** S=1
+[[./radialVel/p9_Re5300_S10_VarW_P5.png]]
++ $S=0.5$ shows initial stabilization, while $S=1.0$ marks the decisive reorganization where the energy cascade is effectively broken
+** S=2
+[[./radialVel/p9_Re5300_S20_VarW_P5.png]]
+The single most energetic structure (the axisymmetric $m=0$ mode) reorganizes away from the wall and is now established in the core of the pipe flow, structurally confirming the detachment of the dynamics from the boundary layer and the completion of relaminarization.
+** S=3
+[[./radialVel/p9_Re5300_S30_VarW_P5.png]]
+The axisymmetric mode ($m=0$, plotted as $m=1$) is fully detached from the wall and dominates the structure near the pipe center ($1-r/R \approx 0.5$).
 * Orlandi and Fatica 1997
 + Strong Stabilization at High $S$
 
