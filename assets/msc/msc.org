@@ -318,10 +318,9 @@ Hellstrom 2017: high-$Re$ Optimal Perturbations (OPs) show remarkably similar ra
 ** S=0
 [[./im/ROM/s0.p1m3.png]]
 S = 0.0 (Turbulent Baseline): Fully developed pipe turbulence. High-energy structures across all azimuthal modes ($m$). Broadband spectral activity. Wall-dominated dynamics; structures active and chaotic near the boundary. No core reorganization.
-
 ** S=0.5
-S = 0.5 (Initial Stabilization): Low-order reconstruction (P=1, M=0-2). Snapshot shows the first distinct structural simplification. The largest non-axisymmetric structures ($m=1, 2$) are suppressed, allowing the axisymmetric core flow ($m=0$) to begin asserting dominance. Initial shift from wall-dominated to core-influenced dynamics.
 [[./im/ROM/s5.p1m3.png]]
+S = 0.5 (Initial Stabilization): Low-order reconstruction (P=1, M=0-2). Snapshot shows the first distinct structural simplification. The largest non-axisymmetric structures ($m=1, 2$) are suppressed, allowing the axisymmetric core flow ($m=0$) to begin asserting dominance. Initial shift from wall-dominated to core-influenced dynamics.
 ** S=1
 [[./im/ROM/s1.p1m3.png]]
 S = 1.0 (Decisive Transition): Low-order reconstruction (P=1, M=0-2). This is the point of structural dominance shift. The $m=0$ core structure clearly outweighs the turbulent $m=1, 2$ components. The large-scale asymmetric activity is suppressed, leading to the formation of a simple, large, rotationally-aligned structure.
