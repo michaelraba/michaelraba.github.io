@@ -261,32 +261,73 @@ $$\text{Used in Reconstruction: } \quad \tilde{\mathbf{u}}_{recon} \propto \sum_
 ** Reconstruction
 #+caption: Rotating Boundary condition animation ($N=3$)
   [[./gif/5300S0.gif]]
+** Validation of the POD: Reconstruction
+Reconstruction for $Re=5300$ for different Swirl numbers
+** Energy $S=0$
+[[./im/recon_Re5300_S00.png]]
+** Energy $S=0.5$
+[[./im/recon_Re5300_S50.png]]
+** Energy $S=1$
+[[./im/recon_Re5300_S10.png]]
+** Energy $S=2$
+[[./im/recon_Re5300_S20.png]]
+** Energy $S=3$
+[[./im/recon_Re5300_S30.png]]
+
 * Radial Velocity Profiles (W)
 ** S=0
 [[./radialVel/p9_Re5300_S00_VarW_P5.png]]
++ Dominant POD modes (Mode 1-5) are composed of many superimposed, high-amplitude azimuthal structures (multi-$m$).
+
++ This complexity is characteristic of fully developed turbulence.
 ** S=0.5
 [[./radialVel/p9_Re5300_S50_VarW_P5.png]]
+
+Axisymmetric mode ($m=0$, plotted as $m=1$) gains dominance and penetrates deeper into the flow core.
+
+turbulent modes ($m \ge 1$) show reduced amplitude, especially the high-$m$ modes.
+
+Flow dynamics begin to transition from complex 3D turbulence to a simpler, more axisymmetric state.
 ** S=1
 [[./radialVel/p9_Re5300_S10_VarW_P5.png]]
++ $S=0.5$ shows initial stabilization, while $S=1.0$ marks the decisive reorganization where the energy cascade is effectively broken
 ** S=2
 [[./radialVel/p9_Re5300_S20_VarW_P5.png]]
+The single most energetic structure (the axisymmetric $m=0$ mode) reorganizes away from the wall and is now established in the core of the pipe flow, structurally confirming the detachment of the dynamics from the boundary layer and the completion of relaminarization.
 ** S=3
 [[./radialVel/p9_Re5300_S30_VarW_P5.png]]
 * Relaminarization
 
 ** Energy $S=0$
 [[./im/energy_dist_Re5300_S00.png]]
++ Energy spread across all azimuthal modes ($m=1$ to $m>30$); Represents classic turbulent energy cascade.
+  + Dominant POD modes composed of many co-existing high-amplitude structures (multi-m).
 ** Energy $S=0.5$
 [[./im/energy_dist_Re5300_S50.png]]
++ Onset of Modal Simplification, as $m=1$ mode begins to dominate the primary POD mode (Mode 1), taking a larger energy share than neighboring modes.
+
++ energy spectrum still relatively broadband, but the energy peak shifts towards $m=1$; Small-scale structures (high $m$) show first signs of amplitude reduction, especially away from the immediate near-wall region. Energy distribution is less uniform than $S=0.0$, indicates initial turbulent suppression
+
 ** Energy $S=1$
 [[./im/energy_dist_Re5300_S10.png]]
++ Strong $m=1$ Dominance since, $m=1$ mode captures the vast majority of energy, creating a clear peak. represents the structural collapse of small-scale turbulence.
+
+  + Spectrum narrows sharply; energy levels for $m \ge 10$ are minimal.
+
+  + Flow dynamics become simplified and (maybe) dominated by the large-scale helical structure that Orlandi and Fatica 1997 describes.
 ** Energy $S=2$
 [[./im/energy_dist_Re5300_S20.png]]
++ Near-Total Structural Collapse, since $m=1$ mode captures over 25% of the total energy, peaking far above all other modes. Spectrum is extremely narrow; structures $m \ge 6$ carry negligible energy (minimal turbulence).
++ Represents the flow settling into a highly stable, quasi-laminar state due to rotational stabilization.
 ** Energy $S=3$
 
 [[./im/energy_dist_Re5300_S30.png]]
 
++ (maybe) Complete Turbulence Suppression since, $m=1$ mode is the singular, dominant energy carrier (capturing over 25% of total energy)
 
+  + Flow has transitioned to a stable, simplified quasi-laminar state.
+
++ Dynamics are governed almost entirely by the large-scale, non-turbulent helical structure.
 * Analysis of Relative Energy Distribution
 ** Analysis of Relative Energy Distribution ($E_r$) vs. Rotation Rate ($S$)
 
@@ -320,24 +361,34 @@ m=1 Dominance: The relative energy captured by the $m=1$ mode jumps from about $
 
 + These graphs visually confirm that axial rotation fundamentally alters the energy cascade, moving the flow from a broadband spectrum ($S=0.0$) to a highly concentrated spectrum dominated by the large-scale $m=1$ mode ($S \ge 1.0$).
 
+
+* Analysis of Radial Modes Energy
+**  I. Overall Structural Behavior (All N)
++  The most energetic fluctuations (all POD modes) are concentrated in the near-wall region, primarily in the domain $1 - r/R < 0.2$. This aligns with the understanding that turbulent energy production is a boundary-layer phenomenon. Y The rotational effect causes a systematic suppression of small-scale structures (high azimuthal modes) and promotes the dominance of the largest-scale structure ($m=1$).
+
+**  II. Baseline State ($N = 0.0$ - Non-Rotating)
++  Energy Distribution: The first POD mode (Mode 1) shows several azimuthal modes (e.g., $m=5, 9, 13$) contributing substantially to the total structure, with broadly similar maximum magnitudes.
++  Structure Complexity: The radial profiles for high $m$ (e.g., $m=25, 29$) are oscillatory and reach significant amplitudes, indicating a complex, multi-scale, fully turbulent flow structure.
+
+**  III. Low to Moderate Rotation ($N = 1.0$ to $N = 3.0$)
++  m=1 Dominance Emerges: Even at $N=1.0$, the $m=1$ mode (blue line) begins to stand out, having the largest magnitude and extending furthest from the wall, particularly in Mode 1.
++  High-m Suppression: Structures associated with high $m$ (small scales) are strongly suppressed. Their maximum amplitude drops, and they become visually more confined to the immediate vicinity of the wall.
++  Radial Confinement: The rotational stiffness rapidly reduces the ability of turbulent structures to penetrate the flow core.
+
+**  IV. Strong Rotation / Relaminarization Regime ($N = 5.0$)
++  Structural Collapse: The first POD mode (Mode 1) is overwhelmingly dominated by the $m=1$ structure. The high-$m$ structures are now barely visible in terms of magnitude compared to the $m=1$ mode.
++  Scale Separation: The flow is effectively decomposed into two states:
+
++ 1. A persistent, large-scale, helical disturbance ($m=1$) that extends well into the core ($1-r/R \approx 0.5$).
+
++ 2. Highly dampened, complex, small-scale structures (high $m$) that are tightly confined to the viscous sublayer ($1-r/R < 0.1$).
++  Relaminarization Confirmation: The near-total structural suppression of high-wavenumber modes confirms that the energy collapse observed previously translates directly into a loss of the small, energetic eddies that define classical pipe turbulence, leading to relaminarization.
+
+
+
 * Citations
 
 * Delete Sections:
-* Validation of the POD: Reconstruction
-Reconstruction for $Re=5300$ for different Swirl numbers
-** Energy $S=0$
-[[./im/recon_Re5300_S00.png]]
-** Energy $S=0.5$
-[[./im/recon_Re5300_S50.png]]
-** Energy $S=1$
-[[./im/recon_Re5300_S10.png]]
-** Energy $S=2$
-[[./im/recon_Re5300_S20.png]]
-** Energy $S=3$
-[[./im/recon_Re5300_S30.png]]
-
-* Vortex Field and Their Radial Graph
-
 * Radial Velocity Profiles (U,V,W,P)
 ** S=0
 [[./radialVel/p9_Re5300_S00_VarU_P5.png]]
