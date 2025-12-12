@@ -1,5 +1,7 @@
 #+TITLE: POD Analysis of Turbulent Pipe Flow and Relaminarization
 #+AUTHOR: Michael Raba, MSc Candidate Department of Mechanical Engineering, University of Kentucky Fall 2025
+#+Date: December 1, 2025
+#+OPTIONS: creator:nil
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
 #+LATEX_header: ​\geometry{paperwidth=700pt, paperheight=2000pt}
@@ -429,3 +431,28 @@ References
 
 *** 0.P
 [[./radialVel/p9_Re5300_S30_VarP_P5.png]]
+
+
+* Axial Energy Spectrum
+** S=0
+[[./axialEnergy/axialWs0.svg]]
+** S=0.5
+[[./axialEnergy/axialWs5.svg]]
+** S=1
+[[./axialEnergy/axialWs1.svg]]
+** S=2
+[[./axialEnergy/axialWs2.svg]]
+** S=3
+[[./axialEnergy/axialWs3.svg]]
+
+* $\langle k_x \rangle$ Averaged Energy
+** S=0
+[[./energyDist/energy_dist_Re5300_S00W.png]]
+** S=0.5
+[[./energyDist/energy_dist_Re5300_S50W.png]]
+** S=1
+[[./energyDist/energy_dist_Re5300_S10W.png]]
+** S=2
+[[./energyDist/energy_dist_Re5300_S20W.png]]
+** S=3
+[[./energyDist/energy_dist_Re5300_S30W.png]]
