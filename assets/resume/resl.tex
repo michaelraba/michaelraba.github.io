@@ -1,7 +1,38 @@
-%-------------------------
-% Resume in Latex
-% Author : Adapted for Michael Raba
-%------------------------
+% Created 2026-02-24 Tue 05:58
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\author{Michael Raba}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Michael Raba},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.6.1)}, 
+ pdflang={English}}
+\usepackage{biblatex}
+
+\begin{document}
+
+\tableofcontents
+
+\%-------------------------
+\% Resume in Latex
+\% Author : Adapted for Michael Raba
+\%------------------------
 
 \documentclass[letterpaper,11pt]{article}
 
@@ -36,35 +67,35 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-\titleformat{\section}{
+\titleformat{\section}\{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\}\{\}\{0em\}\{\}[\color{black}\titlerule \vspace{-5pt}]
 
 \pdfgentounicode=1
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
+\%-------------------------
+\% Custom commands
+\newcommand{\resumeItem}[1]\{
+  \item\small\{
+    \{\#1 \vspace{-2pt}\}
+  \}
+\}
 
-\newcommand{\resumeSubheading}[4]{
+\newcommand{\resumeSubheading}[4]\{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
+    \begin{tabular*}{0.97\textwidth}[t]\{l@\{\extracolsep{\fill}\}r\}
+      \textbf{#1} \& \#2 \\[0pt]
+      \textit{\small#3} \& \textit{\small #4} \\[0pt]
     \end{tabular*}\vspace{-7pt}
-}
+\}
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubItem}[1]\{\resumeItem{#1}\vspace{-4pt}\}
+\newcommand{\resumeSubHeadingListStart}\{\begin{itemize}[leftmargin=0.15in, label=\{\}]\}
+\newcommand{\resumeSubHeadingListEnd}\{\end{itemize}\}
+\newcommand{\resumeItemListStart}\{\begin{itemize}\}
+\newcommand{\resumeItemListEnd}\{\end{itemize}\vspace{-5pt}\}
 
-%-------------------------------------------
+\%-------------------------------------------
 \begin{document}
 
 \begin{center}
@@ -132,4 +163,5 @@
     }
  \end{itemize}
 
+\end{document}
 \end{document}

@@ -1,0 +1,37 @@
+/* Increase base font for better legibility from distance */
+.reveal {
+  font-size: 32px; /* Using px for the base ensures consistency across different screen resolutions */
+}
+
+/* Headings: Adjusted for a more dramatic hierarchy */
+.reveal h1 {
+  font-size: 2.2em; /* Significantly larger for main titles */
+  margin-bottom: 20px;
+}
+
+.reveal h2 {
+  font-size: 1.6em; /* Clear distinction for section headers */
+  margin-bottom: 15px;
+}
+
+.reveal h3 {
+  font-size: 1.2em; /* Sits just above the body text size */
+}
+
+/* Flexbox/HTML blocks font size */
+/* Since you're using flex layouts in your Org-mode slides,
+   ensure the text inside doesn't shrink too much. */
+.reveal .slides section div {
+  line-height: 1.4;
+}
+
+/* MathJax font size: Bumped up slightly */
+.reveal .MathJax,
+.reveal .MathJax_Display {
+  font-size: 1.0em !important;
+}
+
+/* Ensure bullet points aren't tiny */
+.reveal ul, .reveal ol {
+  font-size: 0.9em;
+}

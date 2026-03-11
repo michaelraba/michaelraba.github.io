@@ -1,72 +1,47 @@
-%-------------------------
-% Resume in Latex
-% Author : Adapted for Michael Raba
-%------------------------
+#+OPTIONS: toc:nil num:nil sw:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [letterpaper,11pt]
 
-\documentclass[letterpaper,11pt]{article}
+#+LATEX_HEADER: \usepackage{latexsym}
+#+LATEX_HEADER: \usepackage[empty]{fullpage}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage{marvosym}
+#+LATEX_HEADER: \usepackage[usenames,dvipsnames]{color}
+#+LATEX_HEADER: \usepackage{verbatim}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage[hidelinks]{hyperref}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage{tabularx}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\input{glyphtounicode}
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhf{}
+#+LATEX_HEADER: \fancyfoot{}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+#+LATEX_HEADER: \addtolength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\evensidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\textwidth}{1in}
+#+LATEX_HEADER: \addtolength{\topmargin}{-.5in}
+#+LATEX_HEADER: \addtolength{\textheight}{1.0in}
 
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+#+LATEX_HEADER: \urlstyle{same}
+#+LATEX_HEADER: \raggedbottom
+#+LATEX_HEADER: \raggedright
+#+LATEX_HEADER: \setlength{\tabcolsep}{0in}
 
-\urlstyle{same}
+#+LATEX_HEADER: \titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
+#+LATEX_HEADER: \newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+#+LATEX_HEADER: \newcommand{\resumeSubheading}[4]{\vspace{-2pt}\item\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2 \\\textit{\small#3} & \textit{\small #4} \\\end{tabular*}\vspace{-7pt}}
+#+LATEX_HEADER: \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListStart}{\begin{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-
-\pdfgentounicode=1
-
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%-------------------------------------------
-\begin{document}
-
+#+BEGIN_EXPORT latex
 \begin{center}
     \textbf{\Huge \scshape Michael Raba} \\
     \href{mailto:michael.raba@uky.edu}{michael.raba@uky.edu} $|$
@@ -74,7 +49,6 @@
     Lexington, KY
 \end{center}
 
-%-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
@@ -85,12 +59,11 @@
       {B.A. Applied Mathematics}{Lexington, KY}
   \resumeSubHeadingListEnd
 
-%-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
     \resumeSubheading
       {Research Assistant, NSF}{Fall 2020 -- 2023}
-      {University of Maryland (PI: Prof. Christoph Brehm)}{Remote}
+      {University of Maryland (PI: Prof. Christoph Brehm)}{}
       \resumeItemListStart
         \resumeItem{Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe}
       \resumeItemListEnd
@@ -118,7 +91,6 @@
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
-%-----------SKILLS-----------
 \section{Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
@@ -131,5 +103,4 @@
     \item{\textbf{Math/Tech Topics:} Signal Processing, ROM, Turbulence Theory, Matrix Methods}
     }
  \end{itemize}
-
-\end{document}
+#+END_EXPORT

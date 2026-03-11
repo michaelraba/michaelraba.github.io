@@ -1,0 +1,12 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "h1.xdv" "h1.pdf" "h1" 0 -1
+  "h1.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "h1.pdf"
+  (rewritten before read)
+["xelatex"] 1767694114 "h1.tex" "h1.xdv" "h1" 1767694114 2
+  (generated)
+  "h1.aux"
+  "h1.log"
+  "h1.xdv"
+  (rewritten before read)
