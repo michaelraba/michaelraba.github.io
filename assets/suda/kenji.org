@@ -13,12 +13,17 @@
 #+REVEAL_INIT_OPTIONS: controls:true, progress:true, slideNumber:true, transition:'fade'
 #+REVEAL_EXTRA_CSS: style.css
 
+
 * Kenji Suda: The Living National Treasure (Japan)
   :PROPERTIES:
   :CUSTOM_ID: introduction
   :END:
 
 #+BEGIN_EXPORT html
+<li style="margin-bottom: 12px;"><strong>Born:</strong> June 27, 1954 | Tokyo, Japan</li>
+<li style="margin-bottom: 12px;"><strong>Conceptual Practice:</strong> Suda bridges the gap between functional craft and high art, emphasizing the dialogue between the natural life of the timber and the geometric precision of <em>Sashimono</em>. His practice is rooted in the "spirit of the material," where the maker's ego is secondary to the inherent beauty of the wood grain.</li>
+<li style="margin-bottom: 12px;"><strong>Heritage:</strong> A <em>Ningen Kokuho</em> (Living National Treasure) representing the fourth generation of the Suda woodworking lineage.</li>
+
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
     <img src="./images/sp.jpg" alt="Kenji Suda Portrait" style="width: 100%; border-radius: 8px; border: 1px solid #444;">
@@ -33,36 +38,143 @@
 </div>
 #+END_EXPORT
 
-* Materials & The Continuity of Craft
-  :PROPERTIES:
-  :CUSTOM_ID: materials-history
-  :END:
-
-- **The Power of Mulberry [桑]:** Suda utilizes Mikura Island Mulberry—the legendary material of *Edo Sashimono*, often combining it with Sycamore to bridge ancestral techniques with modern aesthetics.
-- **A 2,000-Year Timeline:** Suda views joinery as a "complete" technology since the 1st century; he works to keep this ancient lineage breathing in the present day.
-- **Ebijo [蝦錠]:** A rare artist-blacksmith, Suda hand-forges his own "shrimp-shaped" locks based on 6th-century Asuka Period designs to give his wood "historical gravity."
 
 
+** Kenji in workshop
 
-* Philosophy: Craft as Life [生活 - Seikatsu]
-  :PROPERTIES:
-  :CUSTOM_ID: philosophy
-  :END:
+[[./images/kenji2.png]]
 
-#+BEGIN_EXPORT html
-<div style="display: flex; align-items: flex-start; gap: 20px;">
-  <div style="flex: 1.5; font-size: 0.95em;">
-    <ul style="list-style-type: none; padding-left: 0;">
-      <li style="margin-bottom: 12px;"><strong>Beyond Work:</strong> For Suda, being in the workshop is not "labor" but simply <em>living</em>. The act of creation is inseparable from existence.</li>
-      <li style="margin-bottom: 12px;"><strong>Mederu [愛でる]:</strong> The philosophy of "loving and cherishing" ordinary objects. He believes beauty must be rooted in the home and daily use, not just the gallery.</li>
-      <li style="margin-bottom: 12px;"><strong>Nature’s Revelation:</strong> As seen in his <em>Suiko</em> and <em>Tsukuhae</em> boxes, he planed a blackened, discarded log to reveal grain patterns like "moonlight on dark water."</li>
-    </ul>
+* Style/Technique
+
+- use of local kiln dried woods (mulberry)
+- unites: blacksmithing, joinery, and lacquer (fuku-urshi)
+
+
+
+#+begin_export html
+<div style="display: flex; justify-content: space-evenly; align-items: flex-start; gap: 20px;">
+
+  <div style="text-align: center;">
+    <h3 style="color: #666;">blind (hidden) joinery</h3>
+    <img src="./images/a7.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   </div>
-  <div style="flex: 1;">
-    <img src="./images/b1.jpg" alt="Suiko and Tsukuhae Boxes" style="width: 100%; border-radius: 8px; border: 1px solid #444;">
+
+  <div style="text-align: center;">
+    <h3 style="color: #666;">lacquered detail closeup</h3>
+    <img src="./images/a6.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   </div>
+
 </div>
-#+END_EXPORT
+#+end_export
+
+
+* Grandfather's Plane
+
+[[./images/plane.png]]
+
+
+** Detail
+
+The small planes in the hand of Kenji
+Suda were used by his grandfather Sogetsu, and the blades are said to be the
+works of famous bladesmith Nobuyoshi. Kenji wrote that, “There is nothing more
+to say except that they cut well.” The well-used tools have a particular
+beauty.
+
+
+* Grandfather's Box
+Mulberry writing box
+Creator: Suda Sogetsu (1877-1950)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/grandfatherMulberry.png]]
+
+** Detail
+
+credited with elevating the family's technical standards to the elite levels required for Imperial-grade furnishings.
+
+- *Imperial Household Agency* : functional, ultra-high-end furnishings meant for the environments where the Imperial family lived or held audiences.
+* Father's Box
+Suda Kuwasui "Black Persimmon Chest of Drawers" 1979
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/fatherBox.png]]
+** Detail
+
+- clean lines, structural balance, and the functional beauty of the Sashimono joints.
+
+- National Art Exhibitions
+
+
+* Father's Box 2
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/fatherBox2.png]]
+
+
+
+* Historical First
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/hist1.png]]
+
+** Detail
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/hist2.png]]
+
+
+** Detail
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/hist3.png]]
+
+* Suiko Box
+
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/suiko.png]]
+
+
+* Tsukuhae Box
+Hirin gen'ei 碑林玄英 (Stela Forest in Winter)
+2013
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/tsu.png]]
+
+
+** Tsukuhae Box
+
+[[./images/tsu2.png]]
+
+
+* Contrast
+
+Suiko captures the fluid, rhythmic energy of daylight reflecting off rippling water,
+
+whereas Tsukuhae emphasizes the quiet, singular stillness of moonlight in the dark.
+
+Visually, this creates a tension between the Suiko's edge-to-edge movement and the Tsukuhae's minimalist, atmospheric focus.
+
+
+* Joinery (Deconstructed)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/joinery1.png]]
+
+* Small Box of Zelkova Finished in Wiped Urushi (2022).
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/z.png]]
+
+** Analysis
+
+- Zelkova is famous for its bold, "mountains and rivers" grain. In this piece, Suda has selected a cut where the grain lines are broad and stable.
+
+- He is letting the simple, natural growth rings of the Zelkova tree do the talking, rather than relying on a flashy, "busy" grain to impress the viewer.
+
+
 
 * Ohotera: Table of Pear and Locust (2024)
   :PROPERTIES:
@@ -117,11 +229,12 @@
 #+END_EXPORT
 
 
-* D1: Sycamore Maple Box (2019)
+* Sycamore Maple Box (2019)
   :PROPERTIES:
   :CUSTOM_ID: slide-1
   :END:
 
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
   [[./images/d1.png]]
 
   - *Artisan:* Carpenter (Sashimono Specialist)
@@ -149,11 +262,13 @@
   - *Details:* Large maple chassis; Medium rhythmic joinery "teeth"; Small metal pins and circular surface inlays.
   - *Context:* Functional sculpture for institutional/collector environments; labor-intensive fabrication justifies high-end retail price point.
 
+
 * Yatsuhashi II: Claro Walnut and Cherry Wood Table
   :PROPERTIES:
   :CUSTOM_ID: slide-1
   :END:
 
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
   [[./images/d2.png]]
 
   - *Artisan:* Kenji Suda (Living National Treasure)
@@ -191,3 +306,23 @@
   - *Details:* Large interlocking walnut planks; Medium cherry structural beams; Small precisely carved joint interfaces where the "planks" meet the frame.
   - *Context:* A monumental functional sculpture intended for institutional or high-end residential interiors; its status as a work by a Living National Treasure places it in a high-luxury price bracket for serious collectors.
 
+
+* Philosophy: Craft as Life [生活 - Seikatsu]
+  :PROPERTIES:
+  :CUSTOM_ID: philosophy
+  :END:
+
+#+BEGIN_EXPORT html
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div style="flex: 1.5; font-size: 0.95em;">
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li style="margin-bottom: 12px;"><strong>Beyond Work:</strong> For Suda, being in the workshop is not "labor" but simply <em>living</em>. The act of creation is inseparable from existence.</li>
+      <li style="margin-bottom: 12px;"><strong>Mederu [愛でる]:</strong> The philosophy of "loving and cherishing" ordinary objects. He believes beauty must be rooted in the home and daily use, not just the gallery.</li>
+      <li style="margin-bottom: 12px;"><strong>Nature’s Revelation:</strong> As seen in his <em>Suiko</em> and <em>Tsukuhae</em> boxes, he planed a blackened, discarded log to reveal grain patterns like "moonlight on dark water."</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <img src="./images/b1.jpg" alt="Suiko and Tsukuhae Boxes" style="width: 100%; border-radius: 8px; border: 1px solid #444;">
+  </div>
+</div>
+#+END_EXPORT
