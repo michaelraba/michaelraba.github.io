@@ -1,6 +1,13 @@
-#+TITLE: Seiga [清雅] The Architecture of Refinement
+#+TITLE: Seiga [清雅] Three Generations of Pure Elegance
 #+SUBTITLE: The Work of Living National Treasure Kenji Suda [須田賢司]
-#+AUTHOR: Presented by: Michael Raba for AS 390
+#+AUTHOR: Michael Raba for AS 390
+#+OPTIONS: num:nil toc:nil title:nil
+
+#+REVEAL_TITLE_SLIDE: <h1 style="font-size: 2.2em;">%t</h1><h3 style="color: #555;">%s</h3><p>Presented by: %a</p><div style="display: flex; justify-content: center; gap: 15px;"><img src="./images/z.png" style="width: 28%%;"><img src="./images/moon.png" style="width: 28%%;"><img src="./images/white1.png" style="width: 28%%;"></div>
+
+# #+TITLE: Inherited Elegance
+# #+SUBTITLE: Three Generations of Suda Mastery
+# #+AUTHOR: Presented by: Michael Raba for AS 390
 #+OPTIONS: num:nil toc:nil
 #+OPTIONS: toc:nil num:nil creator:nil timestamp:nil
 
@@ -14,35 +21,45 @@
 #+REVEAL_EXTRA_CSS: style.css
 
 
+
+
 * Kenji Suda: The Living National Treasure (Japan)
   :PROPERTIES:
   :CUSTOM_ID: introduction
   :END:
-
 #+BEGIN_EXPORT html
 <li style="margin-bottom: 12px;"><strong>Born:</strong> June 27, 1954 | Tokyo, Japan</li>
-<li style="margin-bottom: 12px;"><strong>Conceptual Practice:</strong> Suda bridges the gap between functional craft and high art, emphasizing the dialogue between the natural life of the timber and the geometric precision of <em>Sashimono</em>. His practice is rooted in the "spirit of the material," where the maker's ego is secondary to the inherent beauty of the wood grain.</li>
 <li style="margin-bottom: 12px;"><strong>Heritage:</strong> A <em>Ningen Kokuho</em> (Living National Treasure) representing the fourth generation of the Suda woodworking lineage.</li>
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
-  <div style="flex: 1;">
-    <img src="./images/sp.jpg" alt="Kenji Suda Portrait" style="width: 100%; border-radius: 8px; border: 1px solid #444;">
+ <div style="flex: 1;">
+    <img src="./images/sp.jpg" alt="Kenji Suda Portrait" style="width: 90%; border-radius: 8px; border: 1px solid #444;">
   </div>
-  <div style="flex: 1.5; font-size: 0.95em;">
+  <div style="flex: 1.5; font-size: 0.65em;">
     <ul style="list-style-type: none; padding-left: 0;">
-      <li style="margin-bottom: 12px;"><strong>Heritage:</strong> A <em>Ningen Kokuho</em> (Living National Treasure) representing the third generation of the Suda woodworking lineage.</li>
-      <li style="margin-bottom: 12px;"><strong>The Seiga [清雅] Spirit:</strong> His work is defined by "Refined Purity," evolving 2,000 years of <em>Monozukuri</em> history into modern wood art.</li>
-      <li style="margin-bottom: 12px;"><strong>Shift in Role:</strong> His career tracks the transition from the <em>Sashimono-shi</em> (technical joiner) to the <em>Mokko-geika</em> (woodworking artist).</li>
+      <li style="margin-bottom: 10px;"><strong>Apprenticeship:</strong> Trained in the rigorous "Standard" of <em>Sashimono</em> joinery under his father, <strong>Suda Sousui (1910-1979)</strong>.</li>
+      <li style="margin-bottom: 10px;"><strong>Shrine Carpentry:</strong> Studied the structural principles of <em>Miya-daiku</em> (shrine carpentry) through the legacy of his grandfather, <strong>Suda Kiichi (1877-1950)</strong>.</li>
+      <li style="margin-bottom: 10px;"><strong>Urushi Artistry:</strong> Refined his lacquer techniques by studying with his maternal grandfather, incorporating traditional <em>Urushi</em> finishes into his woodwork.</li>
     </ul>
   </div>
 </div>
 #+END_EXPORT
 
+** Detail
 
+#+CAPTION: Suda Sashimono Lineage (Four Generations)
+| Generation | Name (Birth/Art) | Kanji    | Lifespan   | English Meaning / Role                  |
+|------------+------------------+----------+------------+-----------------------------------------|
+| 1st        | Suda Kiichi      | 須田 喜一 | Late Meiji | Founder of the Tokyo Lineage            |
+| 2nd        | Suda Sōgetsu     | 須田 桑月 | 1877–1950  | "Mulberry Moon" (Master of Kuwa)        |
+| 3rd        | Suda Sōsui       | 須田 桑翠 | 1910–1979  | "Mulberry Kingfisher" (Kenji's Teacher) |
+| 4th        | Suda Kenji       | 須田 賢司 | 1954–Pres. | "Wise Admin" (Living National Treasure) |
 
 ** Kenji in workshop
 
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
 [[./images/kenji2.png]]
+
 
 * Style/Technique
 
@@ -56,27 +73,41 @@
 
   <div style="text-align: center;">
     <h3 style="color: #666;">blind (hidden) joinery</h3>
-    <img src="./images/a7.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <img src="./images/join1.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   </div>
 
   <div style="text-align: center;">
     <h3 style="color: #666;">lacquered detail closeup</h3>
-    <img src="./images/a6.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <img src="./images/fuku.gif" style="width: 100%; max-width: 450px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   </div>
 
 </div>
 #+end_export
 
 
-* Grandfather's Plane
+* Hand joinery
 
-[[./images/plane.png]]
+[[./images/dove1.gif]]
+
+Chisel work for precise fit
+
+
+* Suda Sogetsu (1877-1950)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/grandfatherPlane.png]]
+
+The small planes in the hand of Kenji
 
 
 ** Detail
 
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/grandfatherPlane.png]]
+
 The small planes in the hand of Kenji
-Suda were used by his grandfather Sogetsu, and the blades are said to be the
+
+Blades are said to be the
 works of famous bladesmith Nobuyoshi. Kenji wrote that, “There is nothing more
 to say except that they cut well.” The well-used tools have a particular
 beauty.
@@ -87,29 +118,30 @@ Mulberry writing box
 Creator: Suda Sogetsu (1877-1950)
 
 #+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/grandfatherMulberry.png]]
+[[./images/grand1.png]]
 
 ** Detail
+
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/grand1.png]]
 
 credited with elevating the family's technical standards to the elite levels required for Imperial-grade furnishings.
 
 - *Imperial Household Agency* : functional, ultra-high-end furnishings meant for the environments where the Imperial family lived or held audiences.
+
+
 * Father's Box
 Suda Kuwasui "Black Persimmon Chest of Drawers" 1979
 
 #+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/fatherBox.png]]
+[[./images/sosui.jpg]]
 ** Detail
 
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/sosui.jpg]]
 - clean lines, structural balance, and the functional beauty of the Sashimono joints.
 
 - National Art Exhibitions
-
-
-* Father's Box 2
-
-#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/fatherBox2.png]]
 
 
 
@@ -118,50 +150,69 @@ Suda Kuwasui "Black Persimmon Chest of Drawers" 1979
 #+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
 [[./images/hist1.png]]
 
+‘Small Cabinet’, made by KAJITA Megumu
+
 ** Detail
 
-#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+#+ATTR_HTML: :style max-height: 30vh; width: auto; object-fit: contain;
 [[./images/hist2.png]]
-
+- Detailed plans with dimensions for a small cabinet
+- Kajita Megumu (梶田惠作). Kajita was a seminal figure in modern Japanese woodworking and a primary influence on the transition from traditional guild-based "copying" to the systematic, architectural design that Suda Kenji practices today.
 
 ** Detail
 
-#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+#+ATTR_HTML: :style max-height: 30vh; width: auto; object-fit: contain;
 [[./images/hist3.png]]
 
-* Suiko Box
+- Kajita Megumu was a professor at the Tokyo University of the Arts and was instrumental in teaching the "academic" side of woodworking. The Suda family (starting with Sogetsu and Sosui) moved in these high-level circles where the drawing (the blueprint) became as important as the chiseling.
+ (Source: https://www.a-quad.jp/exhibition/097/p07.html)
+
+* Sun and Moon (2023)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/moon.png]]
+
+** Details
+
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/moon.png]]
+
+- wiped lacquer finish
+- H 10.5 x W 13.8 x D 13.8 cm
+- Maple and Bamboo
+
+
+* Auspicious Cloud Over Paulownia Flower (2018)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/white1.png]]
+** Detail
+- Paulownia wood
+
+-  7.2 x W 9.5 x D 40.0 cm  (narrower but twice as long as a loaf of store bread)
+#+caption: endgrain of Paulownia wood  (source: wood-database.com)
+#+ATTR_HTML: :style max-height: 30vh; width: auto; object-fit: contain;
+[[./images/paul1.png]]
+
+
+* A Tale of Two Cities (2012)
+
+Japanese Traditional Art on Gallery Japan
 
 
 #+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/suiko.png]]
+[[./images/twoCities.jpg]]
 
+** Detail
 
-* Tsukuhae Box
-Hirin gen'ei 碑林玄英 (Stela Forest in Winter)
-2013
+#+ATTR_HTML: :style max-height: 30vh; width: auto; object-fit: contain;
+[[./images/twoCities.jpg]]
 
-#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/tsu.png]]
+ Maple and Shell create a more "urban" and "global" aesthetic. Sharp clean lines and the high-contrast grain between the two boxes
+- Primary Woods: Maple (楓 - Kaede), Jilicote, and Granadilla.
+- Inlay Materials: White Mother-of-Pearl and Paua Shell.
+- Finish: Fuki-urushi (wiped lacquer), highlights natural grain
 
-
-** Tsukuhae Box
-
-[[./images/tsu2.png]]
-
-
-* Contrast
-
-Suiko captures the fluid, rhythmic energy of daylight reflecting off rippling water,
-
-whereas Tsukuhae emphasizes the quiet, singular stillness of moonlight in the dark.
-
-Visually, this creates a tension between the Suiko's edge-to-edge movement and the Tsukuhae's minimalist, atmospheric focus.
-
-
-* Joinery (Deconstructed)
-
-#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
-[[./images/joinery1.png]]
 
 * Small Box of Zelkova Finished in Wiped Urushi (2022).
 
@@ -169,12 +220,29 @@ Visually, this creates a tension between the Suiko's edge-to-edge movement and t
 [[./images/z.png]]
 
 ** Analysis
+- The 62th East Japan Traditional Kōgei Exhibition (2022)
 
 - Zelkova is famous for its bold, "mountains and rivers" grain. In this piece, Suda has selected a cut where the grain lines are broad and stable.
+#+caption: endgrain of zelkova (source: wood-database.com)
+#+ATTR_HTML: :style max-height: 30vh; width: auto; object-fit: contain;
+[[./images/zelkovaEnd.png]]
 
-- He is letting the simple, natural growth rings of the Zelkova tree do the talking, rather than relying on a flashy, "busy" grain to impress the viewer.
 
+* Seal Box in Parquetry Walnut, "Shibien" (1997)
 
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/square1.png]]
+
+** Detail (1997)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/square2.png]]
+** Suda's Explanation
+
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/square2.png]]
+
+"I am surprised that it has been 28 years since I made this work, and at the same time, I remember the time of production as if it were yesterday. Walnuts are special walnuts from the United States called "Claro Walnut". The rooting part of a large timber with a diameter of nearly 1 meter is made of four pieces of parquet in a diagonal line to make up each side. It has a slightly purplish brown color, which is suitable for the general term for stars centered on the North Star. It is a pity that the door is closed and you cannot see the inside , but the four-tier drawer is included.""
 
 * Ohotera: Table of Pear and Locust (2024)
   :PROPERTIES:
@@ -307,6 +375,30 @@ Visually, this creates a tension between the Suiko's edge-to-edge movement and t
   - *Context:* A monumental functional sculpture intended for institutional or high-end residential interiors; its status as a work by a Living National Treasure places it in a high-luxury price bracket for serious collectors.
 
 
+
+* Analysis Work: (double box)
+
+#+ATTR_HTML: :style max-height: 60vh; width: auto; object-fit: contain;
+[[./images/box0.png]]
+
+** Opening display view
+
+[[./images/openBox2.gif]]
+** Detail
+[[./images/boxDetail.gif]]
+
+
+* Rikuri (2008)
+
+#+ATTR_HTML: :style max-height: 50vh; width: auto; object-fit: contain;
+[[./images/orangeWhite.png]]
+** Detail
+#+ATTR_HTML: :style max-height: 20vh; width: auto; object-fit: contain;
+[[./images/orangeWhite.png]]
+
+- Rikuri is a poetic, somewhat archaic term meaning "Dazzling," "Glittering," or "Resplendent." It often describes something with a multi-colored or shimmering brilliance (like light hitting the maple grain through the lacquer).
+- 所蔵：宮内庁 (Shozō: Kunaichō): Collection: Imperial Household Agency. The piece was acquired by or gifted to the Japanese Imperial Family and is part of their official collection.
+
 * Philosophy: Craft as Life [生活 - Seikatsu]
   :PROPERTIES:
   :CUSTOM_ID: philosophy
@@ -326,3 +418,43 @@ Visually, this creates a tension between the Suiko's edge-to-edge movement and t
   </div>
 </div>
 #+END_EXPORT
+
+
+* Sources 1
+#+begin_export html
+<div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 5px solid #2c3e50; font-family: sans-serif;">
+  <h3 style="color: #2c3e50; margin-top: 0;">Reference Materials</h3>
+
+  <ul style="line-height: 1.6;">
+    <li><strong>Material Science:</strong> <a href="https://www.wood-database.com/paulownia/" target="_blank">Paulownia (Kiri) Technical Data</a> - Focus on hygroscopic properties.</li>
+    <li><strong>Documentary:</strong> <a href="https://www.youtube.com/watch?v=epCgloUe9dU" target="_blank">Making Beauty: Suda Kenji</a> (British Museum) - National Treasure Overview.</li>
+    <li><strong>Technical Analysis:</strong> <a href="https://www.youtube.com/watch?v=a477Ezh0sww&t=23s" target="_blank">Words on Kigumi (Joinery)</a> (Takenaka Museum) - Ash Box & Urushi focus.</li>
+    <li><strong>Philosophy:</strong> <a href="https://www.youtube.com/watch?v=P2L-pCstH5M" target="_blank">The World of Seiga (清雅)</a> (Gunma Prefecture) - The core of Suda's "Pure Elegance."</li>
+    <li><strong>Lineage Data:</strong> <a href="https://artmuseum.pref.hokkaido.lg.jp/database/artist/2817" target="_blank">Grandfather: Suda Sōgetsu (須田 桑月)</a> - Historical Archive.</li>
+    <li><strong>Official Bio:</strong> <a href="https://japanwoodcraftassociation.com/masters/suda-kenji/" target="_blank">Master Suda Kenji Biography</a> - Japan Woodcraft Association.</li>
+  </ul>
+
+  <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 0;">
+    <em>Scale Reference: 7.2 x 9.5 x 40.0 cm (Stationery Box Proportions)</em>
+  </p>
+</div>
+#+end_export
+
+* Sources 2
+
+#+begin_export html
+<div class="citation-block" style="padding: 15px; border: 1px solid #ddd; border-left: 6px solid #8e44ad; background-color: #fdfdfd; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <h4 style="margin-top: 0; color: #8e44ad;">Historical Blueprint Archive</h4>
+  <p style="margin-bottom: 10px;">
+    <strong>Source:</strong> <a href="https://www.a-quad.jp/exhibition/097/p07.html" target="_blank" style="color: #2980b9; text-decoration: none; font-weight: bold;">Gallery A4: Woodworking - With Pure Elegance as a Guide (Page 7)</a>
+  </p>
+  <ul style="font-size: 0.95em; color: #34495e;">
+    <li><strong>Subject:</strong> Detailed Plans (詳寸図) by <strong>Kajita Megumu (梶田惠作)</strong>.</li>
+    <li><strong>Origin:</strong> Collection of the University Art Museum, Tokyo University of the Arts.</li>
+    <li><strong>Significance:</strong> Represents the archetypal 1:1 scale drawings for <em>Sashimono</em> small cabinets and cigarette cases that influenced the Suda family's architectural design process.</li>
+  </ul>
+  <footer style="font-size: 0.8em; color: #7f8c8d; border-top: 1px solid #eee; padding-top: 5px;">
+    Exhibition Title: 木工藝 清雅を標に－人間国宝 須田賢司の仕事－
+  </footer>
+</div>
+#+end_export
