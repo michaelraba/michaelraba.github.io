@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{titlesec}
+
+% --- Local Font Path Configuration ---
+% The [Path = ./] argument forces XeLaTeX/LuaLaTeX to look in the local folder.
+
+\setmainfont{LexiconNo2RomanD-Med.otf}[
+    Path = ./,
+    ItalicFont = LexiconNo2ItalicD-Med.otf,
+    BoldFont = LexiconNo2RomanF-Med.otf % Mapping the heavier weight as 'bold'
+]
+
+% Specific family for Tables (Tabular Figures)
+\newfontfamily\datafont{LexiconNo2RomanD-Tab.otf}[Path = ./]
+
+% Specific family for Headings
+\newfontfamily\headingfont{LexiconNo2RomanF-Med.otf}[Path = ./]
+\titleformat*{\section}{\large\bfseries\headingfont}
+
+\begin{document}
+
+\section{System Performance Report}
+
+This document is rendered using the Lexicon No. 2 family. The body text is set in \textit{Roman D-Med}, providing the classic Dutch clarity intended by Bram de Does.
+
+\subsection{Benchmark Results}
+The table below utilizes the \texttt{D-Tab} variant, which features tabular (monospaced) numerals to ensure decimal points align perfectly.
+
+\begin{center}
+{\datafont
+\begin{tabular}{lcr}
+\toprule
+Cluster Node & Efficiency & Latency (ms) \\
+\midrule
+Node-01 & 0.982 & 12.40 \\
+Node-02 & 0.945 & 14.85 \\
+Node-03 & 0.991 & 11.02 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\end{document}

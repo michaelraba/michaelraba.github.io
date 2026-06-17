@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>POD Analysis of Turbulent Pipe Flow and Relaminarization</title>
+<meta name="author" content="Michael Raba, MSc Candidate Department of Mechanical Engineering, University of Kentucky Fall 2025"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+.reveal .MathJax_Display {
+font-size: 65%; /* Adjust this value as needed */
+}
+.reveal .MathJax_SVG {
+font-size: 65%; /* Adjust this value as needed */
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">POD Analysis of Turbulent Pipe Flow and Relaminarization</h1><p class="subtitle"></p>
+<h2 class="author">Michael Raba, MSc Candidate Department of Mechanical Engineering, University of Kentucky Fall 2025</h2><h2 class="date">December 1, 2025</h2><p class="date">Created: 2025-12-12 Fri 12:26</p>
+</section>
+
+<section>
+<section id="slide-org0cfed47" data-background="./green.jpg" data-background-size="cover">
+<h2 id="org0cfed47">Abstract</h2>
+<ul>
+<li>Circular pipe flow, rotating about its axis at low Reynolds number (Re 5,300) is investigated.</li>
+<li>The simulation is performed by spectral finite element package Nek5000, a high fidelity DNS simulation, fifth order accurate in space and second order accurate in time.</li>
+<li>A non uniform grid in the radial direction yields accurate solutions with a reasonable number of grid points (583200).</li>
+<li>Numerical Method has been tested by previous authors Davis 2017 et al.</li>
+<li>When the pipe rotates, Fatica 1997 showed a degree of drag reduction is achieved in numerical simulation for low rotation numbers</li>
+<li>Through a ROM (reduced order method) FFT-POD, which decomposes the velocity field \(u_{\theta}, u_r, u_x\) into ordered energy modes, show large scale motions (LSM) leading the transport or vorticity away from the pipe wall.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga0b1a8d">
+<h2 id="orga0b1a8d">Background</h2>
+<div class="outline-text-2" id="text-orga0b1a8d">
+</div>
+</section>
+<section id="slide-orgaed767e">
+<h3 id="orgaed767e">Introduction to Axially Rotating Pipe Flow</h3>
+<ul>
+<li>Flow configuration: The axis of rotation is parallel to the mean flow direction.</li>
+<li>Laminar flow behavior:
+<ul>
+<li>The axial mean flow is not directly affected by rotation.</li>
+<li>The axial velocity profile remains the laminar parabolic profile (Poiseuille flow):
+\(u_z(r) = U_{\text{max}}\left(1 - \frac{r^2}{R^2}\right)\)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org4e41102">
+<h3 id="org4e41102">Reynolds Number \(Re\) and Swirl Rate \(N\)</h3>
+<ul>
+<li>Definition:
+\(Re = \frac{U D}{\nu}\)</li>
+<li>Based on mean bulk velocity \(U\), pipe diameter \(D\), and kinematic viscosity \(\nu\).</li>
+
+<li>Rotation Number / Swirl Rate (\(N\))</li>
+<li>Definition:
+\(N = \frac{V_w}{U}\)
+swirl rate in this study: \(S=0,0.5,1,2,3\). These numbers were done before eg (Fatica 1997).</li>
+<li>Characterizes the angular velocity \(\Omega\) through the azimuthal velocity of the pipe inner wall:
+\(V_\theta(r = R) = \frac{\Omega D}{2}\)</li>
+
+</ul>
+
+</section>
+<section id="slide-org19603a7">
+<h3 id="org19603a7">Laminar vs. Turbulent Flow Behavior</h3>
+<ul>
+<li>Initially laminar flow can be destabilized by rotation.</li>
+<li>Initially turbulent flow can be seemingly relaminarized for sufficiently large \(N\).</li>
+<li>Turbulence suppression is observed as a reduction in turbulence intensity and mixing length, related to the Richardson number \(Ri\).</li>
+
+</ul>
+
+</section>
+<section id="slide-orgbc6bb3d">
+<h3 id="orgbc6bb3d">Turbulence and Relaminarization</h3>
+<ul>
+<li>Significance: Axially rotating pipe flow is a prototypical case to study relaminarization mechanisms.</li>
+<li>Centrifugal and near-wall effects:
+<ul>
+<li>Modifications of near-wall flow structures contribute to relaminarization.</li>
+<li>Centrifugal forces influence mean flow and turbulence dynamics.</li>
+
+</ul></li>
+<li>Numerical methods:
+<ul>
+<li>RANS and wall-resolved LES fail to capture the turbulence-suppression physics.</li>
+<li>DNS can effectively study rotation effects on turbulent structures.</li>
+
+</ul></li>
+<li>Research gap: Prior DNS studies were restricted to relatively low \(Re\) and \(N\); this work provides detailed DNS at larger \(Re\) and varying \(N\).</li>
+
+</ul>
+
+</section>
+<section id="slide-orgca9606a">
+<h3 id="orgca9606a">Key Experimental Findings</h3>
+<ul>
+<li>White (1964): Up to \(40\%\) reduction in pressure loss at very high rotation numbers due to suppressed radial transport.</li>
+<li>Kikuyama et al. (1983): Initially turbulent flow can relaminarize at high \(N\), while initially laminar flow can destabilize.</li>
+<li>Imao et al. (1996): Reduced turbulence intensity with increasing rotation rate; verified relation between reduced mixing length and \(Ri\).</li>
+<li>Facciolo et al. (2007): Mean velocity distributions agree with Lie-group scaling laws (Oberlack 1999, 2001).</li>
+
+</ul>
+
+</section>
+<section id="slide-org1cebbd7">
+<h3 id="org1cebbd7">Numerical Simulation Results (Prior Studies)</h3>
+<ul>
+<li>Scope: Few numerical studies compared to spanwise rotating channel flow.</li>
+<li>DNS prior studies: \(Re \le 7400\), typically low \(N\), observed partial turbulence suppression but not full relaminarization.</li>
+<li>Orlandi &amp; Fatica (1997): DNS up to \(N = 2\) (later \(N = 10\)) at \(Re = 4900\); mean streamwise velocity approached laminar Poiseuille profile.</li>
+<li>Feiz et al. (2005): DNS at \(Re = 4900\) and \(Re = 7400\); LES at \(Re = 20,000\) showed stronger skin-friction reduction with increasing \(N\) at higher \(Re\).</li>
+<li>Observations:
+<ul>
+<li>Tangential velocity profiles are similar across \(Re\).</li>
+<li>Differences between experimental and DNS data partially due to flow condition uncertainties and measurement locations.</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org305fbe1">
+<h2 id="org305fbe1">DNS of Rotating Turbulent Flow</h2>
+<div class="outline-text-2" id="text-org305fbe1">
+</div>
+</section>
+<section id="slide-org108384d">
+<h3 id="org108384d">Setup</h3>
+<ul>
+<li>The study investigated <b><b>physical phenomena in a rotating turbulent flow</b></b> using <b><b>Direct Numerical Simulation (DNS)</b></b> at three Reynolds numbers (\(\text{Re}\)): <b><b>5,300, 11,700</b></b>.</li>
+<li>Simulations assumed <b><b>fully-developed turbulent flow</b></b> and employed <b><b>periodic boundaries in the streamwise direction</b></b>.</li>
+<li>The <b><b>incompressible Navier-Stokes equations</b></b> are solved in a reference frame <b><b>rotating with the pipe walls</b></b>.
+<ul>
+<li><b><b>Centrifugal and Coriolis forces</b></b> were included as <b><b>source terms</b></b>.</li>
+
+</ul></li>
+<li><b><b>Sufficient temporal and spatial resolution</b></b> was crucial for accurately studying the intricate nature of turbulence.</li>
+<li>The <b><b>computational meshes</b></b> ensured the <b><b>wide range of turbulent scales</b></b> are well resolved, with grid spacing close to \(\Delta y^+ = 1\).
+<ul>
+<li><b><b>Grid resolution and sizes (\(N_{\Delta x}\)) are provided in Table 1</b></b> (details below).</li>
+<li>Radial (\(\Delta r^+\)), azimuthal (\(\Delta R\Theta^+\)), and streamwise (\(\Delta z^+\)) grid spacings are reported in <b><b>$y^+$-units</b></b>.</li>
+<li><b><b>Different ranges</b></b> for the grid spacings are provided because the mesh is <b><b>non-uniform</b></b> within the computational domain.</li>
+
+</ul></li>
+<li>To obtain <b><b>fully-converged turbulent statistics</b></b>, a total compute time of <b><b>at least ten flow-through times</b></b> was used (excluding the initial transient time).</li>
+
+</ul>
+
+<p>
+Table 1: Simulation Details (Streamwise Extend of \(15D\))
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\(\text{Re}\)</td>
+<td class="org-left">$&Delta; r^+$/ $&Delta; R&Theta;^+$/ \(\Delta z^+\)</td>
+<td class="org-right">\(N_{\Delta x} \times 10^6\)</td>
+</tr>
+
+<tr>
+<td class="org-left">5,300</td>
+<td class="org-left">0.14–4.4/1.5–4.5/3.0–9.9</td>
+<td class="org-right">20</td>
+</tr>
+
+<tr>
+<td class="org-left">11,700</td>
+<td class="org-left">0.16–4.7/1.5–5.0/3.0–9.9</td>
+<td class="org-right">120</td>
+</tr>
+
+<tr>
+<td class="org-left">19,000</td>
+<td class="org-left">0.15–4.5/1.5–4.8/3.0–10.</td>
+<td class="org-right">440</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgd58beb6">
+<h3 id="orgd58beb6">Rotating Pipe Crosssection</h3>
+
+<div id="org38f0798" class="figure">
+<p><img src="./im/1011.animated.gif" alt="1011.animated.gif" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Computed Rotating pipe from Nek5000, high resolution flow with \(N_{\Delta x } = 20\) million hex elements</p>
+</div>
+</section>
+<section id="slide-orgdb0fe52">
+<h3 id="orgdb0fe52">Computational Implementation (Nek5000)</h3>
+<ul>
+<li>The mesh is comprised of <b><b>hexahedral elements</b></b>.</li>
+<li>The solution is composed of <b><b>$N<sup>th</sup>$-order tensor product polynomials</b></b> within each element.</li>
+<li>The use of <b><b>local lexicographical ordering</b></b> within each macro element, and only evaluating \(O(EN^4)\) discrete operators (which typically have \(O(EN^6)\) non-zeros), leads to <b><b>cache and vectorization efficiency</b></b>.</li>
+<li>The code (<b><b>Nek5000</b></b>) minimally uses external libraries to increase <b><b>compile speed</b></b>.</li>
+<li><b><b>Matrix operations</b></b> are implemented in <b><b>assembler code \(M \times M\) routines</b></b> to speed up computations.</li>
+<li><b><b>Parallelism is automatically tuned</b></b> for each machine by testing the three available parallel algorithms at the beginning of each run to determine the optimal one.</li>
+<li>The <b><b>algebraic multi-grid solver</b></b> was chosen from the different pressure Poisson solvers available in Nek5000 for this work.</li>
+
+</ul>
+</section>
+<section id="slide-org3c55cca">
+<h3 id="org3c55cca">DNS Mesh</h3>
+<div class="columns" style="display:flex; justify-content:space-between; gap:2%;">
+  <div class="column" style="flex:1;">
+    <p><strong>Simulation Domain</strong></p>
+    <ul>
+      <li>Circular pipe, D = 1, L = 12D</li>
+      <li>Reynolds numbers: 5300, 12700</li>
+      <li>Non-slip at walls, periodic at inlet/outlet</li>
+      <li>Spectral element method: Legendre basis, order l = 6</li>
+    </ul>
+    <p><strong>Governing Equations</strong></p>
+    \begin{align}
+    \nabla \cdot \boldsymbol{u} &= 0 \\
+    \frac{\partial \boldsymbol{u}}{\partial t}+ (\boldsymbol{u}\cdot\nabla)\boldsymbol{u} &= -\nabla p + \frac{1}{Re} \nabla^2 \boldsymbol{u}
+    \end{align}
+  </div>
+  <div class="column" style="flex:1;">
+    <p><strong>Mesh Images</strong></p>
+    <p>Non-uniform mesh (finer near walls)</p>
+    <img src="./im/grid1.png" style="width:100%; height:auto;"/>
+  </div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga65551c">
+<h2 id="orga65551c">POD–FFT Procedure</h2>
+<div class="outline-text-2" id="text-orga65551c">
+</div>
+</section>
+<section id="slide-org51b2b20">
+<h3 id="org51b2b20">ROM</h3>
+<p>
+Goal: Reduce an infinite-dimensional vector space problem in 3D with infinite degrees of freedom to a finite, small-scale linear algebra problem defined by the temporal correlation matrix (\(N_s​\times N_s\)​), which can be solved efficiently using linear algebra
+</p>
+</section>
+<section id="slide-org95d2e04">
+<h3 id="org95d2e04">POD Definition</h3>
+<p>
+The fundamental definition of the Proper Orthogonal Decomposition involves finding the basis functions (\(\hat{\boldsymbol{\phi}}_k\)) that maximize the energy projection, which is equivalent to solving the integral eigenvalue problem:
+</p>
+
+<p>
+\[\text{Maximize}_{\hat{\boldsymbol{\phi}}} \quad \frac{\langle |\mathbf{u} \cdot \hat{\boldsymbol{\phi}}|^2 \rangle_R}{\langle \hat{\boldsymbol{\phi}}, \hat{\boldsymbol{\phi}} \rangle_R}
+\quad \implies \quad
+\int_0^R \mathbf{R}(r, r') \, \hat{\boldsymbol{\phi}}_{k}(r') \, r' \, dr' = \lambda_{k} \, \hat{\boldsymbol{\phi}}_{k}(r)\]
+</p>
+
+<p>
+Where:
+</p>
+
+<ul>
+<li>\(\langle \cdot \rangle_R\) is the weighted (energy) inner product.</li>
+<li>\(\mathbf{R}(r, r')\) is the two-point correlation tensor of the flow field.</li>
+<li>\(\hat{\boldsymbol{\phi}}_{k}\) are the optimal spatial modes.</li>
+<li>\(\lambda_k\) is the energy (eigenvalue) associated with that mode</li>
+
+<li>We are searching for the single spatial structure \(\hat{\phi}\) that contains the maximum fraction of the total average flow energy , ensuring the structure is normalized so it has unit energy itself. The resulting function ϕ^​ is the first POD mode, which is the most energetic coherent structure in the data set.</li>
+
+<li>This maximization problem is equivalent to the integral equation via calculus of variations Fredholm theory</li>
+<li>Turbulent data is statistical stationary (Elliptic problem)</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf866379">
+<h3 id="orgf866379">Snapshot POD: Temporal Solution and Mode Construction</h3>
+<p>
+The Snapshot Proper Orthogonal Decomposition method solves two interconnected equations to find the optimal basis set.
+</p>
+
+<ol>
+<li>Temporal Eigenvalue Problem (Eq. 2.4)</li>
+
+</ol>
+
+<p>
+The process begins by solving the temporal eigenvalue problem using the correlation tensor \(\mathbf{R}(t, t')\) (the discrete matrix \(K\) in implementation). The solution yields the eigenvalues (\(\lambda^{(n)}\)) and the raw temporal eigenvectors (\(\alpha^{(n)}\)):
+</p>
+
+<p>
+\[\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{R}(k; m; t, t') \alpha^{(n)}(k; m; t') \, dt' = \lambda^{(n)}(k; m) \alpha^{(n)}(k; m; t) \tag{2.4}\]
+</p>
+
+<ol>
+<li>Spatial Mode Construction (Eq. 2.5)</li>
+
+</ol>
+
+<p>
+The spatial modes (\(\mathbf{\Phi}_T^{(n)}\)) are then constructed by projecting the temporal eigenvectors back onto the snapshot matrix \(\mathbf{u}_T\) (which represents all flow snapshots):
+</p>
+
+<p>
+\[\lim_{\tau \to \infty} \frac{1}{\tau} \int_0^\tau \mathbf{u}_T(k; m; r, t) \alpha^{(n)*}(k; m; t) \, dt = \mathbf{\Phi}_T^{(n)}(k; m; r) \lambda^{(n)}(k; m) \tag{2.5}\]
+</p>
+
+</section>
+<section id="slide-orgfc7fa06">
+<h3 id="orgfc7fa06">Necessity of Scaling for Flow Reconstruction</h3>
+<p>
+The final step for flow reconstruction is to obtain the physical time coefficient, \(b_k(t)\), from the eigenvector \(\alpha^{(n)}(t)\).
+</p>
+
+<p>
+Equation (2.5) shows that the spatial mode \(\mathbf{\Phi}_T^{(n)}\) is multiplied by the eigenvalue \(\lambda^{(n)}\). To separate the normalized mode from the energy and obtain the physical time coefficient for reconstruction, the raw eigenvector must be scaled:
+</p>
+
+<p>
+Eigenvector Scaling: The raw eigenvector \(\alpha^{(n)}(t)\) is a unit vector that only defines the relative time evolution.
+</p>
+
+<p>
+Physical Amplitude: Scaling it by \(\sqrt{\lambda^{(n)}}\) converts it into the true physical time coefficient \(b_k(t)\), which carries the mode&rsquo;s instantaneous kinetic energy.
+</p>
+
+<p>
+The Final Step: Only these scaled coefficients \(b_{k,m}(t)\) are correctly used in the final summation to reconstruct the velocity field.
+</p>
+
+<p>
+\[\text{Required Time Coefficient: } \quad b_k(t) = \alpha^{(k)}(t) \cdot \sqrt{\lambda_k}\]
+</p>
+
+<p>
+\[\text{Used in Reconstruction: } \quad \tilde{\mathbf{u}}_{recon} \propto \sum_{k} b_{k}(t)\,\mathbf{\Phi}_{k}(r)\]
+</p>
+
+</section>
+<section id="slide-org5ba50a2">
+<h3 id="org5ba50a2">Spatial Decoupling</h3>
+<ul>
+<li>Spectral Decoupling: The three-dimensional flow field is first decomposed into a set of independent, complex, two-dimensional fields
+
+<ul>
+<li>(azimuthal modes, \(\hat{\mathbf{u}}_m(r,t)\)) using a Fast Fourier Transform (FFT) in the homogeneous direction.</li>
+<li>This step drastically reduces the dimensionality of the subsequent POD problem by solving for each mode \(m\) separately.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd31c1f" data-background="./green.jpg" data-background-size="cover">
+<h2 id="orgdd31c1f">POD Model Validation</h2>
+</section>
+<section id="slide-org0c27f33">
+<h3 id="org0c27f33">Reconstruction</h3>
+
+<div id="org8351580" class="figure">
+<p><img src="./gif/5300S0.gif" alt="5300S0.gif" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Rotating Boundary condition animation (\(N=3\))</p>
+</div>
+</section>
+<section id="slide-org25fac5c">
+<h3 id="org25fac5c">Validation of the POD: Reconstruction</h3>
+<p>
+Reconstruction for \(Re=5300\) for different Swirl numbers
+</p>
+</section>
+<section id="slide-org557134a">
+<h3 id="org557134a">Energy \(S=0\)</h3>
+
+<div id="org2c09861" class="figure">
+<p><img src="./im/recon_Re5300_S00.png" alt="recon_Re5300_S00.png" />
+</p>
+</div>
+</section>
+<section id="slide-orga231192">
+<h3 id="orga231192">Energy \(S=0.5\)</h3>
+
+<div id="org6d11491" class="figure">
+<p><img src="./im/recon_Re5300_S50.png" alt="recon_Re5300_S50.png" />
+</p>
+</div>
+</section>
+<section id="slide-org8d6fa30">
+<h3 id="org8d6fa30">Energy \(S=1\)</h3>
+
+<div id="orgf25992f" class="figure">
+<p><img src="./im/recon_Re5300_S10.png" alt="recon_Re5300_S10.png" />
+</p>
+</div>
+</section>
+<section id="slide-org5285423">
+<h3 id="org5285423">Energy \(S=2\)</h3>
+
+<div id="org43870d4" class="figure">
+<p><img src="./im/recon_Re5300_S20.png" alt="recon_Re5300_S20.png" />
+</p>
+</div>
+</section>
+<section id="slide-org18b4344">
+<h3 id="org18b4344">Energy \(S=3\)</h3>
+
+<div id="orga454107" class="figure">
+<p><img src="./im/recon_Re5300_S30.png" alt="recon_Re5300_S30.png" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6a7987e">
+<h2 id="org6a7987e">Comparison with Smits and Hellstrom Radial Mode</h2>
+<p>
+<img src="./im/hellst.png" alt="hellst.png" />
+Hellstrom 2017: high-\(Re\) Optimal Perturbations (OPs) show remarkably similar radial profiles near the wall as the present study.
+</p>
+
+<ul>
+<li>Validation: confirms POD procedure successfully extracts the fundamental, robust near-wall structures</li>
+<li>Both datasets show the maximum fluctuation amplitude is tightly concentrated in the near-wall region (\(y/R \approx 0.05\) to \(0.1\)).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgae97bf5">
+<h2 id="orgae97bf5">Relaminarization</h2>
+<div class="outline-text-2" id="text-orgae97bf5">
+</div>
+</section>
+<section id="slide-orgbff2ca5">
+<h3 id="orgbff2ca5">Energy \(S=0\)</h3>
+
+<div id="orgbebde15" class="figure">
+<p><img src="./im/energy_dist_Re5300_S00.png" alt="energy_dist_Re5300_S00.png" />
+</p>
+</div>
+<ul>
+<li>Energy spread across all azimuthal modes (\(m=1\) to \(m>30\)); Represents classic turbulent energy cascade.
+<ul>
+<li>Dominant POD modes composed of many co-existing high-amplitude structures (multi-m).</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org8958a31">
+<h3 id="org8958a31">Energy \(S=0.5\)</h3>
+
+<div id="orgdeb59b4" class="figure">
+<p><img src="./im/energy_dist_Re5300_S50.png" alt="energy_dist_Re5300_S50.png" />
+</p>
+</div>
+<ul>
+<li>Onset of Modal Simplification, as \(m=1\) mode begins to dominate the primary POD mode (Mode 1), taking a larger energy share than neighboring modes.</li>
+
+<li>energy spectrum still relatively broadband, but the energy peak shifts towards \(m=1\); Small-scale structures (high \(m\)) show first signs of amplitude reduction, especially away from the immediate near-wall region. Energy distribution is less uniform than \(S=0.0\), indicates initial turbulent suppression</li>
+
+</ul>
+
+</section>
+<section id="slide-orged2f69d">
+<h3 id="orged2f69d">Energy \(S=1\)</h3>
+
+<div id="orgb9933cf" class="figure">
+<p><img src="./im/energy_dist_Re5300_S10.png" alt="energy_dist_Re5300_S10.png" />
+</p>
+</div>
+<ul>
+<li>Strong \(m=1\) Dominance since, \(m=1\) mode captures the vast majority of energy, creating a clear peak. represents the structural collapse of small-scale turbulence.
+
+<ul>
+<li>Spectrum narrows sharply; energy levels for \(m \ge 10\) are minimal.</li>
+
+<li>Flow dynamics become simplified and (maybe) dominated by the large-scale helical structure that Orlandi and Fatica 1997 describes.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgb18fd9c">
+<h3 id="orgb18fd9c">Energy \(S=2\)</h3>
+
+<div id="orgd6bba98" class="figure">
+<p><img src="./im/energy_dist_Re5300_S20.png" alt="energy_dist_Re5300_S20.png" />
+</p>
+</div>
+<ul>
+<li>Near-Total Structural Collapse, since \(m=1\) mode captures over 25% of the total energy, peaking far above all other modes. Spectrum is extremely narrow; structures \(m \ge 6\) carry negligible energy (minimal turbulence).</li>
+<li>Represents the flow settling into a highly stable, quasi-laminar state due to rotational stabilization.</li>
+
+</ul>
+</section>
+<section id="slide-org53a1258">
+<h3 id="org53a1258">Energy \(S=3\)</h3>
+
+<div id="orgcbaf528" class="figure">
+<p><img src="./im/energy_dist_Re5300_S30.png" alt="energy_dist_Re5300_S30.png" />
+</p>
+</div>
+
+<ul>
+<li>(maybe) Complete Turbulence Suppression since, \(m=1\) mode is the singular, dominant energy carrier (capturing over 25% of total energy)
+
+<ul>
+<li>Flow has transitioned to a stable, simplified quasi-laminar state.</li>
+
+</ul></li>
+
+<li>Dynamics are governed almost entirely by the large-scale, non-turbulent helical structure.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgb704c76">
+<h2 id="orgb704c76">ROM Reconstruction</h2>
+<div class="outline-text-2" id="text-orgb704c76">
+</div>
+</section>
+<section id="slide-orgb4093e3">
+<h3 id="orgb4093e3">S=0</h3>
+<p>
+<img src="./im/ROM/s0.p1m3.png" alt="s0.p1m3.png" />
+S = 0.0 (Turbulent Baseline): Fully developed pipe turbulence. High-energy structures across all azimuthal modes (\(m\)). Broadband spectral activity. Wall-dominated dynamics; structures active and chaotic near the boundary. No core reorganization.
+</p>
+</section>
+<section id="slide-org1e58928">
+<h3 id="org1e58928">S=0.5</h3>
+<p>
+<img src="./im/ROM/s5.p1m3.png" alt="s5.p1m3.png" />
+S = 0.5 (Initial Stabilization): Low-order reconstruction (P=1, M=0-2). Snapshot shows the first distinct structural simplification. The largest non-axisymmetric structures (\(m=1, 2\)) are suppressed, allowing the axisymmetric core flow (\(m=0\)) to begin asserting dominance. Initial shift from wall-dominated to core-influenced dynamics.
+</p>
+</section>
+<section id="slide-orgedd8ca9">
+<h3 id="orgedd8ca9">S=1</h3>
+<p>
+<img src="./im/ROM/s1.p1m3.png" alt="s1.p1m3.png" />
+S = 1.0 (Decisive Transition): Low-order reconstruction (P=1, M=0-2). This is the point of structural dominance shift. The \(m=0\) core structure clearly outweighs the turbulent \(m=1, 2\) components. The large-scale asymmetric activity is suppressed, leading to the formation of a simple, large, rotationally-aligned structure.
+</p>
+</section>
+<section id="slide-orgb138f75">
+<h3 id="orgb138f75">S=2</h3>
+<p>
+<img src="./im/ROM/s2.p1m3.png" alt="s2.p1m3.png" />
+S = 2.0 (Near Relaminarization): Low-order reconstruction (P=1, M=0-2). Snapshot shows maximal structural purity; the \(m=0\) core structure is fully established and dominant. The turbulent components (\(m=1, 2\)) are effectively extinguished. A very clean, stable structure, now fully detached from the wall.
+</p>
+</section>
+<section id="slide-orgc3fed47">
+<h3 id="orgc3fed47">S=3</h3>
+<p>
+<img src="./im/ROM/s3.p1m3.png" alt="s3.p1m3.png" />
+Post-Optimal Stabilization): Low-order reconstruction (P=1, M=0-2). The flow remains highly stabilized and core-dominated (\(m=0\)). However, when compared to \(S=2.0\), this state shows a subtle but persistent deviation from perfect structural purity. This suggests the onset of new, weak secondary flow phenomena near the wall (e.g., Ekman layer instability) that are captured by the low-order model, confirming that \(S=2.0\) achieved the maximal degree of simplification. Fatica 1997: wall rotation generates a secondary flow (or swirling flow) through the mechanism of the Ekman layer. This secondary motion is characterized by fluid being pushed towards the center of the pipe at the wall, and returning along the centerline.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org789c401">
+<h2 id="org789c401">Radial Velocity Profiles (\(u_z\))</h2>
+<div class="outline-text-2" id="text-org789c401">
+</div>
+</section>
+<section id="slide-org30541f2">
+<h3 id="org30541f2">S=0</h3>
+
+<div id="orgb678e59" class="figure">
+<p><img src="./radialVel/p9_Re5300_S00_VarW_P5.png" alt="p9_Re5300_S00_VarW_P5.png" />
+</p>
+</div>
+<ul>
+<li>Dominant POD modes (Mode 1-5) are composed of many superimposed, high-amplitude azimuthal structures (multi-\(m\)).</li>
+
+<li>This complexity is characteristic of fully developed turbulence.</li>
+
+</ul>
+</section>
+<section id="slide-org7e03ee1">
+<h3 id="org7e03ee1">S=0.5</h3>
+
+<div id="orgbfc90cd" class="figure">
+<p><img src="./radialVel/p9_Re5300_S50_VarW_P5.png" alt="p9_Re5300_S50_VarW_P5.png" />
+</p>
+</div>
+
+<p>
+Axisymmetric mode (\(m=0\), plotted as \(m=1\)) gains dominance and penetrates deeper into the flow core, and turbulent modes (\(m \ge 1\)) show reduced amplitude, especially the high-\(m\) modes. Flow dynamics begin to transition from complex 3D turbulence to a simpler, more axisymmetric state.
+</p>
+</section>
+<section id="slide-org984dd26">
+<h3 id="org984dd26">S=1</h3>
+
+<div id="orgb32be98" class="figure">
+<p><img src="./radialVel/p9_Re5300_S10_VarW_P5.png" alt="p9_Re5300_S10_VarW_P5.png" />
+</p>
+</div>
+<ul>
+<li>\(S=0.5\) shows initial stabilization, while \(S=1.0\) marks the decisive reorganization where the energy cascade is effectively broken</li>
+
+</ul>
+</section>
+<section id="slide-orgd5b4bec">
+<h3 id="orgd5b4bec">S=2</h3>
+<p>
+<img src="./radialVel/p9_Re5300_S20_VarW_P5.png" alt="p9_Re5300_S20_VarW_P5.png" />
+The single most energetic structure (the axisymmetric \(m=0\) mode) reorganizes away from the wall and is now established in the core of the pipe flow, structurally confirming the detachment of the dynamics from the boundary layer and the completion of relaminarization.
+</p>
+</section>
+<section id="slide-org061d587">
+<h3 id="org061d587">S=3</h3>
+<p>
+<img src="./radialVel/p9_Re5300_S30_VarW_P5.png" alt="p9_Re5300_S30_VarW_P5.png" />
+The axisymmetric mode (\(m=0\), plotted as \(m=1\)) is fully detached from the wall and dominates the structure near the pipe center (\(1-r/R \approx 0.5\)).
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org578441d">
+<h2 id="org578441d">Orlandi and Fatica 1997</h2>
+<ul>
+<li>Strong Stabilization at High \(S\)</li>
+
+<li>(Orlandi and Fatica 1997): At high rotation numbers (\(S \ge 2.0\)), the flow exhibits drag reduction and characteristics similar to laminar flow.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org898caec">
+<h2 id="org898caec">Citations</h2>
+<p>
+References
+</p>
+
+<ol>
+<li>P. Orlandi and M. Fatica, &ldquo;Direct simulations of turbulent flow in a pipe rotating about its axis,&rdquo; J. Fluid Mech., vol. 343, pp. 43–72, 1997.</li>
+
+<li>L. Hellström and A. J. Smits, &ldquo;The structure of optimal perturbations in turbulent pipe flow,&rdquo; J. Fluid Mech., vol. 815, pp. 608–635, 2017.</li>
+
+<li>C. Brehm, J. Davis, S. Ganju, and S. Bailey, &ldquo;A Numerical Investigation of the Effects of Rotation on Turbulent Pipe Flows,&rdquo; in 11th International Symposium on Turbulence and Shear Flow Phenomena (TSFP11), 2019, pp. 1–9.</li>
+
+</ol>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0bb701e">
+<h2 id="org0bb701e">Additional Data: Radial Velocity Profiles (\(\Phi_r,\phi_\theta,\phi_x,p\))</h2>
+<div class="outline-text-2" id="text-org0bb701e">
+</div>
+</section>
+<section id="slide-orgc2c3f6a">
+<h3 id="orgc2c3f6a">S=0</h3>
+<div class="outline-text-3" id="text-orgc2c3f6a">
+</div>
+</section>
+<section id="slide-orgb0ba7ef">
+<h4 id="orgb0ba7ef">\(\Phi_r\)</h4>
+
+<div id="org5583135" class="figure">
+<p><img src="./radialVel/p9_Re5300_S00_VarU_P5.png" alt="p9_Re5300_S00_VarU_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge101ee5">
+<h4 id="orge101ee5">\(\Phi_\theta\)</h4>
+
+<div id="orgee0ecef" class="figure">
+<p><img src="./radialVel/p9_Re5300_S00_VarV_P5.png" alt="p9_Re5300_S00_VarV_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge1b2a33">
+<h4 id="orge1b2a33">\(\Phi_r\)</h4>
+
+<div id="org62c26d2" class="figure">
+<p><img src="./radialVel/p9_Re5300_S00_VarW_P5.png" alt="p9_Re5300_S00_VarW_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5080c7b">
+<h4 id="org5080c7b">0.P</h4>
+
+<div id="org324ae6a" class="figure">
+<p><img src="./radialVel/p9_Re5300_S00_VarP_P5.png" alt="p9_Re5300_S00_VarP_P5.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc9017bb">
+<h3 id="orgc9017bb">S=0.5</h3>
+<div class="outline-text-3" id="text-orgc9017bb">
+</div>
+</section>
+<section id="slide-org05fd72e">
+<h4 id="org05fd72e">\(\Phi_r\)</h4>
+
+<div id="org40ebc62" class="figure">
+<p><img src="./radialVel/p9_Re5300_S50_VarU_P5.png" alt="p9_Re5300_S50_VarU_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd151577">
+<h4 id="orgd151577">\(\Phi_\theta\)</h4>
+
+<div id="orgcbca2c3" class="figure">
+<p><img src="./radialVel/p9_Re5300_S50_VarV_P5.png" alt="p9_Re5300_S50_VarV_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgb17be94">
+<h4 id="orgb17be94">\(\Phi_r\)</h4>
+
+<div id="org51f7eee" class="figure">
+<p><img src="./radialVel/p9_Re5300_S50_VarW_P5.png" alt="p9_Re5300_S50_VarW_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org19ffdcf">
+<h4 id="org19ffdcf">0.P</h4>
+
+<div id="orgf5a11aa" class="figure">
+<p><img src="./radialVel/p9_Re5300_S50_VarP_P5.png" alt="p9_Re5300_S50_VarP_P5.png" />
+</p>
+</div>
+</section>
+<section id="slide-org7027269">
+<h3 id="org7027269">S=1</h3>
+<div class="outline-text-3" id="text-org7027269">
+</div>
+</section>
+<section id="slide-org127997d">
+<h4 id="org127997d">\(\Phi_r\)</h4>
+
+<div id="org308904d" class="figure">
+<p><img src="./radialVel/p9_Re5300_S10_VarU_P5.png" alt="p9_Re5300_S10_VarU_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org8ecb3a9">
+<h4 id="org8ecb3a9">\(\Phi_\theta\)</h4>
+
+<div id="orgdf6a4e1" class="figure">
+<p><img src="./radialVel/p9_Re5300_S10_VarV_P5.png" alt="p9_Re5300_S10_VarV_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge30ec92">
+<h4 id="orge30ec92">\(\Phi_r\)</h4>
+
+<div id="org5d28856" class="figure">
+<p><img src="./radialVel/p9_Re5300_S10_VarW_P5.png" alt="p9_Re5300_S10_VarW_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org67e1a3a">
+<h4 id="org67e1a3a">0.P</h4>
+
+<div id="org73bdc8d" class="figure">
+<p><img src="./radialVel/p9_Re5300_S10_VarP_P5.png" alt="p9_Re5300_S10_VarP_P5.png" />
+</p>
+</div>
+</section>
+<section id="slide-org00a3ea7">
+<h3 id="org00a3ea7">S = 2</h3>
+<div class="outline-text-3" id="text-org00a3ea7">
+</div>
+</section>
+<section id="slide-org2ea01bf">
+<h4 id="org2ea01bf">\(\Phi_r\)</h4>
+
+<div id="org46c80a8" class="figure">
+<p><img src="./radialVel/p9_Re5300_S20_VarU_P5.png" alt="p9_Re5300_S20_VarU_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge658222">
+<h4 id="orge658222">\(\Phi_\theta\)</h4>
+
+<div id="orgc550d00" class="figure">
+<p><img src="./radialVel/p9_Re5300_S20_VarV_P5.png" alt="p9_Re5300_S20_VarV_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org93a6bfa">
+<h4 id="org93a6bfa">\(\Phi_r\)</h4>
+
+<div id="org6d3c067" class="figure">
+<p><img src="./radialVel/p9_Re5300_S20_VarW_P5.png" alt="p9_Re5300_S20_VarW_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orge5349a1">
+<h4 id="orge5349a1">0.P</h4>
+
+<div id="org1c45e4e" class="figure">
+<p><img src="./radialVel/p9_Re5300_S20_VarP_P5.png" alt="p9_Re5300_S20_VarP_P5.png" />
+</p>
+</div>
+</section>
+<section id="slide-orge21ba4e">
+<h3 id="orge21ba4e">S=3</h3>
+<div class="outline-text-3" id="text-orge21ba4e">
+</div>
+</section>
+<section id="slide-org1222195">
+<h4 id="org1222195">\(\Phi_r\)</h4>
+
+<div id="org948f653" class="figure">
+<p><img src="./radialVel/p9_Re5300_S30_VarU_P5.png" alt="p9_Re5300_S30_VarU_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4184e69">
+<h4 id="org4184e69">\(\Phi_\theta\)</h4>
+
+<div id="org83af886" class="figure">
+<p><img src="./radialVel/p9_Re5300_S30_VarV_P5.png" alt="p9_Re5300_S30_VarV_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4b5a4da">
+<h4 id="org4b5a4da">\(\Phi_r\)</h4>
+
+<div id="org17d8f8c" class="figure">
+<p><img src="./radialVel/p9_Re5300_S30_VarW_P5.png" alt="p9_Re5300_S30_VarW_P5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9dd4bc8">
+<h4 id="org9dd4bc8">0.P</h4>
+
+<div id="org75f6c65" class="figure">
+<p><img src="./radialVel/p9_Re5300_S30_VarP_P5.png" alt="p9_Re5300_S30_VarP_P5.png" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6993b06">
+<h2 id="org6993b06">Axial Energy Spectrum</h2>
+<div class="outline-text-2" id="text-org6993b06">
+</div>
+</section>
+<section id="slide-org30b4490">
+<h3 id="org30b4490">S=0</h3>
+
+<div id="org6b9ef45" class="figure">
+<p><img src="./axialEnergy/axialWs0.svg" alt="axialWs0.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-orga061989">
+<h3 id="orga061989">S=0.5</h3>
+
+<div id="org0c8940c" class="figure">
+<p><img src="./axialEnergy/axialWs5.svg" alt="axialWs5.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-orgfa1b836">
+<h3 id="orgfa1b836">S=1</h3>
+
+<div id="org04b7a82" class="figure">
+<p><img src="./axialEnergy/axialWs1.svg" alt="axialWs1.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-org7206277">
+<h3 id="org7206277">S=2</h3>
+
+<div id="orgd9b6ac9" class="figure">
+<p><img src="./axialEnergy/axialWs2.svg" alt="axialWs2.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-org06dc972">
+<h3 id="org06dc972">S=3</h3>
+
+<div id="orgee24e1b" class="figure">
+<p><img src="./axialEnergy/axialWs3.svg" alt="axialWs3.svg" class="org-svg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge9a283e">
+<h2 id="orge9a283e">\(\langle k_x \rangle\) Averaged Energy</h2>
+<div class="outline-text-2" id="text-orge9a283e">
+</div>
+</section>
+<section id="slide-orga954c36">
+<h3 id="orga954c36">S=0</h3>
+
+<div id="orgbc2ffd9" class="figure">
+<p><img src="./energyDist/energy_dist_Re5300_S00W.png" alt="energy_dist_Re5300_S00W.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgdc1d795">
+<h3 id="orgdc1d795">S=0.5</h3>
+
+<div id="org09795b9" class="figure">
+<p><img src="./energyDist/energy_dist_Re5300_S50W.png" alt="energy_dist_Re5300_S50W.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc36bb69">
+<h3 id="orgc36bb69">S=1</h3>
+
+<div id="org80816b1" class="figure">
+<p><img src="./energyDist/energy_dist_Re5300_S10W.png" alt="energy_dist_Re5300_S10W.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgf0c7b03">
+<h3 id="orgf0c7b03">S=2</h3>
+
+<div id="org228b346" class="figure">
+<p><img src="./energyDist/energy_dist_Re5300_S20W.png" alt="energy_dist_Re5300_S20W.png" />
+</p>
+</div>
+</section>
+<section id="slide-org2427bbf">
+<h3 id="org2427bbf">S=3</h3>
+
+<div id="org890d7d7" class="figure">
+<p><img src="./energyDist/energy_dist_Re5300_S30W.png" alt="energy_dist_Re5300_S30W.png" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls:true, progress:true, slideNumber:true, transition:'fade',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

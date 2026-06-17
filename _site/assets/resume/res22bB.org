@@ -1,0 +1,108 @@
+
+#+OPTIONS: toc:nil num:nil sw:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [letterpaper,11pt]
+
+#+LATEX_HEADER: \usepackage{latexsym}
+#+LATEX_HEADER: \usepackage[empty]{fullpage}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage{marvosym}
+#+LATEX_HEADER: \usepackage[usenames,dvipsnames]{color}
+#+LATEX_HEADER: \usepackage{verbatim}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage[hidelinks]{hyperref}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage{tabularx}
+
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhf{}
+#+LATEX_HEADER: \fancyfoot{}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
+
+#+LATEX_HEADER: \addtolength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\evensidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\textwidth}{1in}
+#+LATEX_HEADER: \addtolength{\topmargin}{-.5in}
+#+LATEX_HEADER: \addtolength{\textheight}{1.0in}
+
+#+LATEX_HEADER: \urlstyle{same}
+#+LATEX_HEADER: \raggedbottom
+#+LATEX_HEADER: \raggedright
+#+LATEX_HEADER: \setlength{\tabcolsep}{0in}
+
+#+LATEX_HEADER: \titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+#+LATEX_HEADER: \newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+#+LATEX_HEADER: \newcommand{\resumeSubheading}[4]{\vspace{-2pt}\item\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2 \\\textit{\small#3} & \textit{\small #4} \\\end{tabular*}\vspace{-7pt}}
+#+LATEX_HEADER: \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListStart}{\begin{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+#+BEGIN_EXPORT latex
+\begin{center}
+    \textbf{\Huge \scshape Michael Raba} \\
+    \href{mailto:michael.raba@uky.edu}{michael.raba@uky.edu} $|$
+    \href{https://michaelraba.github.io}{michaelraba.github.io} $|$
+    Lexington, KY
+\end{center}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Kentucky}{Spring 2025}
+      {M.Sc. Mechanical Engineering}{Lexington, KY}
+    \resumeSubheading
+      {University of Kentucky}{Spring 2019}
+      {B.A. Applied Mathematics}{Lexington, KY}
+  \resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Research Assistant, NSF}{Fall 2020 -- 2023}
+      {University of Maryland (PI: Prof. Christoph Brehm)}{}
+      \resumeItemListStart
+        \resumeItem{Reduced Order Modeling of Moderate Reynolds Number Flows in a Rotating Pipe}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Teaching Assistant, ANOVA and DOE Lab}{Spring 2023}
+      {University of Kentucky}{Lexington, KY}
+      \resumeItemListStart
+        \resumeItem{Guided students through lab equipment: wind tunnel, strain gage, beam deflection, LabView data acquisition}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {TA for Thermodynamics II}{Fall 2020}
+      {University of Kentucky}{Lexington, KY}
+
+    \resumeSubheading
+      {TA for Fluid Mechanics I}{Spring 2018}
+      {University of Kentucky}{Lexington, KY}
+
+    \resumeSubheading
+      {Research Assistant, Aerospace Eng. Dept.}{Summer 2018}
+      {University of Kentucky}{Lexington, KY}
+      \resumeItemListStart
+        \resumeItem{Optimized air filter designs using STAR-CCM+; mesh refinement and Linux toolchain}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item{\textbf{Parallel Computing:} MPI, OpenMP (C++, Fortran2018, Julia, Python, MATLAB)}
+    \item{\textbf{Languages \& Libraries:} C++ STL, Boost, Eigen, ISO C++, interfaces, caching/memoization}
+    \item{\textbf{Interoperability:} Python-C++-Fortran-Julia mixed stacks}
+    \item{\textbf{Debugging/Profiling:} Valgrind, GDB, VTune, TotalView, gpdrftools}
+    \item{\textbf{Tools:} Git, CI/CD, Linux sysadmin (CentOS, Arch, Ubuntu)}
+    \item{\textbf{Engineering Software:} Ansys Workbench, STAR-CCM+, LabView}
+    \item{\textbf{Math/Tech Topics:} Signal Processing, ROM, Turbulence Theory, Matrix Methods}
+    }
+ \end{itemize}
+#+END_EXPORT
+

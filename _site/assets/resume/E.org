@@ -1,0 +1,125 @@
+#+OPTIONS: toc:nil num:nil sw:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [letterpaper,11pt]
+
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_HEADER: \usepackage{latexsym}
+#+LATEX_HEADER: \usepackage[empty]{fullpage}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage[hidelinks]{hyperref}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{fontspec}
+
+#+LATEX_HEADER: \setmainfont{LexiconNo2RomanA-Med.otf}[Path=./fonts/, BoldFont={LexiconNo2RomanD-Med.otf}, ItalicFont={LexiconNo2ItalicD-Med.otf}]
+#+LATEX_HEADER: \newfontfamily\tabnumbers{LexiconNo2RomanF-Tab.otf}[Path=./fonts/]
+
+#+LATEX_HEADER: \pagestyle{fancy}
+#+LATEX_HEADER: \fancyhf{}
+#+LATEX_HEADER: \fancyfoot{}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0pt}
+
+#+LATEX_HEADER: \addtolength{\oddsidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\evensidemargin}{-0.5in}
+#+LATEX_HEADER: \addtolength{\textwidth}{1in}
+#+LATEX_HEADER: \addtolength{\topmargin}{-.5in}
+#+LATEX_HEADER: \addtolength{\textheight}{1.0in}
+
+#+LATEX_HEADER: \urlstyle{same}
+#+LATEX_HEADER: \raggedbottom
+#+LATEX_HEADER: \raggedright
+#+LATEX_HEADER: \setlength{\tabcolsep}{0in}
+
+#+LATEX_HEADER: \titleformat{\section}{\vspace{-4pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+#+LATEX_HEADER: \newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+#+LATEX_HEADER: \newcommand{\resumeSubheading}[4]{\vspace{-2pt}\item\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & {\tabnumbers #2} \\\textit{\small#3} & \textit{\small #4} \\\end{tabular*}\vspace{-7pt}}
+#+LATEX_HEADER: \newcommand{\resumeProjectHeading}[2]{\vspace{-2pt}\item\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}\small#1 & {\tabnumbers #2} \\\end{tabular*}\vspace{-7pt}}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+#+LATEX_HEADER: \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListStart}{\begin{itemize}}
+#+LATEX_HEADER: \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+#+BEGIN_EXPORT latex
+\begin{center}
+    \textbf{\Huge \scshape Michael Raba, MSc} \\ \vspace{2pt}
+    \textbf{\large Mechanical Engineering} \\ \vspace{1pt}
+    \small {\tabnumbers (859) 972-4725} $|$ \href{https://michaelraba.github.io}{michaelraba.github.io} $|$ Lexington, KY
+\end{center}
+
+\section{Education}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+        {University of Kentucky}{December 2025}
+        {MSc in Mechanical Engineering (GPA: 3.3)}{Lexington, KY}
+      \resumeSubheading
+        {University of Kentucky}{May 2019}
+        {BA in Mathematics (In-major GPA: 3.6)}{Lexington, KY}
+    \resumeSubHeadingListEnd
+
+\section{Featured Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{1. Multichamber Muffler Design}}{2023}
+          \resumeItemListStart
+            \resumeItem{Designed a multichamber muffler system with internal components including chambers, baffles, perforates, and fiberglass absorbents.}
+            \resumeItem{Simulated acoustic performance using industry-standard tools: ANSYS 2023 (Acoustics Module) and SIDLAB 5.1 (1D approximation).}
+            \resumeItem{Modeled transmission and insertion loss across 0--1000 Hz using fluid approximations and validated against measured data.}
+            \resumeItem{Created CAD-style schematics and published downloadable simulation files for reproducibility and benchmarking.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{2. Viscoplastic Modeling}}{2023}
+          \resumeItemListStart
+            \resumeItem{Applied Anand's viscoplasticity model to simulate strain-rate and temperature-dependent behavior of solder alloys on microchip packages.}
+            \resumeItem{Developed a Forward Euler integration scheme in Python to solve constitutive equations and model stress evolution to verify ANSYS nonlinear models.}
+            \resumeItem{Performed material parameter fitting based on experimental data using Python NumPy.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{3. Electromagnetics Simulation: Finite Difference Time Domain}}{2019}
+          \resumeItemListStart
+            \resumeItem{Calculated 3D space location of a particle in a magnetized fluid flow using the Yee Scheme.}
+            \resumeItem{Implemented finite difference equations and staggered time-stepping for a Navier Stokes Simulation.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{4. MSc Project -- POD Analysis of Turbulent Pipe Flow}}{2023}
+          \resumeItemListStart
+            \resumeItem{Developed a MATLAB-based framework to analyze turbulent rotating pipe flow using Proper Orthogonal Decomposition (POD).}
+            \resumeItem{Compared Classic and Snapshot POD methods to extract dominant energetic structures and reconstruct flow fields from 5 Terabytes of data.}
+            \resumeItem{Tools Used: MATLAB, Python, C++, fortran2020, linux.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Employment}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+        {Research Assistant}{2020 -- 2023}
+        {University of Kentucky}{Lexington, KY}
+        \resumeItemListStart
+            \resumeItem{Collaborated with 11 PhD students at University of Maryland, College Park and University of Oxford.}
+            \resumeItem{Attended AIAA Aviation and Aeronautics Forum in Chicago, IL (2022).}
+        \resumeItemListEnd
+        
+      \resumeSubheading
+        {Teaching Assistant}{Fall 2020 \& Spring 2023}
+        {University of Kentucky}{Lexington, KY}
+        \resumeItemListStart
+            \resumeItem{TA for ME311 Experimental Design II (DOE), a senior level course covering Heat Transfer, Fluid Mechanics, Statics, Engineering Statistics, and R.}
+            \resumeItem{Taught ME 330 Fluid Mechanics I as an undergraduate and ME 321 Thermodynamics II as recitation leader.}
+        \resumeItemListEnd
+
+      \resumeSubheading
+        {Wayfinding Assistant}{2019 -- 2020, July 2023 -- Present}
+        {Chandler Medical Center}{Lexington, KY}
+        \resumeItemListStart
+            \resumeItem{Developed custom wayfinding map app to assist hospital visitors using Flask, Python, and SQL.}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+#+END_EXPORT
+

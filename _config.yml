@@ -5,6 +5,8 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark"
 locale                   : "en-US"
 title                    : "MSc Mechanical Engineering"
 title_separator          : "-"
