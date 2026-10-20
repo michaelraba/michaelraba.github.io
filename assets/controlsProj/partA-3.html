@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Group 8 Assembly</title>
+<meta name="author" content="Group 8"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="./extra.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Group 8 Assembly</h1><p class="subtitle">ME440 / AER440 Project 1, Fall 2026</p>
+<h2 class="author">Group 8</h2><h2 class="date">Part A due Oct 20</h2><p class="date">Created: 2026-10-20 Tue 10:41</p>
+</section>
+<section>
+<section id="slide-org685664f">
+<h2 id="org685664f">Full assembly</h2>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<model-viewer src="./glb/full.glb" alt="Ball-on-beam assembly" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="width:100%; height:560px; background:#ffffff; border-radius:8px;"></model-viewer>
+</section>
+</section>
+<section>
+<section id="slide-org6b0703e">
+<h2 id="org6b0703e">Pivot</h2>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/pivot.glb" alt="Center pivot" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>M5 shoulder bolt, two MR106ZZ bearings</li>
+<li>Sleeve and shims set the bearing spacing</li>
+<li>Nylon-lock nut holds the preload</li>
+</ul></div>
+</section>
+</section>
+<section>
+<section id="slide-orgc957198">
+<h2 id="orgc957198">Rails</h2>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/rails.glb" alt="Rails and end stops" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Two 4 mm rails, 300 mm long, 16 mm apart</li>
+<li>End stops at both ends</li>
+</ul></div>
+</section>
+</section>
+<section>
+<section id="slide-org1abaf03">
+<h2 id="org1abaf03">Linkage</h2>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/linkage.glb" alt="Servo linkage" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Hitec HS-5645MG servo, 32 mm horn</li>
+<li>Rod ends at both joints</li>
+<li>Joint 130 mm from the pivot, about 4:1</li>
+<li>Preload spring against backlash</li>
+</ul></div>
+</section>
+</section>
+<section>
+<section id="slide-org82f176d">
+<h2 id="org82f176d">Sensor mount</h2>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/sensor.glb" alt="ToF sensor mount" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>VL53L1X on an arm at the sensor end</li>
+<li>Nearest ball surface 47 mm (minimum range 40 mm)</li>
+</ul></div>
+</section>
+</section>
+<section>
+<section id="slide-org524f6d3">
+<h2 id="org524f6d3">Base and servo cage</h2>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/base.glb" alt="Base and servo cage" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Base plate and two uprights</li>
+<li>Servo held in a plate cage below the beam</li>
+</ul></div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+width:1280, height:760, controls:true, progress:true, hash:true,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+
+});
+
+</script>
+</body>
+</html>

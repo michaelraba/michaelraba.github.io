@@ -1,0 +1,35 @@
+/* Nudged up closer to default, but still trimmed */
+.reveal {
+  font-size: 1.08em;
+}
+
+/* Headings */
+.reveal h1 {
+  font-size: 1.7em;
+}
+.reveal h2 {
+  font-size: 1.4em;
+}
+.reveal h3 {
+  font-size: 1.15em;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  line-height: 1.2;
+}
+
+/* MathJax font size */
+.reveal .MathJax,
+.reveal .MathJax_Display,
+.reveal mjx-container {
+  font-size: 1.0em !important;
+}
+
+/* Code blocks and technical text */
+.reveal pre code {
+  font-size: 0.95em;
+  line-height: 1.4;
+  border-radius: 4px;
+}
