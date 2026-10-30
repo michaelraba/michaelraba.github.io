@@ -1,0 +1,77 @@
+#+TITLE: Group 8 Assembly
+#+SUBTITLE: ME440 / AER440 Project 1, Fall 2026
+#+AUTHOR: Group 8
+#+DATE: Part A due Oct 20
+#+OPTIONS: toc:nil num:nil reveal_title_slide:auto reveal_slide_number:c/t
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.6.1
+#+REVEAL_THEME: serif
+#+REVEAL_TRANS: slide
+#+REVEAL_PLUGINS: (notes highlight)
+#+REVEAL_EXTRA_CSS: ./extra.css
+#+REVEAL_INIT_OPTIONS: width:1280, height:760, controls:true, progress:true, hash:true
+
+* Full assembly
+#+BEGIN_EXPORT html
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<model-viewer src="./glb/full.glb" alt="Ball-on-beam assembly" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="width:100%; height:560px; background:#ffffff; border-radius:8px;"></model-viewer>
+#+END_EXPORT
+
+* Pivot
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/pivot.glb" alt="Center pivot" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>M5 shoulder bolt, two MR106ZZ bearings</li>
+<li>Sleeve and shims set the bearing spacing</li>
+<li>Nylon-lock nut holds the preload</li>
+</ul></div>
+#+END_EXPORT
+
+* Rails
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/rails.glb" alt="Rails and end stops" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Two 4 mm rails, 300 mm long, 16 mm apart</li>
+<li>End stops at both ends</li>
+</ul></div>
+#+END_EXPORT
+
+* Linkage
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/linkage.glb" alt="Servo linkage" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Hitec HS-5645MG servo, 32 mm horn</li>
+<li>Rod ends at both joints</li>
+<li>Joint 130 mm from the pivot, about 4:1</li>
+<li>Preload spring against backlash</li>
+</ul></div>
+#+END_EXPORT
+
+* Sensor mount
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/sensor.glb" alt="ToF sensor mount" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>VL53L1X on an arm at the sensor end</li>
+<li>Nearest ball surface 47 mm (minimum range 40 mm)</li>
+</ul></div>
+#+END_EXPORT
+
+* Base and servo cage
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/base.glb" alt="Base and servo cage" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border-radius:8px;"></model-viewer>
+<ul style="flex:2;">
+<li>Base plate and two uprights</li>
+<li>Servo held in a plate cage below the beam</li>
+</ul></div>
+#+END_EXPORT
+

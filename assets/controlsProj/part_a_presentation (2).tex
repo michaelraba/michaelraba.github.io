@@ -1,0 +1,403 @@
+% Created 2026-10-13 Tue 11:05
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Michael Raba}
+\date{Part A due Oct 20}
+\title{Ball-on-Beam: Part A Status\\\medskip
+\large ME440 / AER440 Project 1, Fall 2026}
+\hypersetup{
+ pdfauthor={Michael Raba},
+ pdftitle={Ball-on-Beam: Part A Status},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section*{Why we're here}
+\label{sec:orgfe8d3f9}
+\subsection*{The goal today}
+\label{sec:org08826be}
+\begin{itemize}
+\item Get all four of us on the same page for \textbf{Part A}
+\item Part A is a \textbf{PDF}, due \textbf{Oct 20}
+\item 15 minutes, then we split the work
+\end{itemize}
+\begin{NOTES}
+Be direct: the point is that everyone leaves knowing what they own.
+\end{NOTES}
+\subsection*{Part A deliverables (from the spec)}
+\label{sec:org22c4906}
+\begin{center}
+\begin{tabular}{rll}
+\# & Deliverable & Status\\
+\hline
+1 & Derivation of the nominal dynamics & math done, text not written\\
+2 & Rough design + reasoning + nominal vs. actual discussion & design done, text not written\\
+3 & Detailed design drawing / schematic & CAD + wiring done\\
+4 & Parts list with links & needs servo decision\\
+\end{tabular}
+\end{center}
+\subsection*{What I've done so far}
+\label{sec:orga694dd0}
+\begin{itemize}
+\item Wiring schematic (Python, schemdraw)
+\item Full 3D assembly (Rhino script plus OBJ), built around the pivot files
+\item Checked clearances over the full tilt range
+\item Ordered most of the parts
+\item \textbf{Not done yet: the actual written PDF.} That's the group work.
+\end{itemize}
+\section*{The system}
+\label{sec:org5f01bd6}
+\subsection*{What we're building}
+\label{sec:orgf1f0816}
+\begin{itemize}
+\item \textbf{Ball on a 300 mm beam}, balanced by tilting the beam about a \textbf{center pivot}
+\item \textbf{Sensor:} VL53L1X time-of-flight (TOF400C board), measures ball position
+\item \textbf{Actuator:} hobby servo plus a linkage
+\item \textbf{Controller:} Arduino Mega 2560, driven from \textbf{Simulink}
+\item Goal: hold the ball at a setpoint and reject disturbances
+\end{itemize}
+\subsection*{Why a center pivot}
+\label{sec:org961baa0}
+\begin{itemize}
+\item Beam is balanced about its middle, so the servo only fights \textbf{friction and ball torque}, not beam weight
+\item Symmetric: same dynamics either direction
+\item Simple, linear-ish small-angle model
+\item Tradeoff: the linkage has to reach out to a point on the beam (130 mm from pivot)
+\end{itemize}
+\subsection*{The whole thing on one page}
+\label{sec:org5955b0d}
+\begin{center}
+\includegraphics[width=.9\linewidth]{./overview_from_model.png}
+\end{center}
+
+\begin{NOTES}
+Walk the chain in order: servo (6) turns horn (7), rod (8) pushes the beam at the clevis (9), 130 mm from the pivot. Beam = spine (3) with rails (2), clamped in the hub (4), which spins on bearings (5). Ball (1) rolls on the rails. Sensor (10) reads the ball's distance. Controller closes the loop.
+\end{NOTES}
+\subsection*{How the loop works}
+\label{sec:orga00e8dd}
+\begin{enumerate}
+\item Sensor reads where the ball is
+\item Arduino/Simulink compares to the setpoint, computes a tilt command
+\item Servo turns the horn, the rod tilts the beam
+\item Gravity accelerates the ball along the tilted rails
+\item Back to 1
+\end{enumerate}
+\subsection*{Assembly (CAD)}
+\label{sec:orgca2e5c3}
+\begin{center}
+\includegraphics[width=.9\linewidth]{./ball_on_beam_assembly_preview.png}
+\end{center}
+
+Level and +10° tilt, oblique and side views.
+\subsection*{Assembly (interactive 3D)}
+\label{sec:orga8da833}
+\subsection*{Layout at a glance}
+\label{sec:org02672a1}
+\begin{center}
+\begin{tabular}{ll}
+Part & Value\\
+\hline
+Beam & 300 mm, two 4 mm rails, 16 mm apart\\
+Ball & 25.4 mm (1") steel ball, R = 12.7 mm\\
+Tilt range & ±10° (\textbf{my assumption, not in the spec})\\
+Servo horn & 32 mm\\
+Rod & about 33 mm, joint 130 mm from pivot\\
+Servo to beam ratio & about 4:1 (horn angle : beam angle)\\
+\end{tabular}
+\end{center}
+\section*{Part A.1: Nominal dynamics}
+\label{sec:org4db4812}
+\subsection*{The model in one slide}
+\label{sec:org9e37687}
+For a solid sphere rolling without slipping:
+
+\[ \ddot{x} = \frac{5}{7}\, g \sin\theta \]
+
+Small angle, \(\sin\theta \approx \theta\):
+
+\[ \frac{X(s)}{\Theta(s)} \approx \frac{(5/7)\,g}{s^{2}} \]
+
+\begin{itemize}
+\item A \textbf{double integrator}: no damping, no restoring force
+\item Open loop it is \textbf{unstable}, so we need feedback (PID)
+\item Servo treated as instantaneous: \(\theta = K \cdot \text{PWM}\)
+\end{itemize}
+\subsection*{Where 5/7 comes from}
+\label{sec:org2696531}
+\begin{itemize}
+\item Energy: \(\tfrac12 m v^2 + \tfrac12 I \omega^2\) with \(I = \tfrac25 m R^2\), \(v = \omega R\)
+\item Gives \(\ddot{x} = \dfrac{g \sin\theta}{1 + I/(mR^2)} = \dfrac{g\sin\theta}{1.4}\)
+\item \(1/1.4 = 5/7 \approx 0.714\)
+\end{itemize}
+
+\begin{NOTES}
+Group writes this up in full for the PDF: free body diagram, force and torque balance, then linearization.
+\end{NOTES}
+\subsection*{Assumptions to state in the report}
+\label{sec:org5f94c13}
+\begin{itemize}
+\item Ball is a solid, uniform sphere
+\item Rolls without slipping
+\item Small angles
+\item Servo is zero-order (no dynamics)
+\item Beam inertia ignored (center pivot, servo holds the angle)
+\item No friction or drag
+\end{itemize}
+\section*{Part A.2: Reality vs. nominal}
+\label{sec:org22da357}
+\subsection*{Where the real system differs}
+\label{sec:org90d32e1}
+\begin{center}
+\begin{tabular}{lll}
+Effect & Nominal & Real\\
+\hline
+Ball on \textbf{two rails} & 0.714 g sinθ & \textbf{0.638 g sinθ} (about 11\% lower)\\
+Servo gain & ideal & unknown K, small deadband\\
+Linkage & linear & about 10\% non-linear over ±10°\\
+Slop / backlash & none & joints and pivot\\
+Friction & none & bearings, rolling resistance\\
+Sensor & exact & noise, cone clips the stop\\
+\end{tabular}
+\end{center}
+\subsection*{Rails reduce the acceleration}
+\label{sec:org05b51ef}
+\begin{itemize}
+\item Ball sits on two rails, so it rolls on a \textbf{smaller effective radius}
+\item \(r_{eff} = R\sqrt{1 - \left(\frac{s/2}{R + r}\right)^2} = 10.65\ \text{mm}\)
+\item With R = 12.7 mm, rail radius 2 mm, spacing 16 mm
+\end{itemize}
+
+\[ \ddot{x} = \frac{g\sin\theta}{1 + 0.4\,(R/r_{eff})^2} = 0.638\, g\sin\theta \]
+
+\begin{itemize}
+\item The plant gain is about \textbf{11\% lower} than nominal
+\item We can \textbf{measure} this and compare in Part B
+\end{itemize}
+\subsection*{Linkage non-linearity}
+\label{sec:orge9bd95a}
+\begin{itemize}
+\item Horn 32 mm, rod 33 mm, rod joint 130 mm out
+\item ±10° beam gives horn angles of roughly \textbf{-42.9° to +46.7°}
+\item About \textbf{10\% asymmetry}, so beam angle is not exactly linear in command
+\item Fix: calibrate with a lookup or a fitted polynomial
+\end{itemize}
+\subsection*{Backlash and slop}
+\label{sec:org343cce6}
+\begin{itemize}
+\item Slop at the beam is the joint slop \textbf{divided by the lever ratio}
+\item Long beam lever (130 mm) vs. short horn (32 mm) helps us
+\item A \textbf{preload spring} keeps the joints loaded one way, so there's no rattle
+\item Plain bearings at the pivot instead of a printed hole
+\end{itemize}
+\subsection*{The sensor has issues}
+\label{sec:org66f297e}
+\begin{itemize}
+\item VL53L1X \textbf{minimum range about 40 mm}; our closest ball surface is \textbf{47 mm}. OK
+\item Field of view is a \textbf{27° cone}. It clips the end stop and rails
+\begin{itemize}
+\item Plan: \textbf{narrow the ROI} in the sensor config
+\end{itemize}
+\item Chrome ball may reflect poorly
+\begin{itemize}
+\item Plan: matte tape, or test first
+\end{itemize}
+\item \textbf{Check the TOF400C is 5 V tolerant} before wiring to 5 V
+\end{itemize}
+\section*{Part A.3: Design}
+\label{sec:org5b644e7}
+\subsection*{Wiring}
+\label{sec:org72ac05e}
+\begin{center}
+\includesvg[width=.9\linewidth]{./ball_on_beam_schematic}
+\end{center}
+
+(Generated by \texttt{ball\_on\_beam\_schematic.py} with schemdraw; put the SVG next to this file.)
+\subsection*{Pinout}
+\label{sec:org576acd4}
+\begin{center}
+\begin{tabular}{lll}
+Signal & From & To (Arduino Mega)\\
+\hline
+ToF VIN & sensor & 5V\\
+ToF GND & sensor & GND\\
+ToF SDA & sensor & pin 20\\
+ToF SCL & sensor & pin 21\\
+Servo signal & servo & pin 9 (PWM)\\
+Servo power & bench supply 5 V & servo, \textbf{not} Arduino 5V\\
+Common ground & supply (-) & Arduino GND\\
+\end{tabular}
+\end{center}
+
+\textbf{Rule:} servo power from the bench supply, grounds tied together.
+\subsection*{Center pivot assembly}
+\label{sec:orgebffd31}
+\begin{itemize}
+\item M5 shoulder bolt, two MR106ZZ bearings (6x10x3), spacer sleeve, M5 nylon-lock nut
+\item Bearing choice: ordered \textbf{plain} MR106ZZ, so I redrew the hub for plain bearings
+\item They sit 0.8 mm proud of the hub faces
+\item Nylon-lock nut: tight enough to remove play, not tight enough to bind
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pivot_flanged_vs_plain.png}
+\end{center}
+\subsection*{Clearance check (full ±10° sweep)}
+\label{sec:org3a6270d}
+\begin{center}
+\begin{tabular}{ll}
+Pair & Min gap\\
+\hline
+Horn to servo body & 1.00 mm\\
+Spine to uprights & 1.30 mm\\
+Rails to uprights & 1.32 mm\\
+Ball to uprights & 3.7 mm\\
+\end{tabular}
+\end{center}
+
+All positive, so nothing collides. The tight ones are the first to check on the real build.
+\section*{Subassemblies}
+\label{sec:orgd513b66}
+Drag each model to rotate. Parts are shown with their assembly colours.
+\subsection*{Rails (3D print / fabricate)}
+\label{sec:org46b4968}
+\begin{NOTES}
+Print caveats: a 4 mm x 300 mm printed rod is flexible and has layer lines, which add rolling friction. Option: print the stops and rail holders, use 4 mm steel or carbon rod for the rails. Decide as a group.
+\end{NOTES}
+\subsection*{Rails: print notes}
+\label{sec:orgd63e972}
+\begin{itemize}
+\item A printed 4 mm × 300 mm rod will \textbf{sag and show layer lines}, which become rolling friction we then have to explain in Part A
+\item Options:
+\begin{enumerate}
+\item Print as-is, flat orientation, sand smooth (cheapest, least accurate)
+\item \textbf{Print the stops/holders only; use 4 mm steel or carbon rod for rails} (recommended)
+\end{enumerate}
+\item Either way: measure the actual spacing and diameter and put the numbers in the report
+\end{itemize}
+\subsection*{Pivot (bearings and hub)}
+\label{sec:org69a025d}
+\subsection*{Linkage (servo to beam)}
+\label{sec:org572e45b}
+\subsection*{ToF sensor mount}
+\label{sec:org50bc999}
+\subsection*{Base and servo cage}
+\label{sec:orge5cd6e1}
+\section*{Parts and money}
+\label{sec:org06b4277}
+\subsection*{Already ordered}
+\label{sec:orgf8db982}
+\begin{itemize}
+\item MR106ZZ bearings
+\item KY-040 rotary encoder with knob
+\item Arduino Mega and VL53L1X (TOF400C): confirm ordered or on hand
+\item Anything else from the order screenshots
+\end{itemize}
+\subsection*{Still missing}
+\label{sec:org2265307}
+\begin{center}
+\begin{tabular}{ll}
+Item & Status\\
+\hline
+\textbf{Servo} & \textbf{not chosen}\\
+Spacer sleeve (7 / 6.1 mm, 15.6 long) & to buy or make\\
+M3 hardware for the servo/linkage & to buy\\
+Servo power leads / connector & to buy\\
+Small consumables (tape, wire, shims) & to buy\\
+\end{tabular}
+\end{center}
+\subsection*{Servo decision}
+\label{sec:org5375c07}
+\begin{center}
+\begin{tabular}{lll}
+Option & Price & Notes\\
+\hline
+Hitec HS-5645MG & \$59.96 & strongest of the three\\
+Savox micro & \$38.13 & middle\\
+Hitec HS-5055MG & \$29.99 & cheapest, enough for the load\\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item The load is tiny: a ball and a light beam
+\item \textbf{Or} ask the instructor whether one can be checked out
+\item \textbf{Need a decision from the group today}
+\end{itemize}
+\subsection*{Do we need the LCD and encoder?}
+\label{sec:org6e48dc7}
+\begin{itemize}
+\item Original thought: tune P, I, D on a knob and show it on an LCD
+\item But we control from \textbf{Simulink}, where gains are tuned on screen
+\item Probably \textbf{not needed}; the encoder is cheap, the LCD is returnable
+\item Suggest: \textbf{skip the LCD}, keep the encoder as a nice-to-have
+\end{itemize}
+\section*{Open items and next steps}
+\label{sec:orgcb7d794}
+\subsection*{Things I'm unsure of}
+\label{sec:org68ee94a}
+\begin{itemize}
+\item ±10° tilt is \textbf{my choice}. Spec doesn't give a range
+\item Rhino script untested inside Rhino (the OBJ export works)
+\item Tube length and OD, shoulder-bolt size and shim thickness: verify against what arrives
+\item ToF cone clips the stop: needs a test
+\item Design sheet BOM predates the new assembly. I'll update it
+\end{itemize}
+\subsection*{Who does what}
+\label{sec:orgb54e7d0}
+\begin{center}
+\begin{tabular}{ll}
+Task & Owner\\
+\hline
+Dynamics derivation write-up & \\
+Nominal vs. actual discussion & \\
+Parts list with links, final servo pick & \\
+Figures: CAD, schematic, clearance table & Michael\\
+Proofread, assemble PDF & \\
+\end{tabular}
+\end{center}
+
+Fill the Owner column \textbf{in the meeting}.
+\subsection*{Timeline}
+\label{sec:orgcbdca6d}
+\begin{center}
+\begin{tabular}{ll}
+Date & Milestone\\
+\hline
+Oct 13 & This meeting: assign owners, pick servo\\
+Oct 15 & Drafts of each section\\
+Oct 17 & Merge and review\\
+Oct 19 & Final PDF\\
+\textbf{Oct 20} & \textbf{Part A due}\\
+\end{tabular}
+\end{center}
+\subsection*{Decisions needed before we leave}
+\label{sec:org39f160d}
+\begin{enumerate}
+\item Which servo? (my vote: the \$30 Hitec 5055MG)
+\item Drop the LCD?
+\item Who writes which section?
+\item Confirm ±10° tilt range
+\end{enumerate}
+\section*{Thanks}
+\label{sec:org5552837}
+\subsection*{Questions?}
+\label{sec:org629fd9b}
+\begin{itemize}
+\item Everything (scripts, CAD, schematic) is in the shared folder
+\item Dynamics sections: start from the ``Part A.1'' slides
+\end{itemize}
+\end{document}

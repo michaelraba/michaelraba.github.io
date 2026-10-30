@@ -1,11 +1,10 @@
-# main links links
+# main links
 main:
   - title: "Projects"
-    url: /talks/    
+    url: /projects/
+
+  - title: "Resume"
+    url: /cv/
 
   #- title: "Youtube"
   #  url: /teaching/
-    
-    
-  - title: "Resume"
-    url: /cv/

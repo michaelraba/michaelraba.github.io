@@ -1,5 +1,5 @@
 #+TITLE: Anand Model: Viscoelastoplasticity and its Application to Solder Joints
-#+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+#+AUTHOR: Michael Raba, MSc Mechanical Engineering, University of Kentucky
 
 #+LATEX_COMPILER: xelatex
 # this is the size i usually use:
@@ -644,7 +644,7 @@ the term \( \boldsymbol{\Pi} \dot{\theta} \) represents the stress change that w
 #+END_EXPORT
 
 
-** Relaxed Configuration Constituative Laws
+** Relaxed Configuration Constitutive Laws
 
 #+BEGIN_EXPORT html
 <div style="display: flex; gap: 2.5em; align-items: flex-start; font-family: 'Segoe UI', sans-serif; font-size: 1.05em;">

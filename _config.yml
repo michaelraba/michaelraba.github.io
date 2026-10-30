@@ -8,10 +8,10 @@
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "dark"
 locale                   : "en-US"
-title                    : "MSc Mechanical Engineering"
+title                    : "Michael Raba, Mechanical Engineer"
 title_separator          : "-"
 name                     : &name "Michael Raba"
-description              : &description "personal description"
+description              : &description "Mechanical engineer (MSc, University of Kentucky) in Lexington, KY: FEA, acoustics, machine design, controls and computational engineering projects."
 url                      : https://michaelraba.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "michaelraba/michaelraba.github.io"
@@ -63,7 +63,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "projects/ball-on-beam.png" # Open Graph/Twitter default site image (path inside /images/)
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -83,7 +83,7 @@ analytics:
 author:
   name             : "Michael Raba"
   avatar           : "selfie3.png"
-  bio              : "MSc 🇺🇸"
+  bio              : "Mechanical Engineer, MSc 🇺🇸"
   location         : "Lexington, Kentucky USA"
   employer         :
   email            :
@@ -145,6 +145,41 @@ exclude:
   - package.json
   - tmp
   - vendor
+  # Template sample content and scratch files that should not be published
+  - _pages/trash
+  - _pages/archive-layout-with-content.md
+  - _pages/markdown.md
+  - _pages/non-menu-page.md
+  - _pages/cvSingle.md
+  - _pages/terms.md
+  - _pages/talkmap.html
+  - _pages/portfolio.html
+  - _pages/publications.md
+  - _pages/page-archive.html
+  - _pages/category-archive.html
+  - _pages/tag-archive.html
+  - _pages/year-archive.html
+  - _pages/collection-archive.html
+  - _pages/test.org
+  - _pages/test.tex
+  - _pages/test.pdf
+  - _pages/about.tex
+  - _pages/about.pdf
+  - _pages/about.aux
+  - _pages/about.bcf
+  - _pages/about.log
+  - _pages/about.out
+  - _pages/about.run.xml
+  - _pages/about.toc
+  - _pages/images
+  - _posts/trash
+  - _drafts
+  - markdown_generator
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - CONTRIBUTING.md
+  - CHANGELOG.md
 keep_files:
   - .git
   - .svn
@@ -175,16 +210,16 @@ kramdown:
 # Collections
 collections:
   teaching:
-    output: true
+    output: false
     permalink: /:collection/:path/
   publications:
     output: false
     permalink: /:collection/:path/
   portfolio:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 

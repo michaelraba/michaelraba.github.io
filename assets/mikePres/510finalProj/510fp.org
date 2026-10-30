@@ -1,5 +1,5 @@
 #+TITLE: Multichamber Muffler System
-#+AUTHOR: Michael Raba, MSc Candidate at University of Kentucky
+#+AUTHOR: Michael Raba, MSc Mechanical Engineering, University of Kentucky
 #+REVEAL_THEME: serif
 # #+REVEAL_THEME: beige
 # #+REVEAL_INIT_OPTIONS: slideNumber:true,transition:'fade'
@@ -80,7 +80,7 @@
   <!-- Image 3 -->
   <div style="flex: 0 0 30%; text-align: center;">
     <img src="./imag/an03.png" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;" />
-    <div style="margin-top: 0.5em;">Part 3 — Fiberglass Absorbant (gold)</div>
+    <div style="margin-top: 0.5em;">Part 3 — Fiberglass Absorber (gold)</div>
   </div>
 
   <!-- Image 4 -->
@@ -114,9 +114,9 @@
 #+END_EXPORT
 
 
-* Simlab Simulation
+* SIDLAB Simulation
 
- Simulated Transmission Loss (0–1000 Hz) Simlab model
+ Simulated Transmission Loss (0–1000 Hz) SIDLAB model
 
 #+BEGIN_EXPORT html
 <img src="./muffler_TL_20degC.svg" alt="Muffler TL Plot" style="width:100%; max-width:800px;">

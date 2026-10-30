@@ -1,0 +1,6 @@
+#+TITLE: Ball-on-Beam Test Platform: Part A Design Report
+#+SUBTITLE: ME440 / AER440 Project 1, Fall 2026
+#+LATEX_CLASS: article
+
+* hi
+hi

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Ball-on-Beam: Part A Status</title>
+<meta name="author" content="Michael Raba"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/serif.css" id="theme"/>
+
+<link rel="stylesheet" href="./extra.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Ball-on-Beam: Part A Status</h1><p class="subtitle">ME440 / AER440 Project 1, Fall 2026</p>
+<h2 class="author">Michael Raba</h2><h2 class="date">Part A due Oct 20</h2><p class="date">Created: 2026-10-13 Tue 09:36</p>
+</section>
+<section>
+<section id="slide-org8b420c8">
+<h2 id="org8b420c8">Why we&rsquo;re here</h2>
+<div class="outline-text-2" id="text-org8b420c8">
+</div>
+</section>
+<section id="slide-orgf934f2a">
+<h3 id="orgf934f2a">The goal today</h3>
+<ul>
+<li>Get all four of us on the same page for <b>Part A</b></li>
+<li>Part A is a <b>PDF</b>, due <b>Oct 20</b></li>
+<li>15 minutes, then we split the work</li>
+
+</ul>
+<aside class="notes">
+<p>
+Be direct: the point is that everyone leaves knowing what they own.
+</p>
+
+</aside>
+</section>
+<section id="slide-orge57234c">
+<h3 id="orge57234c">Part A deliverables (from the spec)</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">#</th>
+<th scope="col" class="org-left">Deliverable</th>
+<th scope="col" class="org-left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Derivation of the nominal dynamics</td>
+<td class="org-left">math done, text not written</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Rough design + reasoning + nominal vs. actual discussion</td>
+<td class="org-left">design done, text not written</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Detailed design drawing / schematic</td>
+<td class="org-left">CAD + wiring done</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">Parts list with links</td>
+<td class="org-left">needs servo decision</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-orgc2d91d0">
+<h3 id="orgc2d91d0">What I&rsquo;ve done so far</h3>
+<ul>
+<li>Wiring schematic (Python, schemdraw)</li>
+<li>Full 3D assembly (Rhino script plus OBJ), built around the pivot files</li>
+<li>Checked clearances over the full tilt range</li>
+<li>Ordered most of the parts</li>
+<li><b>Not done yet: the actual written PDF.</b> That&rsquo;s the group work.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgfeb139e">
+<h2 id="orgfeb139e">The system</h2>
+<div class="outline-text-2" id="text-orgfeb139e">
+</div>
+</section>
+<section id="slide-orgd7f772c">
+<h3 id="orgd7f772c">What we&rsquo;re building</h3>
+<ul>
+<li><b>Ball on a 300 mm beam</b>, balanced by tilting the beam about a <b>center pivot</b></li>
+<li><b>Sensor:</b> VL53L1X time-of-flight (TOF400C board), measures ball position</li>
+<li><b>Actuator:</b> hobby servo plus a linkage</li>
+<li><b>Controller:</b> Arduino Mega 2560, driven from <b>Simulink</b></li>
+<li>Goal: hold the ball at a setpoint and reject disturbances</li>
+
+</ul>
+</section>
+<section id="slide-org306a4c9">
+<h3 id="org306a4c9">Why a center pivot</h3>
+<ul>
+<li>Beam is balanced about its middle, so the servo only fights <b>friction and ball torque</b>, not beam weight</li>
+<li>Symmetric: same dynamics either direction</li>
+<li>Simple, linear-ish small-angle model</li>
+<li>Tradeoff: the linkage has to reach out to a point on the beam (130 mm from pivot)</li>
+
+</ul>
+</section>
+<section id="slide-org60ff39f">
+<h3 id="org60ff39f">The whole thing on one page</h3>
+
+<div id="orgad5f709" class="figure">
+<p><img src="./overview_from_model.png" alt="overview_from_model.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Walk the chain in order: servo (6) turns horn (7), rod (8) pushes the beam at the clevis (9), 130 mm from the pivot. Beam = spine (3) with rails (2), clamped in the hub (4), which spins on bearings (5). Ball (1) rolls on the rails. Sensor (10) reads the ball&rsquo;s distance. Controller closes the loop.
+</p>
+
+</aside>
+</section>
+<section id="slide-orga760b4f">
+<h3 id="orga760b4f">How the loop works</h3>
+<ol>
+<li>Sensor reads where the ball is</li>
+<li>Arduino/Simulink compares to the setpoint, computes a tilt command</li>
+<li>Servo turns the horn, the rod tilts the beam</li>
+<li>Gravity accelerates the ball along the tilted rails</li>
+<li>Back to 1</li>
+
+</ol>
+</section>
+<section id="slide-org6f95eb6">
+<h3 id="org6f95eb6">Assembly (CAD)</h3>
+
+<div id="orgb72737a" class="figure">
+<p><img src="./ball_on_beam_assembly_preview.png" alt="ball_on_beam_assembly_preview.png" />
+</p>
+</div>
+
+<p>
+Level and +10° tilt, oblique and side views.
+</p>
+</section>
+<section id="slide-orgb70d97a">
+<h3 id="orgb70d97a">Assembly (interactive 3D)</h3>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<model-viewer
+  src="./glb/full.glb"
+  alt="3D model of the ball-on-beam assembly"
+  camera-controls
+  auto-rotate
+  camera-orbit="35deg 65deg auto"
+  shadow-intensity="1"
+  exposure="0.9"
+  style="width:100%; max-width:1000px; height:560px; margin:0 auto; background:#ffffff; border:1px solid #ccc; border-radius:8px;">
+</model-viewer>
+<p style="font-size:0.6em;">Drag to rotate, scroll to zoom. Level (0°) pose.</p>
+</section>
+<section id="slide-orgebefc41">
+<h3 id="orgebefc41">Layout at a glance</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Part</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Beam</td>
+<td class="org-left">300 mm, two 4 mm rails, 16 mm apart</td>
+</tr>
+
+<tr>
+<td class="org-left">Ball</td>
+<td class="org-left">25.4 mm (1") steel ball, R = 12.7 mm</td>
+</tr>
+
+<tr>
+<td class="org-left">Tilt range</td>
+<td class="org-left">±10° (<b>my assumption, not in the spec</b>)</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo horn</td>
+<td class="org-left">32 mm</td>
+</tr>
+
+<tr>
+<td class="org-left">Rod</td>
+<td class="org-left">about 33 mm, joint 130 mm from pivot</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo to beam ratio</td>
+<td class="org-left">about 4:1 (horn angle : beam angle)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-orga876af3">
+<h2 id="orga876af3">Part A.1: Nominal dynamics</h2>
+<div class="outline-text-2" id="text-orga876af3">
+</div>
+</section>
+<section id="slide-orgbf6db96">
+<h3 id="orgbf6db96">The model in one slide</h3>
+<p>
+For a solid sphere rolling without slipping:
+</p>
+
+<p>
+\[ \ddot{x} = \frac{5}{7}\, g \sin\theta \]
+</p>
+
+<p>
+Small angle, \( \sin\theta \approx \theta \):
+</p>
+
+<p>
+\[ \frac{X(s)}{\Theta(s)} \approx \frac{(5/7)\,g}{s^{2}} \]
+</p>
+
+<ul>
+<li>A <b>double integrator</b>: no damping, no restoring force</li>
+<li>Open loop it is <b>unstable</b>, so we need feedback (PID)</li>
+<li>Servo treated as instantaneous: \( \theta = K \cdot \text{PWM} \)</li>
+
+</ul>
+</section>
+<section id="slide-org3b11ba5">
+<h3 id="org3b11ba5">Where 5/7 comes from</h3>
+<ul>
+<li>Energy: \( \tfrac12 m v^2 + \tfrac12 I \omega^2 \) with \( I = \tfrac25 m R^2 \), \( v = \omega R \)</li>
+<li>Gives \( \ddot{x} = \dfrac{g \sin\theta}{1 + I/(mR^2)} = \dfrac{g\sin\theta}{1.4} \)</li>
+<li>\( 1/1.4 = 5/7 \approx 0.714 \)</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Group writes this up in full for the PDF: free body diagram, force and torque balance, then linearization.
+</p>
+
+</aside>
+</section>
+<section id="slide-org654e546">
+<h3 id="org654e546">Assumptions to state in the report</h3>
+<ul>
+<li>Ball is a solid, uniform sphere</li>
+<li>Rolls without slipping</li>
+<li>Small angles</li>
+<li>Servo is zero-order (no dynamics)</li>
+<li>Beam inertia ignored (center pivot, servo holds the angle)</li>
+<li>No friction or drag</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org89b4c40">
+<h2 id="org89b4c40">Part A.2: Reality vs. nominal</h2>
+<div class="outline-text-2" id="text-org89b4c40">
+</div>
+</section>
+<section id="slide-orgc50e7b4">
+<h3 id="orgc50e7b4">Where the real system differs</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Effect</th>
+<th scope="col" class="org-left">Nominal</th>
+<th scope="col" class="org-left">Real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Ball on <b>two rails</b></td>
+<td class="org-left">0.714 g sinθ</td>
+<td class="org-left"><b>0.638 g sinθ</b> (about 11% lower)</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo gain</td>
+<td class="org-left">ideal</td>
+<td class="org-left">unknown K, small deadband</td>
+</tr>
+
+<tr>
+<td class="org-left">Linkage</td>
+<td class="org-left">linear</td>
+<td class="org-left">about 10% non-linear over ±10°</td>
+</tr>
+
+<tr>
+<td class="org-left">Slop / backlash</td>
+<td class="org-left">none</td>
+<td class="org-left">joints and pivot</td>
+</tr>
+
+<tr>
+<td class="org-left">Friction</td>
+<td class="org-left">none</td>
+<td class="org-left">bearings, rolling resistance</td>
+</tr>
+
+<tr>
+<td class="org-left">Sensor</td>
+<td class="org-left">exact</td>
+<td class="org-left">noise, cone clips the stop</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-org2982219">
+<h3 id="org2982219">Rails reduce the acceleration</h3>
+<ul>
+<li>Ball sits on two rails, so it rolls on a <b>smaller effective radius</b></li>
+<li>\( r_{eff} = R\sqrt{1 - \left(\frac{s/2}{R + r}\right)^2} = 10.65\ \text{mm} \)</li>
+<li>With R = 12.7 mm, rail radius 2 mm, spacing 16 mm</li>
+
+</ul>
+
+<p>
+\[ \ddot{x} = \frac{g\sin\theta}{1 + 0.4\,(R/r_{eff})^2} = 0.638\, g\sin\theta \]
+</p>
+
+<ul>
+<li>The plant gain is about <b>11% lower</b> than nominal</li>
+<li>We can <b>measure</b> this and compare in Part B</li>
+
+</ul>
+</section>
+<section id="slide-org389aff1">
+<h3 id="org389aff1">Linkage non-linearity</h3>
+<ul>
+<li>Horn 32 mm, rod 33 mm, rod joint 130 mm out</li>
+<li>±10° beam gives horn angles of roughly <b>-42.9° to +46.7°</b></li>
+<li>About <b>10% asymmetry</b>, so beam angle is not exactly linear in command</li>
+<li>Fix: calibrate with a lookup or a fitted polynomial</li>
+
+</ul>
+</section>
+<section id="slide-org4c2ef0d">
+<h3 id="org4c2ef0d">Backlash and slop</h3>
+<ul>
+<li>Slop at the beam is the joint slop <b>divided by the lever ratio</b></li>
+<li>Long beam lever (130 mm) vs. short horn (32 mm) helps us</li>
+<li>A <b>preload spring</b> keeps the joints loaded one way, so there&rsquo;s no rattle</li>
+<li>Plain bearings at the pivot instead of a printed hole</li>
+
+</ul>
+</section>
+<section id="slide-org9d5771a">
+<h3 id="org9d5771a">The sensor has issues</h3>
+<ul>
+<li>VL53L1X <b>minimum range about 40 mm</b>; our closest ball surface is <b>47 mm</b>. OK</li>
+<li>Field of view is a <b>27° cone</b>. It clips the end stop and rails
+<ul>
+<li>Plan: <b>narrow the ROI</b> in the sensor config</li>
+
+</ul></li>
+<li>Chrome ball may reflect poorly
+<ul>
+<li>Plan: matte tape, or test first</li>
+
+</ul></li>
+<li><b>Check the TOF400C is 5 V tolerant</b> before wiring to 5 V</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga84a900">
+<h2 id="orga84a900">Part A.3: Design</h2>
+<div class="outline-text-2" id="text-orga84a900">
+</div>
+</section>
+<section id="slide-orgebdc4df">
+<h3 id="orgebdc4df">Wiring</h3>
+
+<div id="org6cebd30" class="figure">
+<p><img src="./ball_on_beam_schematic.svg" alt="ball_on_beam_schematic.svg" class="org-svg" />
+</p>
+</div>
+
+<p>
+(Generated by <code>ball_on_beam_schematic.py</code> with schemdraw; put the SVG next to this file.)
+</p>
+</section>
+<section id="slide-org845a77a">
+<h3 id="org845a77a">Pinout</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Signal</th>
+<th scope="col" class="org-left">From</th>
+<th scope="col" class="org-left">To (Arduino Mega)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ToF VIN</td>
+<td class="org-left">sensor</td>
+<td class="org-left">5V</td>
+</tr>
+
+<tr>
+<td class="org-left">ToF GND</td>
+<td class="org-left">sensor</td>
+<td class="org-left">GND</td>
+</tr>
+
+<tr>
+<td class="org-left">ToF SDA</td>
+<td class="org-left">sensor</td>
+<td class="org-left">pin 20</td>
+</tr>
+
+<tr>
+<td class="org-left">ToF SCL</td>
+<td class="org-left">sensor</td>
+<td class="org-left">pin 21</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo signal</td>
+<td class="org-left">servo</td>
+<td class="org-left">pin 9 (PWM)</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo power</td>
+<td class="org-left">bench supply 5 V</td>
+<td class="org-left">servo, <b>not</b> Arduino 5V</td>
+</tr>
+
+<tr>
+<td class="org-left">Common ground</td>
+<td class="org-left">supply (-)</td>
+<td class="org-left">Arduino GND</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Rule:</b> servo power from the bench supply, grounds tied together.
+</p>
+</section>
+<section id="slide-org92309ca">
+<h3 id="org92309ca">Center pivot assembly</h3>
+<ul>
+<li>M5 shoulder bolt, two MR106ZZ bearings (6x10x3), spacer sleeve, M5 nylon-lock nut</li>
+<li>Bearing choice: ordered <b>plain</b> MR106ZZ, so I redrew the hub for plain bearings</li>
+<li>They sit 0.8 mm proud of the hub faces</li>
+<li>Nylon-lock nut: tight enough to remove play, not tight enough to bind</li>
+
+</ul>
+
+
+<div id="org4447292" class="figure">
+<p><img src="./pivot_flanged_vs_plain.png" alt="pivot_flanged_vs_plain.png" />
+</p>
+</div>
+</section>
+<section id="slide-org8a0f56a">
+<h3 id="org8a0f56a">Clearance check (full ±10° sweep)</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Pair</th>
+<th scope="col" class="org-left">Min gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Horn to servo body</td>
+<td class="org-left">1.00 mm</td>
+</tr>
+
+<tr>
+<td class="org-left">Spine to uprights</td>
+<td class="org-left">1.30 mm</td>
+</tr>
+
+<tr>
+<td class="org-left">Rails to uprights</td>
+<td class="org-left">1.32 mm</td>
+</tr>
+
+<tr>
+<td class="org-left">Ball to uprights</td>
+<td class="org-left">3.7 mm</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+All positive, so nothing collides. The tight ones are the first to check on the real build.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org8ba060f">
+<h2 id="org8ba060f">Subassemblies</h2>
+<p>
+Drag each model to rotate. Parts are shown with their assembly colours.
+</p>
+</section>
+<section id="slide-org6dd51c9">
+<h3 id="org6dd51c9">Rails (3D print / fabricate)</h3>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/rails.glb" alt="Rails and end stops" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Two rails, <b>4 mm diameter, 300 mm long</b>, <b>16 mm apart</b></li>
+<li>Plus the two end stops (sensor side and far end)</li>
+<li>The ball rolls on these: they set the effective radius (10.65 mm) and the 0.638 g·sinθ gain</li>
+<li><b>Dimensions matter more than looks:</b> spacing error changes the plant gain</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>
+Print caveats: a 4 mm x 300 mm printed rod is flexible and has layer lines, which add rolling friction. Option: print the stops and rail holders, use 4 mm steel or carbon rod for the rails. Decide as a group.
+</p>
+
+</aside>
+</section>
+<section id="slide-org4bf616c">
+<h3 id="org4bf616c">Rails: print notes</h3>
+<ul>
+<li>A printed 4 mm × 300 mm rod will <b>sag and show layer lines</b>, which become rolling friction we then have to explain in Part A</li>
+<li>Options:
+<ol>
+<li>Print as-is, flat orientation, sand smooth (cheapest, least accurate)</li>
+<li><b>Print the stops/holders only; use 4 mm steel or carbon rod for rails</b> (recommended)</li>
+
+</ol></li>
+<li>Either way: measure the actual spacing and diameter and put the numbers in the report</li>
+
+</ul>
+</section>
+<section id="slide-orga5b63fa">
+<h3 id="orga5b63fa">Pivot (bearings and hub)</h3>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/pivot.glb" alt="Center pivot assembly" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>M5 shoulder bolt carries two <b>MR106ZZ</b> bearings (6×10×3)</li>
+<li>Sleeve and 0.5 mm shims set the bearing spacing</li>
+<li>Rotating <b>hub</b> clamps the beam spine</li>
+<li>M5 nylon-lock nut: snug, not crushed</li>
+<li>Plain (unflanged) bearings sit 0.8 mm proud of the hub faces</li>
+</ul>
+</div></div>
+</section>
+<section id="slide-org07e0ce4">
+<h3 id="org07e0ce4">Linkage (servo to beam)</h3>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/linkage.glb" alt="Servo linkage with rod ends" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Servo horn 32 mm, rod about 33 mm</li>
+<li>Rod ends (bearing eyes) at both ends: <b>no printed joint to wear</b></li>
+<li>Beam clevis 130 mm from the pivot</li>
+<li>Preload spring keeps the joints loaded one way, so no rattle</li>
+<li>Slop at the beam is joint slop <b>divided by the lever ratio</b></li>
+</ul>
+</div></div>
+</section>
+<section id="slide-org90a3929">
+<h3 id="org90a3929">ToF sensor mount</h3>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/sensor.glb" alt="ToF sensor arm and board" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Arm holds the VL53L1X above the sensor end of the beam</li>
+<li>Nearest ball surface: 47 mm (min range about 40 mm)</li>
+<li>27° cone clips the stop and rails: <b>narrow the ROI</b></li>
+</ul>
+</div></div>
+</section>
+<section id="slide-orgac783a3">
+<h3 id="orgac783a3">Base and servo cage</h3>
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/base.glb" alt="Base, uprights and servo plates" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Base plate, two uprights (trimmed to +14 mm for ball clearance)</li>
+<li>Servo sits in a plate cage below the beam</li>
+<li>Servo shaft 28 mm above the base</li>
+</ul>
+</div></div>
+</section>
+</section>
+<section>
+<section id="slide-org0472f73">
+<h2 id="org0472f73">Parts and money</h2>
+<div class="outline-text-2" id="text-org0472f73">
+</div>
+</section>
+<section id="slide-orgc83d198">
+<h3 id="orgc83d198">Already ordered</h3>
+<ul>
+<li>MR106ZZ bearings</li>
+<li>KY-040 rotary encoder with knob</li>
+<li>Arduino Mega and VL53L1X (TOF400C): confirm ordered or on hand</li>
+<li>Anything else from the order screenshots</li>
+
+</ul>
+</section>
+<section id="slide-org3c22747">
+<h3 id="org3c22747">Still missing</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Item</th>
+<th scope="col" class="org-left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Servo</b></td>
+<td class="org-left"><b>not chosen</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Spacer sleeve (7 / 6.1 mm, 15.6 long)</td>
+<td class="org-left">to buy or make</td>
+</tr>
+
+<tr>
+<td class="org-left">M3 hardware for the servo/linkage</td>
+<td class="org-left">to buy</td>
+</tr>
+
+<tr>
+<td class="org-left">Servo power leads / connector</td>
+<td class="org-left">to buy</td>
+</tr>
+
+<tr>
+<td class="org-left">Small consumables (tape, wire, shims)</td>
+<td class="org-left">to buy</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-orge4690f7">
+<h3 id="orge4690f7">Servo decision</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Option</th>
+<th scope="col" class="org-left">Price</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Hitec HS-5645MG</td>
+<td class="org-left">$59.96</td>
+<td class="org-left">strongest of the three</td>
+</tr>
+
+<tr>
+<td class="org-left">Savox micro</td>
+<td class="org-left">$38.13</td>
+<td class="org-left">middle</td>
+</tr>
+
+<tr>
+<td class="org-left">Hitec HS-5055MG</td>
+<td class="org-left">$29.99</td>
+<td class="org-left">cheapest, enough for the load</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>The load is tiny: a ball and a light beam</li>
+<li><b>Or</b> ask the instructor whether one can be checked out</li>
+<li><b>Need a decision from the group today</b></li>
+
+</ul>
+</section>
+<section id="slide-org3b2f513">
+<h3 id="org3b2f513">Do we need the LCD and encoder?</h3>
+<ul>
+<li>Original thought: tune P, I, D on a knob and show it on an LCD</li>
+<li>But we control from <b>Simulink</b>, where gains are tuned on screen</li>
+<li>Probably <b>not needed</b>; the encoder is cheap, the LCD is returnable</li>
+<li>Suggest: <b>skip the LCD</b>, keep the encoder as a nice-to-have</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org89a179e">
+<h2 id="org89a179e">Open items and next steps</h2>
+<div class="outline-text-2" id="text-org89a179e">
+</div>
+</section>
+<section id="slide-orgf73823e">
+<h3 id="orgf73823e">Things I&rsquo;m unsure of</h3>
+<ul>
+<li>±10° tilt is <b>my choice</b>. Spec doesn&rsquo;t give a range</li>
+<li>Rhino script untested inside Rhino (the OBJ export works)</li>
+<li>Tube length and OD, shoulder-bolt size and shim thickness: verify against what arrives</li>
+<li>ToF cone clips the stop: needs a test</li>
+<li>Design sheet BOM predates the new assembly. I&rsquo;ll update it</li>
+
+</ul>
+</section>
+<section id="slide-org7a50479">
+<h3 id="org7a50479">Who does what</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Task</th>
+<th scope="col" class="org-left">Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Dynamics derivation write-up</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Nominal vs. actual discussion</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Parts list with links, final servo pick</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Figures: CAD, schematic, clearance table</td>
+<td class="org-left">Michael</td>
+</tr>
+
+<tr>
+<td class="org-left">Proofread, assemble PDF</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Fill the Owner column <b>in the meeting</b>.
+</p>
+</section>
+<section id="slide-orgbd79ffa">
+<h3 id="orgbd79ffa">Timeline</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Date</th>
+<th scope="col" class="org-left">Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Oct 13</td>
+<td class="org-left">This meeting: assign owners, pick servo</td>
+</tr>
+
+<tr>
+<td class="org-left">Oct 15</td>
+<td class="org-left">Drafts of each section</td>
+</tr>
+
+<tr>
+<td class="org-left">Oct 17</td>
+<td class="org-left">Merge and review</td>
+</tr>
+
+<tr>
+<td class="org-left">Oct 19</td>
+<td class="org-left">Final PDF</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Oct 20</b></td>
+<td class="org-left"><b>Part A due</b></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-org2867c51">
+<h3 id="org2867c51">Decisions needed before we leave</h3>
+<ol>
+<li>Which servo? (my vote: the $30 Hitec 5055MG)</li>
+<li>Drop the LCD?</li>
+<li>Who writes which section?</li>
+<li>Confirm ±10° tilt range</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-orgafc0653">
+<h2 id="orgafc0653">Thanks</h2>
+<div class="outline-text-2" id="text-orgafc0653">
+</div>
+</section>
+<section id="slide-orgc95d119">
+<h3 id="orgc95d119">Questions?</h3>
+<ul>
+<li>Everything (scripts, CAD, schematic) is in the shared folder</li>
+<li>Dynamics sections: start from the &ldquo;Part A.1&rdquo; slides</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+width:1280, height:760, controls:true, progress:true, hash:true,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+
+});
+
+</script>
+</body>
+</html>

@@ -1,37 +1,19 @@
 ---
-layout: archive
+layout: single
 title: "Sitemap"
 permalink: /sitemap/
 author_profile: true
 ---
 
-{% include base_path %}
+- [Home]({{ site.baseurl }}/)
+- [Projects]({{ site.baseurl }}/projects/)
+  - [Ball-on-beam closed-loop control]({{ site.baseurl }}/projects/#ball-on-beam)
+  - [Shaft and drivetrain design for a 40 HP motor]({{ site.baseurl }}/projects/#shaft-design)
+  - [MSc: reduced-order modeling of turbulent rotating pipe flow]({{ site.baseurl }}/projects/#pod)
+  - [Multichamber muffler design]({{ site.baseurl }}/projects/#muffler)
+  - [Viscoplastic modeling of solder joints]({{ site.baseurl }}/projects/#anand)
+  - [FEA design optimization in ANSYS Workbench]({{ site.baseurl }}/projects/#fea-optimization)
+  - [Software tools]({{ site.baseurl }}/projects/#software)
+- [Resume]({{ site.baseurl }}/cv/) ([PDF]({{ site.baseurl }}/assets/resume/Michael_Raba_Resume.pdf))
 
-A list of all the posts and pages found on the site. For you robots out there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
-
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
-
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% capture written_label %}'None'{% endcapture %}
-
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+A machine-readable version is available at [sitemap.xml]({{ site.baseurl }}/sitemap.xml).

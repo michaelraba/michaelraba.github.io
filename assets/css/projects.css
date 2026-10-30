@@ -1,0 +1,251 @@
+/* Project cards, project detail blocks and small UI pieces used on the
+   homepage, /projects/ and /cv/. Colors match the site's light theme. */
+
+:root {
+  --pc-bg: #f7f8fa;
+  --pc-border: #dfe3e8;
+  --pc-text: #33373d;
+  --pc-heading: #1f2328;
+  --pc-muted: #5e6670;
+  --pc-accent: #2f6fb0;
+  --pc-accent-ink: #ffffff;
+  --pc-tag-bg: #eaeef3;
+}
+
+.lead-intro {
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+/* ---------- card grid ---------- */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1em;
+  margin: 1.2em 0 2em;
+}
+
+a.proj-card,
+.proj-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--pc-bg);
+  border: 1px solid var(--pc-border);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: var(--pc-text) !important;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+a.proj-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--pc-accent);
+}
+
+.proj-card img {
+  width: 100%;
+  aspect-ratio: 10 / 7;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+  margin: 0;
+}
+
+.proj-card .proj-body {
+  padding: 0.8em 0.9em 1em;
+}
+
+.proj-card h3 {
+  font-size: 0.95em;
+  margin: 0 0 0.35em;
+  color: var(--pc-heading);
+}
+
+.proj-card p {
+  font-size: 0.78em;
+  line-height: 1.45;
+  margin: 0 0 0.6em;
+  color: var(--pc-muted);
+}
+
+/* ---------- tags ---------- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+.tags span {
+  font-size: 0.68em;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  background: var(--pc-tag-bg);
+  color: var(--pc-text);
+  border: 1px solid var(--pc-border);
+  white-space: nowrap;
+}
+
+/* ---------- project detail blocks on /projects/ ---------- */
+.proj-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 1.4em;
+  align-items: start;
+  padding: 1.4em 0 1.6em;
+  border-bottom: 1px solid var(--pc-border);
+}
+
+.proj-detail:last-of-type {
+  border-bottom: none;
+}
+
+.proj-detail img,
+.proj-detail model-viewer {
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--pc-border);
+  margin: 0;
+}
+
+.proj-detail model-viewer {
+  height: 300px;
+}
+
+.proj-detail .media-note {
+  font-size: 0.72em;
+  color: var(--pc-muted);
+  margin-top: 0.35em;
+}
+
+.proj-detail h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-bottom: none;
+  font-size: 1.25em;
+}
+
+.proj-meta {
+  font-size: 0.8em;
+  color: var(--pc-muted);
+  margin: -0.4em 0 0.8em;
+}
+
+.proj-detail p,
+.proj-detail li {
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+.proj-detail ul {
+  margin-top: 0.3em;
+}
+
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.9em;
+}
+
+a.btn-link {
+  font-size: 0.78em;
+  padding: 0.35em 0.8em;
+  border-radius: 6px;
+  border: 1px solid var(--pc-accent);
+  color: var(--pc-accent) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+a.btn-link:hover {
+  background: var(--pc-accent);
+  color: var(--pc-accent-ink) !important;
+}
+
+.proj-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 1em;
+  font-size: 0.85em;
+  margin: 0.5em 0 1em;
+}
+
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75em;
+  color: var(--pc-muted);
+  margin: 2.2em 0 0.2em;
+}
+
+/* ---------- skills table ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: minmax(130px, max-content) 1fr;
+  gap: 0.45em 1.2em;
+  font-size: 0.88em;
+  margin: 0.8em 0 1.8em;
+}
+
+.skills-grid dt,
+.skills-grid dd {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.skills-grid dt {
+  font-weight: bold;
+  color: var(--pc-heading);
+}
+
+.skills-grid dd {
+  margin: 0;
+  color: var(--pc-text);
+}
+
+/* ---------- call-to-action row ---------- */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin: 1em 0 1.5em;
+}
+
+a.btn-primary {
+  font-size: 0.85em;
+  padding: 0.5em 1.1em;
+  border-radius: 6px;
+  background: var(--pc-accent);
+  color: var(--pc-accent-ink) !important;
+  text-decoration: none !important;
+  font-weight: bold;
+}
+
+a.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  border: 1px solid var(--pc-border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .proj-detail {
+    grid-template-columns: 1fr;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-grid dd {
+    margin-bottom: 0.4em;
+  }
+}

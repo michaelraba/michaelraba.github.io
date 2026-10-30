@@ -1,0 +1,371 @@
+#+TITLE: Ball-on-Beam: Part A Status
+#+SUBTITLE: ME440 / AER440 Project 1, Fall 2026
+#+AUTHOR: Michael Raba
+#+DATE: Part A due Oct 20
+#+OPTIONS: toc:nil num:nil reveal_title_slide:auto reveal_slide_number:c/t
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@4.6.1
+#+REVEAL_THEME: serif
+#+REVEAL_TRANS: slide
+#+REVEAL_PLUGINS: (notes highlight)
+#+REVEAL_EXTRA_CSS: ./extra.css
+#+REVEAL_INIT_OPTIONS: width:1280, height:760, controls:true, progress:true, hash:true
+
+# Compile: open in Emacs, C-c C-e R R (export + open browser) or R B.
+# Needs org-reveal installed. Keep the PNGs next to this file.
+# Press "s" in the browser for speaker notes. "o" for the slide overview. "f" fullscreen.
+# If you have no internet in the room, download reveal.js and point REVEAL_ROOT at the local folder.
+# extra.css is optional. Delete the REVEAL_EXTRA_CSS line if you don't make one.
+
+* Why we're here
+** The goal today
+- Get all four of us on the same page for *Part A*
+- Part A is a *PDF*, due *Oct 20*
+- 15 minutes, then we split the work
+#+BEGIN_NOTES
+Be direct: the point is that everyone leaves knowing what they own.
+#+END_NOTES
+
+** Part A deliverables (from the spec)
+| # | Deliverable                                             | Status          |
+|---+---------------------------------------------------------+-----------------|
+| 1 | Derivation of the nominal dynamics                      | math done, text not written |
+| 2 | Rough design + reasoning + nominal vs. actual discussion | design done, text not written |
+| 3 | Detailed design drawing / schematic                     | CAD + wiring done |
+| 4 | Parts list with links                                   | needs servo decision |
+
+** What I've done so far
+- Wiring schematic (Python, schemdraw)
+- Full 3D assembly (Rhino script plus OBJ), built around the pivot files
+- Checked clearances over the full tilt range
+- Ordered most of the parts
+- *Not done yet: the actual written PDF.* That's the group work.
+
+* The system
+** What we're building
+- *Ball on a 300 mm beam*, balanced by tilting the beam about a *center pivot*
+- *Sensor:* VL53L1X time-of-flight (TOF400C board), measures ball position
+- *Actuator:* hobby servo plus a linkage
+- *Controller:* Arduino Mega 2560, driven from *Simulink*
+- Goal: hold the ball at a setpoint and reject disturbances
+
+** Why a center pivot
+- Beam is balanced about its middle, so the servo only fights *friction and ball torque*, not beam weight
+- Symmetric: same dynamics either direction
+- Simple, linear-ish small-angle model
+- Tradeoff: the linkage has to reach out to a point on the beam (130 mm from pivot)
+
+** The whole thing on one page
+[[./overview_from_model.png]]
+
+#+BEGIN_NOTES
+Walk the chain in order: servo (6) turns horn (7), rod (8) pushes the beam at the clevis (9), 130 mm from the pivot. Beam = spine (3) with rails (2), clamped in the hub (4), which spins on bearings (5). Ball (1) rolls on the rails. Sensor (10) reads the ball's distance. Controller closes the loop.
+#+END_NOTES
+
+** How the loop works
+1. Sensor reads where the ball is
+2. Arduino/Simulink compares to the setpoint, computes a tilt command
+3. Servo turns the horn, the rod tilts the beam
+4. Gravity accelerates the ball along the tilted rails
+5. Back to 1
+
+** Assembly (CAD)
+[[./ball_on_beam_assembly_preview.png]]
+
+Level and +10° tilt, oblique and side views.
+
+** Assembly (interactive 3D)
+#+BEGIN_EXPORT html
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<model-viewer
+  src="./glb/full.glb"
+  alt="3D model of the ball-on-beam assembly"
+  camera-controls
+  auto-rotate
+  camera-orbit="35deg 65deg auto"
+  shadow-intensity="1"
+  exposure="0.9"
+  style="width:100%; max-width:1000px; height:560px; margin:0 auto; background:#ffffff; border:1px solid #ccc; border-radius:8px;">
+</model-viewer>
+<p style="font-size:0.6em;">Drag to rotate, scroll to zoom. Level (0°) pose.</p>
+#+END_EXPORT
+
+** Layout at a glance
+| Part            | Value                        |
+|-----------------+------------------------------|
+| Beam            | 300 mm, two 4 mm rails, 16 mm apart |
+| Ball            | 25.4 mm (1") steel ball, R = 12.7 mm |
+| Tilt range      | ±10° (*my assumption, not in the spec*) |
+| Servo horn      | 32 mm                        |
+| Rod             | about 33 mm, joint 130 mm from pivot |
+| Servo to beam ratio | about 4:1 (horn angle : beam angle) |
+
+* Part A.1: Nominal dynamics
+** The model in one slide
+For a solid sphere rolling without slipping:
+
+\[ \ddot{x} = \frac{5}{7}\, g \sin\theta \]
+
+Small angle, \( \sin\theta \approx \theta \):
+
+\[ \frac{X(s)}{\Theta(s)} \approx \frac{(5/7)\,g}{s^{2}} \]
+
+- A *double integrator*: no damping, no restoring force
+- Open loop it is *unstable*, so we need feedback (PID)
+- Servo treated as instantaneous: \( \theta = K \cdot \text{PWM} \)
+
+** Where 5/7 comes from
+- Energy: \( \tfrac12 m v^2 + \tfrac12 I \omega^2 \) with \( I = \tfrac25 m R^2 \), \( v = \omega R \)
+- Gives \( \ddot{x} = \dfrac{g \sin\theta}{1 + I/(mR^2)} = \dfrac{g\sin\theta}{1.4} \)
+- \( 1/1.4 = 5/7 \approx 0.714 \)
+
+#+BEGIN_NOTES
+Group writes this up in full for the PDF: free body diagram, force and torque balance, then linearization.
+#+END_NOTES
+
+** Assumptions to state in the report
+- Ball is a solid, uniform sphere
+- Rolls without slipping
+- Small angles
+- Servo is zero-order (no dynamics)
+- Beam inertia ignored (center pivot, servo holds the angle)
+- No friction or drag
+
+* Part A.2: Reality vs. nominal
+** Where the real system differs
+| Effect                      | Nominal | Real                          |
+|-----------------------------+---------+-------------------------------|
+| Ball on *two rails*         | 0.714 g sinθ | *0.638 g sinθ* (about 11% lower) |
+| Servo gain                  | ideal   | unknown K, small deadband     |
+| Linkage                     | linear  | about 10% non-linear over ±10° |
+| Slop / backlash             | none    | joints and pivot               |
+| Friction                    | none    | bearings, rolling resistance   |
+| Sensor                      | exact   | noise, cone clips the stop     |
+
+** Rails reduce the acceleration
+- Ball sits on two rails, so it rolls on a *smaller effective radius*
+- \( r_{eff} = R\sqrt{1 - \left(\frac{s/2}{R + r}\right)^2} = 10.65\ \text{mm} \)
+- With R = 12.7 mm, rail radius 2 mm, spacing 16 mm
+
+\[ \ddot{x} = \frac{g\sin\theta}{1 + 0.4\,(R/r_{eff})^2} = 0.638\, g\sin\theta \]
+
+- The plant gain is about *11% lower* than nominal
+- We can *measure* this and compare in Part B
+
+** Linkage non-linearity
+- Horn 32 mm, rod 33 mm, rod joint 130 mm out
+- ±10° beam gives horn angles of roughly *-42.9° to +46.7°*
+- About *10% asymmetry*, so beam angle is not exactly linear in command
+- Fix: calibrate with a lookup or a fitted polynomial
+
+** Backlash and slop
+- Slop at the beam is the joint slop *divided by the lever ratio*
+- Long beam lever (130 mm) vs. short horn (32 mm) helps us
+- A *preload spring* keeps the joints loaded one way, so there's no rattle
+- Plain bearings at the pivot instead of a printed hole
+
+** The sensor has issues
+- VL53L1X *minimum range about 40 mm*; our closest ball surface is *47 mm*. OK
+- Field of view is a *27° cone*. It clips the end stop and rails
+  - Plan: *narrow the ROI* in the sensor config
+- Chrome ball may reflect poorly
+  - Plan: matte tape, or test first
+- *Check the TOF400C is 5 V tolerant* before wiring to 5 V
+
+* Part A.3: Design
+** Wiring
+[[./ball_on_beam_schematic.svg]]
+
+(Generated by =ball_on_beam_schematic.py= with schemdraw; put the SVG next to this file.)
+
+** Pinout
+| Signal         | From           | To (Arduino Mega) |
+|----------------+----------------+-------------------|
+| ToF VIN        | sensor         | 5V                |
+| ToF GND        | sensor         | GND               |
+| ToF SDA        | sensor         | pin 20            |
+| ToF SCL        | sensor         | pin 21            |
+| Servo signal   | servo          | pin 9 (PWM)       |
+| Servo power    | bench supply 5 V | servo, *not* Arduino 5V |
+| Common ground  | supply (-)     | Arduino GND       |
+
+*Rule:* servo power from the bench supply, grounds tied together.
+
+** Center pivot assembly
+- M5 shoulder bolt, two MR106ZZ bearings (6x10x3), spacer sleeve, M5 nylon-lock nut
+- Bearing choice: ordered *plain* MR106ZZ, so I redrew the hub for plain bearings
+- They sit 0.8 mm proud of the hub faces
+- Nylon-lock nut: tight enough to remove play, not tight enough to bind
+
+[[./pivot_flanged_vs_plain.png]]
+
+** Clearance check (full ±10° sweep)
+| Pair                    | Min gap  |
+|-------------------------+----------|
+| Horn to servo body      | 1.00 mm  |
+| Spine to uprights       | 1.30 mm  |
+| Rails to uprights       | 1.32 mm  |
+| Ball to uprights        | 3.7 mm   |
+
+All positive, so nothing collides. The tight ones are the first to check on the real build.
+
+* Subassemblies
+Drag each model to rotate. Parts are shown with their assembly colours.
+
+** Rails (3D print / fabricate)
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/rails.glb" alt="Rails and end stops" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Two rails, <b>4 mm diameter, 300 mm long</b>, <b>16 mm apart</b></li>
+<li>Plus the two end stops (sensor side and far end)</li>
+<li>The ball rolls on these: they set the effective radius (10.65 mm) and the 0.638 g·sinθ gain</li>
+<li><b>Dimensions matter more than looks:</b> spacing error changes the plant gain</li>
+</ul>
+</div></div>
+#+END_EXPORT
+#+BEGIN_NOTES
+Print caveats: a 4 mm x 300 mm printed rod is flexible and has layer lines, which add rolling friction. Option: print the stops and rail holders, use 4 mm steel or carbon rod for the rails. Decide as a group.
+#+END_NOTES
+
+** Rails: print notes
+- A printed 4 mm × 300 mm rod will *sag and show layer lines*, which become rolling friction we then have to explain in Part A
+- Options:
+  1. Print as-is, flat orientation, sand smooth (cheapest, least accurate)
+  2. *Print the stops/holders only; use 4 mm steel or carbon rod for rails* (recommended)
+- Either way: measure the actual spacing and diameter and put the numbers in the report
+
+** Pivot (bearings and hub)
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/pivot.glb" alt="Center pivot assembly" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>M5 shoulder bolt carries two <b>MR106ZZ</b> bearings (6×10×3)</li>
+<li>Sleeve and 0.5 mm shims set the bearing spacing</li>
+<li>Rotating <b>hub</b> clamps the beam spine</li>
+<li>M5 nylon-lock nut: snug, not crushed</li>
+<li>Plain (unflanged) bearings sit 0.8 mm proud of the hub faces</li>
+</ul>
+</div></div>
+#+END_EXPORT
+
+** Linkage (servo to beam)
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/linkage.glb" alt="Servo linkage with rod ends" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Servo horn 32 mm, rod about 33 mm</li>
+<li>Rod ends (bearing eyes) at both ends: <b>no printed joint to wear</b></li>
+<li>Beam clevis 130 mm from the pivot</li>
+<li>Preload spring keeps the joints loaded one way, so no rattle</li>
+<li>Slop at the beam is joint slop <b>divided by the lever ratio</b></li>
+</ul>
+</div></div>
+#+END_EXPORT
+
+** ToF sensor mount
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/sensor.glb" alt="ToF sensor arm and board" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Arm holds the VL53L1X above the sensor end of the beam</li>
+<li>Nearest ball surface: 47 mm (min range about 40 mm)</li>
+<li>27° cone clips the stop and rails: <b>narrow the ROI</b></li>
+</ul>
+</div></div>
+#+END_EXPORT
+
+** Base and servo cage
+#+BEGIN_EXPORT html
+<div style="display:flex; gap:1.5em; align-items:center; text-align:left; font-size:0.7em;">
+<model-viewer src="./glb/base.glb" alt="Base, uprights and servo plates" camera-controls auto-rotate camera-orbit="35deg 65deg auto" shadow-intensity="1" exposure="0.9"
+  style="flex:3; height:480px; background:#ffffff; border:1px solid #ccc; border-radius:8px;"></model-viewer>
+<div style="flex:2;">
+<ul>
+<li>Base plate, two uprights (trimmed to +14 mm for ball clearance)</li>
+<li>Servo sits in a plate cage below the beam</li>
+<li>Servo shaft 28 mm above the base</li>
+</ul>
+</div></div>
+#+END_EXPORT
+
+* Parts and money
+** Already ordered
+# EDIT: confirm against your actual order list before presenting
+- MR106ZZ bearings
+- KY-040 rotary encoder with knob
+- Arduino Mega and VL53L1X (TOF400C): confirm ordered or on hand
+- Anything else from the order screenshots
+
+** Still missing
+| Item                           | Status             |
+|--------------------------------+--------------------|
+| *Servo*                        | *not chosen*       |
+| Spacer sleeve (7 / 6.1 mm, 15.6 long) | to buy or make |
+| M3 hardware for the servo/linkage | to buy          |
+| Servo power leads / connector  | to buy             |
+| Small consumables (tape, wire, shims) | to buy      |
+
+** Servo decision
+| Option               | Price  | Notes                    |
+|----------------------+--------+--------------------------|
+| Hitec HS-5645MG      | $59.96 | strongest of the three   |
+| Savox micro          | $38.13 | middle                   |
+| Hitec HS-5055MG      | $29.99 | cheapest, enough for the load |
+
+- The load is tiny: a ball and a light beam
+- *Or* ask the instructor whether one can be checked out
+- *Need a decision from the group today*
+
+** Do we need the LCD and encoder?
+- Original thought: tune P, I, D on a knob and show it on an LCD
+- But we control from *Simulink*, where gains are tuned on screen
+- Probably *not needed*; the encoder is cheap, the LCD is returnable
+- Suggest: *skip the LCD*, keep the encoder as a nice-to-have
+
+* Open items and next steps
+** Things I'm unsure of
+- ±10° tilt is *my choice*. Spec doesn't give a range
+- Rhino script untested inside Rhino (the OBJ export works)
+- Tube length and OD, shoulder-bolt size and shim thickness: verify against what arrives
+- ToF cone clips the stop: needs a test
+- Design sheet BOM predates the new assembly. I'll update it
+
+** Who does what
+| Task                                           | Owner |
+|------------------------------------------------+-------|
+| Dynamics derivation write-up    |       |
+| Nominal vs. actual discussion   |       |
+| Parts list with links, final servo pick        |       |
+| Figures: CAD, schematic, clearance table       | Michael |
+| Proofread, assemble PDF                         |       |
+
+Fill the Owner column *in the meeting*.
+
+** Timeline
+# EDIT: the intermediate dates are suggestions, only Oct 20 is from the spec
+| Date       | Milestone                               |
+|------------+-----------------------------------------|
+| Oct 13     | This meeting: assign owners, pick servo |
+| Oct 15     | Drafts of each section                  |
+| Oct 17     | Merge and review                        |
+| Oct 19     | Final PDF                               |
+| *Oct 20*   | *Part A due*                            |
+
+** Decisions needed before we leave
+1. Which servo? (my vote: the $30 Hitec 5055MG)
+2. Drop the LCD?
+3. Who writes which section?
+4. Confirm ±10° tilt range
+
+* Thanks
+** Questions?
+- Everything (scripts, CAD, schematic) is in the shared folder
+- Dynamics sections: start from the "Part A.1" slides

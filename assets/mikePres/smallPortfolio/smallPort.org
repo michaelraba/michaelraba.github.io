@@ -1,5 +1,5 @@
 #+TITLE: Michael Raba Portfolio Fall 25 
-#+AUTHOR: Michael Raba, MSc Candidate University of Kentucky '25 
+#+AUTHOR: Michael Raba, MSc Mechanical Engineering, University of Kentucky 
 #+LATEX_CLASS: beamer
 
 # 8x11
@@ -149,7 +149,7 @@
 [[../603talk/chip.png]]
 
 *** Models Viscoplastic (Metals under Temperature/thermal cycling)
-- \textbf{Broad Application:} *Model metals under thermal cycling! Temperature and Strain dependance!*
+- \textbf{Broad Application:} *Model metals under thermal cycling! Temperature and Strain dependence!*
 - Applies Anand’s unified viscoplastic framework to model solder behavior
 - Anand's model can be reduced and fitted from experiments
 - transition the theory into engineering-scale implementation
@@ -236,7 +236,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 #+caption: Relaminarized flow (Broadband Energy Distribution)
 [[../origPODtalks/images/baileyedit/screenshot2023-04-15_10-48-49_.png]]
 
-* Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
+* Selected Relevant Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
 
 ** Left Column
 :PROPERTIES:
@@ -283,7 +283,7 @@ s^* &= \hat{s} \left( \frac{\dot{\varepsilon}^p}{A} \exp\left( \frac{Q}{R T} \ri
 
 Thread and Bolt Design with Ansys
 
-- Assume coefficeint of friction between bolt  and nut $=0.2$, mirror symmetry, and 2d simulation to reduce computation
+- Assume coefficient of friction between bolt  and nut $=0.2$, mirror symmetry, and 2d simulation to reduce computation
 
 #+ATTR_LATEX: :width 0.3\textwidth
 #+caption: Threaded nut and bolt 
@@ -295,7 +295,7 @@ Thread and Bolt Design with Ansys
 
 
 
-* Selected Relevent Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
+* Selected Relevant Coursework (ME 514 Machine Design using Ansys Workbench, Fall 2024)
 
 ** Left Column
 :PROPERTIES:

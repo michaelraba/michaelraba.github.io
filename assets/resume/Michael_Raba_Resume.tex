@@ -1,0 +1,97 @@
+\documentclass[]{mcdowellcv}
+\usepackage{amsmath}
+\hypersetup{hidelinks}
+\newgeometry{left=0.6in,right=0.6in,top=0.4in,bottom=0.4in}
+\AtBeginDocument{\fontsize{10.5pt}{12.4pt}\selectfont}
+
+% Tighter lists so everything fits on one page
+\setlist[itemize]{topsep=0pt,itemsep=0pt,parsep=0pt}
+
+\name{Michael Raba}
+\address{Mechanical Engineer, MSc \linebreak Lexington, KY \linebreak (859) 972-4725}
+\contacts{\href{https://michaelraba.github.io}{michaelraba.github.io} \linebreak \href{https://www.linkedin.com/in/raba-m}{linkedin.com/in/raba-m} \linebreak \href{https://github.com/michaelraba}{github.com/michaelraba}}
+
+\begin{document}
+\makeheader
+
+Mechanical engineer (MSc) with project experience in FEA, acoustic simulation, material modeling, machine design
+and controls, backed by strong numerical and programming skills. Seeking a design, test or simulation engineering role.
+
+\begin{cvsection}{Education}
+  \begin{cvsubsection}{University of Kentucky}{}{Lexington, KY}
+    \begin{itemize}
+      \item \textbf{MSc, Mechanical Engineering}, December 2025. Project: \textit{POD Analysis of Turbulent Pipe Flow and Relaminarization}.
+      \item \textbf{BA, Mathematics}, May 2019. In-major GPA 3.6.
+      \item \textbf{Additional undergraduate ME coursework} (Fall 2026): Machine Design (ME 344), Controls (ME/AER 440).
+      \item \textbf{Relevant coursework:} Machine Design with ANSYS Workbench (ME 514), Engineering Acoustics, Plasticity.
+    \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+\begin{cvsection}{Technical Skills}
+  \begin{cvsubsection}{}{}{}
+  \begin{itemize}
+    \item \textbf{Simulation / CAE:} ANSYS Workbench (Static Structural, Acoustics, nonlinear materials, optimization), SIDLAB, FEA
+    \item \textbf{CAD:} Rhino. \textbf{Controls / hardware:} Simulink, Arduino, servo actuation, time-of-flight sensing
+    \item \textbf{Programming:} MATLAB, Python (NumPy, Plotly, Flask), C++, Fortran, SQL, R, Linux, LaTeX
+    \item \textbf{Methods:} static and fatigue design (Shigley), reduced-order modeling (POD), constitutive modeling, DOE
+  \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+\begin{cvsection}{Engineering Projects}
+  \begin{cvsubsection}{Ball-on-Beam Control}{ME/AER 440 team project}{Fall 2026}
+    \begin{itemize}
+      \item Derived the plant dynamics and built the Simulink model for controller design. Hardware: servo linkage (about 4:1), bearing pivot, 300 mm twin-rail beam, VL53L1X time-of-flight sensor, Arduino; 3D CAD assembly published online.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Motor Shaft and Drivetrain}{ME 344 design project}{Fall 2026}
+    \begin{itemize}
+      \item Sizing shaft and drivetrain components for a 40 HP, 1750 RPM motor with static and fatigue safety-factor analysis (Shigley); design alternatives iterated in Excel, documented with free-body diagrams, CAD and a report.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Turbulent Pipe Flow ROM}{MSc project}{2020 -- 2025}
+    \begin{itemize}
+      \item Built an object-oriented MATLAB framework for classic and snapshot Proper Orthogonal Decomposition of FFT-decomposed DNS data (Re = 5,300, swirl rates 0--3).
+      \item Reduced about 5 TB of simulation data to low-order energy modes, showing how large-scale structures change as rotation suppresses turbulence.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Multichamber Muffler}{Engineering Acoustics}{2023}
+    \begin{itemize}
+      \item Designed a muffler with chambers, baffles, perforates and fiberglass absorber; simulated 0--1000 Hz transmission loss in ANSYS Acoustics, checked against a 1D transfer-matrix model (SIDLAB), and compared with measured insertion loss.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Viscoplastic Solder Model}{Plasticity}{2023}
+    \begin{itemize}
+      \item Implemented Anand's viscoplastic model in Python (forward Euler) to predict rate- and temperature-dependent stress in solder alloys; compared with published test data to check the ANSYS material model.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{FEA Optimization}{ME 514, ANSYS Workbench}{Fall 2024}
+    \begin{itemize}
+      \item Optimized a compliant microgripper to maximize motion amplification with stress at or below 15 MPa; analyzed thread load sharing in a bolted joint with friction.
+    \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+\begin{cvsection}{Experience}
+  \begin{cvsubsection}{Wayfinding Assistant}{UK HealthCare}{Jul 2023 -- Present}
+    \begin{itemize}
+      \item Built a wayfinding map web app (Flask, Python, SQL) to route hospital visitors (also held this role 2019--2020).
+      \item Built a desktop lookup tool (AutoHotkey v2, HTML interface) that fuzzy-matches text copied from Epic against the department phone directory and ranks the closest matches, speeding up call routing.
+    \end{itemize}
+  \end{cvsubsection}
+
+  \begin{cvsubsection}{Research and Teaching Assistant}{University of Kentucky}{2020 -- 2023}
+    \begin{itemize}
+      \item Turbulence research with 11 PhD researchers at the University of Maryland and the University of Oxford; attended the AIAA Aviation Forum (2022).
+      \item Taught ME 311 Experimental Design II (DOE, statistics in R), ME 330 Fluid Mechanics I and ME 321 Thermodynamics II recitations.
+    \end{itemize}
+  \end{cvsubsection}
+\end{cvsection}
+
+\end{document}
